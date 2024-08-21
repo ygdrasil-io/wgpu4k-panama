@@ -2,16 +2,20 @@
 
 package io.ygdrasil.wgpu.internal.jvm.panama;
 
-import java.lang.foreign.Arena;
-import java.lang.foreign.FunctionDescriptor;
-import java.lang.foreign.Linker;
-import java.lang.foreign.MemorySegment;
-import java.lang.invoke.MethodHandle;
+import java.lang.invoke.*;
+import java.lang.foreign.*;
+import java.nio.ByteOrder;
+import java.util.*;
+import java.util.function.*;
+import java.util.stream.*;
+
+import static java.lang.foreign.ValueLayout.*;
+import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 /**
- * {@snippet lang=c :
+ * {@snippet lang = c:
  * typedef void *(*WGPUProcBufferGetMappedRange)(WGPUBuffer, size_t, size_t)
- * }
+ *}
  */
 public class WGPUProcBufferGetMappedRange {
 
@@ -27,10 +31,10 @@ public class WGPUProcBufferGetMappedRange {
     }
 
     private static final FunctionDescriptor $DESC = FunctionDescriptor.of(
-        wgpu_h.C_POINTER,
-        wgpu_h.C_POINTER,
-        wgpu_h.C_LONG,
-        wgpu_h.C_LONG
+            wgpu_h.C_POINTER,
+            wgpu_h.C_POINTER,
+            wgpu_h.C_LONG,
+            wgpu_h.C_LONG
     );
 
     /**
@@ -55,7 +59,7 @@ public class WGPUProcBufferGetMappedRange {
     /**
      * Invoke the upcall stub {@code funcPtr}, with given parameters
      */
-    public static MemorySegment invoke(MemorySegment funcPtr,MemorySegment buffer, long offset, long size) {
+    public static MemorySegment invoke(MemorySegment funcPtr, MemorySegment buffer, long offset, long size) {
         try {
             return (MemorySegment) DOWN$MH.invokeExact(funcPtr, buffer, offset, size);
         } catch (Throwable ex$) {

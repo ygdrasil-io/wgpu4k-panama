@@ -2,18 +2,14 @@
 
 package io.ygdrasil.wgpu.internal.jvm.panama;
 
-import java.lang.invoke.*;
 import java.lang.foreign.*;
-import java.nio.ByteOrder;
-import java.util.*;
-import java.util.function.*;
-import java.util.stream.*;
+import java.util.function.Consumer;
 
-import static java.lang.foreign.ValueLayout.*;
-import static java.lang.foreign.MemoryLayout.PathElement.*;
+import static java.lang.foreign.MemoryLayout.PathElement.groupElement;
+import static java.lang.foreign.ValueLayout.OfLong;
 
 /**
- * {@snippet lang=c :
+ * {@snippet lang = c:
  * struct WGPURegistryReport {
  *     size_t numAllocated;
  *     size_t numKeptFromUser;
@@ -21,7 +17,7 @@ import static java.lang.foreign.MemoryLayout.PathElement.*;
  *     size_t numError;
  *     size_t elementSize;
  * }
- * }
+ *}
  */
 public class WGPURegistryReport {
 
@@ -30,11 +26,11 @@ public class WGPURegistryReport {
     }
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
-        wgpu_h.C_LONG.withName("numAllocated"),
-        wgpu_h.C_LONG.withName("numKeptFromUser"),
-        wgpu_h.C_LONG.withName("numReleasedFromUser"),
-        wgpu_h.C_LONG.withName("numError"),
-        wgpu_h.C_LONG.withName("elementSize")
+            wgpu_h.C_LONG.withName("numAllocated"),
+            wgpu_h.C_LONG.withName("numKeptFromUser"),
+            wgpu_h.C_LONG.withName("numReleasedFromUser"),
+            wgpu_h.C_LONG.withName("numError"),
+            wgpu_h.C_LONG.withName("elementSize")
     ).withName("WGPURegistryReport");
 
     /**
@@ -44,13 +40,13 @@ public class WGPURegistryReport {
         return $LAYOUT;
     }
 
-    private static final OfLong numAllocated$LAYOUT = (OfLong)$LAYOUT.select(groupElement("numAllocated"));
+    private static final OfLong numAllocated$LAYOUT = (OfLong) $LAYOUT.select(groupElement("numAllocated"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * size_t numAllocated
-     * }
+     *}
      */
     public static final OfLong numAllocated$layout() {
         return numAllocated$LAYOUT;
@@ -60,9 +56,9 @@ public class WGPURegistryReport {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * size_t numAllocated
-     * }
+     *}
      */
     public static final long numAllocated$offset() {
         return numAllocated$OFFSET;
@@ -70,9 +66,9 @@ public class WGPURegistryReport {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * size_t numAllocated
-     * }
+     *}
      */
     public static long numAllocated(MemorySegment struct) {
         return struct.get(numAllocated$LAYOUT, numAllocated$OFFSET);
@@ -80,21 +76,21 @@ public class WGPURegistryReport {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * size_t numAllocated
-     * }
+     *}
      */
     public static void numAllocated(MemorySegment struct, long fieldValue) {
         struct.set(numAllocated$LAYOUT, numAllocated$OFFSET, fieldValue);
     }
 
-    private static final OfLong numKeptFromUser$LAYOUT = (OfLong)$LAYOUT.select(groupElement("numKeptFromUser"));
+    private static final OfLong numKeptFromUser$LAYOUT = (OfLong) $LAYOUT.select(groupElement("numKeptFromUser"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * size_t numKeptFromUser
-     * }
+     *}
      */
     public static final OfLong numKeptFromUser$layout() {
         return numKeptFromUser$LAYOUT;
@@ -104,9 +100,9 @@ public class WGPURegistryReport {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * size_t numKeptFromUser
-     * }
+     *}
      */
     public static final long numKeptFromUser$offset() {
         return numKeptFromUser$OFFSET;
@@ -114,9 +110,9 @@ public class WGPURegistryReport {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * size_t numKeptFromUser
-     * }
+     *}
      */
     public static long numKeptFromUser(MemorySegment struct) {
         return struct.get(numKeptFromUser$LAYOUT, numKeptFromUser$OFFSET);
@@ -124,21 +120,21 @@ public class WGPURegistryReport {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * size_t numKeptFromUser
-     * }
+     *}
      */
     public static void numKeptFromUser(MemorySegment struct, long fieldValue) {
         struct.set(numKeptFromUser$LAYOUT, numKeptFromUser$OFFSET, fieldValue);
     }
 
-    private static final OfLong numReleasedFromUser$LAYOUT = (OfLong)$LAYOUT.select(groupElement("numReleasedFromUser"));
+    private static final OfLong numReleasedFromUser$LAYOUT = (OfLong) $LAYOUT.select(groupElement("numReleasedFromUser"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * size_t numReleasedFromUser
-     * }
+     *}
      */
     public static final OfLong numReleasedFromUser$layout() {
         return numReleasedFromUser$LAYOUT;
@@ -148,9 +144,9 @@ public class WGPURegistryReport {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * size_t numReleasedFromUser
-     * }
+     *}
      */
     public static final long numReleasedFromUser$offset() {
         return numReleasedFromUser$OFFSET;
@@ -158,9 +154,9 @@ public class WGPURegistryReport {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * size_t numReleasedFromUser
-     * }
+     *}
      */
     public static long numReleasedFromUser(MemorySegment struct) {
         return struct.get(numReleasedFromUser$LAYOUT, numReleasedFromUser$OFFSET);
@@ -168,21 +164,21 @@ public class WGPURegistryReport {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * size_t numReleasedFromUser
-     * }
+     *}
      */
     public static void numReleasedFromUser(MemorySegment struct, long fieldValue) {
         struct.set(numReleasedFromUser$LAYOUT, numReleasedFromUser$OFFSET, fieldValue);
     }
 
-    private static final OfLong numError$LAYOUT = (OfLong)$LAYOUT.select(groupElement("numError"));
+    private static final OfLong numError$LAYOUT = (OfLong) $LAYOUT.select(groupElement("numError"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * size_t numError
-     * }
+     *}
      */
     public static final OfLong numError$layout() {
         return numError$LAYOUT;
@@ -192,9 +188,9 @@ public class WGPURegistryReport {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * size_t numError
-     * }
+     *}
      */
     public static final long numError$offset() {
         return numError$OFFSET;
@@ -202,9 +198,9 @@ public class WGPURegistryReport {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * size_t numError
-     * }
+     *}
      */
     public static long numError(MemorySegment struct) {
         return struct.get(numError$LAYOUT, numError$OFFSET);
@@ -212,21 +208,21 @@ public class WGPURegistryReport {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * size_t numError
-     * }
+     *}
      */
     public static void numError(MemorySegment struct, long fieldValue) {
         struct.set(numError$LAYOUT, numError$OFFSET, fieldValue);
     }
 
-    private static final OfLong elementSize$LAYOUT = (OfLong)$LAYOUT.select(groupElement("elementSize"));
+    private static final OfLong elementSize$LAYOUT = (OfLong) $LAYOUT.select(groupElement("elementSize"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * size_t elementSize
-     * }
+     *}
      */
     public static final OfLong elementSize$layout() {
         return elementSize$LAYOUT;
@@ -236,9 +232,9 @@ public class WGPURegistryReport {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * size_t elementSize
-     * }
+     *}
      */
     public static final long elementSize$offset() {
         return elementSize$OFFSET;
@@ -246,9 +242,9 @@ public class WGPURegistryReport {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * size_t elementSize
-     * }
+     *}
      */
     public static long elementSize(MemorySegment struct) {
         return struct.get(elementSize$LAYOUT, elementSize$OFFSET);
@@ -256,9 +252,9 @@ public class WGPURegistryReport {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * size_t elementSize
-     * }
+     *}
      */
     public static void elementSize(MemorySegment struct, long fieldValue) {
         struct.set(elementSize$LAYOUT, elementSize$OFFSET, fieldValue);
@@ -275,7 +271,9 @@ public class WGPURegistryReport {
     /**
      * The size (in bytes) of this struct
      */
-    public static long sizeof() { return layout().byteSize(); }
+    public static long sizeof() {
+        return layout().byteSize();
+    }
 
     /**
      * Allocate a segment of size {@code layout().byteSize()} using {@code allocator}

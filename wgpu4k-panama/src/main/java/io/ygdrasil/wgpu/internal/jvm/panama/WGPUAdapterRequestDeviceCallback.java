@@ -13,13 +13,13 @@ import static java.lang.foreign.ValueLayout.*;
 import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 /**
- * {@snippet lang=c :
- * typedef WGPUTextureFormat (*WGPUProcSurfaceGetPreferredFormat)(WGPUSurface, WGPUAdapter)
- * }
+ * {@snippet lang = c:
+ * typedef void (*WGPUAdapterRequestDeviceCallback)(WGPURequestDeviceStatus, WGPUDevice, const char *, void *)
+ *}
  */
-public class WGPUProcSurfaceGetPreferredFormat {
+public class WGPUAdapterRequestDeviceCallback {
 
-    WGPUProcSurfaceGetPreferredFormat() {
+    WGPUAdapterRequestDeviceCallback() {
         // Should not be called directly
     }
 
@@ -27,13 +27,14 @@ public class WGPUProcSurfaceGetPreferredFormat {
      * The function pointer signature, expressed as a functional interface
      */
     public interface Function {
-        int apply(MemorySegment surface, MemorySegment adapter);
+        void apply(int status, MemorySegment device, MemorySegment message, MemorySegment userdata);
     }
 
-    private static final FunctionDescriptor $DESC = FunctionDescriptor.of(
-        wgpu_h.C_INT,
-        wgpu_h.C_POINTER,
-        wgpu_h.C_POINTER
+    private static final FunctionDescriptor $DESC = FunctionDescriptor.ofVoid(
+            wgpu_h.C_INT,
+            wgpu_h.C_POINTER,
+            wgpu_h.C_POINTER,
+            wgpu_h.C_POINTER
     );
 
     /**
@@ -43,13 +44,13 @@ public class WGPUProcSurfaceGetPreferredFormat {
         return $DESC;
     }
 
-    private static final MethodHandle UP$MH = wgpu_h.upcallHandle(WGPUProcSurfaceGetPreferredFormat.Function.class, "apply", $DESC);
+    private static final MethodHandle UP$MH = wgpu_h.upcallHandle(WGPUAdapterRequestDeviceCallback.Function.class, "apply", $DESC);
 
     /**
      * Allocates a new upcall stub, whose implementation is defined by {@code fi}.
      * The lifetime of the returned segment is managed by {@code arena}
      */
-    public static MemorySegment allocate(WGPUProcSurfaceGetPreferredFormat.Function fi, Arena arena) {
+    public static MemorySegment allocate(WGPUAdapterRequestDeviceCallback.Function fi, Arena arena) {
         return Linker.nativeLinker().upcallStub(UP$MH.bindTo(fi), $DESC, arena);
     }
 
@@ -58,9 +59,9 @@ public class WGPUProcSurfaceGetPreferredFormat {
     /**
      * Invoke the upcall stub {@code funcPtr}, with given parameters
      */
-    public static int invoke(MemorySegment funcPtr,MemorySegment surface, MemorySegment adapter) {
+    public static void invoke(MemorySegment funcPtr, int status, MemorySegment device, MemorySegment message, MemorySegment userdata) {
         try {
-            return (int) DOWN$MH.invokeExact(funcPtr, surface, adapter);
+            DOWN$MH.invokeExact(funcPtr, status, device, message, userdata);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }

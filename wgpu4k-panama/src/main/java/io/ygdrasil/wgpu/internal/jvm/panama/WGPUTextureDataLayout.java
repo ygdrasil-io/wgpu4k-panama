@@ -10,14 +10,14 @@ import static java.lang.foreign.ValueLayout.OfInt;
 import static java.lang.foreign.ValueLayout.OfLong;
 
 /**
- * {@snippet lang=c :
+ * {@snippet lang = c:
  * struct WGPUTextureDataLayout {
  *     const WGPUChainedStruct *nextInChain;
  *     uint64_t offset;
  *     uint32_t bytesPerRow;
  *     uint32_t rowsPerImage;
  * }
- * }
+ *}
  */
 public class WGPUTextureDataLayout {
 
@@ -26,10 +26,10 @@ public class WGPUTextureDataLayout {
     }
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
-        wgpu_h.C_POINTER.withName("nextInChain"),
-        wgpu_h.C_LONG_LONG.withName("offset"),
-        wgpu_h.C_INT.withName("bytesPerRow"),
-        wgpu_h.C_INT.withName("rowsPerImage")
+            wgpu_h.C_POINTER.withName("nextInChain"),
+            wgpu_h.C_LONG_LONG.withName("offset"),
+            wgpu_h.C_INT.withName("bytesPerRow"),
+            wgpu_h.C_INT.withName("rowsPerImage")
     ).withName("WGPUTextureDataLayout");
 
     /**
@@ -39,13 +39,13 @@ public class WGPUTextureDataLayout {
         return $LAYOUT;
     }
 
-    private static final AddressLayout nextInChain$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("nextInChain"));
+    private static final AddressLayout nextInChain$LAYOUT = (AddressLayout) $LAYOUT.select(groupElement("nextInChain"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * const WGPUChainedStruct *nextInChain
-     * }
+     *}
      */
     public static final AddressLayout nextInChain$layout() {
         return nextInChain$LAYOUT;
@@ -55,9 +55,9 @@ public class WGPUTextureDataLayout {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * const WGPUChainedStruct *nextInChain
-     * }
+     *}
      */
     public static final long nextInChain$offset() {
         return nextInChain$OFFSET;
@@ -65,9 +65,9 @@ public class WGPUTextureDataLayout {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * const WGPUChainedStruct *nextInChain
-     * }
+     *}
      */
     public static MemorySegment nextInChain(MemorySegment struct) {
         return struct.get(nextInChain$LAYOUT, nextInChain$OFFSET);
@@ -75,21 +75,21 @@ public class WGPUTextureDataLayout {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * const WGPUChainedStruct *nextInChain
-     * }
+     *}
      */
     public static void nextInChain(MemorySegment struct, MemorySegment fieldValue) {
         struct.set(nextInChain$LAYOUT, nextInChain$OFFSET, fieldValue);
     }
 
-    private static final OfLong offset$LAYOUT = (OfLong)$LAYOUT.select(groupElement("offset"));
+    private static final OfLong offset$LAYOUT = (OfLong) $LAYOUT.select(groupElement("offset"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint64_t offset
-     * }
+     *}
      */
     public static final OfLong offset$layout() {
         return offset$LAYOUT;
@@ -99,9 +99,9 @@ public class WGPUTextureDataLayout {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint64_t offset
-     * }
+     *}
      */
     public static final long offset$offset() {
         return offset$OFFSET;
@@ -109,9 +109,9 @@ public class WGPUTextureDataLayout {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint64_t offset
-     * }
+     *}
      */
     public static long offset(MemorySegment struct) {
         return struct.get(offset$LAYOUT, offset$OFFSET);
@@ -119,21 +119,21 @@ public class WGPUTextureDataLayout {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint64_t offset
-     * }
+     *}
      */
     public static void offset(MemorySegment struct, long fieldValue) {
         struct.set(offset$LAYOUT, offset$OFFSET, fieldValue);
     }
 
-    private static final OfInt bytesPerRow$LAYOUT = (OfInt)$LAYOUT.select(groupElement("bytesPerRow"));
+    private static final OfInt bytesPerRow$LAYOUT = (OfInt) $LAYOUT.select(groupElement("bytesPerRow"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t bytesPerRow
-     * }
+     *}
      */
     public static final OfInt bytesPerRow$layout() {
         return bytesPerRow$LAYOUT;
@@ -143,9 +143,9 @@ public class WGPUTextureDataLayout {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t bytesPerRow
-     * }
+     *}
      */
     public static final long bytesPerRow$offset() {
         return bytesPerRow$OFFSET;
@@ -153,9 +153,9 @@ public class WGPUTextureDataLayout {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t bytesPerRow
-     * }
+     *}
      */
     public static int bytesPerRow(MemorySegment struct) {
         return struct.get(bytesPerRow$LAYOUT, bytesPerRow$OFFSET);
@@ -163,21 +163,21 @@ public class WGPUTextureDataLayout {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t bytesPerRow
-     * }
+     *}
      */
     public static void bytesPerRow(MemorySegment struct, int fieldValue) {
         struct.set(bytesPerRow$LAYOUT, bytesPerRow$OFFSET, fieldValue);
     }
 
-    private static final OfInt rowsPerImage$LAYOUT = (OfInt)$LAYOUT.select(groupElement("rowsPerImage"));
+    private static final OfInt rowsPerImage$LAYOUT = (OfInt) $LAYOUT.select(groupElement("rowsPerImage"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t rowsPerImage
-     * }
+     *}
      */
     public static final OfInt rowsPerImage$layout() {
         return rowsPerImage$LAYOUT;
@@ -187,9 +187,9 @@ public class WGPUTextureDataLayout {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t rowsPerImage
-     * }
+     *}
      */
     public static final long rowsPerImage$offset() {
         return rowsPerImage$OFFSET;
@@ -197,9 +197,9 @@ public class WGPUTextureDataLayout {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t rowsPerImage
-     * }
+     *}
      */
     public static int rowsPerImage(MemorySegment struct) {
         return struct.get(rowsPerImage$LAYOUT, rowsPerImage$OFFSET);
@@ -207,9 +207,9 @@ public class WGPUTextureDataLayout {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t rowsPerImage
-     * }
+     *}
      */
     public static void rowsPerImage(MemorySegment struct, int fieldValue) {
         struct.set(rowsPerImage$LAYOUT, rowsPerImage$OFFSET, fieldValue);
@@ -226,7 +226,9 @@ public class WGPUTextureDataLayout {
     /**
      * The size (in bytes) of this struct
      */
-    public static long sizeof() { return layout().byteSize(); }
+    public static long sizeof() {
+        return layout().byteSize();
+    }
 
     /**
      * Allocate a segment of size {@code layout().byteSize()} using {@code allocator}

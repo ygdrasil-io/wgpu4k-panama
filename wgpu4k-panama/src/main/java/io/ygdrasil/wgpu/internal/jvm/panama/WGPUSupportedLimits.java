@@ -8,12 +8,12 @@ import java.util.function.Consumer;
 import static java.lang.foreign.MemoryLayout.PathElement.groupElement;
 
 /**
- * {@snippet lang=c :
+ * {@snippet lang = c:
  * struct WGPUSupportedLimits {
  *     WGPUChainedStructOut *nextInChain;
  *     WGPULimits limits;
  * }
- * }
+ *}
  */
 public class WGPUSupportedLimits {
 
@@ -22,8 +22,8 @@ public class WGPUSupportedLimits {
     }
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
-        wgpu_h.C_POINTER.withName("nextInChain"),
-        WGPULimits.layout().withName("limits")
+            wgpu_h.C_POINTER.withName("nextInChain"),
+            WGPULimits.layout().withName("limits")
     ).withName("WGPUSupportedLimits");
 
     /**
@@ -33,13 +33,13 @@ public class WGPUSupportedLimits {
         return $LAYOUT;
     }
 
-    private static final AddressLayout nextInChain$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("nextInChain"));
+    private static final AddressLayout nextInChain$LAYOUT = (AddressLayout) $LAYOUT.select(groupElement("nextInChain"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUChainedStructOut *nextInChain
-     * }
+     *}
      */
     public static final AddressLayout nextInChain$layout() {
         return nextInChain$LAYOUT;
@@ -49,9 +49,9 @@ public class WGPUSupportedLimits {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUChainedStructOut *nextInChain
-     * }
+     *}
      */
     public static final long nextInChain$offset() {
         return nextInChain$OFFSET;
@@ -59,9 +59,9 @@ public class WGPUSupportedLimits {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUChainedStructOut *nextInChain
-     * }
+     *}
      */
     public static MemorySegment nextInChain(MemorySegment struct) {
         return struct.get(nextInChain$LAYOUT, nextInChain$OFFSET);
@@ -69,21 +69,21 @@ public class WGPUSupportedLimits {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUChainedStructOut *nextInChain
-     * }
+     *}
      */
     public static void nextInChain(MemorySegment struct, MemorySegment fieldValue) {
         struct.set(nextInChain$LAYOUT, nextInChain$OFFSET, fieldValue);
     }
 
-    private static final GroupLayout limits$LAYOUT = (GroupLayout)$LAYOUT.select(groupElement("limits"));
+    private static final GroupLayout limits$LAYOUT = (GroupLayout) $LAYOUT.select(groupElement("limits"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPULimits limits
-     * }
+     *}
      */
     public static final GroupLayout limits$layout() {
         return limits$LAYOUT;
@@ -93,9 +93,9 @@ public class WGPUSupportedLimits {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPULimits limits
-     * }
+     *}
      */
     public static final long limits$offset() {
         return limits$OFFSET;
@@ -103,9 +103,9 @@ public class WGPUSupportedLimits {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPULimits limits
-     * }
+     *}
      */
     public static MemorySegment limits(MemorySegment struct) {
         return struct.asSlice(limits$OFFSET, limits$LAYOUT.byteSize());
@@ -113,9 +113,9 @@ public class WGPUSupportedLimits {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPULimits limits
-     * }
+     *}
      */
     public static void limits(MemorySegment struct, MemorySegment fieldValue) {
         MemorySegment.copy(fieldValue, 0L, struct, limits$OFFSET, limits$LAYOUT.byteSize());
@@ -132,7 +132,9 @@ public class WGPUSupportedLimits {
     /**
      * The size (in bytes) of this struct
      */
-    public static long sizeof() { return layout().byteSize(); }
+    public static long sizeof() {
+        return layout().byteSize();
+    }
 
     /**
      * Allocate a segment of size {@code layout().byteSize()} using {@code allocator}

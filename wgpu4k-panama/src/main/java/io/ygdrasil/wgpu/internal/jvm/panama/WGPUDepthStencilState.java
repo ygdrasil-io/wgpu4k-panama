@@ -10,7 +10,7 @@ import static java.lang.foreign.ValueLayout.OfFloat;
 import static java.lang.foreign.ValueLayout.OfInt;
 
 /**
- * {@snippet lang=c :
+ * {@snippet lang = c:
  * struct WGPUDepthStencilState {
  *     const WGPUChainedStruct *nextInChain;
  *     WGPUTextureFormat format;
@@ -24,7 +24,7 @@ import static java.lang.foreign.ValueLayout.OfInt;
  *     float depthBiasSlopeScale;
  *     float depthBiasClamp;
  * }
- * }
+ *}
  */
 public class WGPUDepthStencilState {
 
@@ -33,17 +33,17 @@ public class WGPUDepthStencilState {
     }
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
-        wgpu_h.C_POINTER.withName("nextInChain"),
-        wgpu_h.C_INT.withName("format"),
-        wgpu_h.C_INT.withName("depthWriteEnabled"),
-        wgpu_h.C_INT.withName("depthCompare"),
-        WGPUStencilFaceState.layout().withName("stencilFront"),
-        WGPUStencilFaceState.layout().withName("stencilBack"),
-        wgpu_h.C_INT.withName("stencilReadMask"),
-        wgpu_h.C_INT.withName("stencilWriteMask"),
-        wgpu_h.C_INT.withName("depthBias"),
-        wgpu_h.C_FLOAT.withName("depthBiasSlopeScale"),
-        wgpu_h.C_FLOAT.withName("depthBiasClamp")
+            wgpu_h.C_POINTER.withName("nextInChain"),
+            wgpu_h.C_INT.withName("format"),
+            wgpu_h.C_INT.withName("depthWriteEnabled"),
+            wgpu_h.C_INT.withName("depthCompare"),
+            WGPUStencilFaceState.layout().withName("stencilFront"),
+            WGPUStencilFaceState.layout().withName("stencilBack"),
+            wgpu_h.C_INT.withName("stencilReadMask"),
+            wgpu_h.C_INT.withName("stencilWriteMask"),
+            wgpu_h.C_INT.withName("depthBias"),
+            wgpu_h.C_FLOAT.withName("depthBiasSlopeScale"),
+            wgpu_h.C_FLOAT.withName("depthBiasClamp")
     ).withName("WGPUDepthStencilState");
 
     /**
@@ -53,13 +53,13 @@ public class WGPUDepthStencilState {
         return $LAYOUT;
     }
 
-    private static final AddressLayout nextInChain$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("nextInChain"));
+    private static final AddressLayout nextInChain$LAYOUT = (AddressLayout) $LAYOUT.select(groupElement("nextInChain"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * const WGPUChainedStruct *nextInChain
-     * }
+     *}
      */
     public static final AddressLayout nextInChain$layout() {
         return nextInChain$LAYOUT;
@@ -69,9 +69,9 @@ public class WGPUDepthStencilState {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * const WGPUChainedStruct *nextInChain
-     * }
+     *}
      */
     public static final long nextInChain$offset() {
         return nextInChain$OFFSET;
@@ -79,9 +79,9 @@ public class WGPUDepthStencilState {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * const WGPUChainedStruct *nextInChain
-     * }
+     *}
      */
     public static MemorySegment nextInChain(MemorySegment struct) {
         return struct.get(nextInChain$LAYOUT, nextInChain$OFFSET);
@@ -89,21 +89,21 @@ public class WGPUDepthStencilState {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * const WGPUChainedStruct *nextInChain
-     * }
+     *}
      */
     public static void nextInChain(MemorySegment struct, MemorySegment fieldValue) {
         struct.set(nextInChain$LAYOUT, nextInChain$OFFSET, fieldValue);
     }
 
-    private static final OfInt format$LAYOUT = (OfInt)$LAYOUT.select(groupElement("format"));
+    private static final OfInt format$LAYOUT = (OfInt) $LAYOUT.select(groupElement("format"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUTextureFormat format
-     * }
+     *}
      */
     public static final OfInt format$layout() {
         return format$LAYOUT;
@@ -113,9 +113,9 @@ public class WGPUDepthStencilState {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUTextureFormat format
-     * }
+     *}
      */
     public static final long format$offset() {
         return format$OFFSET;
@@ -123,9 +123,9 @@ public class WGPUDepthStencilState {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUTextureFormat format
-     * }
+     *}
      */
     public static int format(MemorySegment struct) {
         return struct.get(format$LAYOUT, format$OFFSET);
@@ -133,21 +133,21 @@ public class WGPUDepthStencilState {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUTextureFormat format
-     * }
+     *}
      */
     public static void format(MemorySegment struct, int fieldValue) {
         struct.set(format$LAYOUT, format$OFFSET, fieldValue);
     }
 
-    private static final OfInt depthWriteEnabled$LAYOUT = (OfInt)$LAYOUT.select(groupElement("depthWriteEnabled"));
+    private static final OfInt depthWriteEnabled$LAYOUT = (OfInt) $LAYOUT.select(groupElement("depthWriteEnabled"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUBool depthWriteEnabled
-     * }
+     *}
      */
     public static final OfInt depthWriteEnabled$layout() {
         return depthWriteEnabled$LAYOUT;
@@ -157,9 +157,9 @@ public class WGPUDepthStencilState {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUBool depthWriteEnabled
-     * }
+     *}
      */
     public static final long depthWriteEnabled$offset() {
         return depthWriteEnabled$OFFSET;
@@ -167,9 +167,9 @@ public class WGPUDepthStencilState {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUBool depthWriteEnabled
-     * }
+     *}
      */
     public static int depthWriteEnabled(MemorySegment struct) {
         return struct.get(depthWriteEnabled$LAYOUT, depthWriteEnabled$OFFSET);
@@ -177,21 +177,21 @@ public class WGPUDepthStencilState {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUBool depthWriteEnabled
-     * }
+     *}
      */
     public static void depthWriteEnabled(MemorySegment struct, int fieldValue) {
         struct.set(depthWriteEnabled$LAYOUT, depthWriteEnabled$OFFSET, fieldValue);
     }
 
-    private static final OfInt depthCompare$LAYOUT = (OfInt)$LAYOUT.select(groupElement("depthCompare"));
+    private static final OfInt depthCompare$LAYOUT = (OfInt) $LAYOUT.select(groupElement("depthCompare"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUCompareFunction depthCompare
-     * }
+     *}
      */
     public static final OfInt depthCompare$layout() {
         return depthCompare$LAYOUT;
@@ -201,9 +201,9 @@ public class WGPUDepthStencilState {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUCompareFunction depthCompare
-     * }
+     *}
      */
     public static final long depthCompare$offset() {
         return depthCompare$OFFSET;
@@ -211,9 +211,9 @@ public class WGPUDepthStencilState {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUCompareFunction depthCompare
-     * }
+     *}
      */
     public static int depthCompare(MemorySegment struct) {
         return struct.get(depthCompare$LAYOUT, depthCompare$OFFSET);
@@ -221,21 +221,21 @@ public class WGPUDepthStencilState {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUCompareFunction depthCompare
-     * }
+     *}
      */
     public static void depthCompare(MemorySegment struct, int fieldValue) {
         struct.set(depthCompare$LAYOUT, depthCompare$OFFSET, fieldValue);
     }
 
-    private static final GroupLayout stencilFront$LAYOUT = (GroupLayout)$LAYOUT.select(groupElement("stencilFront"));
+    private static final GroupLayout stencilFront$LAYOUT = (GroupLayout) $LAYOUT.select(groupElement("stencilFront"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUStencilFaceState stencilFront
-     * }
+     *}
      */
     public static final GroupLayout stencilFront$layout() {
         return stencilFront$LAYOUT;
@@ -245,9 +245,9 @@ public class WGPUDepthStencilState {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUStencilFaceState stencilFront
-     * }
+     *}
      */
     public static final long stencilFront$offset() {
         return stencilFront$OFFSET;
@@ -255,9 +255,9 @@ public class WGPUDepthStencilState {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUStencilFaceState stencilFront
-     * }
+     *}
      */
     public static MemorySegment stencilFront(MemorySegment struct) {
         return struct.asSlice(stencilFront$OFFSET, stencilFront$LAYOUT.byteSize());
@@ -265,21 +265,21 @@ public class WGPUDepthStencilState {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUStencilFaceState stencilFront
-     * }
+     *}
      */
     public static void stencilFront(MemorySegment struct, MemorySegment fieldValue) {
         MemorySegment.copy(fieldValue, 0L, struct, stencilFront$OFFSET, stencilFront$LAYOUT.byteSize());
     }
 
-    private static final GroupLayout stencilBack$LAYOUT = (GroupLayout)$LAYOUT.select(groupElement("stencilBack"));
+    private static final GroupLayout stencilBack$LAYOUT = (GroupLayout) $LAYOUT.select(groupElement("stencilBack"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUStencilFaceState stencilBack
-     * }
+     *}
      */
     public static final GroupLayout stencilBack$layout() {
         return stencilBack$LAYOUT;
@@ -289,9 +289,9 @@ public class WGPUDepthStencilState {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUStencilFaceState stencilBack
-     * }
+     *}
      */
     public static final long stencilBack$offset() {
         return stencilBack$OFFSET;
@@ -299,9 +299,9 @@ public class WGPUDepthStencilState {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUStencilFaceState stencilBack
-     * }
+     *}
      */
     public static MemorySegment stencilBack(MemorySegment struct) {
         return struct.asSlice(stencilBack$OFFSET, stencilBack$LAYOUT.byteSize());
@@ -309,21 +309,21 @@ public class WGPUDepthStencilState {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUStencilFaceState stencilBack
-     * }
+     *}
      */
     public static void stencilBack(MemorySegment struct, MemorySegment fieldValue) {
         MemorySegment.copy(fieldValue, 0L, struct, stencilBack$OFFSET, stencilBack$LAYOUT.byteSize());
     }
 
-    private static final OfInt stencilReadMask$LAYOUT = (OfInt)$LAYOUT.select(groupElement("stencilReadMask"));
+    private static final OfInt stencilReadMask$LAYOUT = (OfInt) $LAYOUT.select(groupElement("stencilReadMask"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t stencilReadMask
-     * }
+     *}
      */
     public static final OfInt stencilReadMask$layout() {
         return stencilReadMask$LAYOUT;
@@ -333,9 +333,9 @@ public class WGPUDepthStencilState {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t stencilReadMask
-     * }
+     *}
      */
     public static final long stencilReadMask$offset() {
         return stencilReadMask$OFFSET;
@@ -343,9 +343,9 @@ public class WGPUDepthStencilState {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t stencilReadMask
-     * }
+     *}
      */
     public static int stencilReadMask(MemorySegment struct) {
         return struct.get(stencilReadMask$LAYOUT, stencilReadMask$OFFSET);
@@ -353,21 +353,21 @@ public class WGPUDepthStencilState {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t stencilReadMask
-     * }
+     *}
      */
     public static void stencilReadMask(MemorySegment struct, int fieldValue) {
         struct.set(stencilReadMask$LAYOUT, stencilReadMask$OFFSET, fieldValue);
     }
 
-    private static final OfInt stencilWriteMask$LAYOUT = (OfInt)$LAYOUT.select(groupElement("stencilWriteMask"));
+    private static final OfInt stencilWriteMask$LAYOUT = (OfInt) $LAYOUT.select(groupElement("stencilWriteMask"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t stencilWriteMask
-     * }
+     *}
      */
     public static final OfInt stencilWriteMask$layout() {
         return stencilWriteMask$LAYOUT;
@@ -377,9 +377,9 @@ public class WGPUDepthStencilState {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t stencilWriteMask
-     * }
+     *}
      */
     public static final long stencilWriteMask$offset() {
         return stencilWriteMask$OFFSET;
@@ -387,9 +387,9 @@ public class WGPUDepthStencilState {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t stencilWriteMask
-     * }
+     *}
      */
     public static int stencilWriteMask(MemorySegment struct) {
         return struct.get(stencilWriteMask$LAYOUT, stencilWriteMask$OFFSET);
@@ -397,21 +397,21 @@ public class WGPUDepthStencilState {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t stencilWriteMask
-     * }
+     *}
      */
     public static void stencilWriteMask(MemorySegment struct, int fieldValue) {
         struct.set(stencilWriteMask$LAYOUT, stencilWriteMask$OFFSET, fieldValue);
     }
 
-    private static final OfInt depthBias$LAYOUT = (OfInt)$LAYOUT.select(groupElement("depthBias"));
+    private static final OfInt depthBias$LAYOUT = (OfInt) $LAYOUT.select(groupElement("depthBias"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * int32_t depthBias
-     * }
+     *}
      */
     public static final OfInt depthBias$layout() {
         return depthBias$LAYOUT;
@@ -421,9 +421,9 @@ public class WGPUDepthStencilState {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * int32_t depthBias
-     * }
+     *}
      */
     public static final long depthBias$offset() {
         return depthBias$OFFSET;
@@ -431,9 +431,9 @@ public class WGPUDepthStencilState {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * int32_t depthBias
-     * }
+     *}
      */
     public static int depthBias(MemorySegment struct) {
         return struct.get(depthBias$LAYOUT, depthBias$OFFSET);
@@ -441,21 +441,21 @@ public class WGPUDepthStencilState {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * int32_t depthBias
-     * }
+     *}
      */
     public static void depthBias(MemorySegment struct, int fieldValue) {
         struct.set(depthBias$LAYOUT, depthBias$OFFSET, fieldValue);
     }
 
-    private static final OfFloat depthBiasSlopeScale$LAYOUT = (OfFloat)$LAYOUT.select(groupElement("depthBiasSlopeScale"));
+    private static final OfFloat depthBiasSlopeScale$LAYOUT = (OfFloat) $LAYOUT.select(groupElement("depthBiasSlopeScale"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * float depthBiasSlopeScale
-     * }
+     *}
      */
     public static final OfFloat depthBiasSlopeScale$layout() {
         return depthBiasSlopeScale$LAYOUT;
@@ -465,9 +465,9 @@ public class WGPUDepthStencilState {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * float depthBiasSlopeScale
-     * }
+     *}
      */
     public static final long depthBiasSlopeScale$offset() {
         return depthBiasSlopeScale$OFFSET;
@@ -475,9 +475,9 @@ public class WGPUDepthStencilState {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * float depthBiasSlopeScale
-     * }
+     *}
      */
     public static float depthBiasSlopeScale(MemorySegment struct) {
         return struct.get(depthBiasSlopeScale$LAYOUT, depthBiasSlopeScale$OFFSET);
@@ -485,21 +485,21 @@ public class WGPUDepthStencilState {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * float depthBiasSlopeScale
-     * }
+     *}
      */
     public static void depthBiasSlopeScale(MemorySegment struct, float fieldValue) {
         struct.set(depthBiasSlopeScale$LAYOUT, depthBiasSlopeScale$OFFSET, fieldValue);
     }
 
-    private static final OfFloat depthBiasClamp$LAYOUT = (OfFloat)$LAYOUT.select(groupElement("depthBiasClamp"));
+    private static final OfFloat depthBiasClamp$LAYOUT = (OfFloat) $LAYOUT.select(groupElement("depthBiasClamp"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * float depthBiasClamp
-     * }
+     *}
      */
     public static final OfFloat depthBiasClamp$layout() {
         return depthBiasClamp$LAYOUT;
@@ -509,9 +509,9 @@ public class WGPUDepthStencilState {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * float depthBiasClamp
-     * }
+     *}
      */
     public static final long depthBiasClamp$offset() {
         return depthBiasClamp$OFFSET;
@@ -519,9 +519,9 @@ public class WGPUDepthStencilState {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * float depthBiasClamp
-     * }
+     *}
      */
     public static float depthBiasClamp(MemorySegment struct) {
         return struct.get(depthBiasClamp$LAYOUT, depthBiasClamp$OFFSET);
@@ -529,9 +529,9 @@ public class WGPUDepthStencilState {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * float depthBiasClamp
-     * }
+     *}
      */
     public static void depthBiasClamp(MemorySegment struct, float fieldValue) {
         struct.set(depthBiasClamp$LAYOUT, depthBiasClamp$OFFSET, fieldValue);
@@ -548,7 +548,9 @@ public class WGPUDepthStencilState {
     /**
      * The size (in bytes) of this struct
      */
-    public static long sizeof() { return layout().byteSize(); }
+    public static long sizeof() {
+        return layout().byteSize();
+    }
 
     /**
      * Allocate a segment of size {@code layout().byteSize()} using {@code allocator}

@@ -13,9 +13,9 @@ import static java.lang.foreign.ValueLayout.*;
 import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 /**
- * {@snippet lang=c :
+ * {@snippet lang = c:
  * typedef void (*WGPUProcRenderPassEncoderExecuteBundles)(WGPURenderPassEncoder, size_t, const WGPURenderBundle *)
- * }
+ *}
  */
 public class WGPUProcRenderPassEncoderExecuteBundles {
 
@@ -31,9 +31,9 @@ public class WGPUProcRenderPassEncoderExecuteBundles {
     }
 
     private static final FunctionDescriptor $DESC = FunctionDescriptor.ofVoid(
-        wgpu_h.C_POINTER,
-        wgpu_h.C_LONG,
-        wgpu_h.C_POINTER
+            wgpu_h.C_POINTER,
+            wgpu_h.C_LONG,
+            wgpu_h.C_POINTER
     );
 
     /**
@@ -58,9 +58,9 @@ public class WGPUProcRenderPassEncoderExecuteBundles {
     /**
      * Invoke the upcall stub {@code funcPtr}, with given parameters
      */
-    public static void invoke(MemorySegment funcPtr,MemorySegment renderPassEncoder, long bundleCount, MemorySegment bundles) {
+    public static void invoke(MemorySegment funcPtr, MemorySegment renderPassEncoder, long bundleCount, MemorySegment bundles) {
         try {
-             DOWN$MH.invokeExact(funcPtr, renderPassEncoder, bundleCount, bundles);
+            DOWN$MH.invokeExact(funcPtr, renderPassEncoder, bundleCount, bundles);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }

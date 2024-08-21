@@ -10,7 +10,7 @@ import static java.lang.foreign.ValueLayout.OfInt;
 import static java.lang.foreign.ValueLayout.OfLong;
 
 /**
- * {@snippet lang=c :
+ * {@snippet lang = c:
  * struct WGPULimits {
  *     uint32_t maxTextureDimension1D;
  *     uint32_t maxTextureDimension2D;
@@ -45,7 +45,7 @@ import static java.lang.foreign.ValueLayout.OfLong;
  *     uint32_t maxComputeWorkgroupSizeZ;
  *     uint32_t maxComputeWorkgroupsPerDimension;
  * }
- * }
+ *}
  */
 public class WGPULimits {
 
@@ -54,39 +54,39 @@ public class WGPULimits {
     }
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
-        wgpu_h.C_INT.withName("maxTextureDimension1D"),
-        wgpu_h.C_INT.withName("maxTextureDimension2D"),
-        wgpu_h.C_INT.withName("maxTextureDimension3D"),
-        wgpu_h.C_INT.withName("maxTextureArrayLayers"),
-        wgpu_h.C_INT.withName("maxBindGroups"),
-        wgpu_h.C_INT.withName("maxBindGroupsPlusVertexBuffers"),
-        wgpu_h.C_INT.withName("maxBindingsPerBindGroup"),
-        wgpu_h.C_INT.withName("maxDynamicUniformBuffersPerPipelineLayout"),
-        wgpu_h.C_INT.withName("maxDynamicStorageBuffersPerPipelineLayout"),
-        wgpu_h.C_INT.withName("maxSampledTexturesPerShaderStage"),
-        wgpu_h.C_INT.withName("maxSamplersPerShaderStage"),
-        wgpu_h.C_INT.withName("maxStorageBuffersPerShaderStage"),
-        wgpu_h.C_INT.withName("maxStorageTexturesPerShaderStage"),
-        wgpu_h.C_INT.withName("maxUniformBuffersPerShaderStage"),
-        wgpu_h.C_LONG_LONG.withName("maxUniformBufferBindingSize"),
-        wgpu_h.C_LONG_LONG.withName("maxStorageBufferBindingSize"),
-        wgpu_h.C_INT.withName("minUniformBufferOffsetAlignment"),
-        wgpu_h.C_INT.withName("minStorageBufferOffsetAlignment"),
-        wgpu_h.C_INT.withName("maxVertexBuffers"),
-        MemoryLayout.paddingLayout(4),
-        wgpu_h.C_LONG_LONG.withName("maxBufferSize"),
-        wgpu_h.C_INT.withName("maxVertexAttributes"),
-        wgpu_h.C_INT.withName("maxVertexBufferArrayStride"),
-        wgpu_h.C_INT.withName("maxInterStageShaderComponents"),
-        wgpu_h.C_INT.withName("maxInterStageShaderVariables"),
-        wgpu_h.C_INT.withName("maxColorAttachments"),
-        wgpu_h.C_INT.withName("maxColorAttachmentBytesPerSample"),
-        wgpu_h.C_INT.withName("maxComputeWorkgroupStorageSize"),
-        wgpu_h.C_INT.withName("maxComputeInvocationsPerWorkgroup"),
-        wgpu_h.C_INT.withName("maxComputeWorkgroupSizeX"),
-        wgpu_h.C_INT.withName("maxComputeWorkgroupSizeY"),
-        wgpu_h.C_INT.withName("maxComputeWorkgroupSizeZ"),
-        wgpu_h.C_INT.withName("maxComputeWorkgroupsPerDimension")
+            wgpu_h.C_INT.withName("maxTextureDimension1D"),
+            wgpu_h.C_INT.withName("maxTextureDimension2D"),
+            wgpu_h.C_INT.withName("maxTextureDimension3D"),
+            wgpu_h.C_INT.withName("maxTextureArrayLayers"),
+            wgpu_h.C_INT.withName("maxBindGroups"),
+            wgpu_h.C_INT.withName("maxBindGroupsPlusVertexBuffers"),
+            wgpu_h.C_INT.withName("maxBindingsPerBindGroup"),
+            wgpu_h.C_INT.withName("maxDynamicUniformBuffersPerPipelineLayout"),
+            wgpu_h.C_INT.withName("maxDynamicStorageBuffersPerPipelineLayout"),
+            wgpu_h.C_INT.withName("maxSampledTexturesPerShaderStage"),
+            wgpu_h.C_INT.withName("maxSamplersPerShaderStage"),
+            wgpu_h.C_INT.withName("maxStorageBuffersPerShaderStage"),
+            wgpu_h.C_INT.withName("maxStorageTexturesPerShaderStage"),
+            wgpu_h.C_INT.withName("maxUniformBuffersPerShaderStage"),
+            wgpu_h.C_LONG_LONG.withName("maxUniformBufferBindingSize"),
+            wgpu_h.C_LONG_LONG.withName("maxStorageBufferBindingSize"),
+            wgpu_h.C_INT.withName("minUniformBufferOffsetAlignment"),
+            wgpu_h.C_INT.withName("minStorageBufferOffsetAlignment"),
+            wgpu_h.C_INT.withName("maxVertexBuffers"),
+            MemoryLayout.paddingLayout(4),
+            wgpu_h.C_LONG_LONG.withName("maxBufferSize"),
+            wgpu_h.C_INT.withName("maxVertexAttributes"),
+            wgpu_h.C_INT.withName("maxVertexBufferArrayStride"),
+            wgpu_h.C_INT.withName("maxInterStageShaderComponents"),
+            wgpu_h.C_INT.withName("maxInterStageShaderVariables"),
+            wgpu_h.C_INT.withName("maxColorAttachments"),
+            wgpu_h.C_INT.withName("maxColorAttachmentBytesPerSample"),
+            wgpu_h.C_INT.withName("maxComputeWorkgroupStorageSize"),
+            wgpu_h.C_INT.withName("maxComputeInvocationsPerWorkgroup"),
+            wgpu_h.C_INT.withName("maxComputeWorkgroupSizeX"),
+            wgpu_h.C_INT.withName("maxComputeWorkgroupSizeY"),
+            wgpu_h.C_INT.withName("maxComputeWorkgroupSizeZ"),
+            wgpu_h.C_INT.withName("maxComputeWorkgroupsPerDimension")
     ).withName("WGPULimits");
 
     /**
@@ -96,13 +96,13 @@ public class WGPULimits {
         return $LAYOUT;
     }
 
-    private static final OfInt maxTextureDimension1D$LAYOUT = (OfInt)$LAYOUT.select(groupElement("maxTextureDimension1D"));
+    private static final OfInt maxTextureDimension1D$LAYOUT = (OfInt) $LAYOUT.select(groupElement("maxTextureDimension1D"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxTextureDimension1D
-     * }
+     *}
      */
     public static final OfInt maxTextureDimension1D$layout() {
         return maxTextureDimension1D$LAYOUT;
@@ -112,9 +112,9 @@ public class WGPULimits {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxTextureDimension1D
-     * }
+     *}
      */
     public static final long maxTextureDimension1D$offset() {
         return maxTextureDimension1D$OFFSET;
@@ -122,9 +122,9 @@ public class WGPULimits {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxTextureDimension1D
-     * }
+     *}
      */
     public static int maxTextureDimension1D(MemorySegment struct) {
         return struct.get(maxTextureDimension1D$LAYOUT, maxTextureDimension1D$OFFSET);
@@ -132,21 +132,21 @@ public class WGPULimits {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxTextureDimension1D
-     * }
+     *}
      */
     public static void maxTextureDimension1D(MemorySegment struct, int fieldValue) {
         struct.set(maxTextureDimension1D$LAYOUT, maxTextureDimension1D$OFFSET, fieldValue);
     }
 
-    private static final OfInt maxTextureDimension2D$LAYOUT = (OfInt)$LAYOUT.select(groupElement("maxTextureDimension2D"));
+    private static final OfInt maxTextureDimension2D$LAYOUT = (OfInt) $LAYOUT.select(groupElement("maxTextureDimension2D"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxTextureDimension2D
-     * }
+     *}
      */
     public static final OfInt maxTextureDimension2D$layout() {
         return maxTextureDimension2D$LAYOUT;
@@ -156,9 +156,9 @@ public class WGPULimits {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxTextureDimension2D
-     * }
+     *}
      */
     public static final long maxTextureDimension2D$offset() {
         return maxTextureDimension2D$OFFSET;
@@ -166,9 +166,9 @@ public class WGPULimits {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxTextureDimension2D
-     * }
+     *}
      */
     public static int maxTextureDimension2D(MemorySegment struct) {
         return struct.get(maxTextureDimension2D$LAYOUT, maxTextureDimension2D$OFFSET);
@@ -176,21 +176,21 @@ public class WGPULimits {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxTextureDimension2D
-     * }
+     *}
      */
     public static void maxTextureDimension2D(MemorySegment struct, int fieldValue) {
         struct.set(maxTextureDimension2D$LAYOUT, maxTextureDimension2D$OFFSET, fieldValue);
     }
 
-    private static final OfInt maxTextureDimension3D$LAYOUT = (OfInt)$LAYOUT.select(groupElement("maxTextureDimension3D"));
+    private static final OfInt maxTextureDimension3D$LAYOUT = (OfInt) $LAYOUT.select(groupElement("maxTextureDimension3D"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxTextureDimension3D
-     * }
+     *}
      */
     public static final OfInt maxTextureDimension3D$layout() {
         return maxTextureDimension3D$LAYOUT;
@@ -200,9 +200,9 @@ public class WGPULimits {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxTextureDimension3D
-     * }
+     *}
      */
     public static final long maxTextureDimension3D$offset() {
         return maxTextureDimension3D$OFFSET;
@@ -210,9 +210,9 @@ public class WGPULimits {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxTextureDimension3D
-     * }
+     *}
      */
     public static int maxTextureDimension3D(MemorySegment struct) {
         return struct.get(maxTextureDimension3D$LAYOUT, maxTextureDimension3D$OFFSET);
@@ -220,21 +220,21 @@ public class WGPULimits {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxTextureDimension3D
-     * }
+     *}
      */
     public static void maxTextureDimension3D(MemorySegment struct, int fieldValue) {
         struct.set(maxTextureDimension3D$LAYOUT, maxTextureDimension3D$OFFSET, fieldValue);
     }
 
-    private static final OfInt maxTextureArrayLayers$LAYOUT = (OfInt)$LAYOUT.select(groupElement("maxTextureArrayLayers"));
+    private static final OfInt maxTextureArrayLayers$LAYOUT = (OfInt) $LAYOUT.select(groupElement("maxTextureArrayLayers"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxTextureArrayLayers
-     * }
+     *}
      */
     public static final OfInt maxTextureArrayLayers$layout() {
         return maxTextureArrayLayers$LAYOUT;
@@ -244,9 +244,9 @@ public class WGPULimits {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxTextureArrayLayers
-     * }
+     *}
      */
     public static final long maxTextureArrayLayers$offset() {
         return maxTextureArrayLayers$OFFSET;
@@ -254,9 +254,9 @@ public class WGPULimits {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxTextureArrayLayers
-     * }
+     *}
      */
     public static int maxTextureArrayLayers(MemorySegment struct) {
         return struct.get(maxTextureArrayLayers$LAYOUT, maxTextureArrayLayers$OFFSET);
@@ -264,21 +264,21 @@ public class WGPULimits {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxTextureArrayLayers
-     * }
+     *}
      */
     public static void maxTextureArrayLayers(MemorySegment struct, int fieldValue) {
         struct.set(maxTextureArrayLayers$LAYOUT, maxTextureArrayLayers$OFFSET, fieldValue);
     }
 
-    private static final OfInt maxBindGroups$LAYOUT = (OfInt)$LAYOUT.select(groupElement("maxBindGroups"));
+    private static final OfInt maxBindGroups$LAYOUT = (OfInt) $LAYOUT.select(groupElement("maxBindGroups"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxBindGroups
-     * }
+     *}
      */
     public static final OfInt maxBindGroups$layout() {
         return maxBindGroups$LAYOUT;
@@ -288,9 +288,9 @@ public class WGPULimits {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxBindGroups
-     * }
+     *}
      */
     public static final long maxBindGroups$offset() {
         return maxBindGroups$OFFSET;
@@ -298,9 +298,9 @@ public class WGPULimits {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxBindGroups
-     * }
+     *}
      */
     public static int maxBindGroups(MemorySegment struct) {
         return struct.get(maxBindGroups$LAYOUT, maxBindGroups$OFFSET);
@@ -308,21 +308,21 @@ public class WGPULimits {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxBindGroups
-     * }
+     *}
      */
     public static void maxBindGroups(MemorySegment struct, int fieldValue) {
         struct.set(maxBindGroups$LAYOUT, maxBindGroups$OFFSET, fieldValue);
     }
 
-    private static final OfInt maxBindGroupsPlusVertexBuffers$LAYOUT = (OfInt)$LAYOUT.select(groupElement("maxBindGroupsPlusVertexBuffers"));
+    private static final OfInt maxBindGroupsPlusVertexBuffers$LAYOUT = (OfInt) $LAYOUT.select(groupElement("maxBindGroupsPlusVertexBuffers"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxBindGroupsPlusVertexBuffers
-     * }
+     *}
      */
     public static final OfInt maxBindGroupsPlusVertexBuffers$layout() {
         return maxBindGroupsPlusVertexBuffers$LAYOUT;
@@ -332,9 +332,9 @@ public class WGPULimits {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxBindGroupsPlusVertexBuffers
-     * }
+     *}
      */
     public static final long maxBindGroupsPlusVertexBuffers$offset() {
         return maxBindGroupsPlusVertexBuffers$OFFSET;
@@ -342,9 +342,9 @@ public class WGPULimits {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxBindGroupsPlusVertexBuffers
-     * }
+     *}
      */
     public static int maxBindGroupsPlusVertexBuffers(MemorySegment struct) {
         return struct.get(maxBindGroupsPlusVertexBuffers$LAYOUT, maxBindGroupsPlusVertexBuffers$OFFSET);
@@ -352,21 +352,21 @@ public class WGPULimits {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxBindGroupsPlusVertexBuffers
-     * }
+     *}
      */
     public static void maxBindGroupsPlusVertexBuffers(MemorySegment struct, int fieldValue) {
         struct.set(maxBindGroupsPlusVertexBuffers$LAYOUT, maxBindGroupsPlusVertexBuffers$OFFSET, fieldValue);
     }
 
-    private static final OfInt maxBindingsPerBindGroup$LAYOUT = (OfInt)$LAYOUT.select(groupElement("maxBindingsPerBindGroup"));
+    private static final OfInt maxBindingsPerBindGroup$LAYOUT = (OfInt) $LAYOUT.select(groupElement("maxBindingsPerBindGroup"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxBindingsPerBindGroup
-     * }
+     *}
      */
     public static final OfInt maxBindingsPerBindGroup$layout() {
         return maxBindingsPerBindGroup$LAYOUT;
@@ -376,9 +376,9 @@ public class WGPULimits {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxBindingsPerBindGroup
-     * }
+     *}
      */
     public static final long maxBindingsPerBindGroup$offset() {
         return maxBindingsPerBindGroup$OFFSET;
@@ -386,9 +386,9 @@ public class WGPULimits {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxBindingsPerBindGroup
-     * }
+     *}
      */
     public static int maxBindingsPerBindGroup(MemorySegment struct) {
         return struct.get(maxBindingsPerBindGroup$LAYOUT, maxBindingsPerBindGroup$OFFSET);
@@ -396,21 +396,21 @@ public class WGPULimits {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxBindingsPerBindGroup
-     * }
+     *}
      */
     public static void maxBindingsPerBindGroup(MemorySegment struct, int fieldValue) {
         struct.set(maxBindingsPerBindGroup$LAYOUT, maxBindingsPerBindGroup$OFFSET, fieldValue);
     }
 
-    private static final OfInt maxDynamicUniformBuffersPerPipelineLayout$LAYOUT = (OfInt)$LAYOUT.select(groupElement("maxDynamicUniformBuffersPerPipelineLayout"));
+    private static final OfInt maxDynamicUniformBuffersPerPipelineLayout$LAYOUT = (OfInt) $LAYOUT.select(groupElement("maxDynamicUniformBuffersPerPipelineLayout"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxDynamicUniformBuffersPerPipelineLayout
-     * }
+     *}
      */
     public static final OfInt maxDynamicUniformBuffersPerPipelineLayout$layout() {
         return maxDynamicUniformBuffersPerPipelineLayout$LAYOUT;
@@ -420,9 +420,9 @@ public class WGPULimits {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxDynamicUniformBuffersPerPipelineLayout
-     * }
+     *}
      */
     public static final long maxDynamicUniformBuffersPerPipelineLayout$offset() {
         return maxDynamicUniformBuffersPerPipelineLayout$OFFSET;
@@ -430,9 +430,9 @@ public class WGPULimits {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxDynamicUniformBuffersPerPipelineLayout
-     * }
+     *}
      */
     public static int maxDynamicUniformBuffersPerPipelineLayout(MemorySegment struct) {
         return struct.get(maxDynamicUniformBuffersPerPipelineLayout$LAYOUT, maxDynamicUniformBuffersPerPipelineLayout$OFFSET);
@@ -440,21 +440,21 @@ public class WGPULimits {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxDynamicUniformBuffersPerPipelineLayout
-     * }
+     *}
      */
     public static void maxDynamicUniformBuffersPerPipelineLayout(MemorySegment struct, int fieldValue) {
         struct.set(maxDynamicUniformBuffersPerPipelineLayout$LAYOUT, maxDynamicUniformBuffersPerPipelineLayout$OFFSET, fieldValue);
     }
 
-    private static final OfInt maxDynamicStorageBuffersPerPipelineLayout$LAYOUT = (OfInt)$LAYOUT.select(groupElement("maxDynamicStorageBuffersPerPipelineLayout"));
+    private static final OfInt maxDynamicStorageBuffersPerPipelineLayout$LAYOUT = (OfInt) $LAYOUT.select(groupElement("maxDynamicStorageBuffersPerPipelineLayout"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxDynamicStorageBuffersPerPipelineLayout
-     * }
+     *}
      */
     public static final OfInt maxDynamicStorageBuffersPerPipelineLayout$layout() {
         return maxDynamicStorageBuffersPerPipelineLayout$LAYOUT;
@@ -464,9 +464,9 @@ public class WGPULimits {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxDynamicStorageBuffersPerPipelineLayout
-     * }
+     *}
      */
     public static final long maxDynamicStorageBuffersPerPipelineLayout$offset() {
         return maxDynamicStorageBuffersPerPipelineLayout$OFFSET;
@@ -474,9 +474,9 @@ public class WGPULimits {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxDynamicStorageBuffersPerPipelineLayout
-     * }
+     *}
      */
     public static int maxDynamicStorageBuffersPerPipelineLayout(MemorySegment struct) {
         return struct.get(maxDynamicStorageBuffersPerPipelineLayout$LAYOUT, maxDynamicStorageBuffersPerPipelineLayout$OFFSET);
@@ -484,21 +484,21 @@ public class WGPULimits {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxDynamicStorageBuffersPerPipelineLayout
-     * }
+     *}
      */
     public static void maxDynamicStorageBuffersPerPipelineLayout(MemorySegment struct, int fieldValue) {
         struct.set(maxDynamicStorageBuffersPerPipelineLayout$LAYOUT, maxDynamicStorageBuffersPerPipelineLayout$OFFSET, fieldValue);
     }
 
-    private static final OfInt maxSampledTexturesPerShaderStage$LAYOUT = (OfInt)$LAYOUT.select(groupElement("maxSampledTexturesPerShaderStage"));
+    private static final OfInt maxSampledTexturesPerShaderStage$LAYOUT = (OfInt) $LAYOUT.select(groupElement("maxSampledTexturesPerShaderStage"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxSampledTexturesPerShaderStage
-     * }
+     *}
      */
     public static final OfInt maxSampledTexturesPerShaderStage$layout() {
         return maxSampledTexturesPerShaderStage$LAYOUT;
@@ -508,9 +508,9 @@ public class WGPULimits {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxSampledTexturesPerShaderStage
-     * }
+     *}
      */
     public static final long maxSampledTexturesPerShaderStage$offset() {
         return maxSampledTexturesPerShaderStage$OFFSET;
@@ -518,9 +518,9 @@ public class WGPULimits {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxSampledTexturesPerShaderStage
-     * }
+     *}
      */
     public static int maxSampledTexturesPerShaderStage(MemorySegment struct) {
         return struct.get(maxSampledTexturesPerShaderStage$LAYOUT, maxSampledTexturesPerShaderStage$OFFSET);
@@ -528,21 +528,21 @@ public class WGPULimits {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxSampledTexturesPerShaderStage
-     * }
+     *}
      */
     public static void maxSampledTexturesPerShaderStage(MemorySegment struct, int fieldValue) {
         struct.set(maxSampledTexturesPerShaderStage$LAYOUT, maxSampledTexturesPerShaderStage$OFFSET, fieldValue);
     }
 
-    private static final OfInt maxSamplersPerShaderStage$LAYOUT = (OfInt)$LAYOUT.select(groupElement("maxSamplersPerShaderStage"));
+    private static final OfInt maxSamplersPerShaderStage$LAYOUT = (OfInt) $LAYOUT.select(groupElement("maxSamplersPerShaderStage"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxSamplersPerShaderStage
-     * }
+     *}
      */
     public static final OfInt maxSamplersPerShaderStage$layout() {
         return maxSamplersPerShaderStage$LAYOUT;
@@ -552,9 +552,9 @@ public class WGPULimits {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxSamplersPerShaderStage
-     * }
+     *}
      */
     public static final long maxSamplersPerShaderStage$offset() {
         return maxSamplersPerShaderStage$OFFSET;
@@ -562,9 +562,9 @@ public class WGPULimits {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxSamplersPerShaderStage
-     * }
+     *}
      */
     public static int maxSamplersPerShaderStage(MemorySegment struct) {
         return struct.get(maxSamplersPerShaderStage$LAYOUT, maxSamplersPerShaderStage$OFFSET);
@@ -572,21 +572,21 @@ public class WGPULimits {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxSamplersPerShaderStage
-     * }
+     *}
      */
     public static void maxSamplersPerShaderStage(MemorySegment struct, int fieldValue) {
         struct.set(maxSamplersPerShaderStage$LAYOUT, maxSamplersPerShaderStage$OFFSET, fieldValue);
     }
 
-    private static final OfInt maxStorageBuffersPerShaderStage$LAYOUT = (OfInt)$LAYOUT.select(groupElement("maxStorageBuffersPerShaderStage"));
+    private static final OfInt maxStorageBuffersPerShaderStage$LAYOUT = (OfInt) $LAYOUT.select(groupElement("maxStorageBuffersPerShaderStage"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxStorageBuffersPerShaderStage
-     * }
+     *}
      */
     public static final OfInt maxStorageBuffersPerShaderStage$layout() {
         return maxStorageBuffersPerShaderStage$LAYOUT;
@@ -596,9 +596,9 @@ public class WGPULimits {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxStorageBuffersPerShaderStage
-     * }
+     *}
      */
     public static final long maxStorageBuffersPerShaderStage$offset() {
         return maxStorageBuffersPerShaderStage$OFFSET;
@@ -606,9 +606,9 @@ public class WGPULimits {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxStorageBuffersPerShaderStage
-     * }
+     *}
      */
     public static int maxStorageBuffersPerShaderStage(MemorySegment struct) {
         return struct.get(maxStorageBuffersPerShaderStage$LAYOUT, maxStorageBuffersPerShaderStage$OFFSET);
@@ -616,21 +616,21 @@ public class WGPULimits {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxStorageBuffersPerShaderStage
-     * }
+     *}
      */
     public static void maxStorageBuffersPerShaderStage(MemorySegment struct, int fieldValue) {
         struct.set(maxStorageBuffersPerShaderStage$LAYOUT, maxStorageBuffersPerShaderStage$OFFSET, fieldValue);
     }
 
-    private static final OfInt maxStorageTexturesPerShaderStage$LAYOUT = (OfInt)$LAYOUT.select(groupElement("maxStorageTexturesPerShaderStage"));
+    private static final OfInt maxStorageTexturesPerShaderStage$LAYOUT = (OfInt) $LAYOUT.select(groupElement("maxStorageTexturesPerShaderStage"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxStorageTexturesPerShaderStage
-     * }
+     *}
      */
     public static final OfInt maxStorageTexturesPerShaderStage$layout() {
         return maxStorageTexturesPerShaderStage$LAYOUT;
@@ -640,9 +640,9 @@ public class WGPULimits {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxStorageTexturesPerShaderStage
-     * }
+     *}
      */
     public static final long maxStorageTexturesPerShaderStage$offset() {
         return maxStorageTexturesPerShaderStage$OFFSET;
@@ -650,9 +650,9 @@ public class WGPULimits {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxStorageTexturesPerShaderStage
-     * }
+     *}
      */
     public static int maxStorageTexturesPerShaderStage(MemorySegment struct) {
         return struct.get(maxStorageTexturesPerShaderStage$LAYOUT, maxStorageTexturesPerShaderStage$OFFSET);
@@ -660,21 +660,21 @@ public class WGPULimits {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxStorageTexturesPerShaderStage
-     * }
+     *}
      */
     public static void maxStorageTexturesPerShaderStage(MemorySegment struct, int fieldValue) {
         struct.set(maxStorageTexturesPerShaderStage$LAYOUT, maxStorageTexturesPerShaderStage$OFFSET, fieldValue);
     }
 
-    private static final OfInt maxUniformBuffersPerShaderStage$LAYOUT = (OfInt)$LAYOUT.select(groupElement("maxUniformBuffersPerShaderStage"));
+    private static final OfInt maxUniformBuffersPerShaderStage$LAYOUT = (OfInt) $LAYOUT.select(groupElement("maxUniformBuffersPerShaderStage"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxUniformBuffersPerShaderStage
-     * }
+     *}
      */
     public static final OfInt maxUniformBuffersPerShaderStage$layout() {
         return maxUniformBuffersPerShaderStage$LAYOUT;
@@ -684,9 +684,9 @@ public class WGPULimits {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxUniformBuffersPerShaderStage
-     * }
+     *}
      */
     public static final long maxUniformBuffersPerShaderStage$offset() {
         return maxUniformBuffersPerShaderStage$OFFSET;
@@ -694,9 +694,9 @@ public class WGPULimits {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxUniformBuffersPerShaderStage
-     * }
+     *}
      */
     public static int maxUniformBuffersPerShaderStage(MemorySegment struct) {
         return struct.get(maxUniformBuffersPerShaderStage$LAYOUT, maxUniformBuffersPerShaderStage$OFFSET);
@@ -704,21 +704,21 @@ public class WGPULimits {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxUniformBuffersPerShaderStage
-     * }
+     *}
      */
     public static void maxUniformBuffersPerShaderStage(MemorySegment struct, int fieldValue) {
         struct.set(maxUniformBuffersPerShaderStage$LAYOUT, maxUniformBuffersPerShaderStage$OFFSET, fieldValue);
     }
 
-    private static final OfLong maxUniformBufferBindingSize$LAYOUT = (OfLong)$LAYOUT.select(groupElement("maxUniformBufferBindingSize"));
+    private static final OfLong maxUniformBufferBindingSize$LAYOUT = (OfLong) $LAYOUT.select(groupElement("maxUniformBufferBindingSize"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint64_t maxUniformBufferBindingSize
-     * }
+     *}
      */
     public static final OfLong maxUniformBufferBindingSize$layout() {
         return maxUniformBufferBindingSize$LAYOUT;
@@ -728,9 +728,9 @@ public class WGPULimits {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint64_t maxUniformBufferBindingSize
-     * }
+     *}
      */
     public static final long maxUniformBufferBindingSize$offset() {
         return maxUniformBufferBindingSize$OFFSET;
@@ -738,9 +738,9 @@ public class WGPULimits {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint64_t maxUniformBufferBindingSize
-     * }
+     *}
      */
     public static long maxUniformBufferBindingSize(MemorySegment struct) {
         return struct.get(maxUniformBufferBindingSize$LAYOUT, maxUniformBufferBindingSize$OFFSET);
@@ -748,21 +748,21 @@ public class WGPULimits {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint64_t maxUniformBufferBindingSize
-     * }
+     *}
      */
     public static void maxUniformBufferBindingSize(MemorySegment struct, long fieldValue) {
         struct.set(maxUniformBufferBindingSize$LAYOUT, maxUniformBufferBindingSize$OFFSET, fieldValue);
     }
 
-    private static final OfLong maxStorageBufferBindingSize$LAYOUT = (OfLong)$LAYOUT.select(groupElement("maxStorageBufferBindingSize"));
+    private static final OfLong maxStorageBufferBindingSize$LAYOUT = (OfLong) $LAYOUT.select(groupElement("maxStorageBufferBindingSize"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint64_t maxStorageBufferBindingSize
-     * }
+     *}
      */
     public static final OfLong maxStorageBufferBindingSize$layout() {
         return maxStorageBufferBindingSize$LAYOUT;
@@ -772,9 +772,9 @@ public class WGPULimits {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint64_t maxStorageBufferBindingSize
-     * }
+     *}
      */
     public static final long maxStorageBufferBindingSize$offset() {
         return maxStorageBufferBindingSize$OFFSET;
@@ -782,9 +782,9 @@ public class WGPULimits {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint64_t maxStorageBufferBindingSize
-     * }
+     *}
      */
     public static long maxStorageBufferBindingSize(MemorySegment struct) {
         return struct.get(maxStorageBufferBindingSize$LAYOUT, maxStorageBufferBindingSize$OFFSET);
@@ -792,21 +792,21 @@ public class WGPULimits {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint64_t maxStorageBufferBindingSize
-     * }
+     *}
      */
     public static void maxStorageBufferBindingSize(MemorySegment struct, long fieldValue) {
         struct.set(maxStorageBufferBindingSize$LAYOUT, maxStorageBufferBindingSize$OFFSET, fieldValue);
     }
 
-    private static final OfInt minUniformBufferOffsetAlignment$LAYOUT = (OfInt)$LAYOUT.select(groupElement("minUniformBufferOffsetAlignment"));
+    private static final OfInt minUniformBufferOffsetAlignment$LAYOUT = (OfInt) $LAYOUT.select(groupElement("minUniformBufferOffsetAlignment"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t minUniformBufferOffsetAlignment
-     * }
+     *}
      */
     public static final OfInt minUniformBufferOffsetAlignment$layout() {
         return minUniformBufferOffsetAlignment$LAYOUT;
@@ -816,9 +816,9 @@ public class WGPULimits {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t minUniformBufferOffsetAlignment
-     * }
+     *}
      */
     public static final long minUniformBufferOffsetAlignment$offset() {
         return minUniformBufferOffsetAlignment$OFFSET;
@@ -826,9 +826,9 @@ public class WGPULimits {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t minUniformBufferOffsetAlignment
-     * }
+     *}
      */
     public static int minUniformBufferOffsetAlignment(MemorySegment struct) {
         return struct.get(minUniformBufferOffsetAlignment$LAYOUT, minUniformBufferOffsetAlignment$OFFSET);
@@ -836,21 +836,21 @@ public class WGPULimits {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t minUniformBufferOffsetAlignment
-     * }
+     *}
      */
     public static void minUniformBufferOffsetAlignment(MemorySegment struct, int fieldValue) {
         struct.set(minUniformBufferOffsetAlignment$LAYOUT, minUniformBufferOffsetAlignment$OFFSET, fieldValue);
     }
 
-    private static final OfInt minStorageBufferOffsetAlignment$LAYOUT = (OfInt)$LAYOUT.select(groupElement("minStorageBufferOffsetAlignment"));
+    private static final OfInt minStorageBufferOffsetAlignment$LAYOUT = (OfInt) $LAYOUT.select(groupElement("minStorageBufferOffsetAlignment"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t minStorageBufferOffsetAlignment
-     * }
+     *}
      */
     public static final OfInt minStorageBufferOffsetAlignment$layout() {
         return minStorageBufferOffsetAlignment$LAYOUT;
@@ -860,9 +860,9 @@ public class WGPULimits {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t minStorageBufferOffsetAlignment
-     * }
+     *}
      */
     public static final long minStorageBufferOffsetAlignment$offset() {
         return minStorageBufferOffsetAlignment$OFFSET;
@@ -870,9 +870,9 @@ public class WGPULimits {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t minStorageBufferOffsetAlignment
-     * }
+     *}
      */
     public static int minStorageBufferOffsetAlignment(MemorySegment struct) {
         return struct.get(minStorageBufferOffsetAlignment$LAYOUT, minStorageBufferOffsetAlignment$OFFSET);
@@ -880,21 +880,21 @@ public class WGPULimits {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t minStorageBufferOffsetAlignment
-     * }
+     *}
      */
     public static void minStorageBufferOffsetAlignment(MemorySegment struct, int fieldValue) {
         struct.set(minStorageBufferOffsetAlignment$LAYOUT, minStorageBufferOffsetAlignment$OFFSET, fieldValue);
     }
 
-    private static final OfInt maxVertexBuffers$LAYOUT = (OfInt)$LAYOUT.select(groupElement("maxVertexBuffers"));
+    private static final OfInt maxVertexBuffers$LAYOUT = (OfInt) $LAYOUT.select(groupElement("maxVertexBuffers"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxVertexBuffers
-     * }
+     *}
      */
     public static final OfInt maxVertexBuffers$layout() {
         return maxVertexBuffers$LAYOUT;
@@ -904,9 +904,9 @@ public class WGPULimits {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxVertexBuffers
-     * }
+     *}
      */
     public static final long maxVertexBuffers$offset() {
         return maxVertexBuffers$OFFSET;
@@ -914,9 +914,9 @@ public class WGPULimits {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxVertexBuffers
-     * }
+     *}
      */
     public static int maxVertexBuffers(MemorySegment struct) {
         return struct.get(maxVertexBuffers$LAYOUT, maxVertexBuffers$OFFSET);
@@ -924,21 +924,21 @@ public class WGPULimits {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxVertexBuffers
-     * }
+     *}
      */
     public static void maxVertexBuffers(MemorySegment struct, int fieldValue) {
         struct.set(maxVertexBuffers$LAYOUT, maxVertexBuffers$OFFSET, fieldValue);
     }
 
-    private static final OfLong maxBufferSize$LAYOUT = (OfLong)$LAYOUT.select(groupElement("maxBufferSize"));
+    private static final OfLong maxBufferSize$LAYOUT = (OfLong) $LAYOUT.select(groupElement("maxBufferSize"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint64_t maxBufferSize
-     * }
+     *}
      */
     public static final OfLong maxBufferSize$layout() {
         return maxBufferSize$LAYOUT;
@@ -948,9 +948,9 @@ public class WGPULimits {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint64_t maxBufferSize
-     * }
+     *}
      */
     public static final long maxBufferSize$offset() {
         return maxBufferSize$OFFSET;
@@ -958,9 +958,9 @@ public class WGPULimits {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint64_t maxBufferSize
-     * }
+     *}
      */
     public static long maxBufferSize(MemorySegment struct) {
         return struct.get(maxBufferSize$LAYOUT, maxBufferSize$OFFSET);
@@ -968,21 +968,21 @@ public class WGPULimits {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint64_t maxBufferSize
-     * }
+     *}
      */
     public static void maxBufferSize(MemorySegment struct, long fieldValue) {
         struct.set(maxBufferSize$LAYOUT, maxBufferSize$OFFSET, fieldValue);
     }
 
-    private static final OfInt maxVertexAttributes$LAYOUT = (OfInt)$LAYOUT.select(groupElement("maxVertexAttributes"));
+    private static final OfInt maxVertexAttributes$LAYOUT = (OfInt) $LAYOUT.select(groupElement("maxVertexAttributes"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxVertexAttributes
-     * }
+     *}
      */
     public static final OfInt maxVertexAttributes$layout() {
         return maxVertexAttributes$LAYOUT;
@@ -992,9 +992,9 @@ public class WGPULimits {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxVertexAttributes
-     * }
+     *}
      */
     public static final long maxVertexAttributes$offset() {
         return maxVertexAttributes$OFFSET;
@@ -1002,9 +1002,9 @@ public class WGPULimits {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxVertexAttributes
-     * }
+     *}
      */
     public static int maxVertexAttributes(MemorySegment struct) {
         return struct.get(maxVertexAttributes$LAYOUT, maxVertexAttributes$OFFSET);
@@ -1012,21 +1012,21 @@ public class WGPULimits {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxVertexAttributes
-     * }
+     *}
      */
     public static void maxVertexAttributes(MemorySegment struct, int fieldValue) {
         struct.set(maxVertexAttributes$LAYOUT, maxVertexAttributes$OFFSET, fieldValue);
     }
 
-    private static final OfInt maxVertexBufferArrayStride$LAYOUT = (OfInt)$LAYOUT.select(groupElement("maxVertexBufferArrayStride"));
+    private static final OfInt maxVertexBufferArrayStride$LAYOUT = (OfInt) $LAYOUT.select(groupElement("maxVertexBufferArrayStride"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxVertexBufferArrayStride
-     * }
+     *}
      */
     public static final OfInt maxVertexBufferArrayStride$layout() {
         return maxVertexBufferArrayStride$LAYOUT;
@@ -1036,9 +1036,9 @@ public class WGPULimits {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxVertexBufferArrayStride
-     * }
+     *}
      */
     public static final long maxVertexBufferArrayStride$offset() {
         return maxVertexBufferArrayStride$OFFSET;
@@ -1046,9 +1046,9 @@ public class WGPULimits {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxVertexBufferArrayStride
-     * }
+     *}
      */
     public static int maxVertexBufferArrayStride(MemorySegment struct) {
         return struct.get(maxVertexBufferArrayStride$LAYOUT, maxVertexBufferArrayStride$OFFSET);
@@ -1056,21 +1056,21 @@ public class WGPULimits {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxVertexBufferArrayStride
-     * }
+     *}
      */
     public static void maxVertexBufferArrayStride(MemorySegment struct, int fieldValue) {
         struct.set(maxVertexBufferArrayStride$LAYOUT, maxVertexBufferArrayStride$OFFSET, fieldValue);
     }
 
-    private static final OfInt maxInterStageShaderComponents$LAYOUT = (OfInt)$LAYOUT.select(groupElement("maxInterStageShaderComponents"));
+    private static final OfInt maxInterStageShaderComponents$LAYOUT = (OfInt) $LAYOUT.select(groupElement("maxInterStageShaderComponents"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxInterStageShaderComponents
-     * }
+     *}
      */
     public static final OfInt maxInterStageShaderComponents$layout() {
         return maxInterStageShaderComponents$LAYOUT;
@@ -1080,9 +1080,9 @@ public class WGPULimits {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxInterStageShaderComponents
-     * }
+     *}
      */
     public static final long maxInterStageShaderComponents$offset() {
         return maxInterStageShaderComponents$OFFSET;
@@ -1090,9 +1090,9 @@ public class WGPULimits {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxInterStageShaderComponents
-     * }
+     *}
      */
     public static int maxInterStageShaderComponents(MemorySegment struct) {
         return struct.get(maxInterStageShaderComponents$LAYOUT, maxInterStageShaderComponents$OFFSET);
@@ -1100,21 +1100,21 @@ public class WGPULimits {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxInterStageShaderComponents
-     * }
+     *}
      */
     public static void maxInterStageShaderComponents(MemorySegment struct, int fieldValue) {
         struct.set(maxInterStageShaderComponents$LAYOUT, maxInterStageShaderComponents$OFFSET, fieldValue);
     }
 
-    private static final OfInt maxInterStageShaderVariables$LAYOUT = (OfInt)$LAYOUT.select(groupElement("maxInterStageShaderVariables"));
+    private static final OfInt maxInterStageShaderVariables$LAYOUT = (OfInt) $LAYOUT.select(groupElement("maxInterStageShaderVariables"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxInterStageShaderVariables
-     * }
+     *}
      */
     public static final OfInt maxInterStageShaderVariables$layout() {
         return maxInterStageShaderVariables$LAYOUT;
@@ -1124,9 +1124,9 @@ public class WGPULimits {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxInterStageShaderVariables
-     * }
+     *}
      */
     public static final long maxInterStageShaderVariables$offset() {
         return maxInterStageShaderVariables$OFFSET;
@@ -1134,9 +1134,9 @@ public class WGPULimits {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxInterStageShaderVariables
-     * }
+     *}
      */
     public static int maxInterStageShaderVariables(MemorySegment struct) {
         return struct.get(maxInterStageShaderVariables$LAYOUT, maxInterStageShaderVariables$OFFSET);
@@ -1144,21 +1144,21 @@ public class WGPULimits {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxInterStageShaderVariables
-     * }
+     *}
      */
     public static void maxInterStageShaderVariables(MemorySegment struct, int fieldValue) {
         struct.set(maxInterStageShaderVariables$LAYOUT, maxInterStageShaderVariables$OFFSET, fieldValue);
     }
 
-    private static final OfInt maxColorAttachments$LAYOUT = (OfInt)$LAYOUT.select(groupElement("maxColorAttachments"));
+    private static final OfInt maxColorAttachments$LAYOUT = (OfInt) $LAYOUT.select(groupElement("maxColorAttachments"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxColorAttachments
-     * }
+     *}
      */
     public static final OfInt maxColorAttachments$layout() {
         return maxColorAttachments$LAYOUT;
@@ -1168,9 +1168,9 @@ public class WGPULimits {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxColorAttachments
-     * }
+     *}
      */
     public static final long maxColorAttachments$offset() {
         return maxColorAttachments$OFFSET;
@@ -1178,9 +1178,9 @@ public class WGPULimits {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxColorAttachments
-     * }
+     *}
      */
     public static int maxColorAttachments(MemorySegment struct) {
         return struct.get(maxColorAttachments$LAYOUT, maxColorAttachments$OFFSET);
@@ -1188,21 +1188,21 @@ public class WGPULimits {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxColorAttachments
-     * }
+     *}
      */
     public static void maxColorAttachments(MemorySegment struct, int fieldValue) {
         struct.set(maxColorAttachments$LAYOUT, maxColorAttachments$OFFSET, fieldValue);
     }
 
-    private static final OfInt maxColorAttachmentBytesPerSample$LAYOUT = (OfInt)$LAYOUT.select(groupElement("maxColorAttachmentBytesPerSample"));
+    private static final OfInt maxColorAttachmentBytesPerSample$LAYOUT = (OfInt) $LAYOUT.select(groupElement("maxColorAttachmentBytesPerSample"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxColorAttachmentBytesPerSample
-     * }
+     *}
      */
     public static final OfInt maxColorAttachmentBytesPerSample$layout() {
         return maxColorAttachmentBytesPerSample$LAYOUT;
@@ -1212,9 +1212,9 @@ public class WGPULimits {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxColorAttachmentBytesPerSample
-     * }
+     *}
      */
     public static final long maxColorAttachmentBytesPerSample$offset() {
         return maxColorAttachmentBytesPerSample$OFFSET;
@@ -1222,9 +1222,9 @@ public class WGPULimits {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxColorAttachmentBytesPerSample
-     * }
+     *}
      */
     public static int maxColorAttachmentBytesPerSample(MemorySegment struct) {
         return struct.get(maxColorAttachmentBytesPerSample$LAYOUT, maxColorAttachmentBytesPerSample$OFFSET);
@@ -1232,21 +1232,21 @@ public class WGPULimits {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxColorAttachmentBytesPerSample
-     * }
+     *}
      */
     public static void maxColorAttachmentBytesPerSample(MemorySegment struct, int fieldValue) {
         struct.set(maxColorAttachmentBytesPerSample$LAYOUT, maxColorAttachmentBytesPerSample$OFFSET, fieldValue);
     }
 
-    private static final OfInt maxComputeWorkgroupStorageSize$LAYOUT = (OfInt)$LAYOUT.select(groupElement("maxComputeWorkgroupStorageSize"));
+    private static final OfInt maxComputeWorkgroupStorageSize$LAYOUT = (OfInt) $LAYOUT.select(groupElement("maxComputeWorkgroupStorageSize"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxComputeWorkgroupStorageSize
-     * }
+     *}
      */
     public static final OfInt maxComputeWorkgroupStorageSize$layout() {
         return maxComputeWorkgroupStorageSize$LAYOUT;
@@ -1256,9 +1256,9 @@ public class WGPULimits {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxComputeWorkgroupStorageSize
-     * }
+     *}
      */
     public static final long maxComputeWorkgroupStorageSize$offset() {
         return maxComputeWorkgroupStorageSize$OFFSET;
@@ -1266,9 +1266,9 @@ public class WGPULimits {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxComputeWorkgroupStorageSize
-     * }
+     *}
      */
     public static int maxComputeWorkgroupStorageSize(MemorySegment struct) {
         return struct.get(maxComputeWorkgroupStorageSize$LAYOUT, maxComputeWorkgroupStorageSize$OFFSET);
@@ -1276,21 +1276,21 @@ public class WGPULimits {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxComputeWorkgroupStorageSize
-     * }
+     *}
      */
     public static void maxComputeWorkgroupStorageSize(MemorySegment struct, int fieldValue) {
         struct.set(maxComputeWorkgroupStorageSize$LAYOUT, maxComputeWorkgroupStorageSize$OFFSET, fieldValue);
     }
 
-    private static final OfInt maxComputeInvocationsPerWorkgroup$LAYOUT = (OfInt)$LAYOUT.select(groupElement("maxComputeInvocationsPerWorkgroup"));
+    private static final OfInt maxComputeInvocationsPerWorkgroup$LAYOUT = (OfInt) $LAYOUT.select(groupElement("maxComputeInvocationsPerWorkgroup"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxComputeInvocationsPerWorkgroup
-     * }
+     *}
      */
     public static final OfInt maxComputeInvocationsPerWorkgroup$layout() {
         return maxComputeInvocationsPerWorkgroup$LAYOUT;
@@ -1300,9 +1300,9 @@ public class WGPULimits {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxComputeInvocationsPerWorkgroup
-     * }
+     *}
      */
     public static final long maxComputeInvocationsPerWorkgroup$offset() {
         return maxComputeInvocationsPerWorkgroup$OFFSET;
@@ -1310,9 +1310,9 @@ public class WGPULimits {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxComputeInvocationsPerWorkgroup
-     * }
+     *}
      */
     public static int maxComputeInvocationsPerWorkgroup(MemorySegment struct) {
         return struct.get(maxComputeInvocationsPerWorkgroup$LAYOUT, maxComputeInvocationsPerWorkgroup$OFFSET);
@@ -1320,21 +1320,21 @@ public class WGPULimits {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxComputeInvocationsPerWorkgroup
-     * }
+     *}
      */
     public static void maxComputeInvocationsPerWorkgroup(MemorySegment struct, int fieldValue) {
         struct.set(maxComputeInvocationsPerWorkgroup$LAYOUT, maxComputeInvocationsPerWorkgroup$OFFSET, fieldValue);
     }
 
-    private static final OfInt maxComputeWorkgroupSizeX$LAYOUT = (OfInt)$LAYOUT.select(groupElement("maxComputeWorkgroupSizeX"));
+    private static final OfInt maxComputeWorkgroupSizeX$LAYOUT = (OfInt) $LAYOUT.select(groupElement("maxComputeWorkgroupSizeX"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxComputeWorkgroupSizeX
-     * }
+     *}
      */
     public static final OfInt maxComputeWorkgroupSizeX$layout() {
         return maxComputeWorkgroupSizeX$LAYOUT;
@@ -1344,9 +1344,9 @@ public class WGPULimits {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxComputeWorkgroupSizeX
-     * }
+     *}
      */
     public static final long maxComputeWorkgroupSizeX$offset() {
         return maxComputeWorkgroupSizeX$OFFSET;
@@ -1354,9 +1354,9 @@ public class WGPULimits {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxComputeWorkgroupSizeX
-     * }
+     *}
      */
     public static int maxComputeWorkgroupSizeX(MemorySegment struct) {
         return struct.get(maxComputeWorkgroupSizeX$LAYOUT, maxComputeWorkgroupSizeX$OFFSET);
@@ -1364,21 +1364,21 @@ public class WGPULimits {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxComputeWorkgroupSizeX
-     * }
+     *}
      */
     public static void maxComputeWorkgroupSizeX(MemorySegment struct, int fieldValue) {
         struct.set(maxComputeWorkgroupSizeX$LAYOUT, maxComputeWorkgroupSizeX$OFFSET, fieldValue);
     }
 
-    private static final OfInt maxComputeWorkgroupSizeY$LAYOUT = (OfInt)$LAYOUT.select(groupElement("maxComputeWorkgroupSizeY"));
+    private static final OfInt maxComputeWorkgroupSizeY$LAYOUT = (OfInt) $LAYOUT.select(groupElement("maxComputeWorkgroupSizeY"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxComputeWorkgroupSizeY
-     * }
+     *}
      */
     public static final OfInt maxComputeWorkgroupSizeY$layout() {
         return maxComputeWorkgroupSizeY$LAYOUT;
@@ -1388,9 +1388,9 @@ public class WGPULimits {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxComputeWorkgroupSizeY
-     * }
+     *}
      */
     public static final long maxComputeWorkgroupSizeY$offset() {
         return maxComputeWorkgroupSizeY$OFFSET;
@@ -1398,9 +1398,9 @@ public class WGPULimits {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxComputeWorkgroupSizeY
-     * }
+     *}
      */
     public static int maxComputeWorkgroupSizeY(MemorySegment struct) {
         return struct.get(maxComputeWorkgroupSizeY$LAYOUT, maxComputeWorkgroupSizeY$OFFSET);
@@ -1408,21 +1408,21 @@ public class WGPULimits {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxComputeWorkgroupSizeY
-     * }
+     *}
      */
     public static void maxComputeWorkgroupSizeY(MemorySegment struct, int fieldValue) {
         struct.set(maxComputeWorkgroupSizeY$LAYOUT, maxComputeWorkgroupSizeY$OFFSET, fieldValue);
     }
 
-    private static final OfInt maxComputeWorkgroupSizeZ$LAYOUT = (OfInt)$LAYOUT.select(groupElement("maxComputeWorkgroupSizeZ"));
+    private static final OfInt maxComputeWorkgroupSizeZ$LAYOUT = (OfInt) $LAYOUT.select(groupElement("maxComputeWorkgroupSizeZ"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxComputeWorkgroupSizeZ
-     * }
+     *}
      */
     public static final OfInt maxComputeWorkgroupSizeZ$layout() {
         return maxComputeWorkgroupSizeZ$LAYOUT;
@@ -1432,9 +1432,9 @@ public class WGPULimits {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxComputeWorkgroupSizeZ
-     * }
+     *}
      */
     public static final long maxComputeWorkgroupSizeZ$offset() {
         return maxComputeWorkgroupSizeZ$OFFSET;
@@ -1442,9 +1442,9 @@ public class WGPULimits {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxComputeWorkgroupSizeZ
-     * }
+     *}
      */
     public static int maxComputeWorkgroupSizeZ(MemorySegment struct) {
         return struct.get(maxComputeWorkgroupSizeZ$LAYOUT, maxComputeWorkgroupSizeZ$OFFSET);
@@ -1452,21 +1452,21 @@ public class WGPULimits {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxComputeWorkgroupSizeZ
-     * }
+     *}
      */
     public static void maxComputeWorkgroupSizeZ(MemorySegment struct, int fieldValue) {
         struct.set(maxComputeWorkgroupSizeZ$LAYOUT, maxComputeWorkgroupSizeZ$OFFSET, fieldValue);
     }
 
-    private static final OfInt maxComputeWorkgroupsPerDimension$LAYOUT = (OfInt)$LAYOUT.select(groupElement("maxComputeWorkgroupsPerDimension"));
+    private static final OfInt maxComputeWorkgroupsPerDimension$LAYOUT = (OfInt) $LAYOUT.select(groupElement("maxComputeWorkgroupsPerDimension"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxComputeWorkgroupsPerDimension
-     * }
+     *}
      */
     public static final OfInt maxComputeWorkgroupsPerDimension$layout() {
         return maxComputeWorkgroupsPerDimension$LAYOUT;
@@ -1476,9 +1476,9 @@ public class WGPULimits {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxComputeWorkgroupsPerDimension
-     * }
+     *}
      */
     public static final long maxComputeWorkgroupsPerDimension$offset() {
         return maxComputeWorkgroupsPerDimension$OFFSET;
@@ -1486,9 +1486,9 @@ public class WGPULimits {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxComputeWorkgroupsPerDimension
-     * }
+     *}
      */
     public static int maxComputeWorkgroupsPerDimension(MemorySegment struct) {
         return struct.get(maxComputeWorkgroupsPerDimension$LAYOUT, maxComputeWorkgroupsPerDimension$OFFSET);
@@ -1496,9 +1496,9 @@ public class WGPULimits {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t maxComputeWorkgroupsPerDimension
-     * }
+     *}
      */
     public static void maxComputeWorkgroupsPerDimension(MemorySegment struct, int fieldValue) {
         struct.set(maxComputeWorkgroupsPerDimension$LAYOUT, maxComputeWorkgroupsPerDimension$OFFSET, fieldValue);
@@ -1515,7 +1515,9 @@ public class WGPULimits {
     /**
      * The size (in bytes) of this struct
      */
-    public static long sizeof() { return layout().byteSize(); }
+    public static long sizeof() {
+        return layout().byteSize();
+    }
 
     /**
      * Allocate a segment of size {@code layout().byteSize()} using {@code allocator}

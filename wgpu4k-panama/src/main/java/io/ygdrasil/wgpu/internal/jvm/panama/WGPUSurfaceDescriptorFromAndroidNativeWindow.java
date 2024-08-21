@@ -2,18 +2,23 @@
 
 package io.ygdrasil.wgpu.internal.jvm.panama;
 
+import java.lang.invoke.*;
 import java.lang.foreign.*;
-import java.util.function.Consumer;
+import java.nio.ByteOrder;
+import java.util.*;
+import java.util.function.*;
+import java.util.stream.*;
 
-import static java.lang.foreign.MemoryLayout.PathElement.groupElement;
+import static java.lang.foreign.ValueLayout.*;
+import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 /**
- * {@snippet lang=c :
+ * {@snippet lang = c:
  * struct WGPUSurfaceDescriptorFromAndroidNativeWindow {
  *     WGPUChainedStruct chain;
  *     void *window;
  * }
- * }
+ *}
  */
 public class WGPUSurfaceDescriptorFromAndroidNativeWindow {
 
@@ -22,8 +27,8 @@ public class WGPUSurfaceDescriptorFromAndroidNativeWindow {
     }
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
-        WGPUChainedStruct.layout().withName("chain"),
-        wgpu_h.C_POINTER.withName("window")
+            WGPUChainedStruct.layout().withName("chain"),
+            wgpu_h.C_POINTER.withName("window")
     ).withName("WGPUSurfaceDescriptorFromAndroidNativeWindow");
 
     /**
@@ -33,13 +38,13 @@ public class WGPUSurfaceDescriptorFromAndroidNativeWindow {
         return $LAYOUT;
     }
 
-    private static final GroupLayout chain$LAYOUT = (GroupLayout)$LAYOUT.select(groupElement("chain"));
+    private static final GroupLayout chain$LAYOUT = (GroupLayout) $LAYOUT.select(groupElement("chain"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUChainedStruct chain
-     * }
+     *}
      */
     public static final GroupLayout chain$layout() {
         return chain$LAYOUT;
@@ -49,9 +54,9 @@ public class WGPUSurfaceDescriptorFromAndroidNativeWindow {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUChainedStruct chain
-     * }
+     *}
      */
     public static final long chain$offset() {
         return chain$OFFSET;
@@ -59,9 +64,9 @@ public class WGPUSurfaceDescriptorFromAndroidNativeWindow {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUChainedStruct chain
-     * }
+     *}
      */
     public static MemorySegment chain(MemorySegment struct) {
         return struct.asSlice(chain$OFFSET, chain$LAYOUT.byteSize());
@@ -69,21 +74,21 @@ public class WGPUSurfaceDescriptorFromAndroidNativeWindow {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUChainedStruct chain
-     * }
+     *}
      */
     public static void chain(MemorySegment struct, MemorySegment fieldValue) {
         MemorySegment.copy(fieldValue, 0L, struct, chain$OFFSET, chain$LAYOUT.byteSize());
     }
 
-    private static final AddressLayout window$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("window"));
+    private static final AddressLayout window$LAYOUT = (AddressLayout) $LAYOUT.select(groupElement("window"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * void *window
-     * }
+     *}
      */
     public static final AddressLayout window$layout() {
         return window$LAYOUT;
@@ -93,9 +98,9 @@ public class WGPUSurfaceDescriptorFromAndroidNativeWindow {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * void *window
-     * }
+     *}
      */
     public static final long window$offset() {
         return window$OFFSET;
@@ -103,9 +108,9 @@ public class WGPUSurfaceDescriptorFromAndroidNativeWindow {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * void *window
-     * }
+     *}
      */
     public static MemorySegment window(MemorySegment struct) {
         return struct.get(window$LAYOUT, window$OFFSET);
@@ -113,9 +118,9 @@ public class WGPUSurfaceDescriptorFromAndroidNativeWindow {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * void *window
-     * }
+     *}
      */
     public static void window(MemorySegment struct, MemorySegment fieldValue) {
         struct.set(window$LAYOUT, window$OFFSET, fieldValue);
@@ -132,7 +137,9 @@ public class WGPUSurfaceDescriptorFromAndroidNativeWindow {
     /**
      * The size (in bytes) of this struct
      */
-    public static long sizeof() { return layout().byteSize(); }
+    public static long sizeof() {
+        return layout().byteSize();
+    }
 
     /**
      * Allocate a segment of size {@code layout().byteSize()} using {@code allocator}

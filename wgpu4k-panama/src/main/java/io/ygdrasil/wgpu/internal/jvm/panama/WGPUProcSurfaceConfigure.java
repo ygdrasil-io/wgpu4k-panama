@@ -2,20 +2,16 @@
 
 package io.ygdrasil.wgpu.internal.jvm.panama;
 
-import java.lang.invoke.*;
-import java.lang.foreign.*;
-import java.nio.ByteOrder;
-import java.util.*;
-import java.util.function.*;
-import java.util.stream.*;
-
-import static java.lang.foreign.ValueLayout.*;
-import static java.lang.foreign.MemoryLayout.PathElement.*;
+import java.lang.foreign.Arena;
+import java.lang.foreign.FunctionDescriptor;
+import java.lang.foreign.Linker;
+import java.lang.foreign.MemorySegment;
+import java.lang.invoke.MethodHandle;
 
 /**
- * {@snippet lang=c :
+ * {@snippet lang = c:
  * typedef void (*WGPUProcSurfaceConfigure)(WGPUSurface, const WGPUSurfaceConfiguration *)
- * }
+ *}
  */
 public class WGPUProcSurfaceConfigure {
 
@@ -31,8 +27,8 @@ public class WGPUProcSurfaceConfigure {
     }
 
     private static final FunctionDescriptor $DESC = FunctionDescriptor.ofVoid(
-        wgpu_h.C_POINTER,
-        wgpu_h.C_POINTER
+            wgpu_h.C_POINTER,
+            wgpu_h.C_POINTER
     );
 
     /**
@@ -57,9 +53,9 @@ public class WGPUProcSurfaceConfigure {
     /**
      * Invoke the upcall stub {@code funcPtr}, with given parameters
      */
-    public static void invoke(MemorySegment funcPtr,MemorySegment surface, MemorySegment config) {
+    public static void invoke(MemorySegment funcPtr, MemorySegment surface, MemorySegment config) {
         try {
-             DOWN$MH.invokeExact(funcPtr, surface, config);
+            DOWN$MH.invokeExact(funcPtr, surface, config);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }

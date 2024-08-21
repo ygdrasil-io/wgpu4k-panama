@@ -2,19 +2,23 @@
 
 package io.ygdrasil.wgpu.internal.jvm.panama;
 
+import java.lang.invoke.*;
 import java.lang.foreign.*;
-import java.util.function.Consumer;
+import java.nio.ByteOrder;
+import java.util.*;
+import java.util.function.*;
+import java.util.stream.*;
 
-import static java.lang.foreign.MemoryLayout.PathElement.groupElement;
-import static java.lang.foreign.ValueLayout.OfInt;
+import static java.lang.foreign.ValueLayout.*;
+import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 /**
- * {@snippet lang=c :
+ * {@snippet lang = c:
  * struct WGPUSurfaceConfigurationExtras {
  *     WGPUChainedStruct chain;
  *     WGPUBool desiredMaximumFrameLatency;
  * }
- * }
+ *}
  */
 public class WGPUSurfaceConfigurationExtras {
 
@@ -23,9 +27,9 @@ public class WGPUSurfaceConfigurationExtras {
     }
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
-        WGPUChainedStruct.layout().withName("chain"),
-        wgpu_h.C_INT.withName("desiredMaximumFrameLatency"),
-        MemoryLayout.paddingLayout(4)
+            WGPUChainedStruct.layout().withName("chain"),
+            wgpu_h.C_INT.withName("desiredMaximumFrameLatency"),
+            MemoryLayout.paddingLayout(4)
     ).withName("WGPUSurfaceConfigurationExtras");
 
     /**
@@ -35,13 +39,13 @@ public class WGPUSurfaceConfigurationExtras {
         return $LAYOUT;
     }
 
-    private static final GroupLayout chain$LAYOUT = (GroupLayout)$LAYOUT.select(groupElement("chain"));
+    private static final GroupLayout chain$LAYOUT = (GroupLayout) $LAYOUT.select(groupElement("chain"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUChainedStruct chain
-     * }
+     *}
      */
     public static final GroupLayout chain$layout() {
         return chain$LAYOUT;
@@ -51,9 +55,9 @@ public class WGPUSurfaceConfigurationExtras {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUChainedStruct chain
-     * }
+     *}
      */
     public static final long chain$offset() {
         return chain$OFFSET;
@@ -61,9 +65,9 @@ public class WGPUSurfaceConfigurationExtras {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUChainedStruct chain
-     * }
+     *}
      */
     public static MemorySegment chain(MemorySegment struct) {
         return struct.asSlice(chain$OFFSET, chain$LAYOUT.byteSize());
@@ -71,21 +75,21 @@ public class WGPUSurfaceConfigurationExtras {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUChainedStruct chain
-     * }
+     *}
      */
     public static void chain(MemorySegment struct, MemorySegment fieldValue) {
         MemorySegment.copy(fieldValue, 0L, struct, chain$OFFSET, chain$LAYOUT.byteSize());
     }
 
-    private static final OfInt desiredMaximumFrameLatency$LAYOUT = (OfInt)$LAYOUT.select(groupElement("desiredMaximumFrameLatency"));
+    private static final OfInt desiredMaximumFrameLatency$LAYOUT = (OfInt) $LAYOUT.select(groupElement("desiredMaximumFrameLatency"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUBool desiredMaximumFrameLatency
-     * }
+     *}
      */
     public static final OfInt desiredMaximumFrameLatency$layout() {
         return desiredMaximumFrameLatency$LAYOUT;
@@ -95,9 +99,9 @@ public class WGPUSurfaceConfigurationExtras {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUBool desiredMaximumFrameLatency
-     * }
+     *}
      */
     public static final long desiredMaximumFrameLatency$offset() {
         return desiredMaximumFrameLatency$OFFSET;
@@ -105,9 +109,9 @@ public class WGPUSurfaceConfigurationExtras {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUBool desiredMaximumFrameLatency
-     * }
+     *}
      */
     public static int desiredMaximumFrameLatency(MemorySegment struct) {
         return struct.get(desiredMaximumFrameLatency$LAYOUT, desiredMaximumFrameLatency$OFFSET);
@@ -115,9 +119,9 @@ public class WGPUSurfaceConfigurationExtras {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUBool desiredMaximumFrameLatency
-     * }
+     *}
      */
     public static void desiredMaximumFrameLatency(MemorySegment struct, int fieldValue) {
         struct.set(desiredMaximumFrameLatency$LAYOUT, desiredMaximumFrameLatency$OFFSET, fieldValue);
@@ -134,7 +138,9 @@ public class WGPUSurfaceConfigurationExtras {
     /**
      * The size (in bytes) of this struct
      */
-    public static long sizeof() { return layout().byteSize(); }
+    public static long sizeof() {
+        return layout().byteSize();
+    }
 
     /**
      * Allocate a segment of size {@code layout().byteSize()} using {@code allocator}

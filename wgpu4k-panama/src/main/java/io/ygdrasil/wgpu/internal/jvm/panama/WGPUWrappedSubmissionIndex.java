@@ -2,19 +2,23 @@
 
 package io.ygdrasil.wgpu.internal.jvm.panama;
 
+import java.lang.invoke.*;
 import java.lang.foreign.*;
-import java.util.function.Consumer;
+import java.nio.ByteOrder;
+import java.util.*;
+import java.util.function.*;
+import java.util.stream.*;
 
-import static java.lang.foreign.MemoryLayout.PathElement.groupElement;
-import static java.lang.foreign.ValueLayout.OfLong;
+import static java.lang.foreign.ValueLayout.*;
+import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 /**
- * {@snippet lang=c :
+ * {@snippet lang = c:
  * struct WGPUWrappedSubmissionIndex {
  *     WGPUQueue queue;
  *     WGPUSubmissionIndex submissionIndex;
  * }
- * }
+ *}
  */
 public class WGPUWrappedSubmissionIndex {
 
@@ -23,8 +27,8 @@ public class WGPUWrappedSubmissionIndex {
     }
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
-        wgpu_h.C_POINTER.withName("queue"),
-        wgpu_h.C_LONG_LONG.withName("submissionIndex")
+            wgpu_h.C_POINTER.withName("queue"),
+            wgpu_h.C_LONG_LONG.withName("submissionIndex")
     ).withName("WGPUWrappedSubmissionIndex");
 
     /**
@@ -34,13 +38,13 @@ public class WGPUWrappedSubmissionIndex {
         return $LAYOUT;
     }
 
-    private static final AddressLayout queue$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("queue"));
+    private static final AddressLayout queue$LAYOUT = (AddressLayout) $LAYOUT.select(groupElement("queue"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUQueue queue
-     * }
+     *}
      */
     public static final AddressLayout queue$layout() {
         return queue$LAYOUT;
@@ -50,9 +54,9 @@ public class WGPUWrappedSubmissionIndex {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUQueue queue
-     * }
+     *}
      */
     public static final long queue$offset() {
         return queue$OFFSET;
@@ -60,9 +64,9 @@ public class WGPUWrappedSubmissionIndex {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUQueue queue
-     * }
+     *}
      */
     public static MemorySegment queue(MemorySegment struct) {
         return struct.get(queue$LAYOUT, queue$OFFSET);
@@ -70,21 +74,21 @@ public class WGPUWrappedSubmissionIndex {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUQueue queue
-     * }
+     *}
      */
     public static void queue(MemorySegment struct, MemorySegment fieldValue) {
         struct.set(queue$LAYOUT, queue$OFFSET, fieldValue);
     }
 
-    private static final OfLong submissionIndex$LAYOUT = (OfLong)$LAYOUT.select(groupElement("submissionIndex"));
+    private static final OfLong submissionIndex$LAYOUT = (OfLong) $LAYOUT.select(groupElement("submissionIndex"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUSubmissionIndex submissionIndex
-     * }
+     *}
      */
     public static final OfLong submissionIndex$layout() {
         return submissionIndex$LAYOUT;
@@ -94,9 +98,9 @@ public class WGPUWrappedSubmissionIndex {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUSubmissionIndex submissionIndex
-     * }
+     *}
      */
     public static final long submissionIndex$offset() {
         return submissionIndex$OFFSET;
@@ -104,9 +108,9 @@ public class WGPUWrappedSubmissionIndex {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUSubmissionIndex submissionIndex
-     * }
+     *}
      */
     public static long submissionIndex(MemorySegment struct) {
         return struct.get(submissionIndex$LAYOUT, submissionIndex$OFFSET);
@@ -114,9 +118,9 @@ public class WGPUWrappedSubmissionIndex {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUSubmissionIndex submissionIndex
-     * }
+     *}
      */
     public static void submissionIndex(MemorySegment struct, long fieldValue) {
         struct.set(submissionIndex$LAYOUT, submissionIndex$OFFSET, fieldValue);
@@ -133,7 +137,9 @@ public class WGPUWrappedSubmissionIndex {
     /**
      * The size (in bytes) of this struct
      */
-    public static long sizeof() { return layout().byteSize(); }
+    public static long sizeof() {
+        return layout().byteSize();
+    }
 
     /**
      * Allocate a segment of size {@code layout().byteSize()} using {@code allocator}

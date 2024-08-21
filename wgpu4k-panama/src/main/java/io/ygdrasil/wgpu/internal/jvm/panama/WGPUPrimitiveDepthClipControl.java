@@ -2,19 +2,23 @@
 
 package io.ygdrasil.wgpu.internal.jvm.panama;
 
+import java.lang.invoke.*;
 import java.lang.foreign.*;
-import java.util.function.Consumer;
+import java.nio.ByteOrder;
+import java.util.*;
+import java.util.function.*;
+import java.util.stream.*;
 
-import static java.lang.foreign.MemoryLayout.PathElement.groupElement;
-import static java.lang.foreign.ValueLayout.OfInt;
+import static java.lang.foreign.ValueLayout.*;
+import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 /**
- * {@snippet lang=c :
+ * {@snippet lang = c:
  * struct WGPUPrimitiveDepthClipControl {
  *     WGPUChainedStruct chain;
  *     WGPUBool unclippedDepth;
  * }
- * }
+ *}
  */
 public class WGPUPrimitiveDepthClipControl {
 
@@ -23,9 +27,9 @@ public class WGPUPrimitiveDepthClipControl {
     }
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
-        WGPUChainedStruct.layout().withName("chain"),
-        wgpu_h.C_INT.withName("unclippedDepth"),
-        MemoryLayout.paddingLayout(4)
+            WGPUChainedStruct.layout().withName("chain"),
+            wgpu_h.C_INT.withName("unclippedDepth"),
+            MemoryLayout.paddingLayout(4)
     ).withName("WGPUPrimitiveDepthClipControl");
 
     /**
@@ -35,13 +39,13 @@ public class WGPUPrimitiveDepthClipControl {
         return $LAYOUT;
     }
 
-    private static final GroupLayout chain$LAYOUT = (GroupLayout)$LAYOUT.select(groupElement("chain"));
+    private static final GroupLayout chain$LAYOUT = (GroupLayout) $LAYOUT.select(groupElement("chain"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUChainedStruct chain
-     * }
+     *}
      */
     public static final GroupLayout chain$layout() {
         return chain$LAYOUT;
@@ -51,9 +55,9 @@ public class WGPUPrimitiveDepthClipControl {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUChainedStruct chain
-     * }
+     *}
      */
     public static final long chain$offset() {
         return chain$OFFSET;
@@ -61,9 +65,9 @@ public class WGPUPrimitiveDepthClipControl {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUChainedStruct chain
-     * }
+     *}
      */
     public static MemorySegment chain(MemorySegment struct) {
         return struct.asSlice(chain$OFFSET, chain$LAYOUT.byteSize());
@@ -71,21 +75,21 @@ public class WGPUPrimitiveDepthClipControl {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUChainedStruct chain
-     * }
+     *}
      */
     public static void chain(MemorySegment struct, MemorySegment fieldValue) {
         MemorySegment.copy(fieldValue, 0L, struct, chain$OFFSET, chain$LAYOUT.byteSize());
     }
 
-    private static final OfInt unclippedDepth$LAYOUT = (OfInt)$LAYOUT.select(groupElement("unclippedDepth"));
+    private static final OfInt unclippedDepth$LAYOUT = (OfInt) $LAYOUT.select(groupElement("unclippedDepth"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUBool unclippedDepth
-     * }
+     *}
      */
     public static final OfInt unclippedDepth$layout() {
         return unclippedDepth$LAYOUT;
@@ -95,9 +99,9 @@ public class WGPUPrimitiveDepthClipControl {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUBool unclippedDepth
-     * }
+     *}
      */
     public static final long unclippedDepth$offset() {
         return unclippedDepth$OFFSET;
@@ -105,9 +109,9 @@ public class WGPUPrimitiveDepthClipControl {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUBool unclippedDepth
-     * }
+     *}
      */
     public static int unclippedDepth(MemorySegment struct) {
         return struct.get(unclippedDepth$LAYOUT, unclippedDepth$OFFSET);
@@ -115,9 +119,9 @@ public class WGPUPrimitiveDepthClipControl {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUBool unclippedDepth
-     * }
+     *}
      */
     public static void unclippedDepth(MemorySegment struct, int fieldValue) {
         struct.set(unclippedDepth$LAYOUT, unclippedDepth$OFFSET, fieldValue);
@@ -134,7 +138,9 @@ public class WGPUPrimitiveDepthClipControl {
     /**
      * The size (in bytes) of this struct
      */
-    public static long sizeof() { return layout().byteSize(); }
+    public static long sizeof() {
+        return layout().byteSize();
+    }
 
     /**
      * Allocate a segment of size {@code layout().byteSize()} using {@code allocator}

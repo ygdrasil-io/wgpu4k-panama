@@ -2,20 +2,24 @@
 
 package io.ygdrasil.wgpu.internal.jvm.panama;
 
-import java.lang.foreign.Arena;
-import java.lang.foreign.FunctionDescriptor;
-import java.lang.foreign.Linker;
-import java.lang.foreign.MemorySegment;
-import java.lang.invoke.MethodHandle;
+import java.lang.invoke.*;
+import java.lang.foreign.*;
+import java.nio.ByteOrder;
+import java.util.*;
+import java.util.function.*;
+import java.util.stream.*;
+
+import static java.lang.foreign.ValueLayout.*;
+import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 /**
- * {@snippet lang=c :
- * typedef void (*WGPUBufferMapCallback)(WGPUBufferMapAsyncStatus, void *)
- * }
+ * {@snippet lang = c:
+ * typedef void (*WGPUProcAdapterInfoFreeMembers)(WGPUAdapterInfo)
+ *}
  */
-public class WGPUBufferMapCallback {
+public class WGPUProcAdapterInfoFreeMembers {
 
-    WGPUBufferMapCallback() {
+    WGPUProcAdapterInfoFreeMembers() {
         // Should not be called directly
     }
 
@@ -23,12 +27,11 @@ public class WGPUBufferMapCallback {
      * The function pointer signature, expressed as a functional interface
      */
     public interface Function {
-        void apply(int status, MemorySegment userdata);
+        void apply(MemorySegment adapterInfo);
     }
 
     private static final FunctionDescriptor $DESC = FunctionDescriptor.ofVoid(
-        wgpu_h.C_INT,
-        wgpu_h.C_POINTER
+            WGPUAdapterInfo.layout()
     );
 
     /**
@@ -38,13 +41,13 @@ public class WGPUBufferMapCallback {
         return $DESC;
     }
 
-    private static final MethodHandle UP$MH = wgpu_h.upcallHandle(WGPUBufferMapCallback.Function.class, "apply", $DESC);
+    private static final MethodHandle UP$MH = wgpu_h.upcallHandle(WGPUProcAdapterInfoFreeMembers.Function.class, "apply", $DESC);
 
     /**
      * Allocates a new upcall stub, whose implementation is defined by {@code fi}.
      * The lifetime of the returned segment is managed by {@code arena}
      */
-    public static MemorySegment allocate(WGPUBufferMapCallback.Function fi, Arena arena) {
+    public static MemorySegment allocate(WGPUProcAdapterInfoFreeMembers.Function fi, Arena arena) {
         return Linker.nativeLinker().upcallStub(UP$MH.bindTo(fi), $DESC, arena);
     }
 
@@ -53,9 +56,9 @@ public class WGPUBufferMapCallback {
     /**
      * Invoke the upcall stub {@code funcPtr}, with given parameters
      */
-    public static void invoke(MemorySegment funcPtr,int status, MemorySegment userdata) {
+    public static void invoke(MemorySegment funcPtr, MemorySegment adapterInfo) {
         try {
-             DOWN$MH.invokeExact(funcPtr, status, userdata);
+            DOWN$MH.invokeExact(funcPtr, adapterInfo);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }

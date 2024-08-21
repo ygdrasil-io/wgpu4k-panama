@@ -8,12 +8,12 @@ import java.util.function.Consumer;
 import static java.lang.foreign.MemoryLayout.PathElement.groupElement;
 
 /**
- * {@snippet lang=c :
+ * {@snippet lang = c:
  * struct WGPUBlendState {
  *     WGPUBlendComponent color;
  *     WGPUBlendComponent alpha;
  * }
- * }
+ *}
  */
 public class WGPUBlendState {
 
@@ -22,8 +22,8 @@ public class WGPUBlendState {
     }
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
-        WGPUBlendComponent.layout().withName("color"),
-        WGPUBlendComponent.layout().withName("alpha")
+            WGPUBlendComponent.layout().withName("color"),
+            WGPUBlendComponent.layout().withName("alpha")
     ).withName("WGPUBlendState");
 
     /**
@@ -33,13 +33,13 @@ public class WGPUBlendState {
         return $LAYOUT;
     }
 
-    private static final GroupLayout color$LAYOUT = (GroupLayout)$LAYOUT.select(groupElement("color"));
+    private static final GroupLayout color$LAYOUT = (GroupLayout) $LAYOUT.select(groupElement("color"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUBlendComponent color
-     * }
+     *}
      */
     public static final GroupLayout color$layout() {
         return color$LAYOUT;
@@ -49,9 +49,9 @@ public class WGPUBlendState {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUBlendComponent color
-     * }
+     *}
      */
     public static final long color$offset() {
         return color$OFFSET;
@@ -59,9 +59,9 @@ public class WGPUBlendState {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUBlendComponent color
-     * }
+     *}
      */
     public static MemorySegment color(MemorySegment struct) {
         return struct.asSlice(color$OFFSET, color$LAYOUT.byteSize());
@@ -69,21 +69,21 @@ public class WGPUBlendState {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUBlendComponent color
-     * }
+     *}
      */
     public static void color(MemorySegment struct, MemorySegment fieldValue) {
         MemorySegment.copy(fieldValue, 0L, struct, color$OFFSET, color$LAYOUT.byteSize());
     }
 
-    private static final GroupLayout alpha$LAYOUT = (GroupLayout)$LAYOUT.select(groupElement("alpha"));
+    private static final GroupLayout alpha$LAYOUT = (GroupLayout) $LAYOUT.select(groupElement("alpha"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUBlendComponent alpha
-     * }
+     *}
      */
     public static final GroupLayout alpha$layout() {
         return alpha$LAYOUT;
@@ -93,9 +93,9 @@ public class WGPUBlendState {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUBlendComponent alpha
-     * }
+     *}
      */
     public static final long alpha$offset() {
         return alpha$OFFSET;
@@ -103,9 +103,9 @@ public class WGPUBlendState {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUBlendComponent alpha
-     * }
+     *}
      */
     public static MemorySegment alpha(MemorySegment struct) {
         return struct.asSlice(alpha$OFFSET, alpha$LAYOUT.byteSize());
@@ -113,9 +113,9 @@ public class WGPUBlendState {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUBlendComponent alpha
-     * }
+     *}
      */
     public static void alpha(MemorySegment struct, MemorySegment fieldValue) {
         MemorySegment.copy(fieldValue, 0L, struct, alpha$OFFSET, alpha$LAYOUT.byteSize());
@@ -132,7 +132,9 @@ public class WGPUBlendState {
     /**
      * The size (in bytes) of this struct
      */
-    public static long sizeof() { return layout().byteSize(); }
+    public static long sizeof() {
+        return layout().byteSize();
+    }
 
     /**
      * Allocate a segment of size {@code layout().byteSize()} using {@code allocator}

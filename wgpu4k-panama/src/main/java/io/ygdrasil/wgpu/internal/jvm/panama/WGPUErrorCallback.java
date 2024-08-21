@@ -9,9 +9,9 @@ import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
 /**
- * {@snippet lang=c :
+ * {@snippet lang = c:
  * typedef void (*WGPUErrorCallback)(WGPUErrorType, const char *, void *)
- * }
+ *}
  */
 public class WGPUErrorCallback {
 
@@ -27,9 +27,9 @@ public class WGPUErrorCallback {
     }
 
     private static final FunctionDescriptor $DESC = FunctionDescriptor.ofVoid(
-        wgpu_h.C_INT,
-        wgpu_h.C_POINTER,
-        wgpu_h.C_POINTER
+            wgpu_h.C_INT,
+            wgpu_h.C_POINTER,
+            wgpu_h.C_POINTER
     );
 
     /**
@@ -54,9 +54,9 @@ public class WGPUErrorCallback {
     /**
      * Invoke the upcall stub {@code funcPtr}, with given parameters
      */
-    public static void invoke(MemorySegment funcPtr,int type, MemorySegment message, MemorySegment userdata) {
+    public static void invoke(MemorySegment funcPtr, int type, MemorySegment message, MemorySegment userdata) {
         try {
-             DOWN$MH.invokeExact(funcPtr, type, message, userdata);
+            DOWN$MH.invokeExact(funcPtr, type, message, userdata);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }

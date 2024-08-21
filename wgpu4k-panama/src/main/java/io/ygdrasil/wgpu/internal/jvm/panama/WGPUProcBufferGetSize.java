@@ -9,9 +9,9 @@ import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
 /**
- * {@snippet lang=c :
+ * {@snippet lang = c:
  * typedef uint64_t (*WGPUProcBufferGetSize)(WGPUBuffer)
- * }
+ *}
  */
 public class WGPUProcBufferGetSize {
 
@@ -27,8 +27,8 @@ public class WGPUProcBufferGetSize {
     }
 
     private static final FunctionDescriptor $DESC = FunctionDescriptor.of(
-        wgpu_h.C_LONG_LONG,
-        wgpu_h.C_POINTER
+            wgpu_h.C_LONG_LONG,
+            wgpu_h.C_POINTER
     );
 
     /**
@@ -53,7 +53,7 @@ public class WGPUProcBufferGetSize {
     /**
      * Invoke the upcall stub {@code funcPtr}, with given parameters
      */
-    public static long invoke(MemorySegment funcPtr,MemorySegment buffer) {
+    public static long invoke(MemorySegment funcPtr, MemorySegment buffer) {
         try {
             return (long) DOWN$MH.invokeExact(funcPtr, buffer);
         } catch (Throwable ex$) {

@@ -2,20 +2,24 @@
 
 package io.ygdrasil.wgpu.internal.jvm.panama;
 
+import java.lang.invoke.*;
 import java.lang.foreign.*;
-import java.util.function.Consumer;
+import java.nio.ByteOrder;
+import java.util.*;
+import java.util.function.*;
+import java.util.stream.*;
 
-import static java.lang.foreign.MemoryLayout.PathElement.groupElement;
-import static java.lang.foreign.ValueLayout.OfInt;
+import static java.lang.foreign.ValueLayout.*;
+import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 /**
- * {@snippet lang=c :
+ * {@snippet lang = c:
  * struct WGPUShaderModuleSPIRVDescriptor {
  *     WGPUChainedStruct chain;
  *     uint32_t codeSize;
  *     const uint32_t *code;
  * }
- * }
+ *}
  */
 public class WGPUShaderModuleSPIRVDescriptor {
 
@@ -24,10 +28,10 @@ public class WGPUShaderModuleSPIRVDescriptor {
     }
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
-        WGPUChainedStruct.layout().withName("chain"),
-        wgpu_h.C_INT.withName("codeSize"),
-        MemoryLayout.paddingLayout(4),
-        wgpu_h.C_POINTER.withName("code")
+            WGPUChainedStruct.layout().withName("chain"),
+            wgpu_h.C_INT.withName("codeSize"),
+            MemoryLayout.paddingLayout(4),
+            wgpu_h.C_POINTER.withName("code")
     ).withName("WGPUShaderModuleSPIRVDescriptor");
 
     /**
@@ -37,13 +41,13 @@ public class WGPUShaderModuleSPIRVDescriptor {
         return $LAYOUT;
     }
 
-    private static final GroupLayout chain$LAYOUT = (GroupLayout)$LAYOUT.select(groupElement("chain"));
+    private static final GroupLayout chain$LAYOUT = (GroupLayout) $LAYOUT.select(groupElement("chain"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUChainedStruct chain
-     * }
+     *}
      */
     public static final GroupLayout chain$layout() {
         return chain$LAYOUT;
@@ -53,9 +57,9 @@ public class WGPUShaderModuleSPIRVDescriptor {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUChainedStruct chain
-     * }
+     *}
      */
     public static final long chain$offset() {
         return chain$OFFSET;
@@ -63,9 +67,9 @@ public class WGPUShaderModuleSPIRVDescriptor {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUChainedStruct chain
-     * }
+     *}
      */
     public static MemorySegment chain(MemorySegment struct) {
         return struct.asSlice(chain$OFFSET, chain$LAYOUT.byteSize());
@@ -73,21 +77,21 @@ public class WGPUShaderModuleSPIRVDescriptor {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUChainedStruct chain
-     * }
+     *}
      */
     public static void chain(MemorySegment struct, MemorySegment fieldValue) {
         MemorySegment.copy(fieldValue, 0L, struct, chain$OFFSET, chain$LAYOUT.byteSize());
     }
 
-    private static final OfInt codeSize$LAYOUT = (OfInt)$LAYOUT.select(groupElement("codeSize"));
+    private static final OfInt codeSize$LAYOUT = (OfInt) $LAYOUT.select(groupElement("codeSize"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t codeSize
-     * }
+     *}
      */
     public static final OfInt codeSize$layout() {
         return codeSize$LAYOUT;
@@ -97,9 +101,9 @@ public class WGPUShaderModuleSPIRVDescriptor {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t codeSize
-     * }
+     *}
      */
     public static final long codeSize$offset() {
         return codeSize$OFFSET;
@@ -107,9 +111,9 @@ public class WGPUShaderModuleSPIRVDescriptor {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t codeSize
-     * }
+     *}
      */
     public static int codeSize(MemorySegment struct) {
         return struct.get(codeSize$LAYOUT, codeSize$OFFSET);
@@ -117,21 +121,21 @@ public class WGPUShaderModuleSPIRVDescriptor {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t codeSize
-     * }
+     *}
      */
     public static void codeSize(MemorySegment struct, int fieldValue) {
         struct.set(codeSize$LAYOUT, codeSize$OFFSET, fieldValue);
     }
 
-    private static final AddressLayout code$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("code"));
+    private static final AddressLayout code$LAYOUT = (AddressLayout) $LAYOUT.select(groupElement("code"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * const uint32_t *code
-     * }
+     *}
      */
     public static final AddressLayout code$layout() {
         return code$LAYOUT;
@@ -141,9 +145,9 @@ public class WGPUShaderModuleSPIRVDescriptor {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * const uint32_t *code
-     * }
+     *}
      */
     public static final long code$offset() {
         return code$OFFSET;
@@ -151,9 +155,9 @@ public class WGPUShaderModuleSPIRVDescriptor {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * const uint32_t *code
-     * }
+     *}
      */
     public static MemorySegment code(MemorySegment struct) {
         return struct.get(code$LAYOUT, code$OFFSET);
@@ -161,9 +165,9 @@ public class WGPUShaderModuleSPIRVDescriptor {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * const uint32_t *code
-     * }
+     *}
      */
     public static void code(MemorySegment struct, MemorySegment fieldValue) {
         struct.set(code$LAYOUT, code$OFFSET, fieldValue);
@@ -180,7 +184,9 @@ public class WGPUShaderModuleSPIRVDescriptor {
     /**
      * The size (in bytes) of this struct
      */
-    public static long sizeof() { return layout().byteSize(); }
+    public static long sizeof() {
+        return layout().byteSize();
+    }
 
     /**
      * Allocate a segment of size {@code layout().byteSize()} using {@code allocator}

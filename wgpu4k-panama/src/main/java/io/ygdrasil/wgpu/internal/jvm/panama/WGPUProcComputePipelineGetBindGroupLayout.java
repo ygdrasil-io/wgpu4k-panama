@@ -2,16 +2,20 @@
 
 package io.ygdrasil.wgpu.internal.jvm.panama;
 
-import java.lang.foreign.Arena;
-import java.lang.foreign.FunctionDescriptor;
-import java.lang.foreign.Linker;
-import java.lang.foreign.MemorySegment;
-import java.lang.invoke.MethodHandle;
+import java.lang.invoke.*;
+import java.lang.foreign.*;
+import java.nio.ByteOrder;
+import java.util.*;
+import java.util.function.*;
+import java.util.stream.*;
+
+import static java.lang.foreign.ValueLayout.*;
+import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 /**
- * {@snippet lang=c :
+ * {@snippet lang = c:
  * typedef WGPUBindGroupLayout (*WGPUProcComputePipelineGetBindGroupLayout)(WGPUComputePipeline, uint32_t)
- * }
+ *}
  */
 public class WGPUProcComputePipelineGetBindGroupLayout {
 
@@ -27,9 +31,9 @@ public class WGPUProcComputePipelineGetBindGroupLayout {
     }
 
     private static final FunctionDescriptor $DESC = FunctionDescriptor.of(
-        wgpu_h.C_POINTER,
-        wgpu_h.C_POINTER,
-        wgpu_h.C_INT
+            wgpu_h.C_POINTER,
+            wgpu_h.C_POINTER,
+            wgpu_h.C_INT
     );
 
     /**
@@ -54,7 +58,7 @@ public class WGPUProcComputePipelineGetBindGroupLayout {
     /**
      * Invoke the upcall stub {@code funcPtr}, with given parameters
      */
-    public static MemorySegment invoke(MemorySegment funcPtr,MemorySegment computePipeline, int groupIndex) {
+    public static MemorySegment invoke(MemorySegment funcPtr, MemorySegment computePipeline, int groupIndex) {
         try {
             return (MemorySegment) DOWN$MH.invokeExact(funcPtr, computePipeline, groupIndex);
         } catch (Throwable ex$) {

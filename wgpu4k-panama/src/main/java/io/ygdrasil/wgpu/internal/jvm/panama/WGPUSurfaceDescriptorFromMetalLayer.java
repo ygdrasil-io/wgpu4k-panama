@@ -2,18 +2,23 @@
 
 package io.ygdrasil.wgpu.internal.jvm.panama;
 
+import java.lang.invoke.*;
 import java.lang.foreign.*;
-import java.util.function.Consumer;
+import java.nio.ByteOrder;
+import java.util.*;
+import java.util.function.*;
+import java.util.stream.*;
 
-import static java.lang.foreign.MemoryLayout.PathElement.groupElement;
+import static java.lang.foreign.ValueLayout.*;
+import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 /**
- * {@snippet lang=c :
+ * {@snippet lang = c:
  * struct WGPUSurfaceDescriptorFromMetalLayer {
  *     WGPUChainedStruct chain;
  *     void *layer;
  * }
- * }
+ *}
  */
 public class WGPUSurfaceDescriptorFromMetalLayer {
 
@@ -22,8 +27,8 @@ public class WGPUSurfaceDescriptorFromMetalLayer {
     }
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
-        WGPUChainedStruct.layout().withName("chain"),
-        wgpu_h.C_POINTER.withName("layer")
+            WGPUChainedStruct.layout().withName("chain"),
+            wgpu_h.C_POINTER.withName("layer")
     ).withName("WGPUSurfaceDescriptorFromMetalLayer");
 
     /**
@@ -33,13 +38,13 @@ public class WGPUSurfaceDescriptorFromMetalLayer {
         return $LAYOUT;
     }
 
-    private static final GroupLayout chain$LAYOUT = (GroupLayout)$LAYOUT.select(groupElement("chain"));
+    private static final GroupLayout chain$LAYOUT = (GroupLayout) $LAYOUT.select(groupElement("chain"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUChainedStruct chain
-     * }
+     *}
      */
     public static final GroupLayout chain$layout() {
         return chain$LAYOUT;
@@ -49,9 +54,9 @@ public class WGPUSurfaceDescriptorFromMetalLayer {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUChainedStruct chain
-     * }
+     *}
      */
     public static final long chain$offset() {
         return chain$OFFSET;
@@ -59,9 +64,9 @@ public class WGPUSurfaceDescriptorFromMetalLayer {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUChainedStruct chain
-     * }
+     *}
      */
     public static MemorySegment chain(MemorySegment struct) {
         return struct.asSlice(chain$OFFSET, chain$LAYOUT.byteSize());
@@ -69,21 +74,21 @@ public class WGPUSurfaceDescriptorFromMetalLayer {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUChainedStruct chain
-     * }
+     *}
      */
     public static void chain(MemorySegment struct, MemorySegment fieldValue) {
         MemorySegment.copy(fieldValue, 0L, struct, chain$OFFSET, chain$LAYOUT.byteSize());
     }
 
-    private static final AddressLayout layer$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("layer"));
+    private static final AddressLayout layer$LAYOUT = (AddressLayout) $LAYOUT.select(groupElement("layer"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * void *layer
-     * }
+     *}
      */
     public static final AddressLayout layer$layout() {
         return layer$LAYOUT;
@@ -93,9 +98,9 @@ public class WGPUSurfaceDescriptorFromMetalLayer {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * void *layer
-     * }
+     *}
      */
     public static final long layer$offset() {
         return layer$OFFSET;
@@ -103,9 +108,9 @@ public class WGPUSurfaceDescriptorFromMetalLayer {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * void *layer
-     * }
+     *}
      */
     public static MemorySegment layer(MemorySegment struct) {
         return struct.get(layer$LAYOUT, layer$OFFSET);
@@ -113,9 +118,9 @@ public class WGPUSurfaceDescriptorFromMetalLayer {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * void *layer
-     * }
+     *}
      */
     public static void layer(MemorySegment struct, MemorySegment fieldValue) {
         struct.set(layer$LAYOUT, layer$OFFSET, fieldValue);
@@ -132,7 +137,9 @@ public class WGPUSurfaceDescriptorFromMetalLayer {
     /**
      * The size (in bytes) of this struct
      */
-    public static long sizeof() { return layout().byteSize(); }
+    public static long sizeof() {
+        return layout().byteSize();
+    }
 
     /**
      * Allocate a segment of size {@code layout().byteSize()} using {@code allocator}

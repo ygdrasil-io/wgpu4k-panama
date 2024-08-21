@@ -2,21 +2,25 @@
 
 package io.ygdrasil.wgpu.internal.jvm.panama;
 
+import java.lang.invoke.*;
 import java.lang.foreign.*;
-import java.util.function.Consumer;
+import java.nio.ByteOrder;
+import java.util.*;
+import java.util.function.*;
+import java.util.stream.*;
 
-import static java.lang.foreign.MemoryLayout.PathElement.groupElement;
-import static java.lang.foreign.ValueLayout.OfLong;
+import static java.lang.foreign.ValueLayout.*;
+import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 /**
- * {@snippet lang=c :
+ * {@snippet lang = c:
  * struct WGPUShaderModuleDescriptor {
  *     const WGPUChainedStruct *nextInChain;
  *     const char *label;
  *     size_t hintCount;
  *     const WGPUShaderModuleCompilationHint *hints;
  * }
- * }
+ *}
  */
 public class WGPUShaderModuleDescriptor {
 
@@ -25,10 +29,10 @@ public class WGPUShaderModuleDescriptor {
     }
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
-        wgpu_h.C_POINTER.withName("nextInChain"),
-        wgpu_h.C_POINTER.withName("label"),
-        wgpu_h.C_LONG.withName("hintCount"),
-        wgpu_h.C_POINTER.withName("hints")
+            wgpu_h.C_POINTER.withName("nextInChain"),
+            wgpu_h.C_POINTER.withName("label"),
+            wgpu_h.C_LONG.withName("hintCount"),
+            wgpu_h.C_POINTER.withName("hints")
     ).withName("WGPUShaderModuleDescriptor");
 
     /**
@@ -38,13 +42,13 @@ public class WGPUShaderModuleDescriptor {
         return $LAYOUT;
     }
 
-    private static final AddressLayout nextInChain$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("nextInChain"));
+    private static final AddressLayout nextInChain$LAYOUT = (AddressLayout) $LAYOUT.select(groupElement("nextInChain"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * const WGPUChainedStruct *nextInChain
-     * }
+     *}
      */
     public static final AddressLayout nextInChain$layout() {
         return nextInChain$LAYOUT;
@@ -54,9 +58,9 @@ public class WGPUShaderModuleDescriptor {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * const WGPUChainedStruct *nextInChain
-     * }
+     *}
      */
     public static final long nextInChain$offset() {
         return nextInChain$OFFSET;
@@ -64,9 +68,9 @@ public class WGPUShaderModuleDescriptor {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * const WGPUChainedStruct *nextInChain
-     * }
+     *}
      */
     public static MemorySegment nextInChain(MemorySegment struct) {
         return struct.get(nextInChain$LAYOUT, nextInChain$OFFSET);
@@ -74,21 +78,21 @@ public class WGPUShaderModuleDescriptor {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * const WGPUChainedStruct *nextInChain
-     * }
+     *}
      */
     public static void nextInChain(MemorySegment struct, MemorySegment fieldValue) {
         struct.set(nextInChain$LAYOUT, nextInChain$OFFSET, fieldValue);
     }
 
-    private static final AddressLayout label$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("label"));
+    private static final AddressLayout label$LAYOUT = (AddressLayout) $LAYOUT.select(groupElement("label"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * const char *label
-     * }
+     *}
      */
     public static final AddressLayout label$layout() {
         return label$LAYOUT;
@@ -98,9 +102,9 @@ public class WGPUShaderModuleDescriptor {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * const char *label
-     * }
+     *}
      */
     public static final long label$offset() {
         return label$OFFSET;
@@ -108,9 +112,9 @@ public class WGPUShaderModuleDescriptor {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * const char *label
-     * }
+     *}
      */
     public static MemorySegment label(MemorySegment struct) {
         return struct.get(label$LAYOUT, label$OFFSET);
@@ -118,21 +122,21 @@ public class WGPUShaderModuleDescriptor {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * const char *label
-     * }
+     *}
      */
     public static void label(MemorySegment struct, MemorySegment fieldValue) {
         struct.set(label$LAYOUT, label$OFFSET, fieldValue);
     }
 
-    private static final OfLong hintCount$LAYOUT = (OfLong)$LAYOUT.select(groupElement("hintCount"));
+    private static final OfLong hintCount$LAYOUT = (OfLong) $LAYOUT.select(groupElement("hintCount"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * size_t hintCount
-     * }
+     *}
      */
     public static final OfLong hintCount$layout() {
         return hintCount$LAYOUT;
@@ -142,9 +146,9 @@ public class WGPUShaderModuleDescriptor {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * size_t hintCount
-     * }
+     *}
      */
     public static final long hintCount$offset() {
         return hintCount$OFFSET;
@@ -152,9 +156,9 @@ public class WGPUShaderModuleDescriptor {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * size_t hintCount
-     * }
+     *}
      */
     public static long hintCount(MemorySegment struct) {
         return struct.get(hintCount$LAYOUT, hintCount$OFFSET);
@@ -162,21 +166,21 @@ public class WGPUShaderModuleDescriptor {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * size_t hintCount
-     * }
+     *}
      */
     public static void hintCount(MemorySegment struct, long fieldValue) {
         struct.set(hintCount$LAYOUT, hintCount$OFFSET, fieldValue);
     }
 
-    private static final AddressLayout hints$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("hints"));
+    private static final AddressLayout hints$LAYOUT = (AddressLayout) $LAYOUT.select(groupElement("hints"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * const WGPUShaderModuleCompilationHint *hints
-     * }
+     *}
      */
     public static final AddressLayout hints$layout() {
         return hints$LAYOUT;
@@ -186,9 +190,9 @@ public class WGPUShaderModuleDescriptor {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * const WGPUShaderModuleCompilationHint *hints
-     * }
+     *}
      */
     public static final long hints$offset() {
         return hints$OFFSET;
@@ -196,9 +200,9 @@ public class WGPUShaderModuleDescriptor {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * const WGPUShaderModuleCompilationHint *hints
-     * }
+     *}
      */
     public static MemorySegment hints(MemorySegment struct) {
         return struct.get(hints$LAYOUT, hints$OFFSET);
@@ -206,9 +210,9 @@ public class WGPUShaderModuleDescriptor {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * const WGPUShaderModuleCompilationHint *hints
-     * }
+     *}
      */
     public static void hints(MemorySegment struct, MemorySegment fieldValue) {
         struct.set(hints$LAYOUT, hints$OFFSET, fieldValue);
@@ -225,7 +229,9 @@ public class WGPUShaderModuleDescriptor {
     /**
      * The size (in bytes) of this struct
      */
-    public static long sizeof() { return layout().byteSize(); }
+    public static long sizeof() {
+        return layout().byteSize();
+    }
 
     /**
      * Allocate a segment of size {@code layout().byteSize()} using {@code allocator}

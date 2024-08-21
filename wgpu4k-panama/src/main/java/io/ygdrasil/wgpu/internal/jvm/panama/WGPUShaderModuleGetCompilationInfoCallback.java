@@ -13,13 +13,17 @@ import static java.lang.foreign.ValueLayout.*;
 import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 /**
- * {@snippet lang=c :
- * typedef void (*WGPURequestDeviceCallback)(WGPURequestDeviceStatus, WGPUDevice, const char *, void *)
- * }
+ * {@snippet lang = c:
+ * typedef void (*WGPUShaderModuleGetCompilationInfoCallback)(WGPUCompilationInfoRequestStatus, const struct WGPUCompilationInfo {
+ *     const WGPUChainedStruct *nextInChain;
+ *     size_t messageCount;
+ *     const WGPUCompilationMessage *messages;
+ * } *, void *)
+ *}
  */
-public class WGPURequestDeviceCallback {
+public class WGPUShaderModuleGetCompilationInfoCallback {
 
-    WGPURequestDeviceCallback() {
+    WGPUShaderModuleGetCompilationInfoCallback() {
         // Should not be called directly
     }
 
@@ -27,14 +31,13 @@ public class WGPURequestDeviceCallback {
      * The function pointer signature, expressed as a functional interface
      */
     public interface Function {
-        void apply(int status, MemorySegment device, MemorySegment message, MemorySegment userdata);
+        void apply(int status, MemorySegment compilationInfo, MemorySegment userdata);
     }
 
     private static final FunctionDescriptor $DESC = FunctionDescriptor.ofVoid(
-        wgpu_h.C_INT,
-        wgpu_h.C_POINTER,
-        wgpu_h.C_POINTER,
-        wgpu_h.C_POINTER
+            wgpu_h.C_INT,
+            wgpu_h.C_POINTER,
+            wgpu_h.C_POINTER
     );
 
     /**
@@ -44,13 +47,13 @@ public class WGPURequestDeviceCallback {
         return $DESC;
     }
 
-    private static final MethodHandle UP$MH = wgpu_h.upcallHandle(WGPURequestDeviceCallback.Function.class, "apply", $DESC);
+    private static final MethodHandle UP$MH = wgpu_h.upcallHandle(WGPUShaderModuleGetCompilationInfoCallback.Function.class, "apply", $DESC);
 
     /**
      * Allocates a new upcall stub, whose implementation is defined by {@code fi}.
      * The lifetime of the returned segment is managed by {@code arena}
      */
-    public static MemorySegment allocate(WGPURequestDeviceCallback.Function fi, Arena arena) {
+    public static MemorySegment allocate(WGPUShaderModuleGetCompilationInfoCallback.Function fi, Arena arena) {
         return Linker.nativeLinker().upcallStub(UP$MH.bindTo(fi), $DESC, arena);
     }
 
@@ -59,9 +62,9 @@ public class WGPURequestDeviceCallback {
     /**
      * Invoke the upcall stub {@code funcPtr}, with given parameters
      */
-    public static void invoke(MemorySegment funcPtr,int status, MemorySegment device, MemorySegment message, MemorySegment userdata) {
+    public static void invoke(MemorySegment funcPtr, int status, MemorySegment compilationInfo, MemorySegment userdata) {
         try {
-             DOWN$MH.invokeExact(funcPtr, status, device, message, userdata);
+            DOWN$MH.invokeExact(funcPtr, status, compilationInfo, userdata);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }

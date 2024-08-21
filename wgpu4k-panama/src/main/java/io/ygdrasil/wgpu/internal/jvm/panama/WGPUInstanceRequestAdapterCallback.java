@@ -13,13 +13,13 @@ import static java.lang.foreign.ValueLayout.*;
 import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 /**
- * {@snippet lang=c :
- * typedef void (*WGPURequestAdapterCallback)(WGPURequestAdapterStatus, WGPUAdapter, const char *, void *)
- * }
+ * {@snippet lang = c:
+ * typedef void (*WGPUInstanceRequestAdapterCallback)(WGPURequestAdapterStatus, WGPUAdapter, const char *, void *)
+ *}
  */
-public class WGPURequestAdapterCallback {
+public class WGPUInstanceRequestAdapterCallback {
 
-    WGPURequestAdapterCallback() {
+    WGPUInstanceRequestAdapterCallback() {
         // Should not be called directly
     }
 
@@ -31,10 +31,10 @@ public class WGPURequestAdapterCallback {
     }
 
     private static final FunctionDescriptor $DESC = FunctionDescriptor.ofVoid(
-        wgpu_h.C_INT,
-        wgpu_h.C_POINTER,
-        wgpu_h.C_POINTER,
-        wgpu_h.C_POINTER
+            wgpu_h.C_INT,
+            wgpu_h.C_POINTER,
+            wgpu_h.C_POINTER,
+            wgpu_h.C_POINTER
     );
 
     /**
@@ -44,13 +44,13 @@ public class WGPURequestAdapterCallback {
         return $DESC;
     }
 
-    private static final MethodHandle UP$MH = wgpu_h.upcallHandle(WGPURequestAdapterCallback.Function.class, "apply", $DESC);
+    private static final MethodHandle UP$MH = wgpu_h.upcallHandle(WGPUInstanceRequestAdapterCallback.Function.class, "apply", $DESC);
 
     /**
      * Allocates a new upcall stub, whose implementation is defined by {@code fi}.
      * The lifetime of the returned segment is managed by {@code arena}
      */
-    public static MemorySegment allocate(WGPURequestAdapterCallback.Function fi, Arena arena) {
+    public static MemorySegment allocate(WGPUInstanceRequestAdapterCallback.Function fi, Arena arena) {
         return Linker.nativeLinker().upcallStub(UP$MH.bindTo(fi), $DESC, arena);
     }
 
@@ -59,9 +59,9 @@ public class WGPURequestAdapterCallback {
     /**
      * Invoke the upcall stub {@code funcPtr}, with given parameters
      */
-    public static void invoke(MemorySegment funcPtr,int status, MemorySegment adapter, MemorySegment message, MemorySegment userdata) {
+    public static void invoke(MemorySegment funcPtr, int status, MemorySegment adapter, MemorySegment message, MemorySegment userdata) {
         try {
-             DOWN$MH.invokeExact(funcPtr, status, adapter, message, userdata);
+            DOWN$MH.invokeExact(funcPtr, status, adapter, message, userdata);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }

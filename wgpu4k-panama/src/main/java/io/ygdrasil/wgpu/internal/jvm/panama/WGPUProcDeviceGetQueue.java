@@ -9,9 +9,9 @@ import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
 /**
- * {@snippet lang=c :
+ * {@snippet lang = c:
  * typedef WGPUQueue (*WGPUProcDeviceGetQueue)(WGPUDevice)
- * }
+ *}
  */
 public class WGPUProcDeviceGetQueue {
 
@@ -27,8 +27,8 @@ public class WGPUProcDeviceGetQueue {
     }
 
     private static final FunctionDescriptor $DESC = FunctionDescriptor.of(
-        wgpu_h.C_POINTER,
-        wgpu_h.C_POINTER
+            wgpu_h.C_POINTER,
+            wgpu_h.C_POINTER
     );
 
     /**
@@ -53,7 +53,7 @@ public class WGPUProcDeviceGetQueue {
     /**
      * Invoke the upcall stub {@code funcPtr}, with given parameters
      */
-    public static MemorySegment invoke(MemorySegment funcPtr,MemorySegment device) {
+    public static MemorySegment invoke(MemorySegment funcPtr, MemorySegment device) {
         try {
             return (MemorySegment) DOWN$MH.invokeExact(funcPtr, device);
         } catch (Throwable ex$) {

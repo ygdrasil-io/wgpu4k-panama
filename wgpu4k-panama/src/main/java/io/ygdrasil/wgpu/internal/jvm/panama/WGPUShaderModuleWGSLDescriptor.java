@@ -2,18 +2,23 @@
 
 package io.ygdrasil.wgpu.internal.jvm.panama;
 
+import java.lang.invoke.*;
 import java.lang.foreign.*;
-import java.util.function.Consumer;
+import java.nio.ByteOrder;
+import java.util.*;
+import java.util.function.*;
+import java.util.stream.*;
 
-import static java.lang.foreign.MemoryLayout.PathElement.groupElement;
+import static java.lang.foreign.ValueLayout.*;
+import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 /**
- * {@snippet lang=c :
+ * {@snippet lang = c:
  * struct WGPUShaderModuleWGSLDescriptor {
  *     WGPUChainedStruct chain;
  *     const char *code;
  * }
- * }
+ *}
  */
 public class WGPUShaderModuleWGSLDescriptor {
 
@@ -22,8 +27,8 @@ public class WGPUShaderModuleWGSLDescriptor {
     }
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
-        WGPUChainedStruct.layout().withName("chain"),
-        wgpu_h.C_POINTER.withName("code")
+            WGPUChainedStruct.layout().withName("chain"),
+            wgpu_h.C_POINTER.withName("code")
     ).withName("WGPUShaderModuleWGSLDescriptor");
 
     /**
@@ -33,13 +38,13 @@ public class WGPUShaderModuleWGSLDescriptor {
         return $LAYOUT;
     }
 
-    private static final GroupLayout chain$LAYOUT = (GroupLayout)$LAYOUT.select(groupElement("chain"));
+    private static final GroupLayout chain$LAYOUT = (GroupLayout) $LAYOUT.select(groupElement("chain"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUChainedStruct chain
-     * }
+     *}
      */
     public static final GroupLayout chain$layout() {
         return chain$LAYOUT;
@@ -49,9 +54,9 @@ public class WGPUShaderModuleWGSLDescriptor {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUChainedStruct chain
-     * }
+     *}
      */
     public static final long chain$offset() {
         return chain$OFFSET;
@@ -59,9 +64,9 @@ public class WGPUShaderModuleWGSLDescriptor {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUChainedStruct chain
-     * }
+     *}
      */
     public static MemorySegment chain(MemorySegment struct) {
         return struct.asSlice(chain$OFFSET, chain$LAYOUT.byteSize());
@@ -69,21 +74,21 @@ public class WGPUShaderModuleWGSLDescriptor {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUChainedStruct chain
-     * }
+     *}
      */
     public static void chain(MemorySegment struct, MemorySegment fieldValue) {
         MemorySegment.copy(fieldValue, 0L, struct, chain$OFFSET, chain$LAYOUT.byteSize());
     }
 
-    private static final AddressLayout code$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("code"));
+    private static final AddressLayout code$LAYOUT = (AddressLayout) $LAYOUT.select(groupElement("code"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * const char *code
-     * }
+     *}
      */
     public static final AddressLayout code$layout() {
         return code$LAYOUT;
@@ -93,9 +98,9 @@ public class WGPUShaderModuleWGSLDescriptor {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * const char *code
-     * }
+     *}
      */
     public static final long code$offset() {
         return code$OFFSET;
@@ -103,9 +108,9 @@ public class WGPUShaderModuleWGSLDescriptor {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * const char *code
-     * }
+     *}
      */
     public static MemorySegment code(MemorySegment struct) {
         return struct.get(code$LAYOUT, code$OFFSET);
@@ -113,9 +118,9 @@ public class WGPUShaderModuleWGSLDescriptor {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * const char *code
-     * }
+     *}
      */
     public static void code(MemorySegment struct, MemorySegment fieldValue) {
         struct.set(code$LAYOUT, code$OFFSET, fieldValue);
@@ -132,7 +137,9 @@ public class WGPUShaderModuleWGSLDescriptor {
     /**
      * The size (in bytes) of this struct
      */
-    public static long sizeof() { return layout().byteSize(); }
+    public static long sizeof() {
+        return layout().byteSize();
+    }
 
     /**
      * Allocate a segment of size {@code layout().byteSize()} using {@code allocator}

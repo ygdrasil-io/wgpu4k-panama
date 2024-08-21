@@ -13,13 +13,13 @@ import static java.lang.foreign.ValueLayout.*;
 import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 /**
- * {@snippet lang=c :
- * typedef void (*WGPUQueueWorkDoneCallback)(WGPUQueueWorkDoneStatus, void *)
- * }
+ * {@snippet lang = c:
+ * typedef WGPUBool (*WGPUProcInstanceHasWGSLLanguageFeature)(WGPUInstance, WGPUWGSLFeatureName)
+ *}
  */
-public class WGPUQueueWorkDoneCallback {
+public class WGPUProcInstanceHasWGSLLanguageFeature {
 
-    WGPUQueueWorkDoneCallback() {
+    WGPUProcInstanceHasWGSLLanguageFeature() {
         // Should not be called directly
     }
 
@@ -27,12 +27,13 @@ public class WGPUQueueWorkDoneCallback {
      * The function pointer signature, expressed as a functional interface
      */
     public interface Function {
-        void apply(int status, MemorySegment userdata);
+        int apply(MemorySegment instance, int feature);
     }
 
-    private static final FunctionDescriptor $DESC = FunctionDescriptor.ofVoid(
-        wgpu_h.C_INT,
-        wgpu_h.C_POINTER
+    private static final FunctionDescriptor $DESC = FunctionDescriptor.of(
+            wgpu_h.C_INT,
+            wgpu_h.C_POINTER,
+            wgpu_h.C_INT
     );
 
     /**
@@ -42,13 +43,13 @@ public class WGPUQueueWorkDoneCallback {
         return $DESC;
     }
 
-    private static final MethodHandle UP$MH = wgpu_h.upcallHandle(WGPUQueueWorkDoneCallback.Function.class, "apply", $DESC);
+    private static final MethodHandle UP$MH = wgpu_h.upcallHandle(WGPUProcInstanceHasWGSLLanguageFeature.Function.class, "apply", $DESC);
 
     /**
      * Allocates a new upcall stub, whose implementation is defined by {@code fi}.
      * The lifetime of the returned segment is managed by {@code arena}
      */
-    public static MemorySegment allocate(WGPUQueueWorkDoneCallback.Function fi, Arena arena) {
+    public static MemorySegment allocate(WGPUProcInstanceHasWGSLLanguageFeature.Function fi, Arena arena) {
         return Linker.nativeLinker().upcallStub(UP$MH.bindTo(fi), $DESC, arena);
     }
 
@@ -57,9 +58,9 @@ public class WGPUQueueWorkDoneCallback {
     /**
      * Invoke the upcall stub {@code funcPtr}, with given parameters
      */
-    public static void invoke(MemorySegment funcPtr,int status, MemorySegment userdata) {
+    public static int invoke(MemorySegment funcPtr, MemorySegment instance, int feature) {
         try {
-             DOWN$MH.invokeExact(funcPtr, status, userdata);
+            return (int) DOWN$MH.invokeExact(funcPtr, instance, feature);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }

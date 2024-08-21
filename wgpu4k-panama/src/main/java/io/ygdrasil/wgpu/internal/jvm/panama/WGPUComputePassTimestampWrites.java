@@ -2,20 +2,24 @@
 
 package io.ygdrasil.wgpu.internal.jvm.panama;
 
+import java.lang.invoke.*;
 import java.lang.foreign.*;
-import java.util.function.Consumer;
+import java.nio.ByteOrder;
+import java.util.*;
+import java.util.function.*;
+import java.util.stream.*;
 
-import static java.lang.foreign.MemoryLayout.PathElement.groupElement;
-import static java.lang.foreign.ValueLayout.OfInt;
+import static java.lang.foreign.ValueLayout.*;
+import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 /**
- * {@snippet lang=c :
+ * {@snippet lang = c:
  * struct WGPUComputePassTimestampWrites {
  *     WGPUQuerySet querySet;
  *     uint32_t beginningOfPassWriteIndex;
  *     uint32_t endOfPassWriteIndex;
  * }
- * }
+ *}
  */
 public class WGPUComputePassTimestampWrites {
 
@@ -24,9 +28,9 @@ public class WGPUComputePassTimestampWrites {
     }
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
-        wgpu_h.C_POINTER.withName("querySet"),
-        wgpu_h.C_INT.withName("beginningOfPassWriteIndex"),
-        wgpu_h.C_INT.withName("endOfPassWriteIndex")
+            wgpu_h.C_POINTER.withName("querySet"),
+            wgpu_h.C_INT.withName("beginningOfPassWriteIndex"),
+            wgpu_h.C_INT.withName("endOfPassWriteIndex")
     ).withName("WGPUComputePassTimestampWrites");
 
     /**
@@ -36,13 +40,13 @@ public class WGPUComputePassTimestampWrites {
         return $LAYOUT;
     }
 
-    private static final AddressLayout querySet$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("querySet"));
+    private static final AddressLayout querySet$LAYOUT = (AddressLayout) $LAYOUT.select(groupElement("querySet"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUQuerySet querySet
-     * }
+     *}
      */
     public static final AddressLayout querySet$layout() {
         return querySet$LAYOUT;
@@ -52,9 +56,9 @@ public class WGPUComputePassTimestampWrites {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUQuerySet querySet
-     * }
+     *}
      */
     public static final long querySet$offset() {
         return querySet$OFFSET;
@@ -62,9 +66,9 @@ public class WGPUComputePassTimestampWrites {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUQuerySet querySet
-     * }
+     *}
      */
     public static MemorySegment querySet(MemorySegment struct) {
         return struct.get(querySet$LAYOUT, querySet$OFFSET);
@@ -72,21 +76,21 @@ public class WGPUComputePassTimestampWrites {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUQuerySet querySet
-     * }
+     *}
      */
     public static void querySet(MemorySegment struct, MemorySegment fieldValue) {
         struct.set(querySet$LAYOUT, querySet$OFFSET, fieldValue);
     }
 
-    private static final OfInt beginningOfPassWriteIndex$LAYOUT = (OfInt)$LAYOUT.select(groupElement("beginningOfPassWriteIndex"));
+    private static final OfInt beginningOfPassWriteIndex$LAYOUT = (OfInt) $LAYOUT.select(groupElement("beginningOfPassWriteIndex"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t beginningOfPassWriteIndex
-     * }
+     *}
      */
     public static final OfInt beginningOfPassWriteIndex$layout() {
         return beginningOfPassWriteIndex$LAYOUT;
@@ -96,9 +100,9 @@ public class WGPUComputePassTimestampWrites {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t beginningOfPassWriteIndex
-     * }
+     *}
      */
     public static final long beginningOfPassWriteIndex$offset() {
         return beginningOfPassWriteIndex$OFFSET;
@@ -106,9 +110,9 @@ public class WGPUComputePassTimestampWrites {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t beginningOfPassWriteIndex
-     * }
+     *}
      */
     public static int beginningOfPassWriteIndex(MemorySegment struct) {
         return struct.get(beginningOfPassWriteIndex$LAYOUT, beginningOfPassWriteIndex$OFFSET);
@@ -116,21 +120,21 @@ public class WGPUComputePassTimestampWrites {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t beginningOfPassWriteIndex
-     * }
+     *}
      */
     public static void beginningOfPassWriteIndex(MemorySegment struct, int fieldValue) {
         struct.set(beginningOfPassWriteIndex$LAYOUT, beginningOfPassWriteIndex$OFFSET, fieldValue);
     }
 
-    private static final OfInt endOfPassWriteIndex$LAYOUT = (OfInt)$LAYOUT.select(groupElement("endOfPassWriteIndex"));
+    private static final OfInt endOfPassWriteIndex$LAYOUT = (OfInt) $LAYOUT.select(groupElement("endOfPassWriteIndex"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t endOfPassWriteIndex
-     * }
+     *}
      */
     public static final OfInt endOfPassWriteIndex$layout() {
         return endOfPassWriteIndex$LAYOUT;
@@ -140,9 +144,9 @@ public class WGPUComputePassTimestampWrites {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t endOfPassWriteIndex
-     * }
+     *}
      */
     public static final long endOfPassWriteIndex$offset() {
         return endOfPassWriteIndex$OFFSET;
@@ -150,9 +154,9 @@ public class WGPUComputePassTimestampWrites {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t endOfPassWriteIndex
-     * }
+     *}
      */
     public static int endOfPassWriteIndex(MemorySegment struct) {
         return struct.get(endOfPassWriteIndex$LAYOUT, endOfPassWriteIndex$OFFSET);
@@ -160,9 +164,9 @@ public class WGPUComputePassTimestampWrites {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t endOfPassWriteIndex
-     * }
+     *}
      */
     public static void endOfPassWriteIndex(MemorySegment struct, int fieldValue) {
         struct.set(endOfPassWriteIndex$LAYOUT, endOfPassWriteIndex$OFFSET, fieldValue);
@@ -179,7 +183,9 @@ public class WGPUComputePassTimestampWrites {
     /**
      * The size (in bytes) of this struct
      */
-    public static long sizeof() { return layout().byteSize(); }
+    public static long sizeof() {
+        return layout().byteSize();
+    }
 
     /**
      * Allocate a segment of size {@code layout().byteSize()} using {@code allocator}

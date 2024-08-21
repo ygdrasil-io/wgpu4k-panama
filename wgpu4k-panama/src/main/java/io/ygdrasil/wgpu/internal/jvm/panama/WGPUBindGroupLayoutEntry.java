@@ -9,7 +9,7 @@ import static java.lang.foreign.MemoryLayout.PathElement.groupElement;
 import static java.lang.foreign.ValueLayout.OfInt;
 
 /**
- * {@snippet lang=c :
+ * {@snippet lang = c:
  * struct WGPUBindGroupLayoutEntry {
  *     const WGPUChainedStruct *nextInChain;
  *     uint32_t binding;
@@ -19,7 +19,7 @@ import static java.lang.foreign.ValueLayout.OfInt;
  *     WGPUTextureBindingLayout texture;
  *     WGPUStorageTextureBindingLayout storageTexture;
  * }
- * }
+ *}
  */
 public class WGPUBindGroupLayoutEntry {
 
@@ -28,13 +28,13 @@ public class WGPUBindGroupLayoutEntry {
     }
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
-        wgpu_h.C_POINTER.withName("nextInChain"),
-        wgpu_h.C_INT.withName("binding"),
-        wgpu_h.C_INT.withName("visibility"),
-        WGPUBufferBindingLayout.layout().withName("buffer"),
-        WGPUSamplerBindingLayout.layout().withName("sampler"),
-        WGPUTextureBindingLayout.layout().withName("texture"),
-        WGPUStorageTextureBindingLayout.layout().withName("storageTexture")
+            wgpu_h.C_POINTER.withName("nextInChain"),
+            wgpu_h.C_INT.withName("binding"),
+            wgpu_h.C_INT.withName("visibility"),
+            WGPUBufferBindingLayout.layout().withName("buffer"),
+            WGPUSamplerBindingLayout.layout().withName("sampler"),
+            WGPUTextureBindingLayout.layout().withName("texture"),
+            WGPUStorageTextureBindingLayout.layout().withName("storageTexture")
     ).withName("WGPUBindGroupLayoutEntry");
 
     /**
@@ -44,13 +44,13 @@ public class WGPUBindGroupLayoutEntry {
         return $LAYOUT;
     }
 
-    private static final AddressLayout nextInChain$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("nextInChain"));
+    private static final AddressLayout nextInChain$LAYOUT = (AddressLayout) $LAYOUT.select(groupElement("nextInChain"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * const WGPUChainedStruct *nextInChain
-     * }
+     *}
      */
     public static final AddressLayout nextInChain$layout() {
         return nextInChain$LAYOUT;
@@ -60,9 +60,9 @@ public class WGPUBindGroupLayoutEntry {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * const WGPUChainedStruct *nextInChain
-     * }
+     *}
      */
     public static final long nextInChain$offset() {
         return nextInChain$OFFSET;
@@ -70,9 +70,9 @@ public class WGPUBindGroupLayoutEntry {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * const WGPUChainedStruct *nextInChain
-     * }
+     *}
      */
     public static MemorySegment nextInChain(MemorySegment struct) {
         return struct.get(nextInChain$LAYOUT, nextInChain$OFFSET);
@@ -80,21 +80,21 @@ public class WGPUBindGroupLayoutEntry {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * const WGPUChainedStruct *nextInChain
-     * }
+     *}
      */
     public static void nextInChain(MemorySegment struct, MemorySegment fieldValue) {
         struct.set(nextInChain$LAYOUT, nextInChain$OFFSET, fieldValue);
     }
 
-    private static final OfInt binding$LAYOUT = (OfInt)$LAYOUT.select(groupElement("binding"));
+    private static final OfInt binding$LAYOUT = (OfInt) $LAYOUT.select(groupElement("binding"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t binding
-     * }
+     *}
      */
     public static final OfInt binding$layout() {
         return binding$LAYOUT;
@@ -104,9 +104,9 @@ public class WGPUBindGroupLayoutEntry {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t binding
-     * }
+     *}
      */
     public static final long binding$offset() {
         return binding$OFFSET;
@@ -114,9 +114,9 @@ public class WGPUBindGroupLayoutEntry {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t binding
-     * }
+     *}
      */
     public static int binding(MemorySegment struct) {
         return struct.get(binding$LAYOUT, binding$OFFSET);
@@ -124,21 +124,21 @@ public class WGPUBindGroupLayoutEntry {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t binding
-     * }
+     *}
      */
     public static void binding(MemorySegment struct, int fieldValue) {
         struct.set(binding$LAYOUT, binding$OFFSET, fieldValue);
     }
 
-    private static final OfInt visibility$LAYOUT = (OfInt)$LAYOUT.select(groupElement("visibility"));
+    private static final OfInt visibility$LAYOUT = (OfInt) $LAYOUT.select(groupElement("visibility"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUShaderStageFlags visibility
-     * }
+     *}
      */
     public static final OfInt visibility$layout() {
         return visibility$LAYOUT;
@@ -148,9 +148,9 @@ public class WGPUBindGroupLayoutEntry {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUShaderStageFlags visibility
-     * }
+     *}
      */
     public static final long visibility$offset() {
         return visibility$OFFSET;
@@ -158,9 +158,9 @@ public class WGPUBindGroupLayoutEntry {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUShaderStageFlags visibility
-     * }
+     *}
      */
     public static int visibility(MemorySegment struct) {
         return struct.get(visibility$LAYOUT, visibility$OFFSET);
@@ -168,21 +168,21 @@ public class WGPUBindGroupLayoutEntry {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUShaderStageFlags visibility
-     * }
+     *}
      */
     public static void visibility(MemorySegment struct, int fieldValue) {
         struct.set(visibility$LAYOUT, visibility$OFFSET, fieldValue);
     }
 
-    private static final GroupLayout buffer$LAYOUT = (GroupLayout)$LAYOUT.select(groupElement("buffer"));
+    private static final GroupLayout buffer$LAYOUT = (GroupLayout) $LAYOUT.select(groupElement("buffer"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUBufferBindingLayout buffer
-     * }
+     *}
      */
     public static final GroupLayout buffer$layout() {
         return buffer$LAYOUT;
@@ -192,9 +192,9 @@ public class WGPUBindGroupLayoutEntry {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUBufferBindingLayout buffer
-     * }
+     *}
      */
     public static final long buffer$offset() {
         return buffer$OFFSET;
@@ -202,9 +202,9 @@ public class WGPUBindGroupLayoutEntry {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUBufferBindingLayout buffer
-     * }
+     *}
      */
     public static MemorySegment buffer(MemorySegment struct) {
         return struct.asSlice(buffer$OFFSET, buffer$LAYOUT.byteSize());
@@ -212,21 +212,21 @@ public class WGPUBindGroupLayoutEntry {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUBufferBindingLayout buffer
-     * }
+     *}
      */
     public static void buffer(MemorySegment struct, MemorySegment fieldValue) {
         MemorySegment.copy(fieldValue, 0L, struct, buffer$OFFSET, buffer$LAYOUT.byteSize());
     }
 
-    private static final GroupLayout sampler$LAYOUT = (GroupLayout)$LAYOUT.select(groupElement("sampler"));
+    private static final GroupLayout sampler$LAYOUT = (GroupLayout) $LAYOUT.select(groupElement("sampler"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUSamplerBindingLayout sampler
-     * }
+     *}
      */
     public static final GroupLayout sampler$layout() {
         return sampler$LAYOUT;
@@ -236,9 +236,9 @@ public class WGPUBindGroupLayoutEntry {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUSamplerBindingLayout sampler
-     * }
+     *}
      */
     public static final long sampler$offset() {
         return sampler$OFFSET;
@@ -246,9 +246,9 @@ public class WGPUBindGroupLayoutEntry {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUSamplerBindingLayout sampler
-     * }
+     *}
      */
     public static MemorySegment sampler(MemorySegment struct) {
         return struct.asSlice(sampler$OFFSET, sampler$LAYOUT.byteSize());
@@ -256,21 +256,21 @@ public class WGPUBindGroupLayoutEntry {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUSamplerBindingLayout sampler
-     * }
+     *}
      */
     public static void sampler(MemorySegment struct, MemorySegment fieldValue) {
         MemorySegment.copy(fieldValue, 0L, struct, sampler$OFFSET, sampler$LAYOUT.byteSize());
     }
 
-    private static final GroupLayout texture$LAYOUT = (GroupLayout)$LAYOUT.select(groupElement("texture"));
+    private static final GroupLayout texture$LAYOUT = (GroupLayout) $LAYOUT.select(groupElement("texture"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUTextureBindingLayout texture
-     * }
+     *}
      */
     public static final GroupLayout texture$layout() {
         return texture$LAYOUT;
@@ -280,9 +280,9 @@ public class WGPUBindGroupLayoutEntry {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUTextureBindingLayout texture
-     * }
+     *}
      */
     public static final long texture$offset() {
         return texture$OFFSET;
@@ -290,9 +290,9 @@ public class WGPUBindGroupLayoutEntry {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUTextureBindingLayout texture
-     * }
+     *}
      */
     public static MemorySegment texture(MemorySegment struct) {
         return struct.asSlice(texture$OFFSET, texture$LAYOUT.byteSize());
@@ -300,21 +300,21 @@ public class WGPUBindGroupLayoutEntry {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUTextureBindingLayout texture
-     * }
+     *}
      */
     public static void texture(MemorySegment struct, MemorySegment fieldValue) {
         MemorySegment.copy(fieldValue, 0L, struct, texture$OFFSET, texture$LAYOUT.byteSize());
     }
 
-    private static final GroupLayout storageTexture$LAYOUT = (GroupLayout)$LAYOUT.select(groupElement("storageTexture"));
+    private static final GroupLayout storageTexture$LAYOUT = (GroupLayout) $LAYOUT.select(groupElement("storageTexture"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUStorageTextureBindingLayout storageTexture
-     * }
+     *}
      */
     public static final GroupLayout storageTexture$layout() {
         return storageTexture$LAYOUT;
@@ -324,9 +324,9 @@ public class WGPUBindGroupLayoutEntry {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUStorageTextureBindingLayout storageTexture
-     * }
+     *}
      */
     public static final long storageTexture$offset() {
         return storageTexture$OFFSET;
@@ -334,9 +334,9 @@ public class WGPUBindGroupLayoutEntry {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUStorageTextureBindingLayout storageTexture
-     * }
+     *}
      */
     public static MemorySegment storageTexture(MemorySegment struct) {
         return struct.asSlice(storageTexture$OFFSET, storageTexture$LAYOUT.byteSize());
@@ -344,9 +344,9 @@ public class WGPUBindGroupLayoutEntry {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUStorageTextureBindingLayout storageTexture
-     * }
+     *}
      */
     public static void storageTexture(MemorySegment struct, MemorySegment fieldValue) {
         MemorySegment.copy(fieldValue, 0L, struct, storageTexture$OFFSET, storageTexture$LAYOUT.byteSize());
@@ -363,7 +363,9 @@ public class WGPUBindGroupLayoutEntry {
     /**
      * The size (in bytes) of this struct
      */
-    public static long sizeof() { return layout().byteSize(); }
+    public static long sizeof() {
+        return layout().byteSize();
+    }
 
     /**
      * Allocate a segment of size {@code layout().byteSize()} using {@code allocator}

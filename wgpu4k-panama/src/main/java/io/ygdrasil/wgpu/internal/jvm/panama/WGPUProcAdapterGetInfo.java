@@ -9,13 +9,13 @@ import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
 /**
- * {@snippet lang=c :
- * typedef void (*WGPUCreateComputePipelineAsyncCallback)(WGPUCreatePipelineAsyncStatus, WGPUComputePipeline, const char *, void *)
- * }
+ * {@snippet lang = c:
+ * typedef void (*WGPUProcAdapterGetInfo)(WGPUAdapter, WGPUAdapterInfo *)
+ *}
  */
-public class WGPUCreateComputePipelineAsyncCallback {
+public class WGPUProcAdapterGetInfo {
 
-    WGPUCreateComputePipelineAsyncCallback() {
+    WGPUProcAdapterGetInfo() {
         // Should not be called directly
     }
 
@@ -23,14 +23,12 @@ public class WGPUCreateComputePipelineAsyncCallback {
      * The function pointer signature, expressed as a functional interface
      */
     public interface Function {
-        void apply(int status, MemorySegment pipeline, MemorySegment message, MemorySegment userdata);
+        void apply(MemorySegment adapter, MemorySegment info);
     }
 
     private static final FunctionDescriptor $DESC = FunctionDescriptor.ofVoid(
-        wgpu_h.C_INT,
-        wgpu_h.C_POINTER,
-        wgpu_h.C_POINTER,
-        wgpu_h.C_POINTER
+            wgpu_h.C_POINTER,
+            wgpu_h.C_POINTER
     );
 
     /**
@@ -40,13 +38,13 @@ public class WGPUCreateComputePipelineAsyncCallback {
         return $DESC;
     }
 
-    private static final MethodHandle UP$MH = wgpu_h.upcallHandle(WGPUCreateComputePipelineAsyncCallback.Function.class, "apply", $DESC);
+    private static final MethodHandle UP$MH = wgpu_h.upcallHandle(WGPUProcAdapterGetInfo.Function.class, "apply", $DESC);
 
     /**
      * Allocates a new upcall stub, whose implementation is defined by {@code fi}.
      * The lifetime of the returned segment is managed by {@code arena}
      */
-    public static MemorySegment allocate(WGPUCreateComputePipelineAsyncCallback.Function fi, Arena arena) {
+    public static MemorySegment allocate(WGPUProcAdapterGetInfo.Function fi, Arena arena) {
         return Linker.nativeLinker().upcallStub(UP$MH.bindTo(fi), $DESC, arena);
     }
 
@@ -55,9 +53,9 @@ public class WGPUCreateComputePipelineAsyncCallback {
     /**
      * Invoke the upcall stub {@code funcPtr}, with given parameters
      */
-    public static void invoke(MemorySegment funcPtr,int status, MemorySegment pipeline, MemorySegment message, MemorySegment userdata) {
+    public static void invoke(MemorySegment funcPtr, MemorySegment adapter, MemorySegment info) {
         try {
-             DOWN$MH.invokeExact(funcPtr, status, pipeline, message, userdata);
+            DOWN$MH.invokeExact(funcPtr, adapter, info);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }

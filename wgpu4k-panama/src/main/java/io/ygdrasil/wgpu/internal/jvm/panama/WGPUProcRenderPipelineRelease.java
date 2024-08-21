@@ -13,9 +13,9 @@ import static java.lang.foreign.ValueLayout.*;
 import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 /**
- * {@snippet lang=c :
+ * {@snippet lang = c:
  * typedef void (*WGPUProcRenderPipelineRelease)(WGPURenderPipeline)
- * }
+ *}
  */
 public class WGPUProcRenderPipelineRelease {
 
@@ -31,7 +31,7 @@ public class WGPUProcRenderPipelineRelease {
     }
 
     private static final FunctionDescriptor $DESC = FunctionDescriptor.ofVoid(
-        wgpu_h.C_POINTER
+            wgpu_h.C_POINTER
     );
 
     /**
@@ -56,9 +56,9 @@ public class WGPUProcRenderPipelineRelease {
     /**
      * Invoke the upcall stub {@code funcPtr}, with given parameters
      */
-    public static void invoke(MemorySegment funcPtr,MemorySegment renderPipeline) {
+    public static void invoke(MemorySegment funcPtr, MemorySegment renderPipeline) {
         try {
-             DOWN$MH.invokeExact(funcPtr, renderPipeline);
+            DOWN$MH.invokeExact(funcPtr, renderPipeline);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }

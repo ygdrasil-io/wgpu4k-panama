@@ -9,7 +9,7 @@ import static java.lang.foreign.MemoryLayout.PathElement.groupElement;
 import static java.lang.foreign.ValueLayout.OfInt;
 
 /**
- * {@snippet lang=c :
+ * {@snippet lang = c:
  * struct WGPUImageCopyTexture {
  *     const WGPUChainedStruct *nextInChain;
  *     WGPUTexture texture;
@@ -17,7 +17,7 @@ import static java.lang.foreign.ValueLayout.OfInt;
  *     WGPUOrigin3D origin;
  *     WGPUTextureAspect aspect;
  * }
- * }
+ *}
  */
 public class WGPUImageCopyTexture {
 
@@ -26,12 +26,12 @@ public class WGPUImageCopyTexture {
     }
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
-        wgpu_h.C_POINTER.withName("nextInChain"),
-        wgpu_h.C_POINTER.withName("texture"),
-        wgpu_h.C_INT.withName("mipLevel"),
-        WGPUOrigin3D.layout().withName("origin"),
-        wgpu_h.C_INT.withName("aspect"),
-        MemoryLayout.paddingLayout(4)
+            wgpu_h.C_POINTER.withName("nextInChain"),
+            wgpu_h.C_POINTER.withName("texture"),
+            wgpu_h.C_INT.withName("mipLevel"),
+            WGPUOrigin3D.layout().withName("origin"),
+            wgpu_h.C_INT.withName("aspect"),
+            MemoryLayout.paddingLayout(4)
     ).withName("WGPUImageCopyTexture");
 
     /**
@@ -41,13 +41,13 @@ public class WGPUImageCopyTexture {
         return $LAYOUT;
     }
 
-    private static final AddressLayout nextInChain$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("nextInChain"));
+    private static final AddressLayout nextInChain$LAYOUT = (AddressLayout) $LAYOUT.select(groupElement("nextInChain"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * const WGPUChainedStruct *nextInChain
-     * }
+     *}
      */
     public static final AddressLayout nextInChain$layout() {
         return nextInChain$LAYOUT;
@@ -57,9 +57,9 @@ public class WGPUImageCopyTexture {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * const WGPUChainedStruct *nextInChain
-     * }
+     *}
      */
     public static final long nextInChain$offset() {
         return nextInChain$OFFSET;
@@ -67,9 +67,9 @@ public class WGPUImageCopyTexture {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * const WGPUChainedStruct *nextInChain
-     * }
+     *}
      */
     public static MemorySegment nextInChain(MemorySegment struct) {
         return struct.get(nextInChain$LAYOUT, nextInChain$OFFSET);
@@ -77,21 +77,21 @@ public class WGPUImageCopyTexture {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * const WGPUChainedStruct *nextInChain
-     * }
+     *}
      */
     public static void nextInChain(MemorySegment struct, MemorySegment fieldValue) {
         struct.set(nextInChain$LAYOUT, nextInChain$OFFSET, fieldValue);
     }
 
-    private static final AddressLayout texture$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("texture"));
+    private static final AddressLayout texture$LAYOUT = (AddressLayout) $LAYOUT.select(groupElement("texture"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUTexture texture
-     * }
+     *}
      */
     public static final AddressLayout texture$layout() {
         return texture$LAYOUT;
@@ -101,9 +101,9 @@ public class WGPUImageCopyTexture {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUTexture texture
-     * }
+     *}
      */
     public static final long texture$offset() {
         return texture$OFFSET;
@@ -111,9 +111,9 @@ public class WGPUImageCopyTexture {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUTexture texture
-     * }
+     *}
      */
     public static MemorySegment texture(MemorySegment struct) {
         return struct.get(texture$LAYOUT, texture$OFFSET);
@@ -121,21 +121,21 @@ public class WGPUImageCopyTexture {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUTexture texture
-     * }
+     *}
      */
     public static void texture(MemorySegment struct, MemorySegment fieldValue) {
         struct.set(texture$LAYOUT, texture$OFFSET, fieldValue);
     }
 
-    private static final OfInt mipLevel$LAYOUT = (OfInt)$LAYOUT.select(groupElement("mipLevel"));
+    private static final OfInt mipLevel$LAYOUT = (OfInt) $LAYOUT.select(groupElement("mipLevel"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t mipLevel
-     * }
+     *}
      */
     public static final OfInt mipLevel$layout() {
         return mipLevel$LAYOUT;
@@ -145,9 +145,9 @@ public class WGPUImageCopyTexture {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t mipLevel
-     * }
+     *}
      */
     public static final long mipLevel$offset() {
         return mipLevel$OFFSET;
@@ -155,9 +155,9 @@ public class WGPUImageCopyTexture {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t mipLevel
-     * }
+     *}
      */
     public static int mipLevel(MemorySegment struct) {
         return struct.get(mipLevel$LAYOUT, mipLevel$OFFSET);
@@ -165,21 +165,21 @@ public class WGPUImageCopyTexture {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint32_t mipLevel
-     * }
+     *}
      */
     public static void mipLevel(MemorySegment struct, int fieldValue) {
         struct.set(mipLevel$LAYOUT, mipLevel$OFFSET, fieldValue);
     }
 
-    private static final GroupLayout origin$LAYOUT = (GroupLayout)$LAYOUT.select(groupElement("origin"));
+    private static final GroupLayout origin$LAYOUT = (GroupLayout) $LAYOUT.select(groupElement("origin"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUOrigin3D origin
-     * }
+     *}
      */
     public static final GroupLayout origin$layout() {
         return origin$LAYOUT;
@@ -189,9 +189,9 @@ public class WGPUImageCopyTexture {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUOrigin3D origin
-     * }
+     *}
      */
     public static final long origin$offset() {
         return origin$OFFSET;
@@ -199,9 +199,9 @@ public class WGPUImageCopyTexture {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUOrigin3D origin
-     * }
+     *}
      */
     public static MemorySegment origin(MemorySegment struct) {
         return struct.asSlice(origin$OFFSET, origin$LAYOUT.byteSize());
@@ -209,21 +209,21 @@ public class WGPUImageCopyTexture {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUOrigin3D origin
-     * }
+     *}
      */
     public static void origin(MemorySegment struct, MemorySegment fieldValue) {
         MemorySegment.copy(fieldValue, 0L, struct, origin$OFFSET, origin$LAYOUT.byteSize());
     }
 
-    private static final OfInt aspect$LAYOUT = (OfInt)$LAYOUT.select(groupElement("aspect"));
+    private static final OfInt aspect$LAYOUT = (OfInt) $LAYOUT.select(groupElement("aspect"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUTextureAspect aspect
-     * }
+     *}
      */
     public static final OfInt aspect$layout() {
         return aspect$LAYOUT;
@@ -233,9 +233,9 @@ public class WGPUImageCopyTexture {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUTextureAspect aspect
-     * }
+     *}
      */
     public static final long aspect$offset() {
         return aspect$OFFSET;
@@ -243,9 +243,9 @@ public class WGPUImageCopyTexture {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUTextureAspect aspect
-     * }
+     *}
      */
     public static int aspect(MemorySegment struct) {
         return struct.get(aspect$LAYOUT, aspect$OFFSET);
@@ -253,9 +253,9 @@ public class WGPUImageCopyTexture {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUTextureAspect aspect
-     * }
+     *}
      */
     public static void aspect(MemorySegment struct, int fieldValue) {
         struct.set(aspect$LAYOUT, aspect$OFFSET, fieldValue);
@@ -272,7 +272,9 @@ public class WGPUImageCopyTexture {
     /**
      * The size (in bytes) of this struct
      */
-    public static long sizeof() { return layout().byteSize(); }
+    public static long sizeof() {
+        return layout().byteSize();
+    }
 
     /**
      * Allocate a segment of size {@code layout().byteSize()} using {@code allocator}

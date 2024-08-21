@@ -13,9 +13,9 @@ import static java.lang.foreign.ValueLayout.*;
 import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 /**
- * {@snippet lang=c :
+ * {@snippet lang = c:
  * typedef void (*WGPUProcShaderModuleReference)(WGPUShaderModule)
- * }
+ *}
  */
 public class WGPUProcShaderModuleReference {
 
@@ -31,7 +31,7 @@ public class WGPUProcShaderModuleReference {
     }
 
     private static final FunctionDescriptor $DESC = FunctionDescriptor.ofVoid(
-        wgpu_h.C_POINTER
+            wgpu_h.C_POINTER
     );
 
     /**
@@ -56,9 +56,9 @@ public class WGPUProcShaderModuleReference {
     /**
      * Invoke the upcall stub {@code funcPtr}, with given parameters
      */
-    public static void invoke(MemorySegment funcPtr,MemorySegment shaderModule) {
+    public static void invoke(MemorySegment funcPtr, MemorySegment shaderModule) {
         try {
-             DOWN$MH.invokeExact(funcPtr, shaderModule);
+            DOWN$MH.invokeExact(funcPtr, shaderModule);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }

@@ -9,7 +9,7 @@ import static java.lang.foreign.MemoryLayout.PathElement.groupElement;
 import static java.lang.foreign.ValueLayout.OfInt;
 
 /**
- * {@snippet lang=c :
+ * {@snippet lang = c:
  * struct WGPUInstanceExtras {
  *     WGPUChainedStruct chain;
  *     WGPUInstanceBackendFlags backends;
@@ -19,7 +19,7 @@ import static java.lang.foreign.ValueLayout.OfInt;
  *     const char *dxilPath;
  *     const char *dxcPath;
  * }
- * }
+ *}
  */
 public class WGPUInstanceExtras {
 
@@ -28,13 +28,13 @@ public class WGPUInstanceExtras {
     }
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
-        WGPUChainedStruct.layout().withName("chain"),
-        wgpu_h.C_INT.withName("backends"),
-        wgpu_h.C_INT.withName("flags"),
-        wgpu_h.C_INT.withName("dx12ShaderCompiler"),
-        wgpu_h.C_INT.withName("gles3MinorVersion"),
-        wgpu_h.C_POINTER.withName("dxilPath"),
-        wgpu_h.C_POINTER.withName("dxcPath")
+            WGPUChainedStruct.layout().withName("chain"),
+            wgpu_h.C_INT.withName("backends"),
+            wgpu_h.C_INT.withName("flags"),
+            wgpu_h.C_INT.withName("dx12ShaderCompiler"),
+            wgpu_h.C_INT.withName("gles3MinorVersion"),
+            wgpu_h.C_POINTER.withName("dxilPath"),
+            wgpu_h.C_POINTER.withName("dxcPath")
     ).withName("WGPUInstanceExtras");
 
     /**
@@ -44,13 +44,13 @@ public class WGPUInstanceExtras {
         return $LAYOUT;
     }
 
-    private static final GroupLayout chain$LAYOUT = (GroupLayout)$LAYOUT.select(groupElement("chain"));
+    private static final GroupLayout chain$LAYOUT = (GroupLayout) $LAYOUT.select(groupElement("chain"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUChainedStruct chain
-     * }
+     *}
      */
     public static final GroupLayout chain$layout() {
         return chain$LAYOUT;
@@ -60,9 +60,9 @@ public class WGPUInstanceExtras {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUChainedStruct chain
-     * }
+     *}
      */
     public static final long chain$offset() {
         return chain$OFFSET;
@@ -70,9 +70,9 @@ public class WGPUInstanceExtras {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUChainedStruct chain
-     * }
+     *}
      */
     public static MemorySegment chain(MemorySegment struct) {
         return struct.asSlice(chain$OFFSET, chain$LAYOUT.byteSize());
@@ -80,21 +80,21 @@ public class WGPUInstanceExtras {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUChainedStruct chain
-     * }
+     *}
      */
     public static void chain(MemorySegment struct, MemorySegment fieldValue) {
         MemorySegment.copy(fieldValue, 0L, struct, chain$OFFSET, chain$LAYOUT.byteSize());
     }
 
-    private static final OfInt backends$LAYOUT = (OfInt)$LAYOUT.select(groupElement("backends"));
+    private static final OfInt backends$LAYOUT = (OfInt) $LAYOUT.select(groupElement("backends"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUInstanceBackendFlags backends
-     * }
+     *}
      */
     public static final OfInt backends$layout() {
         return backends$LAYOUT;
@@ -104,9 +104,9 @@ public class WGPUInstanceExtras {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUInstanceBackendFlags backends
-     * }
+     *}
      */
     public static final long backends$offset() {
         return backends$OFFSET;
@@ -114,9 +114,9 @@ public class WGPUInstanceExtras {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUInstanceBackendFlags backends
-     * }
+     *}
      */
     public static int backends(MemorySegment struct) {
         return struct.get(backends$LAYOUT, backends$OFFSET);
@@ -124,21 +124,21 @@ public class WGPUInstanceExtras {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUInstanceBackendFlags backends
-     * }
+     *}
      */
     public static void backends(MemorySegment struct, int fieldValue) {
         struct.set(backends$LAYOUT, backends$OFFSET, fieldValue);
     }
 
-    private static final OfInt flags$LAYOUT = (OfInt)$LAYOUT.select(groupElement("flags"));
+    private static final OfInt flags$LAYOUT = (OfInt) $LAYOUT.select(groupElement("flags"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUInstanceFlags flags
-     * }
+     *}
      */
     public static final OfInt flags$layout() {
         return flags$LAYOUT;
@@ -148,9 +148,9 @@ public class WGPUInstanceExtras {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUInstanceFlags flags
-     * }
+     *}
      */
     public static final long flags$offset() {
         return flags$OFFSET;
@@ -158,9 +158,9 @@ public class WGPUInstanceExtras {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUInstanceFlags flags
-     * }
+     *}
      */
     public static int flags(MemorySegment struct) {
         return struct.get(flags$LAYOUT, flags$OFFSET);
@@ -168,21 +168,21 @@ public class WGPUInstanceExtras {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUInstanceFlags flags
-     * }
+     *}
      */
     public static void flags(MemorySegment struct, int fieldValue) {
         struct.set(flags$LAYOUT, flags$OFFSET, fieldValue);
     }
 
-    private static final OfInt dx12ShaderCompiler$LAYOUT = (OfInt)$LAYOUT.select(groupElement("dx12ShaderCompiler"));
+    private static final OfInt dx12ShaderCompiler$LAYOUT = (OfInt) $LAYOUT.select(groupElement("dx12ShaderCompiler"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUDx12Compiler dx12ShaderCompiler
-     * }
+     *}
      */
     public static final OfInt dx12ShaderCompiler$layout() {
         return dx12ShaderCompiler$LAYOUT;
@@ -192,9 +192,9 @@ public class WGPUInstanceExtras {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUDx12Compiler dx12ShaderCompiler
-     * }
+     *}
      */
     public static final long dx12ShaderCompiler$offset() {
         return dx12ShaderCompiler$OFFSET;
@@ -202,9 +202,9 @@ public class WGPUInstanceExtras {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUDx12Compiler dx12ShaderCompiler
-     * }
+     *}
      */
     public static int dx12ShaderCompiler(MemorySegment struct) {
         return struct.get(dx12ShaderCompiler$LAYOUT, dx12ShaderCompiler$OFFSET);
@@ -212,21 +212,21 @@ public class WGPUInstanceExtras {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUDx12Compiler dx12ShaderCompiler
-     * }
+     *}
      */
     public static void dx12ShaderCompiler(MemorySegment struct, int fieldValue) {
         struct.set(dx12ShaderCompiler$LAYOUT, dx12ShaderCompiler$OFFSET, fieldValue);
     }
 
-    private static final OfInt gles3MinorVersion$LAYOUT = (OfInt)$LAYOUT.select(groupElement("gles3MinorVersion"));
+    private static final OfInt gles3MinorVersion$LAYOUT = (OfInt) $LAYOUT.select(groupElement("gles3MinorVersion"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUGles3MinorVersion gles3MinorVersion
-     * }
+     *}
      */
     public static final OfInt gles3MinorVersion$layout() {
         return gles3MinorVersion$LAYOUT;
@@ -236,9 +236,9 @@ public class WGPUInstanceExtras {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUGles3MinorVersion gles3MinorVersion
-     * }
+     *}
      */
     public static final long gles3MinorVersion$offset() {
         return gles3MinorVersion$OFFSET;
@@ -246,9 +246,9 @@ public class WGPUInstanceExtras {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUGles3MinorVersion gles3MinorVersion
-     * }
+     *}
      */
     public static int gles3MinorVersion(MemorySegment struct) {
         return struct.get(gles3MinorVersion$LAYOUT, gles3MinorVersion$OFFSET);
@@ -256,21 +256,21 @@ public class WGPUInstanceExtras {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUGles3MinorVersion gles3MinorVersion
-     * }
+     *}
      */
     public static void gles3MinorVersion(MemorySegment struct, int fieldValue) {
         struct.set(gles3MinorVersion$LAYOUT, gles3MinorVersion$OFFSET, fieldValue);
     }
 
-    private static final AddressLayout dxilPath$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("dxilPath"));
+    private static final AddressLayout dxilPath$LAYOUT = (AddressLayout) $LAYOUT.select(groupElement("dxilPath"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * const char *dxilPath
-     * }
+     *}
      */
     public static final AddressLayout dxilPath$layout() {
         return dxilPath$LAYOUT;
@@ -280,9 +280,9 @@ public class WGPUInstanceExtras {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * const char *dxilPath
-     * }
+     *}
      */
     public static final long dxilPath$offset() {
         return dxilPath$OFFSET;
@@ -290,9 +290,9 @@ public class WGPUInstanceExtras {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * const char *dxilPath
-     * }
+     *}
      */
     public static MemorySegment dxilPath(MemorySegment struct) {
         return struct.get(dxilPath$LAYOUT, dxilPath$OFFSET);
@@ -300,21 +300,21 @@ public class WGPUInstanceExtras {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * const char *dxilPath
-     * }
+     *}
      */
     public static void dxilPath(MemorySegment struct, MemorySegment fieldValue) {
         struct.set(dxilPath$LAYOUT, dxilPath$OFFSET, fieldValue);
     }
 
-    private static final AddressLayout dxcPath$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("dxcPath"));
+    private static final AddressLayout dxcPath$LAYOUT = (AddressLayout) $LAYOUT.select(groupElement("dxcPath"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * const char *dxcPath
-     * }
+     *}
      */
     public static final AddressLayout dxcPath$layout() {
         return dxcPath$LAYOUT;
@@ -324,9 +324,9 @@ public class WGPUInstanceExtras {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * const char *dxcPath
-     * }
+     *}
      */
     public static final long dxcPath$offset() {
         return dxcPath$OFFSET;
@@ -334,9 +334,9 @@ public class WGPUInstanceExtras {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * const char *dxcPath
-     * }
+     *}
      */
     public static MemorySegment dxcPath(MemorySegment struct) {
         return struct.get(dxcPath$LAYOUT, dxcPath$OFFSET);
@@ -344,9 +344,9 @@ public class WGPUInstanceExtras {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * const char *dxcPath
-     * }
+     *}
      */
     public static void dxcPath(MemorySegment struct, MemorySegment fieldValue) {
         struct.set(dxcPath$LAYOUT, dxcPath$OFFSET, fieldValue);
@@ -363,7 +363,9 @@ public class WGPUInstanceExtras {
     /**
      * The size (in bytes) of this struct
      */
-    public static long sizeof() { return layout().byteSize(); }
+    public static long sizeof() {
+        return layout().byteSize();
+    }
 
     /**
      * Allocate a segment of size {@code layout().byteSize()} using {@code allocator}

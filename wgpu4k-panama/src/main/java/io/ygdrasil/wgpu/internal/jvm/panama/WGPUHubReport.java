@@ -8,7 +8,7 @@ import java.util.function.Consumer;
 import static java.lang.foreign.MemoryLayout.PathElement.groupElement;
 
 /**
- * {@snippet lang=c :
+ * {@snippet lang = c:
  * struct WGPUHubReport {
  *     WGPURegistryReport adapters;
  *     WGPURegistryReport devices;
@@ -27,7 +27,7 @@ import static java.lang.foreign.MemoryLayout.PathElement.groupElement;
  *     WGPURegistryReport textureViews;
  *     WGPURegistryReport samplers;
  * }
- * }
+ *}
  */
 public class WGPUHubReport {
 
@@ -36,22 +36,22 @@ public class WGPUHubReport {
     }
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
-        WGPURegistryReport.layout().withName("adapters"),
-        WGPURegistryReport.layout().withName("devices"),
-        WGPURegistryReport.layout().withName("queues"),
-        WGPURegistryReport.layout().withName("pipelineLayouts"),
-        WGPURegistryReport.layout().withName("shaderModules"),
-        WGPURegistryReport.layout().withName("bindGroupLayouts"),
-        WGPURegistryReport.layout().withName("bindGroups"),
-        WGPURegistryReport.layout().withName("commandBuffers"),
-        WGPURegistryReport.layout().withName("renderBundles"),
-        WGPURegistryReport.layout().withName("renderPipelines"),
-        WGPURegistryReport.layout().withName("computePipelines"),
-        WGPURegistryReport.layout().withName("querySets"),
-        WGPURegistryReport.layout().withName("buffers"),
-        WGPURegistryReport.layout().withName("textures"),
-        WGPURegistryReport.layout().withName("textureViews"),
-        WGPURegistryReport.layout().withName("samplers")
+            WGPURegistryReport.layout().withName("adapters"),
+            WGPURegistryReport.layout().withName("devices"),
+            WGPURegistryReport.layout().withName("queues"),
+            WGPURegistryReport.layout().withName("pipelineLayouts"),
+            WGPURegistryReport.layout().withName("shaderModules"),
+            WGPURegistryReport.layout().withName("bindGroupLayouts"),
+            WGPURegistryReport.layout().withName("bindGroups"),
+            WGPURegistryReport.layout().withName("commandBuffers"),
+            WGPURegistryReport.layout().withName("renderBundles"),
+            WGPURegistryReport.layout().withName("renderPipelines"),
+            WGPURegistryReport.layout().withName("computePipelines"),
+            WGPURegistryReport.layout().withName("querySets"),
+            WGPURegistryReport.layout().withName("buffers"),
+            WGPURegistryReport.layout().withName("textures"),
+            WGPURegistryReport.layout().withName("textureViews"),
+            WGPURegistryReport.layout().withName("samplers")
     ).withName("WGPUHubReport");
 
     /**
@@ -61,13 +61,13 @@ public class WGPUHubReport {
         return $LAYOUT;
     }
 
-    private static final GroupLayout adapters$LAYOUT = (GroupLayout)$LAYOUT.select(groupElement("adapters"));
+    private static final GroupLayout adapters$LAYOUT = (GroupLayout) $LAYOUT.select(groupElement("adapters"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPURegistryReport adapters
-     * }
+     *}
      */
     public static final GroupLayout adapters$layout() {
         return adapters$LAYOUT;
@@ -77,9 +77,9 @@ public class WGPUHubReport {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPURegistryReport adapters
-     * }
+     *}
      */
     public static final long adapters$offset() {
         return adapters$OFFSET;
@@ -87,9 +87,9 @@ public class WGPUHubReport {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPURegistryReport adapters
-     * }
+     *}
      */
     public static MemorySegment adapters(MemorySegment struct) {
         return struct.asSlice(adapters$OFFSET, adapters$LAYOUT.byteSize());
@@ -97,21 +97,21 @@ public class WGPUHubReport {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPURegistryReport adapters
-     * }
+     *}
      */
     public static void adapters(MemorySegment struct, MemorySegment fieldValue) {
         MemorySegment.copy(fieldValue, 0L, struct, adapters$OFFSET, adapters$LAYOUT.byteSize());
     }
 
-    private static final GroupLayout devices$LAYOUT = (GroupLayout)$LAYOUT.select(groupElement("devices"));
+    private static final GroupLayout devices$LAYOUT = (GroupLayout) $LAYOUT.select(groupElement("devices"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPURegistryReport devices
-     * }
+     *}
      */
     public static final GroupLayout devices$layout() {
         return devices$LAYOUT;
@@ -121,9 +121,9 @@ public class WGPUHubReport {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPURegistryReport devices
-     * }
+     *}
      */
     public static final long devices$offset() {
         return devices$OFFSET;
@@ -131,9 +131,9 @@ public class WGPUHubReport {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPURegistryReport devices
-     * }
+     *}
      */
     public static MemorySegment devices(MemorySegment struct) {
         return struct.asSlice(devices$OFFSET, devices$LAYOUT.byteSize());
@@ -141,21 +141,21 @@ public class WGPUHubReport {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPURegistryReport devices
-     * }
+     *}
      */
     public static void devices(MemorySegment struct, MemorySegment fieldValue) {
         MemorySegment.copy(fieldValue, 0L, struct, devices$OFFSET, devices$LAYOUT.byteSize());
     }
 
-    private static final GroupLayout queues$LAYOUT = (GroupLayout)$LAYOUT.select(groupElement("queues"));
+    private static final GroupLayout queues$LAYOUT = (GroupLayout) $LAYOUT.select(groupElement("queues"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPURegistryReport queues
-     * }
+     *}
      */
     public static final GroupLayout queues$layout() {
         return queues$LAYOUT;
@@ -165,9 +165,9 @@ public class WGPUHubReport {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPURegistryReport queues
-     * }
+     *}
      */
     public static final long queues$offset() {
         return queues$OFFSET;
@@ -175,9 +175,9 @@ public class WGPUHubReport {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPURegistryReport queues
-     * }
+     *}
      */
     public static MemorySegment queues(MemorySegment struct) {
         return struct.asSlice(queues$OFFSET, queues$LAYOUT.byteSize());
@@ -185,21 +185,21 @@ public class WGPUHubReport {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPURegistryReport queues
-     * }
+     *}
      */
     public static void queues(MemorySegment struct, MemorySegment fieldValue) {
         MemorySegment.copy(fieldValue, 0L, struct, queues$OFFSET, queues$LAYOUT.byteSize());
     }
 
-    private static final GroupLayout pipelineLayouts$LAYOUT = (GroupLayout)$LAYOUT.select(groupElement("pipelineLayouts"));
+    private static final GroupLayout pipelineLayouts$LAYOUT = (GroupLayout) $LAYOUT.select(groupElement("pipelineLayouts"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPURegistryReport pipelineLayouts
-     * }
+     *}
      */
     public static final GroupLayout pipelineLayouts$layout() {
         return pipelineLayouts$LAYOUT;
@@ -209,9 +209,9 @@ public class WGPUHubReport {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPURegistryReport pipelineLayouts
-     * }
+     *}
      */
     public static final long pipelineLayouts$offset() {
         return pipelineLayouts$OFFSET;
@@ -219,9 +219,9 @@ public class WGPUHubReport {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPURegistryReport pipelineLayouts
-     * }
+     *}
      */
     public static MemorySegment pipelineLayouts(MemorySegment struct) {
         return struct.asSlice(pipelineLayouts$OFFSET, pipelineLayouts$LAYOUT.byteSize());
@@ -229,21 +229,21 @@ public class WGPUHubReport {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPURegistryReport pipelineLayouts
-     * }
+     *}
      */
     public static void pipelineLayouts(MemorySegment struct, MemorySegment fieldValue) {
         MemorySegment.copy(fieldValue, 0L, struct, pipelineLayouts$OFFSET, pipelineLayouts$LAYOUT.byteSize());
     }
 
-    private static final GroupLayout shaderModules$LAYOUT = (GroupLayout)$LAYOUT.select(groupElement("shaderModules"));
+    private static final GroupLayout shaderModules$LAYOUT = (GroupLayout) $LAYOUT.select(groupElement("shaderModules"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPURegistryReport shaderModules
-     * }
+     *}
      */
     public static final GroupLayout shaderModules$layout() {
         return shaderModules$LAYOUT;
@@ -253,9 +253,9 @@ public class WGPUHubReport {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPURegistryReport shaderModules
-     * }
+     *}
      */
     public static final long shaderModules$offset() {
         return shaderModules$OFFSET;
@@ -263,9 +263,9 @@ public class WGPUHubReport {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPURegistryReport shaderModules
-     * }
+     *}
      */
     public static MemorySegment shaderModules(MemorySegment struct) {
         return struct.asSlice(shaderModules$OFFSET, shaderModules$LAYOUT.byteSize());
@@ -273,21 +273,21 @@ public class WGPUHubReport {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPURegistryReport shaderModules
-     * }
+     *}
      */
     public static void shaderModules(MemorySegment struct, MemorySegment fieldValue) {
         MemorySegment.copy(fieldValue, 0L, struct, shaderModules$OFFSET, shaderModules$LAYOUT.byteSize());
     }
 
-    private static final GroupLayout bindGroupLayouts$LAYOUT = (GroupLayout)$LAYOUT.select(groupElement("bindGroupLayouts"));
+    private static final GroupLayout bindGroupLayouts$LAYOUT = (GroupLayout) $LAYOUT.select(groupElement("bindGroupLayouts"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPURegistryReport bindGroupLayouts
-     * }
+     *}
      */
     public static final GroupLayout bindGroupLayouts$layout() {
         return bindGroupLayouts$LAYOUT;
@@ -297,9 +297,9 @@ public class WGPUHubReport {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPURegistryReport bindGroupLayouts
-     * }
+     *}
      */
     public static final long bindGroupLayouts$offset() {
         return bindGroupLayouts$OFFSET;
@@ -307,9 +307,9 @@ public class WGPUHubReport {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPURegistryReport bindGroupLayouts
-     * }
+     *}
      */
     public static MemorySegment bindGroupLayouts(MemorySegment struct) {
         return struct.asSlice(bindGroupLayouts$OFFSET, bindGroupLayouts$LAYOUT.byteSize());
@@ -317,21 +317,21 @@ public class WGPUHubReport {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPURegistryReport bindGroupLayouts
-     * }
+     *}
      */
     public static void bindGroupLayouts(MemorySegment struct, MemorySegment fieldValue) {
         MemorySegment.copy(fieldValue, 0L, struct, bindGroupLayouts$OFFSET, bindGroupLayouts$LAYOUT.byteSize());
     }
 
-    private static final GroupLayout bindGroups$LAYOUT = (GroupLayout)$LAYOUT.select(groupElement("bindGroups"));
+    private static final GroupLayout bindGroups$LAYOUT = (GroupLayout) $LAYOUT.select(groupElement("bindGroups"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPURegistryReport bindGroups
-     * }
+     *}
      */
     public static final GroupLayout bindGroups$layout() {
         return bindGroups$LAYOUT;
@@ -341,9 +341,9 @@ public class WGPUHubReport {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPURegistryReport bindGroups
-     * }
+     *}
      */
     public static final long bindGroups$offset() {
         return bindGroups$OFFSET;
@@ -351,9 +351,9 @@ public class WGPUHubReport {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPURegistryReport bindGroups
-     * }
+     *}
      */
     public static MemorySegment bindGroups(MemorySegment struct) {
         return struct.asSlice(bindGroups$OFFSET, bindGroups$LAYOUT.byteSize());
@@ -361,21 +361,21 @@ public class WGPUHubReport {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPURegistryReport bindGroups
-     * }
+     *}
      */
     public static void bindGroups(MemorySegment struct, MemorySegment fieldValue) {
         MemorySegment.copy(fieldValue, 0L, struct, bindGroups$OFFSET, bindGroups$LAYOUT.byteSize());
     }
 
-    private static final GroupLayout commandBuffers$LAYOUT = (GroupLayout)$LAYOUT.select(groupElement("commandBuffers"));
+    private static final GroupLayout commandBuffers$LAYOUT = (GroupLayout) $LAYOUT.select(groupElement("commandBuffers"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPURegistryReport commandBuffers
-     * }
+     *}
      */
     public static final GroupLayout commandBuffers$layout() {
         return commandBuffers$LAYOUT;
@@ -385,9 +385,9 @@ public class WGPUHubReport {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPURegistryReport commandBuffers
-     * }
+     *}
      */
     public static final long commandBuffers$offset() {
         return commandBuffers$OFFSET;
@@ -395,9 +395,9 @@ public class WGPUHubReport {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPURegistryReport commandBuffers
-     * }
+     *}
      */
     public static MemorySegment commandBuffers(MemorySegment struct) {
         return struct.asSlice(commandBuffers$OFFSET, commandBuffers$LAYOUT.byteSize());
@@ -405,21 +405,21 @@ public class WGPUHubReport {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPURegistryReport commandBuffers
-     * }
+     *}
      */
     public static void commandBuffers(MemorySegment struct, MemorySegment fieldValue) {
         MemorySegment.copy(fieldValue, 0L, struct, commandBuffers$OFFSET, commandBuffers$LAYOUT.byteSize());
     }
 
-    private static final GroupLayout renderBundles$LAYOUT = (GroupLayout)$LAYOUT.select(groupElement("renderBundles"));
+    private static final GroupLayout renderBundles$LAYOUT = (GroupLayout) $LAYOUT.select(groupElement("renderBundles"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPURegistryReport renderBundles
-     * }
+     *}
      */
     public static final GroupLayout renderBundles$layout() {
         return renderBundles$LAYOUT;
@@ -429,9 +429,9 @@ public class WGPUHubReport {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPURegistryReport renderBundles
-     * }
+     *}
      */
     public static final long renderBundles$offset() {
         return renderBundles$OFFSET;
@@ -439,9 +439,9 @@ public class WGPUHubReport {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPURegistryReport renderBundles
-     * }
+     *}
      */
     public static MemorySegment renderBundles(MemorySegment struct) {
         return struct.asSlice(renderBundles$OFFSET, renderBundles$LAYOUT.byteSize());
@@ -449,21 +449,21 @@ public class WGPUHubReport {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPURegistryReport renderBundles
-     * }
+     *}
      */
     public static void renderBundles(MemorySegment struct, MemorySegment fieldValue) {
         MemorySegment.copy(fieldValue, 0L, struct, renderBundles$OFFSET, renderBundles$LAYOUT.byteSize());
     }
 
-    private static final GroupLayout renderPipelines$LAYOUT = (GroupLayout)$LAYOUT.select(groupElement("renderPipelines"));
+    private static final GroupLayout renderPipelines$LAYOUT = (GroupLayout) $LAYOUT.select(groupElement("renderPipelines"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPURegistryReport renderPipelines
-     * }
+     *}
      */
     public static final GroupLayout renderPipelines$layout() {
         return renderPipelines$LAYOUT;
@@ -473,9 +473,9 @@ public class WGPUHubReport {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPURegistryReport renderPipelines
-     * }
+     *}
      */
     public static final long renderPipelines$offset() {
         return renderPipelines$OFFSET;
@@ -483,9 +483,9 @@ public class WGPUHubReport {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPURegistryReport renderPipelines
-     * }
+     *}
      */
     public static MemorySegment renderPipelines(MemorySegment struct) {
         return struct.asSlice(renderPipelines$OFFSET, renderPipelines$LAYOUT.byteSize());
@@ -493,21 +493,21 @@ public class WGPUHubReport {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPURegistryReport renderPipelines
-     * }
+     *}
      */
     public static void renderPipelines(MemorySegment struct, MemorySegment fieldValue) {
         MemorySegment.copy(fieldValue, 0L, struct, renderPipelines$OFFSET, renderPipelines$LAYOUT.byteSize());
     }
 
-    private static final GroupLayout computePipelines$LAYOUT = (GroupLayout)$LAYOUT.select(groupElement("computePipelines"));
+    private static final GroupLayout computePipelines$LAYOUT = (GroupLayout) $LAYOUT.select(groupElement("computePipelines"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPURegistryReport computePipelines
-     * }
+     *}
      */
     public static final GroupLayout computePipelines$layout() {
         return computePipelines$LAYOUT;
@@ -517,9 +517,9 @@ public class WGPUHubReport {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPURegistryReport computePipelines
-     * }
+     *}
      */
     public static final long computePipelines$offset() {
         return computePipelines$OFFSET;
@@ -527,9 +527,9 @@ public class WGPUHubReport {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPURegistryReport computePipelines
-     * }
+     *}
      */
     public static MemorySegment computePipelines(MemorySegment struct) {
         return struct.asSlice(computePipelines$OFFSET, computePipelines$LAYOUT.byteSize());
@@ -537,21 +537,21 @@ public class WGPUHubReport {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPURegistryReport computePipelines
-     * }
+     *}
      */
     public static void computePipelines(MemorySegment struct, MemorySegment fieldValue) {
         MemorySegment.copy(fieldValue, 0L, struct, computePipelines$OFFSET, computePipelines$LAYOUT.byteSize());
     }
 
-    private static final GroupLayout querySets$LAYOUT = (GroupLayout)$LAYOUT.select(groupElement("querySets"));
+    private static final GroupLayout querySets$LAYOUT = (GroupLayout) $LAYOUT.select(groupElement("querySets"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPURegistryReport querySets
-     * }
+     *}
      */
     public static final GroupLayout querySets$layout() {
         return querySets$LAYOUT;
@@ -561,9 +561,9 @@ public class WGPUHubReport {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPURegistryReport querySets
-     * }
+     *}
      */
     public static final long querySets$offset() {
         return querySets$OFFSET;
@@ -571,9 +571,9 @@ public class WGPUHubReport {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPURegistryReport querySets
-     * }
+     *}
      */
     public static MemorySegment querySets(MemorySegment struct) {
         return struct.asSlice(querySets$OFFSET, querySets$LAYOUT.byteSize());
@@ -581,21 +581,21 @@ public class WGPUHubReport {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPURegistryReport querySets
-     * }
+     *}
      */
     public static void querySets(MemorySegment struct, MemorySegment fieldValue) {
         MemorySegment.copy(fieldValue, 0L, struct, querySets$OFFSET, querySets$LAYOUT.byteSize());
     }
 
-    private static final GroupLayout buffers$LAYOUT = (GroupLayout)$LAYOUT.select(groupElement("buffers"));
+    private static final GroupLayout buffers$LAYOUT = (GroupLayout) $LAYOUT.select(groupElement("buffers"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPURegistryReport buffers
-     * }
+     *}
      */
     public static final GroupLayout buffers$layout() {
         return buffers$LAYOUT;
@@ -605,9 +605,9 @@ public class WGPUHubReport {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPURegistryReport buffers
-     * }
+     *}
      */
     public static final long buffers$offset() {
         return buffers$OFFSET;
@@ -615,9 +615,9 @@ public class WGPUHubReport {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPURegistryReport buffers
-     * }
+     *}
      */
     public static MemorySegment buffers(MemorySegment struct) {
         return struct.asSlice(buffers$OFFSET, buffers$LAYOUT.byteSize());
@@ -625,21 +625,21 @@ public class WGPUHubReport {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPURegistryReport buffers
-     * }
+     *}
      */
     public static void buffers(MemorySegment struct, MemorySegment fieldValue) {
         MemorySegment.copy(fieldValue, 0L, struct, buffers$OFFSET, buffers$LAYOUT.byteSize());
     }
 
-    private static final GroupLayout textures$LAYOUT = (GroupLayout)$LAYOUT.select(groupElement("textures"));
+    private static final GroupLayout textures$LAYOUT = (GroupLayout) $LAYOUT.select(groupElement("textures"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPURegistryReport textures
-     * }
+     *}
      */
     public static final GroupLayout textures$layout() {
         return textures$LAYOUT;
@@ -649,9 +649,9 @@ public class WGPUHubReport {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPURegistryReport textures
-     * }
+     *}
      */
     public static final long textures$offset() {
         return textures$OFFSET;
@@ -659,9 +659,9 @@ public class WGPUHubReport {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPURegistryReport textures
-     * }
+     *}
      */
     public static MemorySegment textures(MemorySegment struct) {
         return struct.asSlice(textures$OFFSET, textures$LAYOUT.byteSize());
@@ -669,21 +669,21 @@ public class WGPUHubReport {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPURegistryReport textures
-     * }
+     *}
      */
     public static void textures(MemorySegment struct, MemorySegment fieldValue) {
         MemorySegment.copy(fieldValue, 0L, struct, textures$OFFSET, textures$LAYOUT.byteSize());
     }
 
-    private static final GroupLayout textureViews$LAYOUT = (GroupLayout)$LAYOUT.select(groupElement("textureViews"));
+    private static final GroupLayout textureViews$LAYOUT = (GroupLayout) $LAYOUT.select(groupElement("textureViews"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPURegistryReport textureViews
-     * }
+     *}
      */
     public static final GroupLayout textureViews$layout() {
         return textureViews$LAYOUT;
@@ -693,9 +693,9 @@ public class WGPUHubReport {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPURegistryReport textureViews
-     * }
+     *}
      */
     public static final long textureViews$offset() {
         return textureViews$OFFSET;
@@ -703,9 +703,9 @@ public class WGPUHubReport {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPURegistryReport textureViews
-     * }
+     *}
      */
     public static MemorySegment textureViews(MemorySegment struct) {
         return struct.asSlice(textureViews$OFFSET, textureViews$LAYOUT.byteSize());
@@ -713,21 +713,21 @@ public class WGPUHubReport {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPURegistryReport textureViews
-     * }
+     *}
      */
     public static void textureViews(MemorySegment struct, MemorySegment fieldValue) {
         MemorySegment.copy(fieldValue, 0L, struct, textureViews$OFFSET, textureViews$LAYOUT.byteSize());
     }
 
-    private static final GroupLayout samplers$LAYOUT = (GroupLayout)$LAYOUT.select(groupElement("samplers"));
+    private static final GroupLayout samplers$LAYOUT = (GroupLayout) $LAYOUT.select(groupElement("samplers"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPURegistryReport samplers
-     * }
+     *}
      */
     public static final GroupLayout samplers$layout() {
         return samplers$LAYOUT;
@@ -737,9 +737,9 @@ public class WGPUHubReport {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPURegistryReport samplers
-     * }
+     *}
      */
     public static final long samplers$offset() {
         return samplers$OFFSET;
@@ -747,9 +747,9 @@ public class WGPUHubReport {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPURegistryReport samplers
-     * }
+     *}
      */
     public static MemorySegment samplers(MemorySegment struct) {
         return struct.asSlice(samplers$OFFSET, samplers$LAYOUT.byteSize());
@@ -757,9 +757,9 @@ public class WGPUHubReport {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPURegistryReport samplers
-     * }
+     *}
      */
     public static void samplers(MemorySegment struct, MemorySegment fieldValue) {
         MemorySegment.copy(fieldValue, 0L, struct, samplers$OFFSET, samplers$LAYOUT.byteSize());
@@ -776,7 +776,9 @@ public class WGPUHubReport {
     /**
      * The size (in bytes) of this struct
      */
-    public static long sizeof() { return layout().byteSize(); }
+    public static long sizeof() {
+        return layout().byteSize();
+    }
 
     /**
      * Allocate a segment of size {@code layout().byteSize()} using {@code allocator}

@@ -9,7 +9,7 @@ import static java.lang.foreign.MemoryLayout.PathElement.groupElement;
 import static java.lang.foreign.ValueLayout.OfLong;
 
 /**
- * {@snippet lang=c :
+ * {@snippet lang = c:
  * struct WGPUBindGroupEntryExtras {
  *     WGPUChainedStruct chain;
  *     const WGPUBuffer *buffers;
@@ -19,7 +19,7 @@ import static java.lang.foreign.ValueLayout.OfLong;
  *     const WGPUTextureView *textureViews;
  *     size_t textureViewCount;
  * }
- * }
+ *}
  */
 public class WGPUBindGroupEntryExtras {
 
@@ -28,13 +28,13 @@ public class WGPUBindGroupEntryExtras {
     }
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
-        WGPUChainedStruct.layout().withName("chain"),
-        wgpu_h.C_POINTER.withName("buffers"),
-        wgpu_h.C_LONG.withName("bufferCount"),
-        wgpu_h.C_POINTER.withName("samplers"),
-        wgpu_h.C_LONG.withName("samplerCount"),
-        wgpu_h.C_POINTER.withName("textureViews"),
-        wgpu_h.C_LONG.withName("textureViewCount")
+            WGPUChainedStruct.layout().withName("chain"),
+            wgpu_h.C_POINTER.withName("buffers"),
+            wgpu_h.C_LONG.withName("bufferCount"),
+            wgpu_h.C_POINTER.withName("samplers"),
+            wgpu_h.C_LONG.withName("samplerCount"),
+            wgpu_h.C_POINTER.withName("textureViews"),
+            wgpu_h.C_LONG.withName("textureViewCount")
     ).withName("WGPUBindGroupEntryExtras");
 
     /**
@@ -44,13 +44,13 @@ public class WGPUBindGroupEntryExtras {
         return $LAYOUT;
     }
 
-    private static final GroupLayout chain$LAYOUT = (GroupLayout)$LAYOUT.select(groupElement("chain"));
+    private static final GroupLayout chain$LAYOUT = (GroupLayout) $LAYOUT.select(groupElement("chain"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUChainedStruct chain
-     * }
+     *}
      */
     public static final GroupLayout chain$layout() {
         return chain$LAYOUT;
@@ -60,9 +60,9 @@ public class WGPUBindGroupEntryExtras {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUChainedStruct chain
-     * }
+     *}
      */
     public static final long chain$offset() {
         return chain$OFFSET;
@@ -70,9 +70,9 @@ public class WGPUBindGroupEntryExtras {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUChainedStruct chain
-     * }
+     *}
      */
     public static MemorySegment chain(MemorySegment struct) {
         return struct.asSlice(chain$OFFSET, chain$LAYOUT.byteSize());
@@ -80,21 +80,21 @@ public class WGPUBindGroupEntryExtras {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUChainedStruct chain
-     * }
+     *}
      */
     public static void chain(MemorySegment struct, MemorySegment fieldValue) {
         MemorySegment.copy(fieldValue, 0L, struct, chain$OFFSET, chain$LAYOUT.byteSize());
     }
 
-    private static final AddressLayout buffers$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("buffers"));
+    private static final AddressLayout buffers$LAYOUT = (AddressLayout) $LAYOUT.select(groupElement("buffers"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * const WGPUBuffer *buffers
-     * }
+     *}
      */
     public static final AddressLayout buffers$layout() {
         return buffers$LAYOUT;
@@ -104,9 +104,9 @@ public class WGPUBindGroupEntryExtras {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * const WGPUBuffer *buffers
-     * }
+     *}
      */
     public static final long buffers$offset() {
         return buffers$OFFSET;
@@ -114,9 +114,9 @@ public class WGPUBindGroupEntryExtras {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * const WGPUBuffer *buffers
-     * }
+     *}
      */
     public static MemorySegment buffers(MemorySegment struct) {
         return struct.get(buffers$LAYOUT, buffers$OFFSET);
@@ -124,21 +124,21 @@ public class WGPUBindGroupEntryExtras {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * const WGPUBuffer *buffers
-     * }
+     *}
      */
     public static void buffers(MemorySegment struct, MemorySegment fieldValue) {
         struct.set(buffers$LAYOUT, buffers$OFFSET, fieldValue);
     }
 
-    private static final OfLong bufferCount$LAYOUT = (OfLong)$LAYOUT.select(groupElement("bufferCount"));
+    private static final OfLong bufferCount$LAYOUT = (OfLong) $LAYOUT.select(groupElement("bufferCount"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * size_t bufferCount
-     * }
+     *}
      */
     public static final OfLong bufferCount$layout() {
         return bufferCount$LAYOUT;
@@ -148,9 +148,9 @@ public class WGPUBindGroupEntryExtras {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * size_t bufferCount
-     * }
+     *}
      */
     public static final long bufferCount$offset() {
         return bufferCount$OFFSET;
@@ -158,9 +158,9 @@ public class WGPUBindGroupEntryExtras {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * size_t bufferCount
-     * }
+     *}
      */
     public static long bufferCount(MemorySegment struct) {
         return struct.get(bufferCount$LAYOUT, bufferCount$OFFSET);
@@ -168,21 +168,21 @@ public class WGPUBindGroupEntryExtras {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * size_t bufferCount
-     * }
+     *}
      */
     public static void bufferCount(MemorySegment struct, long fieldValue) {
         struct.set(bufferCount$LAYOUT, bufferCount$OFFSET, fieldValue);
     }
 
-    private static final AddressLayout samplers$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("samplers"));
+    private static final AddressLayout samplers$LAYOUT = (AddressLayout) $LAYOUT.select(groupElement("samplers"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * const WGPUSampler *samplers
-     * }
+     *}
      */
     public static final AddressLayout samplers$layout() {
         return samplers$LAYOUT;
@@ -192,9 +192,9 @@ public class WGPUBindGroupEntryExtras {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * const WGPUSampler *samplers
-     * }
+     *}
      */
     public static final long samplers$offset() {
         return samplers$OFFSET;
@@ -202,9 +202,9 @@ public class WGPUBindGroupEntryExtras {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * const WGPUSampler *samplers
-     * }
+     *}
      */
     public static MemorySegment samplers(MemorySegment struct) {
         return struct.get(samplers$LAYOUT, samplers$OFFSET);
@@ -212,21 +212,21 @@ public class WGPUBindGroupEntryExtras {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * const WGPUSampler *samplers
-     * }
+     *}
      */
     public static void samplers(MemorySegment struct, MemorySegment fieldValue) {
         struct.set(samplers$LAYOUT, samplers$OFFSET, fieldValue);
     }
 
-    private static final OfLong samplerCount$LAYOUT = (OfLong)$LAYOUT.select(groupElement("samplerCount"));
+    private static final OfLong samplerCount$LAYOUT = (OfLong) $LAYOUT.select(groupElement("samplerCount"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * size_t samplerCount
-     * }
+     *}
      */
     public static final OfLong samplerCount$layout() {
         return samplerCount$LAYOUT;
@@ -236,9 +236,9 @@ public class WGPUBindGroupEntryExtras {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * size_t samplerCount
-     * }
+     *}
      */
     public static final long samplerCount$offset() {
         return samplerCount$OFFSET;
@@ -246,9 +246,9 @@ public class WGPUBindGroupEntryExtras {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * size_t samplerCount
-     * }
+     *}
      */
     public static long samplerCount(MemorySegment struct) {
         return struct.get(samplerCount$LAYOUT, samplerCount$OFFSET);
@@ -256,21 +256,21 @@ public class WGPUBindGroupEntryExtras {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * size_t samplerCount
-     * }
+     *}
      */
     public static void samplerCount(MemorySegment struct, long fieldValue) {
         struct.set(samplerCount$LAYOUT, samplerCount$OFFSET, fieldValue);
     }
 
-    private static final AddressLayout textureViews$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("textureViews"));
+    private static final AddressLayout textureViews$LAYOUT = (AddressLayout) $LAYOUT.select(groupElement("textureViews"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * const WGPUTextureView *textureViews
-     * }
+     *}
      */
     public static final AddressLayout textureViews$layout() {
         return textureViews$LAYOUT;
@@ -280,9 +280,9 @@ public class WGPUBindGroupEntryExtras {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * const WGPUTextureView *textureViews
-     * }
+     *}
      */
     public static final long textureViews$offset() {
         return textureViews$OFFSET;
@@ -290,9 +290,9 @@ public class WGPUBindGroupEntryExtras {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * const WGPUTextureView *textureViews
-     * }
+     *}
      */
     public static MemorySegment textureViews(MemorySegment struct) {
         return struct.get(textureViews$LAYOUT, textureViews$OFFSET);
@@ -300,21 +300,21 @@ public class WGPUBindGroupEntryExtras {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * const WGPUTextureView *textureViews
-     * }
+     *}
      */
     public static void textureViews(MemorySegment struct, MemorySegment fieldValue) {
         struct.set(textureViews$LAYOUT, textureViews$OFFSET, fieldValue);
     }
 
-    private static final OfLong textureViewCount$LAYOUT = (OfLong)$LAYOUT.select(groupElement("textureViewCount"));
+    private static final OfLong textureViewCount$LAYOUT = (OfLong) $LAYOUT.select(groupElement("textureViewCount"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * size_t textureViewCount
-     * }
+     *}
      */
     public static final OfLong textureViewCount$layout() {
         return textureViewCount$LAYOUT;
@@ -324,9 +324,9 @@ public class WGPUBindGroupEntryExtras {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * size_t textureViewCount
-     * }
+     *}
      */
     public static final long textureViewCount$offset() {
         return textureViewCount$OFFSET;
@@ -334,9 +334,9 @@ public class WGPUBindGroupEntryExtras {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * size_t textureViewCount
-     * }
+     *}
      */
     public static long textureViewCount(MemorySegment struct) {
         return struct.get(textureViewCount$LAYOUT, textureViewCount$OFFSET);
@@ -344,9 +344,9 @@ public class WGPUBindGroupEntryExtras {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * size_t textureViewCount
-     * }
+     *}
      */
     public static void textureViewCount(MemorySegment struct, long fieldValue) {
         struct.set(textureViewCount$LAYOUT, textureViewCount$OFFSET, fieldValue);
@@ -363,7 +363,9 @@ public class WGPUBindGroupEntryExtras {
     /**
      * The size (in bytes) of this struct
      */
-    public static long sizeof() { return layout().byteSize(); }
+    public static long sizeof() {
+        return layout().byteSize();
+    }
 
     /**
      * Allocate a segment of size {@code layout().byteSize()} using {@code allocator}

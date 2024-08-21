@@ -2,23 +2,18 @@
 
 package io.ygdrasil.wgpu.internal.jvm.panama;
 
-import java.lang.invoke.*;
 import java.lang.foreign.*;
-import java.nio.ByteOrder;
-import java.util.*;
-import java.util.function.*;
-import java.util.stream.*;
+import java.util.function.Consumer;
 
-import static java.lang.foreign.ValueLayout.*;
-import static java.lang.foreign.MemoryLayout.PathElement.*;
+import static java.lang.foreign.MemoryLayout.PathElement.groupElement;
 
 /**
- * {@snippet lang=c :
+ * {@snippet lang = c:
  * struct WGPURequiredLimits {
  *     const WGPUChainedStruct *nextInChain;
  *     WGPULimits limits;
  * }
- * }
+ *}
  */
 public class WGPURequiredLimits {
 
@@ -27,8 +22,8 @@ public class WGPURequiredLimits {
     }
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
-        wgpu_h.C_POINTER.withName("nextInChain"),
-        WGPULimits.layout().withName("limits")
+            wgpu_h.C_POINTER.withName("nextInChain"),
+            WGPULimits.layout().withName("limits")
     ).withName("WGPURequiredLimits");
 
     /**
@@ -38,13 +33,13 @@ public class WGPURequiredLimits {
         return $LAYOUT;
     }
 
-    private static final AddressLayout nextInChain$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("nextInChain"));
+    private static final AddressLayout nextInChain$LAYOUT = (AddressLayout) $LAYOUT.select(groupElement("nextInChain"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * const WGPUChainedStruct *nextInChain
-     * }
+     *}
      */
     public static final AddressLayout nextInChain$layout() {
         return nextInChain$LAYOUT;
@@ -54,9 +49,9 @@ public class WGPURequiredLimits {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * const WGPUChainedStruct *nextInChain
-     * }
+     *}
      */
     public static final long nextInChain$offset() {
         return nextInChain$OFFSET;
@@ -64,9 +59,9 @@ public class WGPURequiredLimits {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * const WGPUChainedStruct *nextInChain
-     * }
+     *}
      */
     public static MemorySegment nextInChain(MemorySegment struct) {
         return struct.get(nextInChain$LAYOUT, nextInChain$OFFSET);
@@ -74,21 +69,21 @@ public class WGPURequiredLimits {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * const WGPUChainedStruct *nextInChain
-     * }
+     *}
      */
     public static void nextInChain(MemorySegment struct, MemorySegment fieldValue) {
         struct.set(nextInChain$LAYOUT, nextInChain$OFFSET, fieldValue);
     }
 
-    private static final GroupLayout limits$LAYOUT = (GroupLayout)$LAYOUT.select(groupElement("limits"));
+    private static final GroupLayout limits$LAYOUT = (GroupLayout) $LAYOUT.select(groupElement("limits"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPULimits limits
-     * }
+     *}
      */
     public static final GroupLayout limits$layout() {
         return limits$LAYOUT;
@@ -98,9 +93,9 @@ public class WGPURequiredLimits {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPULimits limits
-     * }
+     *}
      */
     public static final long limits$offset() {
         return limits$OFFSET;
@@ -108,9 +103,9 @@ public class WGPURequiredLimits {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPULimits limits
-     * }
+     *}
      */
     public static MemorySegment limits(MemorySegment struct) {
         return struct.asSlice(limits$OFFSET, limits$LAYOUT.byteSize());
@@ -118,9 +113,9 @@ public class WGPURequiredLimits {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPULimits limits
-     * }
+     *}
      */
     public static void limits(MemorySegment struct, MemorySegment fieldValue) {
         MemorySegment.copy(fieldValue, 0L, struct, limits$OFFSET, limits$LAYOUT.byteSize());
@@ -137,7 +132,9 @@ public class WGPURequiredLimits {
     /**
      * The size (in bytes) of this struct
      */
-    public static long sizeof() { return layout().byteSize(); }
+    public static long sizeof() {
+        return layout().byteSize();
+    }
 
     /**
      * Allocate a segment of size {@code layout().byteSize()} using {@code allocator}

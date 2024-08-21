@@ -10,7 +10,7 @@ import static java.lang.foreign.ValueLayout.OfInt;
 import static java.lang.foreign.ValueLayout.OfLong;
 
 /**
- * {@snippet lang=c :
+ * {@snippet lang = c:
  * struct WGPUCompilationMessage {
  *     const WGPUChainedStruct *nextInChain;
  *     const char *message;
@@ -23,7 +23,7 @@ import static java.lang.foreign.ValueLayout.OfLong;
  *     uint64_t utf16Offset;
  *     uint64_t utf16Length;
  * }
- * }
+ *}
  */
 public class WGPUCompilationMessage {
 
@@ -32,17 +32,17 @@ public class WGPUCompilationMessage {
     }
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
-        wgpu_h.C_POINTER.withName("nextInChain"),
-        wgpu_h.C_POINTER.withName("message"),
-        wgpu_h.C_INT.withName("type"),
-        MemoryLayout.paddingLayout(4),
-        wgpu_h.C_LONG_LONG.withName("lineNum"),
-        wgpu_h.C_LONG_LONG.withName("linePos"),
-        wgpu_h.C_LONG_LONG.withName("offset"),
-        wgpu_h.C_LONG_LONG.withName("length"),
-        wgpu_h.C_LONG_LONG.withName("utf16LinePos"),
-        wgpu_h.C_LONG_LONG.withName("utf16Offset"),
-        wgpu_h.C_LONG_LONG.withName("utf16Length")
+            wgpu_h.C_POINTER.withName("nextInChain"),
+            wgpu_h.C_POINTER.withName("message"),
+            wgpu_h.C_INT.withName("type"),
+            MemoryLayout.paddingLayout(4),
+            wgpu_h.C_LONG_LONG.withName("lineNum"),
+            wgpu_h.C_LONG_LONG.withName("linePos"),
+            wgpu_h.C_LONG_LONG.withName("offset"),
+            wgpu_h.C_LONG_LONG.withName("length"),
+            wgpu_h.C_LONG_LONG.withName("utf16LinePos"),
+            wgpu_h.C_LONG_LONG.withName("utf16Offset"),
+            wgpu_h.C_LONG_LONG.withName("utf16Length")
     ).withName("WGPUCompilationMessage");
 
     /**
@@ -52,13 +52,13 @@ public class WGPUCompilationMessage {
         return $LAYOUT;
     }
 
-    private static final AddressLayout nextInChain$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("nextInChain"));
+    private static final AddressLayout nextInChain$LAYOUT = (AddressLayout) $LAYOUT.select(groupElement("nextInChain"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * const WGPUChainedStruct *nextInChain
-     * }
+     *}
      */
     public static final AddressLayout nextInChain$layout() {
         return nextInChain$LAYOUT;
@@ -68,9 +68,9 @@ public class WGPUCompilationMessage {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * const WGPUChainedStruct *nextInChain
-     * }
+     *}
      */
     public static final long nextInChain$offset() {
         return nextInChain$OFFSET;
@@ -78,9 +78,9 @@ public class WGPUCompilationMessage {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * const WGPUChainedStruct *nextInChain
-     * }
+     *}
      */
     public static MemorySegment nextInChain(MemorySegment struct) {
         return struct.get(nextInChain$LAYOUT, nextInChain$OFFSET);
@@ -88,21 +88,21 @@ public class WGPUCompilationMessage {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * const WGPUChainedStruct *nextInChain
-     * }
+     *}
      */
     public static void nextInChain(MemorySegment struct, MemorySegment fieldValue) {
         struct.set(nextInChain$LAYOUT, nextInChain$OFFSET, fieldValue);
     }
 
-    private static final AddressLayout message$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("message"));
+    private static final AddressLayout message$LAYOUT = (AddressLayout) $LAYOUT.select(groupElement("message"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * const char *message
-     * }
+     *}
      */
     public static final AddressLayout message$layout() {
         return message$LAYOUT;
@@ -112,9 +112,9 @@ public class WGPUCompilationMessage {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * const char *message
-     * }
+     *}
      */
     public static final long message$offset() {
         return message$OFFSET;
@@ -122,9 +122,9 @@ public class WGPUCompilationMessage {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * const char *message
-     * }
+     *}
      */
     public static MemorySegment message(MemorySegment struct) {
         return struct.get(message$LAYOUT, message$OFFSET);
@@ -132,21 +132,21 @@ public class WGPUCompilationMessage {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * const char *message
-     * }
+     *}
      */
     public static void message(MemorySegment struct, MemorySegment fieldValue) {
         struct.set(message$LAYOUT, message$OFFSET, fieldValue);
     }
 
-    private static final OfInt type$LAYOUT = (OfInt)$LAYOUT.select(groupElement("type"));
+    private static final OfInt type$LAYOUT = (OfInt) $LAYOUT.select(groupElement("type"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUCompilationMessageType type
-     * }
+     *}
      */
     public static final OfInt type$layout() {
         return type$LAYOUT;
@@ -156,9 +156,9 @@ public class WGPUCompilationMessage {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUCompilationMessageType type
-     * }
+     *}
      */
     public static final long type$offset() {
         return type$OFFSET;
@@ -166,9 +166,9 @@ public class WGPUCompilationMessage {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUCompilationMessageType type
-     * }
+     *}
      */
     public static int type(MemorySegment struct) {
         return struct.get(type$LAYOUT, type$OFFSET);
@@ -176,21 +176,21 @@ public class WGPUCompilationMessage {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUCompilationMessageType type
-     * }
+     *}
      */
     public static void type(MemorySegment struct, int fieldValue) {
         struct.set(type$LAYOUT, type$OFFSET, fieldValue);
     }
 
-    private static final OfLong lineNum$LAYOUT = (OfLong)$LAYOUT.select(groupElement("lineNum"));
+    private static final OfLong lineNum$LAYOUT = (OfLong) $LAYOUT.select(groupElement("lineNum"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint64_t lineNum
-     * }
+     *}
      */
     public static final OfLong lineNum$layout() {
         return lineNum$LAYOUT;
@@ -200,9 +200,9 @@ public class WGPUCompilationMessage {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint64_t lineNum
-     * }
+     *}
      */
     public static final long lineNum$offset() {
         return lineNum$OFFSET;
@@ -210,9 +210,9 @@ public class WGPUCompilationMessage {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint64_t lineNum
-     * }
+     *}
      */
     public static long lineNum(MemorySegment struct) {
         return struct.get(lineNum$LAYOUT, lineNum$OFFSET);
@@ -220,21 +220,21 @@ public class WGPUCompilationMessage {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint64_t lineNum
-     * }
+     *}
      */
     public static void lineNum(MemorySegment struct, long fieldValue) {
         struct.set(lineNum$LAYOUT, lineNum$OFFSET, fieldValue);
     }
 
-    private static final OfLong linePos$LAYOUT = (OfLong)$LAYOUT.select(groupElement("linePos"));
+    private static final OfLong linePos$LAYOUT = (OfLong) $LAYOUT.select(groupElement("linePos"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint64_t linePos
-     * }
+     *}
      */
     public static final OfLong linePos$layout() {
         return linePos$LAYOUT;
@@ -244,9 +244,9 @@ public class WGPUCompilationMessage {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint64_t linePos
-     * }
+     *}
      */
     public static final long linePos$offset() {
         return linePos$OFFSET;
@@ -254,9 +254,9 @@ public class WGPUCompilationMessage {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint64_t linePos
-     * }
+     *}
      */
     public static long linePos(MemorySegment struct) {
         return struct.get(linePos$LAYOUT, linePos$OFFSET);
@@ -264,21 +264,21 @@ public class WGPUCompilationMessage {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint64_t linePos
-     * }
+     *}
      */
     public static void linePos(MemorySegment struct, long fieldValue) {
         struct.set(linePos$LAYOUT, linePos$OFFSET, fieldValue);
     }
 
-    private static final OfLong offset$LAYOUT = (OfLong)$LAYOUT.select(groupElement("offset"));
+    private static final OfLong offset$LAYOUT = (OfLong) $LAYOUT.select(groupElement("offset"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint64_t offset
-     * }
+     *}
      */
     public static final OfLong offset$layout() {
         return offset$LAYOUT;
@@ -288,9 +288,9 @@ public class WGPUCompilationMessage {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint64_t offset
-     * }
+     *}
      */
     public static final long offset$offset() {
         return offset$OFFSET;
@@ -298,9 +298,9 @@ public class WGPUCompilationMessage {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint64_t offset
-     * }
+     *}
      */
     public static long offset(MemorySegment struct) {
         return struct.get(offset$LAYOUT, offset$OFFSET);
@@ -308,21 +308,21 @@ public class WGPUCompilationMessage {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint64_t offset
-     * }
+     *}
      */
     public static void offset(MemorySegment struct, long fieldValue) {
         struct.set(offset$LAYOUT, offset$OFFSET, fieldValue);
     }
 
-    private static final OfLong length$LAYOUT = (OfLong)$LAYOUT.select(groupElement("length"));
+    private static final OfLong length$LAYOUT = (OfLong) $LAYOUT.select(groupElement("length"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint64_t length
-     * }
+     *}
      */
     public static final OfLong length$layout() {
         return length$LAYOUT;
@@ -332,9 +332,9 @@ public class WGPUCompilationMessage {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint64_t length
-     * }
+     *}
      */
     public static final long length$offset() {
         return length$OFFSET;
@@ -342,9 +342,9 @@ public class WGPUCompilationMessage {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint64_t length
-     * }
+     *}
      */
     public static long length(MemorySegment struct) {
         return struct.get(length$LAYOUT, length$OFFSET);
@@ -352,21 +352,21 @@ public class WGPUCompilationMessage {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint64_t length
-     * }
+     *}
      */
     public static void length(MemorySegment struct, long fieldValue) {
         struct.set(length$LAYOUT, length$OFFSET, fieldValue);
     }
 
-    private static final OfLong utf16LinePos$LAYOUT = (OfLong)$LAYOUT.select(groupElement("utf16LinePos"));
+    private static final OfLong utf16LinePos$LAYOUT = (OfLong) $LAYOUT.select(groupElement("utf16LinePos"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint64_t utf16LinePos
-     * }
+     *}
      */
     public static final OfLong utf16LinePos$layout() {
         return utf16LinePos$LAYOUT;
@@ -376,9 +376,9 @@ public class WGPUCompilationMessage {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint64_t utf16LinePos
-     * }
+     *}
      */
     public static final long utf16LinePos$offset() {
         return utf16LinePos$OFFSET;
@@ -386,9 +386,9 @@ public class WGPUCompilationMessage {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint64_t utf16LinePos
-     * }
+     *}
      */
     public static long utf16LinePos(MemorySegment struct) {
         return struct.get(utf16LinePos$LAYOUT, utf16LinePos$OFFSET);
@@ -396,21 +396,21 @@ public class WGPUCompilationMessage {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint64_t utf16LinePos
-     * }
+     *}
      */
     public static void utf16LinePos(MemorySegment struct, long fieldValue) {
         struct.set(utf16LinePos$LAYOUT, utf16LinePos$OFFSET, fieldValue);
     }
 
-    private static final OfLong utf16Offset$LAYOUT = (OfLong)$LAYOUT.select(groupElement("utf16Offset"));
+    private static final OfLong utf16Offset$LAYOUT = (OfLong) $LAYOUT.select(groupElement("utf16Offset"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint64_t utf16Offset
-     * }
+     *}
      */
     public static final OfLong utf16Offset$layout() {
         return utf16Offset$LAYOUT;
@@ -420,9 +420,9 @@ public class WGPUCompilationMessage {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint64_t utf16Offset
-     * }
+     *}
      */
     public static final long utf16Offset$offset() {
         return utf16Offset$OFFSET;
@@ -430,9 +430,9 @@ public class WGPUCompilationMessage {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint64_t utf16Offset
-     * }
+     *}
      */
     public static long utf16Offset(MemorySegment struct) {
         return struct.get(utf16Offset$LAYOUT, utf16Offset$OFFSET);
@@ -440,21 +440,21 @@ public class WGPUCompilationMessage {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint64_t utf16Offset
-     * }
+     *}
      */
     public static void utf16Offset(MemorySegment struct, long fieldValue) {
         struct.set(utf16Offset$LAYOUT, utf16Offset$OFFSET, fieldValue);
     }
 
-    private static final OfLong utf16Length$LAYOUT = (OfLong)$LAYOUT.select(groupElement("utf16Length"));
+    private static final OfLong utf16Length$LAYOUT = (OfLong) $LAYOUT.select(groupElement("utf16Length"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint64_t utf16Length
-     * }
+     *}
      */
     public static final OfLong utf16Length$layout() {
         return utf16Length$LAYOUT;
@@ -464,9 +464,9 @@ public class WGPUCompilationMessage {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint64_t utf16Length
-     * }
+     *}
      */
     public static final long utf16Length$offset() {
         return utf16Length$OFFSET;
@@ -474,9 +474,9 @@ public class WGPUCompilationMessage {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint64_t utf16Length
-     * }
+     *}
      */
     public static long utf16Length(MemorySegment struct) {
         return struct.get(utf16Length$LAYOUT, utf16Length$OFFSET);
@@ -484,9 +484,9 @@ public class WGPUCompilationMessage {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint64_t utf16Length
-     * }
+     *}
      */
     public static void utf16Length(MemorySegment struct, long fieldValue) {
         struct.set(utf16Length$LAYOUT, utf16Length$OFFSET, fieldValue);
@@ -503,7 +503,9 @@ public class WGPUCompilationMessage {
     /**
      * The size (in bytes) of this struct
      */
-    public static long sizeof() { return layout().byteSize(); }
+    public static long sizeof() {
+        return layout().byteSize();
+    }
 
     /**
      * Allocate a segment of size {@code layout().byteSize()} using {@code allocator}

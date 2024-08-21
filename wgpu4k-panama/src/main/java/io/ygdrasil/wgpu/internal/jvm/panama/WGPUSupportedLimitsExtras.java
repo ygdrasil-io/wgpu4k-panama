@@ -2,18 +2,23 @@
 
 package io.ygdrasil.wgpu.internal.jvm.panama;
 
+import java.lang.invoke.*;
 import java.lang.foreign.*;
-import java.util.function.Consumer;
+import java.nio.ByteOrder;
+import java.util.*;
+import java.util.function.*;
+import java.util.stream.*;
 
-import static java.lang.foreign.MemoryLayout.PathElement.groupElement;
+import static java.lang.foreign.ValueLayout.*;
+import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 /**
- * {@snippet lang=c :
+ * {@snippet lang = c:
  * struct WGPUSupportedLimitsExtras {
  *     WGPUChainedStructOut chain;
  *     WGPUNativeLimits limits;
  * }
- * }
+ *}
  */
 public class WGPUSupportedLimitsExtras {
 
@@ -22,8 +27,8 @@ public class WGPUSupportedLimitsExtras {
     }
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
-        WGPUChainedStructOut.layout().withName("chain"),
-        WGPUNativeLimits.layout().withName("limits")
+            WGPUChainedStructOut.layout().withName("chain"),
+            WGPUNativeLimits.layout().withName("limits")
     ).withName("WGPUSupportedLimitsExtras");
 
     /**
@@ -33,13 +38,13 @@ public class WGPUSupportedLimitsExtras {
         return $LAYOUT;
     }
 
-    private static final GroupLayout chain$LAYOUT = (GroupLayout)$LAYOUT.select(groupElement("chain"));
+    private static final GroupLayout chain$LAYOUT = (GroupLayout) $LAYOUT.select(groupElement("chain"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUChainedStructOut chain
-     * }
+     *}
      */
     public static final GroupLayout chain$layout() {
         return chain$LAYOUT;
@@ -49,9 +54,9 @@ public class WGPUSupportedLimitsExtras {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUChainedStructOut chain
-     * }
+     *}
      */
     public static final long chain$offset() {
         return chain$OFFSET;
@@ -59,9 +64,9 @@ public class WGPUSupportedLimitsExtras {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUChainedStructOut chain
-     * }
+     *}
      */
     public static MemorySegment chain(MemorySegment struct) {
         return struct.asSlice(chain$OFFSET, chain$LAYOUT.byteSize());
@@ -69,21 +74,21 @@ public class WGPUSupportedLimitsExtras {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUChainedStructOut chain
-     * }
+     *}
      */
     public static void chain(MemorySegment struct, MemorySegment fieldValue) {
         MemorySegment.copy(fieldValue, 0L, struct, chain$OFFSET, chain$LAYOUT.byteSize());
     }
 
-    private static final GroupLayout limits$LAYOUT = (GroupLayout)$LAYOUT.select(groupElement("limits"));
+    private static final GroupLayout limits$LAYOUT = (GroupLayout) $LAYOUT.select(groupElement("limits"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUNativeLimits limits
-     * }
+     *}
      */
     public static final GroupLayout limits$layout() {
         return limits$LAYOUT;
@@ -93,9 +98,9 @@ public class WGPUSupportedLimitsExtras {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUNativeLimits limits
-     * }
+     *}
      */
     public static final long limits$offset() {
         return limits$OFFSET;
@@ -103,9 +108,9 @@ public class WGPUSupportedLimitsExtras {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUNativeLimits limits
-     * }
+     *}
      */
     public static MemorySegment limits(MemorySegment struct) {
         return struct.asSlice(limits$OFFSET, limits$LAYOUT.byteSize());
@@ -113,9 +118,9 @@ public class WGPUSupportedLimitsExtras {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUNativeLimits limits
-     * }
+     *}
      */
     public static void limits(MemorySegment struct, MemorySegment fieldValue) {
         MemorySegment.copy(fieldValue, 0L, struct, limits$OFFSET, limits$LAYOUT.byteSize());
@@ -132,7 +137,9 @@ public class WGPUSupportedLimitsExtras {
     /**
      * The size (in bytes) of this struct
      */
-    public static long sizeof() { return layout().byteSize(); }
+    public static long sizeof() {
+        return layout().byteSize();
+    }
 
     /**
      * Allocate a segment of size {@code layout().byteSize()} using {@code allocator}

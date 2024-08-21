@@ -9,13 +9,13 @@ import static java.lang.foreign.MemoryLayout.PathElement.groupElement;
 import static java.lang.foreign.ValueLayout.OfLong;
 
 /**
- * {@snippet lang=c :
+ * {@snippet lang = c:
  * struct WGPUPipelineLayoutExtras {
  *     WGPUChainedStruct chain;
  *     size_t pushConstantRangeCount;
  *     const WGPUPushConstantRange *pushConstantRanges;
  * }
- * }
+ *}
  */
 public class WGPUPipelineLayoutExtras {
 
@@ -24,9 +24,9 @@ public class WGPUPipelineLayoutExtras {
     }
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
-        WGPUChainedStruct.layout().withName("chain"),
-        wgpu_h.C_LONG.withName("pushConstantRangeCount"),
-        wgpu_h.C_POINTER.withName("pushConstantRanges")
+            WGPUChainedStruct.layout().withName("chain"),
+            wgpu_h.C_LONG.withName("pushConstantRangeCount"),
+            wgpu_h.C_POINTER.withName("pushConstantRanges")
     ).withName("WGPUPipelineLayoutExtras");
 
     /**
@@ -36,13 +36,13 @@ public class WGPUPipelineLayoutExtras {
         return $LAYOUT;
     }
 
-    private static final GroupLayout chain$LAYOUT = (GroupLayout)$LAYOUT.select(groupElement("chain"));
+    private static final GroupLayout chain$LAYOUT = (GroupLayout) $LAYOUT.select(groupElement("chain"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUChainedStruct chain
-     * }
+     *}
      */
     public static final GroupLayout chain$layout() {
         return chain$LAYOUT;
@@ -52,9 +52,9 @@ public class WGPUPipelineLayoutExtras {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUChainedStruct chain
-     * }
+     *}
      */
     public static final long chain$offset() {
         return chain$OFFSET;
@@ -62,9 +62,9 @@ public class WGPUPipelineLayoutExtras {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUChainedStruct chain
-     * }
+     *}
      */
     public static MemorySegment chain(MemorySegment struct) {
         return struct.asSlice(chain$OFFSET, chain$LAYOUT.byteSize());
@@ -72,21 +72,21 @@ public class WGPUPipelineLayoutExtras {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUChainedStruct chain
-     * }
+     *}
      */
     public static void chain(MemorySegment struct, MemorySegment fieldValue) {
         MemorySegment.copy(fieldValue, 0L, struct, chain$OFFSET, chain$LAYOUT.byteSize());
     }
 
-    private static final OfLong pushConstantRangeCount$LAYOUT = (OfLong)$LAYOUT.select(groupElement("pushConstantRangeCount"));
+    private static final OfLong pushConstantRangeCount$LAYOUT = (OfLong) $LAYOUT.select(groupElement("pushConstantRangeCount"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * size_t pushConstantRangeCount
-     * }
+     *}
      */
     public static final OfLong pushConstantRangeCount$layout() {
         return pushConstantRangeCount$LAYOUT;
@@ -96,9 +96,9 @@ public class WGPUPipelineLayoutExtras {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * size_t pushConstantRangeCount
-     * }
+     *}
      */
     public static final long pushConstantRangeCount$offset() {
         return pushConstantRangeCount$OFFSET;
@@ -106,9 +106,9 @@ public class WGPUPipelineLayoutExtras {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * size_t pushConstantRangeCount
-     * }
+     *}
      */
     public static long pushConstantRangeCount(MemorySegment struct) {
         return struct.get(pushConstantRangeCount$LAYOUT, pushConstantRangeCount$OFFSET);
@@ -116,21 +116,21 @@ public class WGPUPipelineLayoutExtras {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * size_t pushConstantRangeCount
-     * }
+     *}
      */
     public static void pushConstantRangeCount(MemorySegment struct, long fieldValue) {
         struct.set(pushConstantRangeCount$LAYOUT, pushConstantRangeCount$OFFSET, fieldValue);
     }
 
-    private static final AddressLayout pushConstantRanges$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("pushConstantRanges"));
+    private static final AddressLayout pushConstantRanges$LAYOUT = (AddressLayout) $LAYOUT.select(groupElement("pushConstantRanges"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * const WGPUPushConstantRange *pushConstantRanges
-     * }
+     *}
      */
     public static final AddressLayout pushConstantRanges$layout() {
         return pushConstantRanges$LAYOUT;
@@ -140,9 +140,9 @@ public class WGPUPipelineLayoutExtras {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * const WGPUPushConstantRange *pushConstantRanges
-     * }
+     *}
      */
     public static final long pushConstantRanges$offset() {
         return pushConstantRanges$OFFSET;
@@ -150,9 +150,9 @@ public class WGPUPipelineLayoutExtras {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * const WGPUPushConstantRange *pushConstantRanges
-     * }
+     *}
      */
     public static MemorySegment pushConstantRanges(MemorySegment struct) {
         return struct.get(pushConstantRanges$LAYOUT, pushConstantRanges$OFFSET);
@@ -160,9 +160,9 @@ public class WGPUPipelineLayoutExtras {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * const WGPUPushConstantRange *pushConstantRanges
-     * }
+     *}
      */
     public static void pushConstantRanges(MemorySegment struct, MemorySegment fieldValue) {
         struct.set(pushConstantRanges$LAYOUT, pushConstantRanges$OFFSET, fieldValue);
@@ -179,7 +179,9 @@ public class WGPUPipelineLayoutExtras {
     /**
      * The size (in bytes) of this struct
      */
-    public static long sizeof() { return layout().byteSize(); }
+    public static long sizeof() {
+        return layout().byteSize();
+    }
 
     /**
      * Allocate a segment of size {@code layout().byteSize()} using {@code allocator}

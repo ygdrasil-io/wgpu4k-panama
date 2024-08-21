@@ -10,14 +10,14 @@ import static java.lang.foreign.ValueLayout.OfInt;
 import static java.lang.foreign.ValueLayout.OfLong;
 
 /**
- * {@snippet lang=c :
+ * {@snippet lang = c:
  * struct WGPUBufferBindingLayout {
  *     const WGPUChainedStruct *nextInChain;
  *     WGPUBufferBindingType type;
  *     WGPUBool hasDynamicOffset;
  *     uint64_t minBindingSize;
  * }
- * }
+ *}
  */
 public class WGPUBufferBindingLayout {
 
@@ -26,10 +26,10 @@ public class WGPUBufferBindingLayout {
     }
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
-        wgpu_h.C_POINTER.withName("nextInChain"),
-        wgpu_h.C_INT.withName("type"),
-        wgpu_h.C_INT.withName("hasDynamicOffset"),
-        wgpu_h.C_LONG_LONG.withName("minBindingSize")
+            wgpu_h.C_POINTER.withName("nextInChain"),
+            wgpu_h.C_INT.withName("type"),
+            wgpu_h.C_INT.withName("hasDynamicOffset"),
+            wgpu_h.C_LONG_LONG.withName("minBindingSize")
     ).withName("WGPUBufferBindingLayout");
 
     /**
@@ -39,13 +39,13 @@ public class WGPUBufferBindingLayout {
         return $LAYOUT;
     }
 
-    private static final AddressLayout nextInChain$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("nextInChain"));
+    private static final AddressLayout nextInChain$LAYOUT = (AddressLayout) $LAYOUT.select(groupElement("nextInChain"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * const WGPUChainedStruct *nextInChain
-     * }
+     *}
      */
     public static final AddressLayout nextInChain$layout() {
         return nextInChain$LAYOUT;
@@ -55,9 +55,9 @@ public class WGPUBufferBindingLayout {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * const WGPUChainedStruct *nextInChain
-     * }
+     *}
      */
     public static final long nextInChain$offset() {
         return nextInChain$OFFSET;
@@ -65,9 +65,9 @@ public class WGPUBufferBindingLayout {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * const WGPUChainedStruct *nextInChain
-     * }
+     *}
      */
     public static MemorySegment nextInChain(MemorySegment struct) {
         return struct.get(nextInChain$LAYOUT, nextInChain$OFFSET);
@@ -75,21 +75,21 @@ public class WGPUBufferBindingLayout {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * const WGPUChainedStruct *nextInChain
-     * }
+     *}
      */
     public static void nextInChain(MemorySegment struct, MemorySegment fieldValue) {
         struct.set(nextInChain$LAYOUT, nextInChain$OFFSET, fieldValue);
     }
 
-    private static final OfInt type$LAYOUT = (OfInt)$LAYOUT.select(groupElement("type"));
+    private static final OfInt type$LAYOUT = (OfInt) $LAYOUT.select(groupElement("type"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUBufferBindingType type
-     * }
+     *}
      */
     public static final OfInt type$layout() {
         return type$LAYOUT;
@@ -99,9 +99,9 @@ public class WGPUBufferBindingLayout {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUBufferBindingType type
-     * }
+     *}
      */
     public static final long type$offset() {
         return type$OFFSET;
@@ -109,9 +109,9 @@ public class WGPUBufferBindingLayout {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUBufferBindingType type
-     * }
+     *}
      */
     public static int type(MemorySegment struct) {
         return struct.get(type$LAYOUT, type$OFFSET);
@@ -119,21 +119,21 @@ public class WGPUBufferBindingLayout {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUBufferBindingType type
-     * }
+     *}
      */
     public static void type(MemorySegment struct, int fieldValue) {
         struct.set(type$LAYOUT, type$OFFSET, fieldValue);
     }
 
-    private static final OfInt hasDynamicOffset$LAYOUT = (OfInt)$LAYOUT.select(groupElement("hasDynamicOffset"));
+    private static final OfInt hasDynamicOffset$LAYOUT = (OfInt) $LAYOUT.select(groupElement("hasDynamicOffset"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUBool hasDynamicOffset
-     * }
+     *}
      */
     public static final OfInt hasDynamicOffset$layout() {
         return hasDynamicOffset$LAYOUT;
@@ -143,9 +143,9 @@ public class WGPUBufferBindingLayout {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUBool hasDynamicOffset
-     * }
+     *}
      */
     public static final long hasDynamicOffset$offset() {
         return hasDynamicOffset$OFFSET;
@@ -153,9 +153,9 @@ public class WGPUBufferBindingLayout {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUBool hasDynamicOffset
-     * }
+     *}
      */
     public static int hasDynamicOffset(MemorySegment struct) {
         return struct.get(hasDynamicOffset$LAYOUT, hasDynamicOffset$OFFSET);
@@ -163,21 +163,21 @@ public class WGPUBufferBindingLayout {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUBool hasDynamicOffset
-     * }
+     *}
      */
     public static void hasDynamicOffset(MemorySegment struct, int fieldValue) {
         struct.set(hasDynamicOffset$LAYOUT, hasDynamicOffset$OFFSET, fieldValue);
     }
 
-    private static final OfLong minBindingSize$LAYOUT = (OfLong)$LAYOUT.select(groupElement("minBindingSize"));
+    private static final OfLong minBindingSize$LAYOUT = (OfLong) $LAYOUT.select(groupElement("minBindingSize"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint64_t minBindingSize
-     * }
+     *}
      */
     public static final OfLong minBindingSize$layout() {
         return minBindingSize$LAYOUT;
@@ -187,9 +187,9 @@ public class WGPUBufferBindingLayout {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint64_t minBindingSize
-     * }
+     *}
      */
     public static final long minBindingSize$offset() {
         return minBindingSize$OFFSET;
@@ -197,9 +197,9 @@ public class WGPUBufferBindingLayout {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint64_t minBindingSize
-     * }
+     *}
      */
     public static long minBindingSize(MemorySegment struct) {
         return struct.get(minBindingSize$LAYOUT, minBindingSize$OFFSET);
@@ -207,9 +207,9 @@ public class WGPUBufferBindingLayout {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * uint64_t minBindingSize
-     * }
+     *}
      */
     public static void minBindingSize(MemorySegment struct, long fieldValue) {
         struct.set(minBindingSize$LAYOUT, minBindingSize$OFFSET, fieldValue);
@@ -226,7 +226,9 @@ public class WGPUBufferBindingLayout {
     /**
      * The size (in bytes) of this struct
      */
-    public static long sizeof() { return layout().byteSize(); }
+    public static long sizeof() {
+        return layout().byteSize();
+    }
 
     /**
      * Allocate a segment of size {@code layout().byteSize()} using {@code allocator}

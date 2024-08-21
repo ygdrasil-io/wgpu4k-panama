@@ -9,9 +9,9 @@ import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
 /**
- * {@snippet lang=c :
+ * {@snippet lang = c:
  * typedef WGPUQueryType (*WGPUProcQuerySetGetType)(WGPUQuerySet)
- * }
+ *}
  */
 public class WGPUProcQuerySetGetType {
 
@@ -27,8 +27,8 @@ public class WGPUProcQuerySetGetType {
     }
 
     private static final FunctionDescriptor $DESC = FunctionDescriptor.of(
-        wgpu_h.C_INT,
-        wgpu_h.C_POINTER
+            wgpu_h.C_INT,
+            wgpu_h.C_POINTER
     );
 
     /**
@@ -53,7 +53,7 @@ public class WGPUProcQuerySetGetType {
     /**
      * Invoke the upcall stub {@code funcPtr}, with given parameters
      */
-    public static int invoke(MemorySegment funcPtr,MemorySegment querySet) {
+    public static int invoke(MemorySegment funcPtr, MemorySegment querySet) {
         try {
             return (int) DOWN$MH.invokeExact(funcPtr, querySet);
         } catch (Throwable ex$) {

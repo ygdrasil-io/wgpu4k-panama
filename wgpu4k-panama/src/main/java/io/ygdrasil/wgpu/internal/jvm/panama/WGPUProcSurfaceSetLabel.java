@@ -9,13 +9,13 @@ import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
 /**
- * {@snippet lang=c :
- * typedef void (*WGPUProcDeviceSetUncapturedErrorCallback)(WGPUDevice, WGPUErrorCallback, void *)
- * }
+ * {@snippet lang = c:
+ * typedef void (*WGPUProcSurfaceSetLabel)(WGPUSurface, const char *)
+ *}
  */
-public class WGPUProcDeviceSetUncapturedErrorCallback {
+public class WGPUProcSurfaceSetLabel {
 
-    WGPUProcDeviceSetUncapturedErrorCallback() {
+    WGPUProcSurfaceSetLabel() {
         // Should not be called directly
     }
 
@@ -23,13 +23,12 @@ public class WGPUProcDeviceSetUncapturedErrorCallback {
      * The function pointer signature, expressed as a functional interface
      */
     public interface Function {
-        void apply(MemorySegment device, MemorySegment callback, MemorySegment userdata);
+        void apply(MemorySegment surface, MemorySegment label);
     }
 
     private static final FunctionDescriptor $DESC = FunctionDescriptor.ofVoid(
-        wgpu_h.C_POINTER,
-        wgpu_h.C_POINTER,
-        wgpu_h.C_POINTER
+            wgpu_h.C_POINTER,
+            wgpu_h.C_POINTER
     );
 
     /**
@@ -39,13 +38,13 @@ public class WGPUProcDeviceSetUncapturedErrorCallback {
         return $DESC;
     }
 
-    private static final MethodHandle UP$MH = wgpu_h.upcallHandle(WGPUProcDeviceSetUncapturedErrorCallback.Function.class, "apply", $DESC);
+    private static final MethodHandle UP$MH = wgpu_h.upcallHandle(WGPUProcSurfaceSetLabel.Function.class, "apply", $DESC);
 
     /**
      * Allocates a new upcall stub, whose implementation is defined by {@code fi}.
      * The lifetime of the returned segment is managed by {@code arena}
      */
-    public static MemorySegment allocate(WGPUProcDeviceSetUncapturedErrorCallback.Function fi, Arena arena) {
+    public static MemorySegment allocate(WGPUProcSurfaceSetLabel.Function fi, Arena arena) {
         return Linker.nativeLinker().upcallStub(UP$MH.bindTo(fi), $DESC, arena);
     }
 
@@ -54,9 +53,9 @@ public class WGPUProcDeviceSetUncapturedErrorCallback {
     /**
      * Invoke the upcall stub {@code funcPtr}, with given parameters
      */
-    public static void invoke(MemorySegment funcPtr,MemorySegment device, MemorySegment callback, MemorySegment userdata) {
+    public static void invoke(MemorySegment funcPtr, MemorySegment surface, MemorySegment label) {
         try {
-             DOWN$MH.invokeExact(funcPtr, device, callback, userdata);
+            DOWN$MH.invokeExact(funcPtr, surface, label);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }

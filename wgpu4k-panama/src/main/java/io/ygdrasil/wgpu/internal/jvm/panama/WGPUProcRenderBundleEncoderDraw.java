@@ -2,16 +2,20 @@
 
 package io.ygdrasil.wgpu.internal.jvm.panama;
 
-import java.lang.foreign.Arena;
-import java.lang.foreign.FunctionDescriptor;
-import java.lang.foreign.Linker;
-import java.lang.foreign.MemorySegment;
-import java.lang.invoke.MethodHandle;
+import java.lang.invoke.*;
+import java.lang.foreign.*;
+import java.nio.ByteOrder;
+import java.util.*;
+import java.util.function.*;
+import java.util.stream.*;
+
+import static java.lang.foreign.ValueLayout.*;
+import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 /**
- * {@snippet lang=c :
+ * {@snippet lang = c:
  * typedef void (*WGPUProcRenderBundleEncoderDraw)(WGPURenderBundleEncoder, uint32_t, uint32_t, uint32_t, uint32_t)
- * }
+ *}
  */
 public class WGPUProcRenderBundleEncoderDraw {
 
@@ -27,11 +31,11 @@ public class WGPUProcRenderBundleEncoderDraw {
     }
 
     private static final FunctionDescriptor $DESC = FunctionDescriptor.ofVoid(
-        wgpu_h.C_POINTER,
-        wgpu_h.C_INT,
-        wgpu_h.C_INT,
-        wgpu_h.C_INT,
-        wgpu_h.C_INT
+            wgpu_h.C_POINTER,
+            wgpu_h.C_INT,
+            wgpu_h.C_INT,
+            wgpu_h.C_INT,
+            wgpu_h.C_INT
     );
 
     /**
@@ -56,9 +60,9 @@ public class WGPUProcRenderBundleEncoderDraw {
     /**
      * Invoke the upcall stub {@code funcPtr}, with given parameters
      */
-    public static void invoke(MemorySegment funcPtr,MemorySegment renderBundleEncoder, int vertexCount, int instanceCount, int firstVertex, int firstInstance) {
+    public static void invoke(MemorySegment funcPtr, MemorySegment renderBundleEncoder, int vertexCount, int instanceCount, int firstVertex, int firstInstance) {
         try {
-             DOWN$MH.invokeExact(funcPtr, renderBundleEncoder, vertexCount, instanceCount, firstVertex, firstInstance);
+            DOWN$MH.invokeExact(funcPtr, renderBundleEncoder, vertexCount, instanceCount, firstVertex, firstInstance);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }

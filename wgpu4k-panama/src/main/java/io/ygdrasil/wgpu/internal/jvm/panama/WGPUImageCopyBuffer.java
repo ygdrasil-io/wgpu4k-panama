@@ -8,13 +8,13 @@ import java.util.function.Consumer;
 import static java.lang.foreign.MemoryLayout.PathElement.groupElement;
 
 /**
- * {@snippet lang=c :
+ * {@snippet lang = c:
  * struct WGPUImageCopyBuffer {
  *     const WGPUChainedStruct *nextInChain;
  *     WGPUTextureDataLayout layout;
  *     WGPUBuffer buffer;
  * }
- * }
+ *}
  */
 public class WGPUImageCopyBuffer {
 
@@ -23,9 +23,9 @@ public class WGPUImageCopyBuffer {
     }
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
-        wgpu_h.C_POINTER.withName("nextInChain"),
-        WGPUTextureDataLayout.layout().withName("layout"),
-        wgpu_h.C_POINTER.withName("buffer")
+            wgpu_h.C_POINTER.withName("nextInChain"),
+            WGPUTextureDataLayout.layout().withName("layout"),
+            wgpu_h.C_POINTER.withName("buffer")
     ).withName("WGPUImageCopyBuffer");
 
     /**
@@ -35,13 +35,13 @@ public class WGPUImageCopyBuffer {
         return $LAYOUT;
     }
 
-    private static final AddressLayout nextInChain$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("nextInChain"));
+    private static final AddressLayout nextInChain$LAYOUT = (AddressLayout) $LAYOUT.select(groupElement("nextInChain"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * const WGPUChainedStruct *nextInChain
-     * }
+     *}
      */
     public static final AddressLayout nextInChain$layout() {
         return nextInChain$LAYOUT;
@@ -51,9 +51,9 @@ public class WGPUImageCopyBuffer {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * const WGPUChainedStruct *nextInChain
-     * }
+     *}
      */
     public static final long nextInChain$offset() {
         return nextInChain$OFFSET;
@@ -61,9 +61,9 @@ public class WGPUImageCopyBuffer {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * const WGPUChainedStruct *nextInChain
-     * }
+     *}
      */
     public static MemorySegment nextInChain(MemorySegment struct) {
         return struct.get(nextInChain$LAYOUT, nextInChain$OFFSET);
@@ -71,21 +71,21 @@ public class WGPUImageCopyBuffer {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * const WGPUChainedStruct *nextInChain
-     * }
+     *}
      */
     public static void nextInChain(MemorySegment struct, MemorySegment fieldValue) {
         struct.set(nextInChain$LAYOUT, nextInChain$OFFSET, fieldValue);
     }
 
-    private static final GroupLayout layout$LAYOUT = (GroupLayout)$LAYOUT.select(groupElement("layout"));
+    private static final GroupLayout layout$LAYOUT = (GroupLayout) $LAYOUT.select(groupElement("layout"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUTextureDataLayout layout
-     * }
+     *}
      */
     public static final GroupLayout layout$layout() {
         return layout$LAYOUT;
@@ -95,9 +95,9 @@ public class WGPUImageCopyBuffer {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUTextureDataLayout layout
-     * }
+     *}
      */
     public static final long layout$offset() {
         return layout$OFFSET;
@@ -105,9 +105,9 @@ public class WGPUImageCopyBuffer {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUTextureDataLayout layout
-     * }
+     *}
      */
     public static MemorySegment layout(MemorySegment struct) {
         return struct.asSlice(layout$OFFSET, layout$LAYOUT.byteSize());
@@ -115,21 +115,21 @@ public class WGPUImageCopyBuffer {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUTextureDataLayout layout
-     * }
+     *}
      */
     public static void layout(MemorySegment struct, MemorySegment fieldValue) {
         MemorySegment.copy(fieldValue, 0L, struct, layout$OFFSET, layout$LAYOUT.byteSize());
     }
 
-    private static final AddressLayout buffer$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("buffer"));
+    private static final AddressLayout buffer$LAYOUT = (AddressLayout) $LAYOUT.select(groupElement("buffer"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUBuffer buffer
-     * }
+     *}
      */
     public static final AddressLayout buffer$layout() {
         return buffer$LAYOUT;
@@ -139,9 +139,9 @@ public class WGPUImageCopyBuffer {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUBuffer buffer
-     * }
+     *}
      */
     public static final long buffer$offset() {
         return buffer$OFFSET;
@@ -149,9 +149,9 @@ public class WGPUImageCopyBuffer {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUBuffer buffer
-     * }
+     *}
      */
     public static MemorySegment buffer(MemorySegment struct) {
         return struct.get(buffer$LAYOUT, buffer$OFFSET);
@@ -159,9 +159,9 @@ public class WGPUImageCopyBuffer {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUBuffer buffer
-     * }
+     *}
      */
     public static void buffer(MemorySegment struct, MemorySegment fieldValue) {
         struct.set(buffer$LAYOUT, buffer$OFFSET, fieldValue);
@@ -178,7 +178,9 @@ public class WGPUImageCopyBuffer {
     /**
      * The size (in bytes) of this struct
      */
-    public static long sizeof() { return layout().byteSize(); }
+    public static long sizeof() {
+        return layout().byteSize();
+    }
 
     /**
      * Allocate a segment of size {@code layout().byteSize()} using {@code allocator}

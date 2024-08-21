@@ -13,9 +13,9 @@ import static java.lang.foreign.ValueLayout.*;
 import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 /**
- * {@snippet lang=c :
+ * {@snippet lang = c:
  * typedef void (*WGPUProcRenderPassEncoderSetBindGroup)(WGPURenderPassEncoder, uint32_t, WGPUBindGroup, size_t, const uint32_t *)
- * }
+ *}
  */
 public class WGPUProcRenderPassEncoderSetBindGroup {
 
@@ -31,11 +31,11 @@ public class WGPUProcRenderPassEncoderSetBindGroup {
     }
 
     private static final FunctionDescriptor $DESC = FunctionDescriptor.ofVoid(
-        wgpu_h.C_POINTER,
-        wgpu_h.C_INT,
-        wgpu_h.C_POINTER,
-        wgpu_h.C_LONG,
-        wgpu_h.C_POINTER
+            wgpu_h.C_POINTER,
+            wgpu_h.C_INT,
+            wgpu_h.C_POINTER,
+            wgpu_h.C_LONG,
+            wgpu_h.C_POINTER
     );
 
     /**
@@ -60,9 +60,9 @@ public class WGPUProcRenderPassEncoderSetBindGroup {
     /**
      * Invoke the upcall stub {@code funcPtr}, with given parameters
      */
-    public static void invoke(MemorySegment funcPtr,MemorySegment renderPassEncoder, int groupIndex, MemorySegment group, long dynamicOffsetCount, MemorySegment dynamicOffsets) {
+    public static void invoke(MemorySegment funcPtr, MemorySegment renderPassEncoder, int groupIndex, MemorySegment group, long dynamicOffsetCount, MemorySegment dynamicOffsets) {
         try {
-             DOWN$MH.invokeExact(funcPtr, renderPassEncoder, groupIndex, group, dynamicOffsetCount, dynamicOffsets);
+            DOWN$MH.invokeExact(funcPtr, renderPassEncoder, groupIndex, group, dynamicOffsetCount, dynamicOffsets);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }

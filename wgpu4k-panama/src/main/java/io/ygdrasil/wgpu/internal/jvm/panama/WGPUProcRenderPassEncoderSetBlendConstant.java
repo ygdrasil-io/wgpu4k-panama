@@ -13,9 +13,9 @@ import static java.lang.foreign.ValueLayout.*;
 import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 /**
- * {@snippet lang=c :
+ * {@snippet lang = c:
  * typedef void (*WGPUProcRenderPassEncoderSetBlendConstant)(WGPURenderPassEncoder, const WGPUColor *)
- * }
+ *}
  */
 public class WGPUProcRenderPassEncoderSetBlendConstant {
 
@@ -31,8 +31,8 @@ public class WGPUProcRenderPassEncoderSetBlendConstant {
     }
 
     private static final FunctionDescriptor $DESC = FunctionDescriptor.ofVoid(
-        wgpu_h.C_POINTER,
-        wgpu_h.C_POINTER
+            wgpu_h.C_POINTER,
+            wgpu_h.C_POINTER
     );
 
     /**
@@ -57,9 +57,9 @@ public class WGPUProcRenderPassEncoderSetBlendConstant {
     /**
      * Invoke the upcall stub {@code funcPtr}, with given parameters
      */
-    public static void invoke(MemorySegment funcPtr,MemorySegment renderPassEncoder, MemorySegment color) {
+    public static void invoke(MemorySegment funcPtr, MemorySegment renderPassEncoder, MemorySegment color) {
         try {
-             DOWN$MH.invokeExact(funcPtr, renderPassEncoder, color);
+            DOWN$MH.invokeExact(funcPtr, renderPassEncoder, color);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }

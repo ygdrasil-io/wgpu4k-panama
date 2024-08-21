@@ -13,7 +13,7 @@ import static java.lang.foreign.ValueLayout.*;
 import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 /**
- * {@snippet lang=c :
+ * {@snippet lang = c:
  * struct WGPUProgrammableStageDescriptor {
  *     const WGPUChainedStruct *nextInChain;
  *     WGPUShaderModule module;
@@ -21,7 +21,7 @@ import static java.lang.foreign.MemoryLayout.PathElement.*;
  *     size_t constantCount;
  *     const WGPUConstantEntry *constants;
  * }
- * }
+ *}
  */
 public class WGPUProgrammableStageDescriptor {
 
@@ -30,11 +30,11 @@ public class WGPUProgrammableStageDescriptor {
     }
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
-        wgpu_h.C_POINTER.withName("nextInChain"),
-        wgpu_h.C_POINTER.withName("module"),
-        wgpu_h.C_POINTER.withName("entryPoint"),
-        wgpu_h.C_LONG.withName("constantCount"),
-        wgpu_h.C_POINTER.withName("constants")
+            wgpu_h.C_POINTER.withName("nextInChain"),
+            wgpu_h.C_POINTER.withName("module"),
+            wgpu_h.C_POINTER.withName("entryPoint"),
+            wgpu_h.C_LONG.withName("constantCount"),
+            wgpu_h.C_POINTER.withName("constants")
     ).withName("WGPUProgrammableStageDescriptor");
 
     /**
@@ -44,13 +44,13 @@ public class WGPUProgrammableStageDescriptor {
         return $LAYOUT;
     }
 
-    private static final AddressLayout nextInChain$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("nextInChain"));
+    private static final AddressLayout nextInChain$LAYOUT = (AddressLayout) $LAYOUT.select(groupElement("nextInChain"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * const WGPUChainedStruct *nextInChain
-     * }
+     *}
      */
     public static final AddressLayout nextInChain$layout() {
         return nextInChain$LAYOUT;
@@ -60,9 +60,9 @@ public class WGPUProgrammableStageDescriptor {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * const WGPUChainedStruct *nextInChain
-     * }
+     *}
      */
     public static final long nextInChain$offset() {
         return nextInChain$OFFSET;
@@ -70,9 +70,9 @@ public class WGPUProgrammableStageDescriptor {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * const WGPUChainedStruct *nextInChain
-     * }
+     *}
      */
     public static MemorySegment nextInChain(MemorySegment struct) {
         return struct.get(nextInChain$LAYOUT, nextInChain$OFFSET);
@@ -80,21 +80,21 @@ public class WGPUProgrammableStageDescriptor {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * const WGPUChainedStruct *nextInChain
-     * }
+     *}
      */
     public static void nextInChain(MemorySegment struct, MemorySegment fieldValue) {
         struct.set(nextInChain$LAYOUT, nextInChain$OFFSET, fieldValue);
     }
 
-    private static final AddressLayout module$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("module"));
+    private static final AddressLayout module$LAYOUT = (AddressLayout) $LAYOUT.select(groupElement("module"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUShaderModule module
-     * }
+     *}
      */
     public static final AddressLayout module$layout() {
         return module$LAYOUT;
@@ -104,9 +104,9 @@ public class WGPUProgrammableStageDescriptor {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUShaderModule module
-     * }
+     *}
      */
     public static final long module$offset() {
         return module$OFFSET;
@@ -114,9 +114,9 @@ public class WGPUProgrammableStageDescriptor {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUShaderModule module
-     * }
+     *}
      */
     public static MemorySegment module(MemorySegment struct) {
         return struct.get(module$LAYOUT, module$OFFSET);
@@ -124,21 +124,21 @@ public class WGPUProgrammableStageDescriptor {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * WGPUShaderModule module
-     * }
+     *}
      */
     public static void module(MemorySegment struct, MemorySegment fieldValue) {
         struct.set(module$LAYOUT, module$OFFSET, fieldValue);
     }
 
-    private static final AddressLayout entryPoint$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("entryPoint"));
+    private static final AddressLayout entryPoint$LAYOUT = (AddressLayout) $LAYOUT.select(groupElement("entryPoint"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * const char *entryPoint
-     * }
+     *}
      */
     public static final AddressLayout entryPoint$layout() {
         return entryPoint$LAYOUT;
@@ -148,9 +148,9 @@ public class WGPUProgrammableStageDescriptor {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * const char *entryPoint
-     * }
+     *}
      */
     public static final long entryPoint$offset() {
         return entryPoint$OFFSET;
@@ -158,9 +158,9 @@ public class WGPUProgrammableStageDescriptor {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * const char *entryPoint
-     * }
+     *}
      */
     public static MemorySegment entryPoint(MemorySegment struct) {
         return struct.get(entryPoint$LAYOUT, entryPoint$OFFSET);
@@ -168,21 +168,21 @@ public class WGPUProgrammableStageDescriptor {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * const char *entryPoint
-     * }
+     *}
      */
     public static void entryPoint(MemorySegment struct, MemorySegment fieldValue) {
         struct.set(entryPoint$LAYOUT, entryPoint$OFFSET, fieldValue);
     }
 
-    private static final OfLong constantCount$LAYOUT = (OfLong)$LAYOUT.select(groupElement("constantCount"));
+    private static final OfLong constantCount$LAYOUT = (OfLong) $LAYOUT.select(groupElement("constantCount"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * size_t constantCount
-     * }
+     *}
      */
     public static final OfLong constantCount$layout() {
         return constantCount$LAYOUT;
@@ -192,9 +192,9 @@ public class WGPUProgrammableStageDescriptor {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * size_t constantCount
-     * }
+     *}
      */
     public static final long constantCount$offset() {
         return constantCount$OFFSET;
@@ -202,9 +202,9 @@ public class WGPUProgrammableStageDescriptor {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * size_t constantCount
-     * }
+     *}
      */
     public static long constantCount(MemorySegment struct) {
         return struct.get(constantCount$LAYOUT, constantCount$OFFSET);
@@ -212,21 +212,21 @@ public class WGPUProgrammableStageDescriptor {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * size_t constantCount
-     * }
+     *}
      */
     public static void constantCount(MemorySegment struct, long fieldValue) {
         struct.set(constantCount$LAYOUT, constantCount$OFFSET, fieldValue);
     }
 
-    private static final AddressLayout constants$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("constants"));
+    private static final AddressLayout constants$LAYOUT = (AddressLayout) $LAYOUT.select(groupElement("constants"));
 
     /**
      * Layout for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * const WGPUConstantEntry *constants
-     * }
+     *}
      */
     public static final AddressLayout constants$layout() {
         return constants$LAYOUT;
@@ -236,9 +236,9 @@ public class WGPUProgrammableStageDescriptor {
 
     /**
      * Offset for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * const WGPUConstantEntry *constants
-     * }
+     *}
      */
     public static final long constants$offset() {
         return constants$OFFSET;
@@ -246,9 +246,9 @@ public class WGPUProgrammableStageDescriptor {
 
     /**
      * Getter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * const WGPUConstantEntry *constants
-     * }
+     *}
      */
     public static MemorySegment constants(MemorySegment struct) {
         return struct.get(constants$LAYOUT, constants$OFFSET);
@@ -256,9 +256,9 @@ public class WGPUProgrammableStageDescriptor {
 
     /**
      * Setter for field:
-     * {@snippet lang=c :
+     * {@snippet lang = c:
      * const WGPUConstantEntry *constants
-     * }
+     *}
      */
     public static void constants(MemorySegment struct, MemorySegment fieldValue) {
         struct.set(constants$LAYOUT, constants$OFFSET, fieldValue);
@@ -275,7 +275,9 @@ public class WGPUProgrammableStageDescriptor {
     /**
      * The size (in bytes) of this struct
      */
-    public static long sizeof() { return layout().byteSize(); }
+    public static long sizeof() {
+        return layout().byteSize();
+    }
 
     /**
      * Allocate a segment of size {@code layout().byteSize()} using {@code allocator}
