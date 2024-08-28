@@ -15649,73 +15649,64 @@ public class wgpu_h {
     public static int WGPUNativeFeature_VertexAttribute64bit() {
         return WGPUNativeFeature_VertexAttribute64bit;
     }
-    private static final int WGPUNativeFeature_ShaderUnusedVertexOutput = (int)196634L;
+    private static final int WGPUNativeFeature_TextureFormatNv12 = (int)196634L;
     /**
      * {@snippet lang=c :
-     * enum WGPUNativeFeature.WGPUNativeFeature_ShaderUnusedVertexOutput = 196634
-     * }
-     */
-    public static int WGPUNativeFeature_ShaderUnusedVertexOutput() {
-        return WGPUNativeFeature_ShaderUnusedVertexOutput;
-    }
-    private static final int WGPUNativeFeature_TextureFormatNv12 = (int)196635L;
-    /**
-     * {@snippet lang=c :
-     * enum WGPUNativeFeature.WGPUNativeFeature_TextureFormatNv12 = 196635
+     * enum WGPUNativeFeature.WGPUNativeFeature_TextureFormatNv12 = 196634
      * }
      */
     public static int WGPUNativeFeature_TextureFormatNv12() {
         return WGPUNativeFeature_TextureFormatNv12;
     }
-    private static final int WGPUNativeFeature_RayTracingAccelerationStructure = (int)196636L;
+    private static final int WGPUNativeFeature_RayTracingAccelerationStructure = (int)196635L;
     /**
      * {@snippet lang=c :
-     * enum WGPUNativeFeature.WGPUNativeFeature_RayTracingAccelerationStructure = 196636
+     * enum WGPUNativeFeature.WGPUNativeFeature_RayTracingAccelerationStructure = 196635
      * }
      */
     public static int WGPUNativeFeature_RayTracingAccelerationStructure() {
         return WGPUNativeFeature_RayTracingAccelerationStructure;
     }
-    private static final int WGPUNativeFeature_RayQuery = (int)196637L;
+    private static final int WGPUNativeFeature_RayQuery = (int)196636L;
     /**
      * {@snippet lang=c :
-     * enum WGPUNativeFeature.WGPUNativeFeature_RayQuery = 196637
+     * enum WGPUNativeFeature.WGPUNativeFeature_RayQuery = 196636
      * }
      */
     public static int WGPUNativeFeature_RayQuery() {
         return WGPUNativeFeature_RayQuery;
     }
-    private static final int WGPUNativeFeature_ShaderF64 = (int)196638L;
+    private static final int WGPUNativeFeature_ShaderF64 = (int)196637L;
     /**
      * {@snippet lang=c :
-     * enum WGPUNativeFeature.WGPUNativeFeature_ShaderF64 = 196638
+     * enum WGPUNativeFeature.WGPUNativeFeature_ShaderF64 = 196637
      * }
      */
     public static int WGPUNativeFeature_ShaderF64() {
         return WGPUNativeFeature_ShaderF64;
     }
-    private static final int WGPUNativeFeature_ShaderI16 = (int)196639L;
+    private static final int WGPUNativeFeature_ShaderI16 = (int)196638L;
     /**
      * {@snippet lang=c :
-     * enum WGPUNativeFeature.WGPUNativeFeature_ShaderI16 = 196639
+     * enum WGPUNativeFeature.WGPUNativeFeature_ShaderI16 = 196638
      * }
      */
     public static int WGPUNativeFeature_ShaderI16() {
         return WGPUNativeFeature_ShaderI16;
     }
-    private static final int WGPUNativeFeature_ShaderPrimitiveIndex = (int)196640L;
+    private static final int WGPUNativeFeature_ShaderPrimitiveIndex = (int)196639L;
     /**
      * {@snippet lang=c :
-     * enum WGPUNativeFeature.WGPUNativeFeature_ShaderPrimitiveIndex = 196640
+     * enum WGPUNativeFeature.WGPUNativeFeature_ShaderPrimitiveIndex = 196639
      * }
      */
     public static int WGPUNativeFeature_ShaderPrimitiveIndex() {
         return WGPUNativeFeature_ShaderPrimitiveIndex;
     }
-    private static final int WGPUNativeFeature_ShaderEarlyDepthTest = (int)196641L;
+    private static final int WGPUNativeFeature_ShaderEarlyDepthTest = (int)196640L;
     /**
      * {@snippet lang=c :
-     * enum WGPUNativeFeature.WGPUNativeFeature_ShaderEarlyDepthTest = 196641
+     * enum WGPUNativeFeature.WGPUNativeFeature_ShaderEarlyDepthTest = 196640
      * }
      */
     public static int WGPUNativeFeature_ShaderEarlyDepthTest() {
