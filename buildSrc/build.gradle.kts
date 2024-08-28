@@ -9,5 +9,6 @@ repositories {
 }
 
 dependencies {
+	implementation(libs.download)
 	implementation(libs.jreleaser.plugin)
 }

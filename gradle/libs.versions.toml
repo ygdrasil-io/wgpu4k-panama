@@ -1,9 +1,12 @@
 [versions]
 kotlin = "2.0.0"
 jreleaser = "1.13.1"
+download = "5.6.0"
+wgpu = "v0.0.0.2"
 
 [libraries]
 jreleaser-plugin = { module = "org.jreleaser:org.jreleaser.gradle.plugin", version.ref = "jreleaser" }
+download = { module = "de.undercouch.download:de.undercouch.download.gradle.plugin", version.ref = "download" }
 
 [plugins]
 kotlinJvm = { id = "org.jetbrains.kotlin.jvm" }
