@@ -13,9 +13,9 @@ import static java.lang.foreign.ValueLayout.*;
 import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 /**
- * {@snippet lang = c:
+ * {@snippet lang=c :
  * typedef uint32_t (*WGPUProcTextureGetDepthOrArrayLayers)(WGPUTexture)
- *}
+ * }
  */
 public class WGPUProcTextureGetDepthOrArrayLayers {
 
@@ -31,8 +31,8 @@ public class WGPUProcTextureGetDepthOrArrayLayers {
     }
 
     private static final FunctionDescriptor $DESC = FunctionDescriptor.of(
-            wgpu_h.C_INT,
-            wgpu_h.C_POINTER
+        wgpu_h.C_INT,
+        wgpu_h.C_POINTER
     );
 
     /**
@@ -57,7 +57,7 @@ public class WGPUProcTextureGetDepthOrArrayLayers {
     /**
      * Invoke the upcall stub {@code funcPtr}, with given parameters
      */
-    public static int invoke(MemorySegment funcPtr, MemorySegment texture) {
+    public static int invoke(MemorySegment funcPtr,MemorySegment texture) {
         try {
             return (int) DOWN$MH.invokeExact(funcPtr, texture);
         } catch (Throwable ex$) {

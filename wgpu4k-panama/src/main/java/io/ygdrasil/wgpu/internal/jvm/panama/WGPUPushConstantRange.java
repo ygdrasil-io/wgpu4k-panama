@@ -9,13 +9,13 @@ import static java.lang.foreign.MemoryLayout.PathElement.groupElement;
 import static java.lang.foreign.ValueLayout.OfInt;
 
 /**
- * {@snippet lang = c:
+ * {@snippet lang=c :
  * struct WGPUPushConstantRange {
  *     WGPUShaderStageFlags stages;
  *     uint32_t start;
  *     uint32_t end;
  * }
- *}
+ * }
  */
 public class WGPUPushConstantRange {
 
@@ -24,9 +24,9 @@ public class WGPUPushConstantRange {
     }
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
-            wgpu_h.C_INT.withName("stages"),
-            wgpu_h.C_INT.withName("start"),
-            wgpu_h.C_INT.withName("end")
+        wgpu_h.C_INT.withName("stages"),
+        wgpu_h.C_INT.withName("start"),
+        wgpu_h.C_INT.withName("end")
     ).withName("WGPUPushConstantRange");
 
     /**
@@ -36,13 +36,13 @@ public class WGPUPushConstantRange {
         return $LAYOUT;
     }
 
-    private static final OfInt stages$LAYOUT = (OfInt) $LAYOUT.select(groupElement("stages"));
+    private static final OfInt stages$LAYOUT = (OfInt)$LAYOUT.select(groupElement("stages"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUShaderStageFlags stages
-     *}
+     * }
      */
     public static final OfInt stages$layout() {
         return stages$LAYOUT;
@@ -52,9 +52,9 @@ public class WGPUPushConstantRange {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUShaderStageFlags stages
-     *}
+     * }
      */
     public static final long stages$offset() {
         return stages$OFFSET;
@@ -62,9 +62,9 @@ public class WGPUPushConstantRange {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUShaderStageFlags stages
-     *}
+     * }
      */
     public static int stages(MemorySegment struct) {
         return struct.get(stages$LAYOUT, stages$OFFSET);
@@ -72,21 +72,21 @@ public class WGPUPushConstantRange {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUShaderStageFlags stages
-     *}
+     * }
      */
     public static void stages(MemorySegment struct, int fieldValue) {
         struct.set(stages$LAYOUT, stages$OFFSET, fieldValue);
     }
 
-    private static final OfInt start$LAYOUT = (OfInt) $LAYOUT.select(groupElement("start"));
+    private static final OfInt start$LAYOUT = (OfInt)$LAYOUT.select(groupElement("start"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * uint32_t start
-     *}
+     * }
      */
     public static final OfInt start$layout() {
         return start$LAYOUT;
@@ -96,9 +96,9 @@ public class WGPUPushConstantRange {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * uint32_t start
-     *}
+     * }
      */
     public static final long start$offset() {
         return start$OFFSET;
@@ -106,9 +106,9 @@ public class WGPUPushConstantRange {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * uint32_t start
-     *}
+     * }
      */
     public static int start(MemorySegment struct) {
         return struct.get(start$LAYOUT, start$OFFSET);
@@ -116,21 +116,21 @@ public class WGPUPushConstantRange {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * uint32_t start
-     *}
+     * }
      */
     public static void start(MemorySegment struct, int fieldValue) {
         struct.set(start$LAYOUT, start$OFFSET, fieldValue);
     }
 
-    private static final OfInt end$LAYOUT = (OfInt) $LAYOUT.select(groupElement("end"));
+    private static final OfInt end$LAYOUT = (OfInt)$LAYOUT.select(groupElement("end"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * uint32_t end
-     *}
+     * }
      */
     public static final OfInt end$layout() {
         return end$LAYOUT;
@@ -140,9 +140,9 @@ public class WGPUPushConstantRange {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * uint32_t end
-     *}
+     * }
      */
     public static final long end$offset() {
         return end$OFFSET;
@@ -150,9 +150,9 @@ public class WGPUPushConstantRange {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * uint32_t end
-     *}
+     * }
      */
     public static int end(MemorySegment struct) {
         return struct.get(end$LAYOUT, end$OFFSET);
@@ -160,9 +160,9 @@ public class WGPUPushConstantRange {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * uint32_t end
-     *}
+     * }
      */
     public static void end(MemorySegment struct, int fieldValue) {
         struct.set(end$LAYOUT, end$OFFSET, fieldValue);
@@ -179,9 +179,7 @@ public class WGPUPushConstantRange {
     /**
      * The size (in bytes) of this struct
      */
-    public static long sizeof() {
-        return layout().byteSize();
-    }
+    public static long sizeof() { return layout().byteSize(); }
 
     /**
      * Allocate a segment of size {@code layout().byteSize()} using {@code allocator}

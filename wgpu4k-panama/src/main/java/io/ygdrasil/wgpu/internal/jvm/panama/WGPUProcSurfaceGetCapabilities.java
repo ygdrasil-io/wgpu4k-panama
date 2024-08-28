@@ -13,9 +13,9 @@ import static java.lang.foreign.ValueLayout.*;
 import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 /**
- * {@snippet lang = c:
+ * {@snippet lang=c :
  * typedef void (*WGPUProcSurfaceGetCapabilities)(WGPUSurface, WGPUAdapter, WGPUSurfaceCapabilities *)
- *}
+ * }
  */
 public class WGPUProcSurfaceGetCapabilities {
 
@@ -31,9 +31,9 @@ public class WGPUProcSurfaceGetCapabilities {
     }
 
     private static final FunctionDescriptor $DESC = FunctionDescriptor.ofVoid(
-            wgpu_h.C_POINTER,
-            wgpu_h.C_POINTER,
-            wgpu_h.C_POINTER
+        wgpu_h.C_POINTER,
+        wgpu_h.C_POINTER,
+        wgpu_h.C_POINTER
     );
 
     /**
@@ -58,9 +58,9 @@ public class WGPUProcSurfaceGetCapabilities {
     /**
      * Invoke the upcall stub {@code funcPtr}, with given parameters
      */
-    public static void invoke(MemorySegment funcPtr, MemorySegment surface, MemorySegment adapter, MemorySegment capabilities) {
+    public static void invoke(MemorySegment funcPtr,MemorySegment surface, MemorySegment adapter, MemorySegment capabilities) {
         try {
-            DOWN$MH.invokeExact(funcPtr, surface, adapter, capabilities);
+             DOWN$MH.invokeExact(funcPtr, surface, adapter, capabilities);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }

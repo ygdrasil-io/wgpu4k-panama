@@ -9,7 +9,7 @@ import static java.lang.foreign.MemoryLayout.PathElement.groupElement;
 import static java.lang.foreign.ValueLayout.OfInt;
 
 /**
- * {@snippet lang = c:
+ * {@snippet lang=c :
  * struct WGPUAdapterInfo {
  *     WGPUChainedStructOut *nextInChain;
  *     const char *vendor;
@@ -21,7 +21,7 @@ import static java.lang.foreign.ValueLayout.OfInt;
  *     uint32_t vendorID;
  *     uint32_t deviceID;
  * }
- *}
+ * }
  */
 public class WGPUAdapterInfo {
 
@@ -30,15 +30,15 @@ public class WGPUAdapterInfo {
     }
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
-            wgpu_h.C_POINTER.withName("nextInChain"),
-            wgpu_h.C_POINTER.withName("vendor"),
-            wgpu_h.C_POINTER.withName("architecture"),
-            wgpu_h.C_POINTER.withName("device"),
-            wgpu_h.C_POINTER.withName("description"),
-            wgpu_h.C_INT.withName("backendType"),
-            wgpu_h.C_INT.withName("adapterType"),
-            wgpu_h.C_INT.withName("vendorID"),
-            wgpu_h.C_INT.withName("deviceID")
+        wgpu_h.C_POINTER.withName("nextInChain"),
+        wgpu_h.C_POINTER.withName("vendor"),
+        wgpu_h.C_POINTER.withName("architecture"),
+        wgpu_h.C_POINTER.withName("device"),
+        wgpu_h.C_POINTER.withName("description"),
+        wgpu_h.C_INT.withName("backendType"),
+        wgpu_h.C_INT.withName("adapterType"),
+        wgpu_h.C_INT.withName("vendorID"),
+        wgpu_h.C_INT.withName("deviceID")
     ).withName("WGPUAdapterInfo");
 
     /**
@@ -48,13 +48,13 @@ public class WGPUAdapterInfo {
         return $LAYOUT;
     }
 
-    private static final AddressLayout nextInChain$LAYOUT = (AddressLayout) $LAYOUT.select(groupElement("nextInChain"));
+    private static final AddressLayout nextInChain$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("nextInChain"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUChainedStructOut *nextInChain
-     *}
+     * }
      */
     public static final AddressLayout nextInChain$layout() {
         return nextInChain$LAYOUT;
@@ -64,9 +64,9 @@ public class WGPUAdapterInfo {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUChainedStructOut *nextInChain
-     *}
+     * }
      */
     public static final long nextInChain$offset() {
         return nextInChain$OFFSET;
@@ -74,9 +74,9 @@ public class WGPUAdapterInfo {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUChainedStructOut *nextInChain
-     *}
+     * }
      */
     public static MemorySegment nextInChain(MemorySegment struct) {
         return struct.get(nextInChain$LAYOUT, nextInChain$OFFSET);
@@ -84,21 +84,21 @@ public class WGPUAdapterInfo {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUChainedStructOut *nextInChain
-     *}
+     * }
      */
     public static void nextInChain(MemorySegment struct, MemorySegment fieldValue) {
         struct.set(nextInChain$LAYOUT, nextInChain$OFFSET, fieldValue);
     }
 
-    private static final AddressLayout vendor$LAYOUT = (AddressLayout) $LAYOUT.select(groupElement("vendor"));
+    private static final AddressLayout vendor$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("vendor"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const char *vendor
-     *}
+     * }
      */
     public static final AddressLayout vendor$layout() {
         return vendor$LAYOUT;
@@ -108,9 +108,9 @@ public class WGPUAdapterInfo {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const char *vendor
-     *}
+     * }
      */
     public static final long vendor$offset() {
         return vendor$OFFSET;
@@ -118,9 +118,9 @@ public class WGPUAdapterInfo {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const char *vendor
-     *}
+     * }
      */
     public static MemorySegment vendor(MemorySegment struct) {
         return struct.get(vendor$LAYOUT, vendor$OFFSET);
@@ -128,21 +128,21 @@ public class WGPUAdapterInfo {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const char *vendor
-     *}
+     * }
      */
     public static void vendor(MemorySegment struct, MemorySegment fieldValue) {
         struct.set(vendor$LAYOUT, vendor$OFFSET, fieldValue);
     }
 
-    private static final AddressLayout architecture$LAYOUT = (AddressLayout) $LAYOUT.select(groupElement("architecture"));
+    private static final AddressLayout architecture$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("architecture"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const char *architecture
-     *}
+     * }
      */
     public static final AddressLayout architecture$layout() {
         return architecture$LAYOUT;
@@ -152,9 +152,9 @@ public class WGPUAdapterInfo {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const char *architecture
-     *}
+     * }
      */
     public static final long architecture$offset() {
         return architecture$OFFSET;
@@ -162,9 +162,9 @@ public class WGPUAdapterInfo {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const char *architecture
-     *}
+     * }
      */
     public static MemorySegment architecture(MemorySegment struct) {
         return struct.get(architecture$LAYOUT, architecture$OFFSET);
@@ -172,21 +172,21 @@ public class WGPUAdapterInfo {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const char *architecture
-     *}
+     * }
      */
     public static void architecture(MemorySegment struct, MemorySegment fieldValue) {
         struct.set(architecture$LAYOUT, architecture$OFFSET, fieldValue);
     }
 
-    private static final AddressLayout device$LAYOUT = (AddressLayout) $LAYOUT.select(groupElement("device"));
+    private static final AddressLayout device$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("device"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const char *device
-     *}
+     * }
      */
     public static final AddressLayout device$layout() {
         return device$LAYOUT;
@@ -196,9 +196,9 @@ public class WGPUAdapterInfo {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const char *device
-     *}
+     * }
      */
     public static final long device$offset() {
         return device$OFFSET;
@@ -206,9 +206,9 @@ public class WGPUAdapterInfo {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const char *device
-     *}
+     * }
      */
     public static MemorySegment device(MemorySegment struct) {
         return struct.get(device$LAYOUT, device$OFFSET);
@@ -216,21 +216,21 @@ public class WGPUAdapterInfo {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const char *device
-     *}
+     * }
      */
     public static void device(MemorySegment struct, MemorySegment fieldValue) {
         struct.set(device$LAYOUT, device$OFFSET, fieldValue);
     }
 
-    private static final AddressLayout description$LAYOUT = (AddressLayout) $LAYOUT.select(groupElement("description"));
+    private static final AddressLayout description$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("description"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const char *description
-     *}
+     * }
      */
     public static final AddressLayout description$layout() {
         return description$LAYOUT;
@@ -240,9 +240,9 @@ public class WGPUAdapterInfo {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const char *description
-     *}
+     * }
      */
     public static final long description$offset() {
         return description$OFFSET;
@@ -250,9 +250,9 @@ public class WGPUAdapterInfo {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const char *description
-     *}
+     * }
      */
     public static MemorySegment description(MemorySegment struct) {
         return struct.get(description$LAYOUT, description$OFFSET);
@@ -260,21 +260,21 @@ public class WGPUAdapterInfo {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const char *description
-     *}
+     * }
      */
     public static void description(MemorySegment struct, MemorySegment fieldValue) {
         struct.set(description$LAYOUT, description$OFFSET, fieldValue);
     }
 
-    private static final OfInt backendType$LAYOUT = (OfInt) $LAYOUT.select(groupElement("backendType"));
+    private static final OfInt backendType$LAYOUT = (OfInt)$LAYOUT.select(groupElement("backendType"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUBackendType backendType
-     *}
+     * }
      */
     public static final OfInt backendType$layout() {
         return backendType$LAYOUT;
@@ -284,9 +284,9 @@ public class WGPUAdapterInfo {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUBackendType backendType
-     *}
+     * }
      */
     public static final long backendType$offset() {
         return backendType$OFFSET;
@@ -294,9 +294,9 @@ public class WGPUAdapterInfo {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUBackendType backendType
-     *}
+     * }
      */
     public static int backendType(MemorySegment struct) {
         return struct.get(backendType$LAYOUT, backendType$OFFSET);
@@ -304,21 +304,21 @@ public class WGPUAdapterInfo {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUBackendType backendType
-     *}
+     * }
      */
     public static void backendType(MemorySegment struct, int fieldValue) {
         struct.set(backendType$LAYOUT, backendType$OFFSET, fieldValue);
     }
 
-    private static final OfInt adapterType$LAYOUT = (OfInt) $LAYOUT.select(groupElement("adapterType"));
+    private static final OfInt adapterType$LAYOUT = (OfInt)$LAYOUT.select(groupElement("adapterType"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUAdapterType adapterType
-     *}
+     * }
      */
     public static final OfInt adapterType$layout() {
         return adapterType$LAYOUT;
@@ -328,9 +328,9 @@ public class WGPUAdapterInfo {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUAdapterType adapterType
-     *}
+     * }
      */
     public static final long adapterType$offset() {
         return adapterType$OFFSET;
@@ -338,9 +338,9 @@ public class WGPUAdapterInfo {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUAdapterType adapterType
-     *}
+     * }
      */
     public static int adapterType(MemorySegment struct) {
         return struct.get(adapterType$LAYOUT, adapterType$OFFSET);
@@ -348,21 +348,21 @@ public class WGPUAdapterInfo {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUAdapterType adapterType
-     *}
+     * }
      */
     public static void adapterType(MemorySegment struct, int fieldValue) {
         struct.set(adapterType$LAYOUT, adapterType$OFFSET, fieldValue);
     }
 
-    private static final OfInt vendorID$LAYOUT = (OfInt) $LAYOUT.select(groupElement("vendorID"));
+    private static final OfInt vendorID$LAYOUT = (OfInt)$LAYOUT.select(groupElement("vendorID"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * uint32_t vendorID
-     *}
+     * }
      */
     public static final OfInt vendorID$layout() {
         return vendorID$LAYOUT;
@@ -372,9 +372,9 @@ public class WGPUAdapterInfo {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * uint32_t vendorID
-     *}
+     * }
      */
     public static final long vendorID$offset() {
         return vendorID$OFFSET;
@@ -382,9 +382,9 @@ public class WGPUAdapterInfo {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * uint32_t vendorID
-     *}
+     * }
      */
     public static int vendorID(MemorySegment struct) {
         return struct.get(vendorID$LAYOUT, vendorID$OFFSET);
@@ -392,21 +392,21 @@ public class WGPUAdapterInfo {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * uint32_t vendorID
-     *}
+     * }
      */
     public static void vendorID(MemorySegment struct, int fieldValue) {
         struct.set(vendorID$LAYOUT, vendorID$OFFSET, fieldValue);
     }
 
-    private static final OfInt deviceID$LAYOUT = (OfInt) $LAYOUT.select(groupElement("deviceID"));
+    private static final OfInt deviceID$LAYOUT = (OfInt)$LAYOUT.select(groupElement("deviceID"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * uint32_t deviceID
-     *}
+     * }
      */
     public static final OfInt deviceID$layout() {
         return deviceID$LAYOUT;
@@ -416,9 +416,9 @@ public class WGPUAdapterInfo {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * uint32_t deviceID
-     *}
+     * }
      */
     public static final long deviceID$offset() {
         return deviceID$OFFSET;
@@ -426,9 +426,9 @@ public class WGPUAdapterInfo {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * uint32_t deviceID
-     *}
+     * }
      */
     public static int deviceID(MemorySegment struct) {
         return struct.get(deviceID$LAYOUT, deviceID$OFFSET);
@@ -436,9 +436,9 @@ public class WGPUAdapterInfo {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * uint32_t deviceID
-     *}
+     * }
      */
     public static void deviceID(MemorySegment struct, int fieldValue) {
         struct.set(deviceID$LAYOUT, deviceID$OFFSET, fieldValue);
@@ -455,9 +455,7 @@ public class WGPUAdapterInfo {
     /**
      * The size (in bytes) of this struct
      */
-    public static long sizeof() {
-        return layout().byteSize();
-    }
+    public static long sizeof() { return layout().byteSize(); }
 
     /**
      * Allocate a segment of size {@code layout().byteSize()} using {@code allocator}

@@ -13,9 +13,9 @@ import static java.lang.foreign.ValueLayout.*;
 import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 /**
- * {@snippet lang = c:
+ * {@snippet lang=c :
  * typedef WGPUTextureView (*WGPUProcTextureCreateView)(WGPUTexture, const WGPUTextureViewDescriptor *)
- *}
+ * }
  */
 public class WGPUProcTextureCreateView {
 
@@ -31,9 +31,9 @@ public class WGPUProcTextureCreateView {
     }
 
     private static final FunctionDescriptor $DESC = FunctionDescriptor.of(
-            wgpu_h.C_POINTER,
-            wgpu_h.C_POINTER,
-            wgpu_h.C_POINTER
+        wgpu_h.C_POINTER,
+        wgpu_h.C_POINTER,
+        wgpu_h.C_POINTER
     );
 
     /**
@@ -58,7 +58,7 @@ public class WGPUProcTextureCreateView {
     /**
      * Invoke the upcall stub {@code funcPtr}, with given parameters
      */
-    public static MemorySegment invoke(MemorySegment funcPtr, MemorySegment texture, MemorySegment descriptor) {
+    public static MemorySegment invoke(MemorySegment funcPtr,MemorySegment texture, MemorySegment descriptor) {
         try {
             return (MemorySegment) DOWN$MH.invokeExact(funcPtr, texture, descriptor);
         } catch (Throwable ex$) {

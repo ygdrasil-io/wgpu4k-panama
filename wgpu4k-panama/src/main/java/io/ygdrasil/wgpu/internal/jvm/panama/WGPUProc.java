@@ -9,9 +9,9 @@ import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
 /**
- * {@snippet lang = c:
+ * {@snippet lang=c :
  * typedef void (*WGPUProc)(void)
- *}
+ * }
  */
 public class WGPUProc {
 
@@ -52,7 +52,7 @@ public class WGPUProc {
      */
     public static void invoke(MemorySegment funcPtr) {
         try {
-            DOWN$MH.invokeExact(funcPtr);
+             DOWN$MH.invokeExact(funcPtr);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }

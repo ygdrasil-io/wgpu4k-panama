@@ -9,13 +9,13 @@ import static java.lang.foreign.MemoryLayout.PathElement.groupElement;
 import static java.lang.foreign.ValueLayout.OfInt;
 
 /**
- * {@snippet lang = c:
+ * {@snippet lang=c :
  * struct WGPUExtent3D {
  *     uint32_t width;
  *     uint32_t height;
  *     uint32_t depthOrArrayLayers;
  * }
- *}
+ * }
  */
 public class WGPUExtent3D {
 
@@ -24,9 +24,9 @@ public class WGPUExtent3D {
     }
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
-            wgpu_h.C_INT.withName("width"),
-            wgpu_h.C_INT.withName("height"),
-            wgpu_h.C_INT.withName("depthOrArrayLayers")
+        wgpu_h.C_INT.withName("width"),
+        wgpu_h.C_INT.withName("height"),
+        wgpu_h.C_INT.withName("depthOrArrayLayers")
     ).withName("WGPUExtent3D");
 
     /**
@@ -36,13 +36,13 @@ public class WGPUExtent3D {
         return $LAYOUT;
     }
 
-    private static final OfInt width$LAYOUT = (OfInt) $LAYOUT.select(groupElement("width"));
+    private static final OfInt width$LAYOUT = (OfInt)$LAYOUT.select(groupElement("width"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * uint32_t width
-     *}
+     * }
      */
     public static final OfInt width$layout() {
         return width$LAYOUT;
@@ -52,9 +52,9 @@ public class WGPUExtent3D {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * uint32_t width
-     *}
+     * }
      */
     public static final long width$offset() {
         return width$OFFSET;
@@ -62,9 +62,9 @@ public class WGPUExtent3D {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * uint32_t width
-     *}
+     * }
      */
     public static int width(MemorySegment struct) {
         return struct.get(width$LAYOUT, width$OFFSET);
@@ -72,21 +72,21 @@ public class WGPUExtent3D {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * uint32_t width
-     *}
+     * }
      */
     public static void width(MemorySegment struct, int fieldValue) {
         struct.set(width$LAYOUT, width$OFFSET, fieldValue);
     }
 
-    private static final OfInt height$LAYOUT = (OfInt) $LAYOUT.select(groupElement("height"));
+    private static final OfInt height$LAYOUT = (OfInt)$LAYOUT.select(groupElement("height"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * uint32_t height
-     *}
+     * }
      */
     public static final OfInt height$layout() {
         return height$LAYOUT;
@@ -96,9 +96,9 @@ public class WGPUExtent3D {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * uint32_t height
-     *}
+     * }
      */
     public static final long height$offset() {
         return height$OFFSET;
@@ -106,9 +106,9 @@ public class WGPUExtent3D {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * uint32_t height
-     *}
+     * }
      */
     public static int height(MemorySegment struct) {
         return struct.get(height$LAYOUT, height$OFFSET);
@@ -116,21 +116,21 @@ public class WGPUExtent3D {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * uint32_t height
-     *}
+     * }
      */
     public static void height(MemorySegment struct, int fieldValue) {
         struct.set(height$LAYOUT, height$OFFSET, fieldValue);
     }
 
-    private static final OfInt depthOrArrayLayers$LAYOUT = (OfInt) $LAYOUT.select(groupElement("depthOrArrayLayers"));
+    private static final OfInt depthOrArrayLayers$LAYOUT = (OfInt)$LAYOUT.select(groupElement("depthOrArrayLayers"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * uint32_t depthOrArrayLayers
-     *}
+     * }
      */
     public static final OfInt depthOrArrayLayers$layout() {
         return depthOrArrayLayers$LAYOUT;
@@ -140,9 +140,9 @@ public class WGPUExtent3D {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * uint32_t depthOrArrayLayers
-     *}
+     * }
      */
     public static final long depthOrArrayLayers$offset() {
         return depthOrArrayLayers$OFFSET;
@@ -150,9 +150,9 @@ public class WGPUExtent3D {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * uint32_t depthOrArrayLayers
-     *}
+     * }
      */
     public static int depthOrArrayLayers(MemorySegment struct) {
         return struct.get(depthOrArrayLayers$LAYOUT, depthOrArrayLayers$OFFSET);
@@ -160,9 +160,9 @@ public class WGPUExtent3D {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * uint32_t depthOrArrayLayers
-     *}
+     * }
      */
     public static void depthOrArrayLayers(MemorySegment struct, int fieldValue) {
         struct.set(depthOrArrayLayers$LAYOUT, depthOrArrayLayers$OFFSET, fieldValue);
@@ -179,9 +179,7 @@ public class WGPUExtent3D {
     /**
      * The size (in bytes) of this struct
      */
-    public static long sizeof() {
-        return layout().byteSize();
-    }
+    public static long sizeof() { return layout().byteSize(); }
 
     /**
      * Allocate a segment of size {@code layout().byteSize()} using {@code allocator}

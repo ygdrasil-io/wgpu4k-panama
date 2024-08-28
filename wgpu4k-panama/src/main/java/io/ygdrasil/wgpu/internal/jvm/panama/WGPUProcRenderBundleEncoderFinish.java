@@ -13,9 +13,9 @@ import static java.lang.foreign.ValueLayout.*;
 import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 /**
- * {@snippet lang = c:
+ * {@snippet lang=c :
  * typedef WGPURenderBundle (*WGPUProcRenderBundleEncoderFinish)(WGPURenderBundleEncoder, const WGPURenderBundleDescriptor *)
- *}
+ * }
  */
 public class WGPUProcRenderBundleEncoderFinish {
 
@@ -31,9 +31,9 @@ public class WGPUProcRenderBundleEncoderFinish {
     }
 
     private static final FunctionDescriptor $DESC = FunctionDescriptor.of(
-            wgpu_h.C_POINTER,
-            wgpu_h.C_POINTER,
-            wgpu_h.C_POINTER
+        wgpu_h.C_POINTER,
+        wgpu_h.C_POINTER,
+        wgpu_h.C_POINTER
     );
 
     /**
@@ -58,7 +58,7 @@ public class WGPUProcRenderBundleEncoderFinish {
     /**
      * Invoke the upcall stub {@code funcPtr}, with given parameters
      */
-    public static MemorySegment invoke(MemorySegment funcPtr, MemorySegment renderBundleEncoder, MemorySegment descriptor) {
+    public static MemorySegment invoke(MemorySegment funcPtr,MemorySegment renderBundleEncoder, MemorySegment descriptor) {
         try {
             return (MemorySegment) DOWN$MH.invokeExact(funcPtr, renderBundleEncoder, descriptor);
         } catch (Throwable ex$) {

@@ -13,9 +13,9 @@ import static java.lang.foreign.ValueLayout.*;
 import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 /**
- * {@snippet lang = c:
+ * {@snippet lang=c :
  * typedef WGPUComputePassEncoder (*WGPUProcCommandEncoderBeginComputePass)(WGPUCommandEncoder, const WGPUComputePassDescriptor *)
- *}
+ * }
  */
 public class WGPUProcCommandEncoderBeginComputePass {
 
@@ -31,9 +31,9 @@ public class WGPUProcCommandEncoderBeginComputePass {
     }
 
     private static final FunctionDescriptor $DESC = FunctionDescriptor.of(
-            wgpu_h.C_POINTER,
-            wgpu_h.C_POINTER,
-            wgpu_h.C_POINTER
+        wgpu_h.C_POINTER,
+        wgpu_h.C_POINTER,
+        wgpu_h.C_POINTER
     );
 
     /**
@@ -58,7 +58,7 @@ public class WGPUProcCommandEncoderBeginComputePass {
     /**
      * Invoke the upcall stub {@code funcPtr}, with given parameters
      */
-    public static MemorySegment invoke(MemorySegment funcPtr, MemorySegment commandEncoder, MemorySegment descriptor) {
+    public static MemorySegment invoke(MemorySegment funcPtr,MemorySegment commandEncoder, MemorySegment descriptor) {
         try {
             return (MemorySegment) DOWN$MH.invokeExact(funcPtr, commandEncoder, descriptor);
         } catch (Throwable ex$) {

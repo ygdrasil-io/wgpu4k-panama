@@ -13,13 +13,13 @@ import static java.lang.foreign.ValueLayout.*;
 import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 /**
- * {@snippet lang = c:
+ * {@snippet lang=c :
  * struct WGPUQuerySetDescriptorExtras {
  *     WGPUChainedStruct chain;
  *     const WGPUPipelineStatisticName *pipelineStatistics;
  *     size_t pipelineStatisticCount;
  * }
- *}
+ * }
  */
 public class WGPUQuerySetDescriptorExtras {
 
@@ -28,9 +28,9 @@ public class WGPUQuerySetDescriptorExtras {
     }
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
-            WGPUChainedStruct.layout().withName("chain"),
-            wgpu_h.C_POINTER.withName("pipelineStatistics"),
-            wgpu_h.C_LONG.withName("pipelineStatisticCount")
+        WGPUChainedStruct.layout().withName("chain"),
+        wgpu_h.C_POINTER.withName("pipelineStatistics"),
+        wgpu_h.C_LONG.withName("pipelineStatisticCount")
     ).withName("WGPUQuerySetDescriptorExtras");
 
     /**
@@ -40,13 +40,13 @@ public class WGPUQuerySetDescriptorExtras {
         return $LAYOUT;
     }
 
-    private static final GroupLayout chain$LAYOUT = (GroupLayout) $LAYOUT.select(groupElement("chain"));
+    private static final GroupLayout chain$LAYOUT = (GroupLayout)$LAYOUT.select(groupElement("chain"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUChainedStruct chain
-     *}
+     * }
      */
     public static final GroupLayout chain$layout() {
         return chain$LAYOUT;
@@ -56,9 +56,9 @@ public class WGPUQuerySetDescriptorExtras {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUChainedStruct chain
-     *}
+     * }
      */
     public static final long chain$offset() {
         return chain$OFFSET;
@@ -66,9 +66,9 @@ public class WGPUQuerySetDescriptorExtras {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUChainedStruct chain
-     *}
+     * }
      */
     public static MemorySegment chain(MemorySegment struct) {
         return struct.asSlice(chain$OFFSET, chain$LAYOUT.byteSize());
@@ -76,21 +76,21 @@ public class WGPUQuerySetDescriptorExtras {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUChainedStruct chain
-     *}
+     * }
      */
     public static void chain(MemorySegment struct, MemorySegment fieldValue) {
         MemorySegment.copy(fieldValue, 0L, struct, chain$OFFSET, chain$LAYOUT.byteSize());
     }
 
-    private static final AddressLayout pipelineStatistics$LAYOUT = (AddressLayout) $LAYOUT.select(groupElement("pipelineStatistics"));
+    private static final AddressLayout pipelineStatistics$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("pipelineStatistics"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPUPipelineStatisticName *pipelineStatistics
-     *}
+     * }
      */
     public static final AddressLayout pipelineStatistics$layout() {
         return pipelineStatistics$LAYOUT;
@@ -100,9 +100,9 @@ public class WGPUQuerySetDescriptorExtras {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPUPipelineStatisticName *pipelineStatistics
-     *}
+     * }
      */
     public static final long pipelineStatistics$offset() {
         return pipelineStatistics$OFFSET;
@@ -110,9 +110,9 @@ public class WGPUQuerySetDescriptorExtras {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPUPipelineStatisticName *pipelineStatistics
-     *}
+     * }
      */
     public static MemorySegment pipelineStatistics(MemorySegment struct) {
         return struct.get(pipelineStatistics$LAYOUT, pipelineStatistics$OFFSET);
@@ -120,21 +120,21 @@ public class WGPUQuerySetDescriptorExtras {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPUPipelineStatisticName *pipelineStatistics
-     *}
+     * }
      */
     public static void pipelineStatistics(MemorySegment struct, MemorySegment fieldValue) {
         struct.set(pipelineStatistics$LAYOUT, pipelineStatistics$OFFSET, fieldValue);
     }
 
-    private static final OfLong pipelineStatisticCount$LAYOUT = (OfLong) $LAYOUT.select(groupElement("pipelineStatisticCount"));
+    private static final OfLong pipelineStatisticCount$LAYOUT = (OfLong)$LAYOUT.select(groupElement("pipelineStatisticCount"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * size_t pipelineStatisticCount
-     *}
+     * }
      */
     public static final OfLong pipelineStatisticCount$layout() {
         return pipelineStatisticCount$LAYOUT;
@@ -144,9 +144,9 @@ public class WGPUQuerySetDescriptorExtras {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * size_t pipelineStatisticCount
-     *}
+     * }
      */
     public static final long pipelineStatisticCount$offset() {
         return pipelineStatisticCount$OFFSET;
@@ -154,9 +154,9 @@ public class WGPUQuerySetDescriptorExtras {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * size_t pipelineStatisticCount
-     *}
+     * }
      */
     public static long pipelineStatisticCount(MemorySegment struct) {
         return struct.get(pipelineStatisticCount$LAYOUT, pipelineStatisticCount$OFFSET);
@@ -164,9 +164,9 @@ public class WGPUQuerySetDescriptorExtras {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * size_t pipelineStatisticCount
-     *}
+     * }
      */
     public static void pipelineStatisticCount(MemorySegment struct, long fieldValue) {
         struct.set(pipelineStatisticCount$LAYOUT, pipelineStatisticCount$OFFSET, fieldValue);
@@ -183,9 +183,7 @@ public class WGPUQuerySetDescriptorExtras {
     /**
      * The size (in bytes) of this struct
      */
-    public static long sizeof() {
-        return layout().byteSize();
-    }
+    public static long sizeof() { return layout().byteSize(); }
 
     /**
      * Allocate a segment of size {@code layout().byteSize()} using {@code allocator}

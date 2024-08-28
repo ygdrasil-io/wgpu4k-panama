@@ -13,9 +13,9 @@ import static java.lang.foreign.ValueLayout.*;
 import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 /**
- * {@snippet lang = c:
+ * {@snippet lang=c :
  * typedef void (*WGPUProcRenderBundleEncoderDrawIndexed)(WGPURenderBundleEncoder, uint32_t, uint32_t, uint32_t, int32_t, uint32_t)
- *}
+ * }
  */
 public class WGPUProcRenderBundleEncoderDrawIndexed {
 
@@ -31,12 +31,12 @@ public class WGPUProcRenderBundleEncoderDrawIndexed {
     }
 
     private static final FunctionDescriptor $DESC = FunctionDescriptor.ofVoid(
-            wgpu_h.C_POINTER,
-            wgpu_h.C_INT,
-            wgpu_h.C_INT,
-            wgpu_h.C_INT,
-            wgpu_h.C_INT,
-            wgpu_h.C_INT
+        wgpu_h.C_POINTER,
+        wgpu_h.C_INT,
+        wgpu_h.C_INT,
+        wgpu_h.C_INT,
+        wgpu_h.C_INT,
+        wgpu_h.C_INT
     );
 
     /**
@@ -61,9 +61,9 @@ public class WGPUProcRenderBundleEncoderDrawIndexed {
     /**
      * Invoke the upcall stub {@code funcPtr}, with given parameters
      */
-    public static void invoke(MemorySegment funcPtr, MemorySegment renderBundleEncoder, int indexCount, int instanceCount, int firstIndex, int baseVertex, int firstInstance) {
+    public static void invoke(MemorySegment funcPtr,MemorySegment renderBundleEncoder, int indexCount, int instanceCount, int firstIndex, int baseVertex, int firstInstance) {
         try {
-            DOWN$MH.invokeExact(funcPtr, renderBundleEncoder, indexCount, instanceCount, firstIndex, baseVertex, firstInstance);
+             DOWN$MH.invokeExact(funcPtr, renderBundleEncoder, indexCount, instanceCount, firstIndex, baseVertex, firstInstance);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }

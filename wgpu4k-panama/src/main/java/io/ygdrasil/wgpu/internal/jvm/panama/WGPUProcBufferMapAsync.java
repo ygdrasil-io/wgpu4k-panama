@@ -9,9 +9,9 @@ import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
 /**
- * {@snippet lang = c:
+ * {@snippet lang=c :
  * typedef void (*WGPUProcBufferMapAsync)(WGPUBuffer, WGPUMapModeFlags, size_t, size_t, WGPUBufferMapAsyncCallback, void *)
- *}
+ * }
  */
 public class WGPUProcBufferMapAsync {
 
@@ -27,12 +27,12 @@ public class WGPUProcBufferMapAsync {
     }
 
     private static final FunctionDescriptor $DESC = FunctionDescriptor.ofVoid(
-            wgpu_h.C_POINTER,
-            wgpu_h.C_INT,
-            wgpu_h.C_LONG,
-            wgpu_h.C_LONG,
-            wgpu_h.C_POINTER,
-            wgpu_h.C_POINTER
+        wgpu_h.C_POINTER,
+        wgpu_h.C_INT,
+        wgpu_h.C_LONG,
+        wgpu_h.C_LONG,
+        wgpu_h.C_POINTER,
+        wgpu_h.C_POINTER
     );
 
     /**
@@ -57,9 +57,9 @@ public class WGPUProcBufferMapAsync {
     /**
      * Invoke the upcall stub {@code funcPtr}, with given parameters
      */
-    public static void invoke(MemorySegment funcPtr, MemorySegment buffer, int mode, long offset, long size, MemorySegment callback, MemorySegment userdata) {
+    public static void invoke(MemorySegment funcPtr,MemorySegment buffer, int mode, long offset, long size, MemorySegment callback, MemorySegment userdata) {
         try {
-            DOWN$MH.invokeExact(funcPtr, buffer, mode, offset, size, callback, userdata);
+             DOWN$MH.invokeExact(funcPtr, buffer, mode, offset, size, callback, userdata);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }

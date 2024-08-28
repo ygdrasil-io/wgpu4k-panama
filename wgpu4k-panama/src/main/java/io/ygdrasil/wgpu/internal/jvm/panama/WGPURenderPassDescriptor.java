@@ -13,7 +13,7 @@ import static java.lang.foreign.ValueLayout.*;
 import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 /**
- * {@snippet lang = c:
+ * {@snippet lang=c :
  * struct WGPURenderPassDescriptor {
  *     const WGPUChainedStruct *nextInChain;
  *     const char *label;
@@ -23,7 +23,7 @@ import static java.lang.foreign.MemoryLayout.PathElement.*;
  *     WGPUQuerySet occlusionQuerySet;
  *     const WGPURenderPassTimestampWrites *timestampWrites;
  * }
- *}
+ * }
  */
 public class WGPURenderPassDescriptor {
 
@@ -32,13 +32,13 @@ public class WGPURenderPassDescriptor {
     }
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
-            wgpu_h.C_POINTER.withName("nextInChain"),
-            wgpu_h.C_POINTER.withName("label"),
-            wgpu_h.C_LONG.withName("colorAttachmentCount"),
-            wgpu_h.C_POINTER.withName("colorAttachments"),
-            wgpu_h.C_POINTER.withName("depthStencilAttachment"),
-            wgpu_h.C_POINTER.withName("occlusionQuerySet"),
-            wgpu_h.C_POINTER.withName("timestampWrites")
+        wgpu_h.C_POINTER.withName("nextInChain"),
+        wgpu_h.C_POINTER.withName("label"),
+        wgpu_h.C_LONG.withName("colorAttachmentCount"),
+        wgpu_h.C_POINTER.withName("colorAttachments"),
+        wgpu_h.C_POINTER.withName("depthStencilAttachment"),
+        wgpu_h.C_POINTER.withName("occlusionQuerySet"),
+        wgpu_h.C_POINTER.withName("timestampWrites")
     ).withName("WGPURenderPassDescriptor");
 
     /**
@@ -48,13 +48,13 @@ public class WGPURenderPassDescriptor {
         return $LAYOUT;
     }
 
-    private static final AddressLayout nextInChain$LAYOUT = (AddressLayout) $LAYOUT.select(groupElement("nextInChain"));
+    private static final AddressLayout nextInChain$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("nextInChain"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPUChainedStruct *nextInChain
-     *}
+     * }
      */
     public static final AddressLayout nextInChain$layout() {
         return nextInChain$LAYOUT;
@@ -64,9 +64,9 @@ public class WGPURenderPassDescriptor {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPUChainedStruct *nextInChain
-     *}
+     * }
      */
     public static final long nextInChain$offset() {
         return nextInChain$OFFSET;
@@ -74,9 +74,9 @@ public class WGPURenderPassDescriptor {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPUChainedStruct *nextInChain
-     *}
+     * }
      */
     public static MemorySegment nextInChain(MemorySegment struct) {
         return struct.get(nextInChain$LAYOUT, nextInChain$OFFSET);
@@ -84,21 +84,21 @@ public class WGPURenderPassDescriptor {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPUChainedStruct *nextInChain
-     *}
+     * }
      */
     public static void nextInChain(MemorySegment struct, MemorySegment fieldValue) {
         struct.set(nextInChain$LAYOUT, nextInChain$OFFSET, fieldValue);
     }
 
-    private static final AddressLayout label$LAYOUT = (AddressLayout) $LAYOUT.select(groupElement("label"));
+    private static final AddressLayout label$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("label"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const char *label
-     *}
+     * }
      */
     public static final AddressLayout label$layout() {
         return label$LAYOUT;
@@ -108,9 +108,9 @@ public class WGPURenderPassDescriptor {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const char *label
-     *}
+     * }
      */
     public static final long label$offset() {
         return label$OFFSET;
@@ -118,9 +118,9 @@ public class WGPURenderPassDescriptor {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const char *label
-     *}
+     * }
      */
     public static MemorySegment label(MemorySegment struct) {
         return struct.get(label$LAYOUT, label$OFFSET);
@@ -128,21 +128,21 @@ public class WGPURenderPassDescriptor {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const char *label
-     *}
+     * }
      */
     public static void label(MemorySegment struct, MemorySegment fieldValue) {
         struct.set(label$LAYOUT, label$OFFSET, fieldValue);
     }
 
-    private static final OfLong colorAttachmentCount$LAYOUT = (OfLong) $LAYOUT.select(groupElement("colorAttachmentCount"));
+    private static final OfLong colorAttachmentCount$LAYOUT = (OfLong)$LAYOUT.select(groupElement("colorAttachmentCount"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * size_t colorAttachmentCount
-     *}
+     * }
      */
     public static final OfLong colorAttachmentCount$layout() {
         return colorAttachmentCount$LAYOUT;
@@ -152,9 +152,9 @@ public class WGPURenderPassDescriptor {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * size_t colorAttachmentCount
-     *}
+     * }
      */
     public static final long colorAttachmentCount$offset() {
         return colorAttachmentCount$OFFSET;
@@ -162,9 +162,9 @@ public class WGPURenderPassDescriptor {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * size_t colorAttachmentCount
-     *}
+     * }
      */
     public static long colorAttachmentCount(MemorySegment struct) {
         return struct.get(colorAttachmentCount$LAYOUT, colorAttachmentCount$OFFSET);
@@ -172,21 +172,21 @@ public class WGPURenderPassDescriptor {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * size_t colorAttachmentCount
-     *}
+     * }
      */
     public static void colorAttachmentCount(MemorySegment struct, long fieldValue) {
         struct.set(colorAttachmentCount$LAYOUT, colorAttachmentCount$OFFSET, fieldValue);
     }
 
-    private static final AddressLayout colorAttachments$LAYOUT = (AddressLayout) $LAYOUT.select(groupElement("colorAttachments"));
+    private static final AddressLayout colorAttachments$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("colorAttachments"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPURenderPassColorAttachment *colorAttachments
-     *}
+     * }
      */
     public static final AddressLayout colorAttachments$layout() {
         return colorAttachments$LAYOUT;
@@ -196,9 +196,9 @@ public class WGPURenderPassDescriptor {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPURenderPassColorAttachment *colorAttachments
-     *}
+     * }
      */
     public static final long colorAttachments$offset() {
         return colorAttachments$OFFSET;
@@ -206,9 +206,9 @@ public class WGPURenderPassDescriptor {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPURenderPassColorAttachment *colorAttachments
-     *}
+     * }
      */
     public static MemorySegment colorAttachments(MemorySegment struct) {
         return struct.get(colorAttachments$LAYOUT, colorAttachments$OFFSET);
@@ -216,21 +216,21 @@ public class WGPURenderPassDescriptor {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPURenderPassColorAttachment *colorAttachments
-     *}
+     * }
      */
     public static void colorAttachments(MemorySegment struct, MemorySegment fieldValue) {
         struct.set(colorAttachments$LAYOUT, colorAttachments$OFFSET, fieldValue);
     }
 
-    private static final AddressLayout depthStencilAttachment$LAYOUT = (AddressLayout) $LAYOUT.select(groupElement("depthStencilAttachment"));
+    private static final AddressLayout depthStencilAttachment$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("depthStencilAttachment"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPURenderPassDepthStencilAttachment *depthStencilAttachment
-     *}
+     * }
      */
     public static final AddressLayout depthStencilAttachment$layout() {
         return depthStencilAttachment$LAYOUT;
@@ -240,9 +240,9 @@ public class WGPURenderPassDescriptor {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPURenderPassDepthStencilAttachment *depthStencilAttachment
-     *}
+     * }
      */
     public static final long depthStencilAttachment$offset() {
         return depthStencilAttachment$OFFSET;
@@ -250,9 +250,9 @@ public class WGPURenderPassDescriptor {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPURenderPassDepthStencilAttachment *depthStencilAttachment
-     *}
+     * }
      */
     public static MemorySegment depthStencilAttachment(MemorySegment struct) {
         return struct.get(depthStencilAttachment$LAYOUT, depthStencilAttachment$OFFSET);
@@ -260,21 +260,21 @@ public class WGPURenderPassDescriptor {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPURenderPassDepthStencilAttachment *depthStencilAttachment
-     *}
+     * }
      */
     public static void depthStencilAttachment(MemorySegment struct, MemorySegment fieldValue) {
         struct.set(depthStencilAttachment$LAYOUT, depthStencilAttachment$OFFSET, fieldValue);
     }
 
-    private static final AddressLayout occlusionQuerySet$LAYOUT = (AddressLayout) $LAYOUT.select(groupElement("occlusionQuerySet"));
+    private static final AddressLayout occlusionQuerySet$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("occlusionQuerySet"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUQuerySet occlusionQuerySet
-     *}
+     * }
      */
     public static final AddressLayout occlusionQuerySet$layout() {
         return occlusionQuerySet$LAYOUT;
@@ -284,9 +284,9 @@ public class WGPURenderPassDescriptor {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUQuerySet occlusionQuerySet
-     *}
+     * }
      */
     public static final long occlusionQuerySet$offset() {
         return occlusionQuerySet$OFFSET;
@@ -294,9 +294,9 @@ public class WGPURenderPassDescriptor {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUQuerySet occlusionQuerySet
-     *}
+     * }
      */
     public static MemorySegment occlusionQuerySet(MemorySegment struct) {
         return struct.get(occlusionQuerySet$LAYOUT, occlusionQuerySet$OFFSET);
@@ -304,21 +304,21 @@ public class WGPURenderPassDescriptor {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUQuerySet occlusionQuerySet
-     *}
+     * }
      */
     public static void occlusionQuerySet(MemorySegment struct, MemorySegment fieldValue) {
         struct.set(occlusionQuerySet$LAYOUT, occlusionQuerySet$OFFSET, fieldValue);
     }
 
-    private static final AddressLayout timestampWrites$LAYOUT = (AddressLayout) $LAYOUT.select(groupElement("timestampWrites"));
+    private static final AddressLayout timestampWrites$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("timestampWrites"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPURenderPassTimestampWrites *timestampWrites
-     *}
+     * }
      */
     public static final AddressLayout timestampWrites$layout() {
         return timestampWrites$LAYOUT;
@@ -328,9 +328,9 @@ public class WGPURenderPassDescriptor {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPURenderPassTimestampWrites *timestampWrites
-     *}
+     * }
      */
     public static final long timestampWrites$offset() {
         return timestampWrites$OFFSET;
@@ -338,9 +338,9 @@ public class WGPURenderPassDescriptor {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPURenderPassTimestampWrites *timestampWrites
-     *}
+     * }
      */
     public static MemorySegment timestampWrites(MemorySegment struct) {
         return struct.get(timestampWrites$LAYOUT, timestampWrites$OFFSET);
@@ -348,9 +348,9 @@ public class WGPURenderPassDescriptor {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPURenderPassTimestampWrites *timestampWrites
-     *}
+     * }
      */
     public static void timestampWrites(MemorySegment struct, MemorySegment fieldValue) {
         struct.set(timestampWrites$LAYOUT, timestampWrites$OFFSET, fieldValue);
@@ -367,9 +367,7 @@ public class WGPURenderPassDescriptor {
     /**
      * The size (in bytes) of this struct
      */
-    public static long sizeof() {
-        return layout().byteSize();
-    }
+    public static long sizeof() { return layout().byteSize(); }
 
     /**
      * Allocate a segment of size {@code layout().byteSize()} using {@code allocator}

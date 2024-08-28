@@ -9,13 +9,13 @@ import static java.lang.foreign.MemoryLayout.PathElement.groupElement;
 import static java.lang.foreign.ValueLayout.OfInt;
 
 /**
- * {@snippet lang = c:
+ * {@snippet lang=c :
  * struct WGPUSurfaceTexture {
  *     WGPUTexture texture;
  *     WGPUBool suboptimal;
  *     WGPUSurfaceGetCurrentTextureStatus status;
  * }
- *}
+ * }
  */
 public class WGPUSurfaceTexture {
 
@@ -24,9 +24,9 @@ public class WGPUSurfaceTexture {
     }
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
-            wgpu_h.C_POINTER.withName("texture"),
-            wgpu_h.C_INT.withName("suboptimal"),
-            wgpu_h.C_INT.withName("status")
+        wgpu_h.C_POINTER.withName("texture"),
+        wgpu_h.C_INT.withName("suboptimal"),
+        wgpu_h.C_INT.withName("status")
     ).withName("WGPUSurfaceTexture");
 
     /**
@@ -36,13 +36,13 @@ public class WGPUSurfaceTexture {
         return $LAYOUT;
     }
 
-    private static final AddressLayout texture$LAYOUT = (AddressLayout) $LAYOUT.select(groupElement("texture"));
+    private static final AddressLayout texture$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("texture"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUTexture texture
-     *}
+     * }
      */
     public static final AddressLayout texture$layout() {
         return texture$LAYOUT;
@@ -52,9 +52,9 @@ public class WGPUSurfaceTexture {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUTexture texture
-     *}
+     * }
      */
     public static final long texture$offset() {
         return texture$OFFSET;
@@ -62,9 +62,9 @@ public class WGPUSurfaceTexture {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUTexture texture
-     *}
+     * }
      */
     public static MemorySegment texture(MemorySegment struct) {
         return struct.get(texture$LAYOUT, texture$OFFSET);
@@ -72,21 +72,21 @@ public class WGPUSurfaceTexture {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUTexture texture
-     *}
+     * }
      */
     public static void texture(MemorySegment struct, MemorySegment fieldValue) {
         struct.set(texture$LAYOUT, texture$OFFSET, fieldValue);
     }
 
-    private static final OfInt suboptimal$LAYOUT = (OfInt) $LAYOUT.select(groupElement("suboptimal"));
+    private static final OfInt suboptimal$LAYOUT = (OfInt)$LAYOUT.select(groupElement("suboptimal"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUBool suboptimal
-     *}
+     * }
      */
     public static final OfInt suboptimal$layout() {
         return suboptimal$LAYOUT;
@@ -96,9 +96,9 @@ public class WGPUSurfaceTexture {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUBool suboptimal
-     *}
+     * }
      */
     public static final long suboptimal$offset() {
         return suboptimal$OFFSET;
@@ -106,9 +106,9 @@ public class WGPUSurfaceTexture {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUBool suboptimal
-     *}
+     * }
      */
     public static int suboptimal(MemorySegment struct) {
         return struct.get(suboptimal$LAYOUT, suboptimal$OFFSET);
@@ -116,21 +116,21 @@ public class WGPUSurfaceTexture {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUBool suboptimal
-     *}
+     * }
      */
     public static void suboptimal(MemorySegment struct, int fieldValue) {
         struct.set(suboptimal$LAYOUT, suboptimal$OFFSET, fieldValue);
     }
 
-    private static final OfInt status$LAYOUT = (OfInt) $LAYOUT.select(groupElement("status"));
+    private static final OfInt status$LAYOUT = (OfInt)$LAYOUT.select(groupElement("status"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUSurfaceGetCurrentTextureStatus status
-     *}
+     * }
      */
     public static final OfInt status$layout() {
         return status$LAYOUT;
@@ -140,9 +140,9 @@ public class WGPUSurfaceTexture {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUSurfaceGetCurrentTextureStatus status
-     *}
+     * }
      */
     public static final long status$offset() {
         return status$OFFSET;
@@ -150,9 +150,9 @@ public class WGPUSurfaceTexture {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUSurfaceGetCurrentTextureStatus status
-     *}
+     * }
      */
     public static int status(MemorySegment struct) {
         return struct.get(status$LAYOUT, status$OFFSET);
@@ -160,9 +160,9 @@ public class WGPUSurfaceTexture {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUSurfaceGetCurrentTextureStatus status
-     *}
+     * }
      */
     public static void status(MemorySegment struct, int fieldValue) {
         struct.set(status$LAYOUT, status$OFFSET, fieldValue);
@@ -179,9 +179,7 @@ public class WGPUSurfaceTexture {
     /**
      * The size (in bytes) of this struct
      */
-    public static long sizeof() {
-        return layout().byteSize();
-    }
+    public static long sizeof() { return layout().byteSize(); }
 
     /**
      * Allocate a segment of size {@code layout().byteSize()} using {@code allocator}

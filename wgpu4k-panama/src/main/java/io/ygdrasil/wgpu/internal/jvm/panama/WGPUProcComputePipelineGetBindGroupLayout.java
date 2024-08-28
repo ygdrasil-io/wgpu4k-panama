@@ -13,9 +13,9 @@ import static java.lang.foreign.ValueLayout.*;
 import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 /**
- * {@snippet lang = c:
+ * {@snippet lang=c :
  * typedef WGPUBindGroupLayout (*WGPUProcComputePipelineGetBindGroupLayout)(WGPUComputePipeline, uint32_t)
- *}
+ * }
  */
 public class WGPUProcComputePipelineGetBindGroupLayout {
 
@@ -31,9 +31,9 @@ public class WGPUProcComputePipelineGetBindGroupLayout {
     }
 
     private static final FunctionDescriptor $DESC = FunctionDescriptor.of(
-            wgpu_h.C_POINTER,
-            wgpu_h.C_POINTER,
-            wgpu_h.C_INT
+        wgpu_h.C_POINTER,
+        wgpu_h.C_POINTER,
+        wgpu_h.C_INT
     );
 
     /**
@@ -58,7 +58,7 @@ public class WGPUProcComputePipelineGetBindGroupLayout {
     /**
      * Invoke the upcall stub {@code funcPtr}, with given parameters
      */
-    public static MemorySegment invoke(MemorySegment funcPtr, MemorySegment computePipeline, int groupIndex) {
+    public static MemorySegment invoke(MemorySegment funcPtr,MemorySegment computePipeline, int groupIndex) {
         try {
             return (MemorySegment) DOWN$MH.invokeExact(funcPtr, computePipeline, groupIndex);
         } catch (Throwable ex$) {

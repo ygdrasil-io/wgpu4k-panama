@@ -13,9 +13,9 @@ import static java.lang.foreign.ValueLayout.*;
 import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 /**
- * {@snippet lang = c:
+ * {@snippet lang=c :
  * typedef WGPUBool (*WGPUProcAdapterHasFeature)(WGPUAdapter, WGPUFeatureName)
- *}
+ * }
  */
 public class WGPUProcAdapterHasFeature {
 
@@ -31,9 +31,9 @@ public class WGPUProcAdapterHasFeature {
     }
 
     private static final FunctionDescriptor $DESC = FunctionDescriptor.of(
-            wgpu_h.C_INT,
-            wgpu_h.C_POINTER,
-            wgpu_h.C_INT
+        wgpu_h.C_INT,
+        wgpu_h.C_POINTER,
+        wgpu_h.C_INT
     );
 
     /**
@@ -58,7 +58,7 @@ public class WGPUProcAdapterHasFeature {
     /**
      * Invoke the upcall stub {@code funcPtr}, with given parameters
      */
-    public static int invoke(MemorySegment funcPtr, MemorySegment adapter, int feature) {
+    public static int invoke(MemorySegment funcPtr,MemorySegment adapter, int feature) {
         try {
             return (int) DOWN$MH.invokeExact(funcPtr, adapter, feature);
         } catch (Throwable ex$) {

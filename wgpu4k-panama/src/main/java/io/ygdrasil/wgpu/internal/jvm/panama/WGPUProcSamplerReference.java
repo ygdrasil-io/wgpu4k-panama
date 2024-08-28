@@ -9,9 +9,9 @@ import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
 /**
- * {@snippet lang = c:
+ * {@snippet lang=c :
  * typedef void (*WGPUProcSamplerReference)(WGPUSampler)
- *}
+ * }
  */
 public class WGPUProcSamplerReference {
 
@@ -27,7 +27,7 @@ public class WGPUProcSamplerReference {
     }
 
     private static final FunctionDescriptor $DESC = FunctionDescriptor.ofVoid(
-            wgpu_h.C_POINTER
+        wgpu_h.C_POINTER
     );
 
     /**
@@ -52,9 +52,9 @@ public class WGPUProcSamplerReference {
     /**
      * Invoke the upcall stub {@code funcPtr}, with given parameters
      */
-    public static void invoke(MemorySegment funcPtr, MemorySegment sampler) {
+    public static void invoke(MemorySegment funcPtr,MemorySegment sampler) {
         try {
-            DOWN$MH.invokeExact(funcPtr, sampler);
+             DOWN$MH.invokeExact(funcPtr, sampler);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }

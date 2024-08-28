@@ -9,14 +9,14 @@ import static java.lang.foreign.MemoryLayout.PathElement.groupElement;
 import static java.lang.foreign.ValueLayout.OfInt;
 
 /**
- * {@snippet lang = c:
+ * {@snippet lang=c :
  * struct WGPUColorTargetState {
  *     const WGPUChainedStruct *nextInChain;
  *     WGPUTextureFormat format;
  *     const WGPUBlendState *blend;
  *     WGPUColorWriteMaskFlags writeMask;
  * }
- *}
+ * }
  */
 public class WGPUColorTargetState {
 
@@ -25,12 +25,12 @@ public class WGPUColorTargetState {
     }
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
-            wgpu_h.C_POINTER.withName("nextInChain"),
-            wgpu_h.C_INT.withName("format"),
-            MemoryLayout.paddingLayout(4),
-            wgpu_h.C_POINTER.withName("blend"),
-            wgpu_h.C_INT.withName("writeMask"),
-            MemoryLayout.paddingLayout(4)
+        wgpu_h.C_POINTER.withName("nextInChain"),
+        wgpu_h.C_INT.withName("format"),
+        MemoryLayout.paddingLayout(4),
+        wgpu_h.C_POINTER.withName("blend"),
+        wgpu_h.C_INT.withName("writeMask"),
+        MemoryLayout.paddingLayout(4)
     ).withName("WGPUColorTargetState");
 
     /**
@@ -40,13 +40,13 @@ public class WGPUColorTargetState {
         return $LAYOUT;
     }
 
-    private static final AddressLayout nextInChain$LAYOUT = (AddressLayout) $LAYOUT.select(groupElement("nextInChain"));
+    private static final AddressLayout nextInChain$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("nextInChain"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPUChainedStruct *nextInChain
-     *}
+     * }
      */
     public static final AddressLayout nextInChain$layout() {
         return nextInChain$LAYOUT;
@@ -56,9 +56,9 @@ public class WGPUColorTargetState {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPUChainedStruct *nextInChain
-     *}
+     * }
      */
     public static final long nextInChain$offset() {
         return nextInChain$OFFSET;
@@ -66,9 +66,9 @@ public class WGPUColorTargetState {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPUChainedStruct *nextInChain
-     *}
+     * }
      */
     public static MemorySegment nextInChain(MemorySegment struct) {
         return struct.get(nextInChain$LAYOUT, nextInChain$OFFSET);
@@ -76,21 +76,21 @@ public class WGPUColorTargetState {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPUChainedStruct *nextInChain
-     *}
+     * }
      */
     public static void nextInChain(MemorySegment struct, MemorySegment fieldValue) {
         struct.set(nextInChain$LAYOUT, nextInChain$OFFSET, fieldValue);
     }
 
-    private static final OfInt format$LAYOUT = (OfInt) $LAYOUT.select(groupElement("format"));
+    private static final OfInt format$LAYOUT = (OfInt)$LAYOUT.select(groupElement("format"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUTextureFormat format
-     *}
+     * }
      */
     public static final OfInt format$layout() {
         return format$LAYOUT;
@@ -100,9 +100,9 @@ public class WGPUColorTargetState {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUTextureFormat format
-     *}
+     * }
      */
     public static final long format$offset() {
         return format$OFFSET;
@@ -110,9 +110,9 @@ public class WGPUColorTargetState {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUTextureFormat format
-     *}
+     * }
      */
     public static int format(MemorySegment struct) {
         return struct.get(format$LAYOUT, format$OFFSET);
@@ -120,21 +120,21 @@ public class WGPUColorTargetState {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUTextureFormat format
-     *}
+     * }
      */
     public static void format(MemorySegment struct, int fieldValue) {
         struct.set(format$LAYOUT, format$OFFSET, fieldValue);
     }
 
-    private static final AddressLayout blend$LAYOUT = (AddressLayout) $LAYOUT.select(groupElement("blend"));
+    private static final AddressLayout blend$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("blend"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPUBlendState *blend
-     *}
+     * }
      */
     public static final AddressLayout blend$layout() {
         return blend$LAYOUT;
@@ -144,9 +144,9 @@ public class WGPUColorTargetState {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPUBlendState *blend
-     *}
+     * }
      */
     public static final long blend$offset() {
         return blend$OFFSET;
@@ -154,9 +154,9 @@ public class WGPUColorTargetState {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPUBlendState *blend
-     *}
+     * }
      */
     public static MemorySegment blend(MemorySegment struct) {
         return struct.get(blend$LAYOUT, blend$OFFSET);
@@ -164,21 +164,21 @@ public class WGPUColorTargetState {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPUBlendState *blend
-     *}
+     * }
      */
     public static void blend(MemorySegment struct, MemorySegment fieldValue) {
         struct.set(blend$LAYOUT, blend$OFFSET, fieldValue);
     }
 
-    private static final OfInt writeMask$LAYOUT = (OfInt) $LAYOUT.select(groupElement("writeMask"));
+    private static final OfInt writeMask$LAYOUT = (OfInt)$LAYOUT.select(groupElement("writeMask"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUColorWriteMaskFlags writeMask
-     *}
+     * }
      */
     public static final OfInt writeMask$layout() {
         return writeMask$LAYOUT;
@@ -188,9 +188,9 @@ public class WGPUColorTargetState {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUColorWriteMaskFlags writeMask
-     *}
+     * }
      */
     public static final long writeMask$offset() {
         return writeMask$OFFSET;
@@ -198,9 +198,9 @@ public class WGPUColorTargetState {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUColorWriteMaskFlags writeMask
-     *}
+     * }
      */
     public static int writeMask(MemorySegment struct) {
         return struct.get(writeMask$LAYOUT, writeMask$OFFSET);
@@ -208,9 +208,9 @@ public class WGPUColorTargetState {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUColorWriteMaskFlags writeMask
-     *}
+     * }
      */
     public static void writeMask(MemorySegment struct, int fieldValue) {
         struct.set(writeMask$LAYOUT, writeMask$OFFSET, fieldValue);
@@ -227,9 +227,7 @@ public class WGPUColorTargetState {
     /**
      * The size (in bytes) of this struct
      */
-    public static long sizeof() {
-        return layout().byteSize();
-    }
+    public static long sizeof() { return layout().byteSize(); }
 
     /**
      * Allocate a segment of size {@code layout().byteSize()} using {@code allocator}

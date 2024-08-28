@@ -13,12 +13,12 @@ import static java.lang.foreign.ValueLayout.*;
 import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 /**
- * {@snippet lang = c:
+ * {@snippet lang=c :
  * struct WGPUSurfaceDescriptorFromCanvasHTMLSelector {
  *     WGPUChainedStruct chain;
  *     const char *selector;
  * }
- *}
+ * }
  */
 public class WGPUSurfaceDescriptorFromCanvasHTMLSelector {
 
@@ -27,8 +27,8 @@ public class WGPUSurfaceDescriptorFromCanvasHTMLSelector {
     }
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
-            WGPUChainedStruct.layout().withName("chain"),
-            wgpu_h.C_POINTER.withName("selector")
+        WGPUChainedStruct.layout().withName("chain"),
+        wgpu_h.C_POINTER.withName("selector")
     ).withName("WGPUSurfaceDescriptorFromCanvasHTMLSelector");
 
     /**
@@ -38,13 +38,13 @@ public class WGPUSurfaceDescriptorFromCanvasHTMLSelector {
         return $LAYOUT;
     }
 
-    private static final GroupLayout chain$LAYOUT = (GroupLayout) $LAYOUT.select(groupElement("chain"));
+    private static final GroupLayout chain$LAYOUT = (GroupLayout)$LAYOUT.select(groupElement("chain"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUChainedStruct chain
-     *}
+     * }
      */
     public static final GroupLayout chain$layout() {
         return chain$LAYOUT;
@@ -54,9 +54,9 @@ public class WGPUSurfaceDescriptorFromCanvasHTMLSelector {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUChainedStruct chain
-     *}
+     * }
      */
     public static final long chain$offset() {
         return chain$OFFSET;
@@ -64,9 +64,9 @@ public class WGPUSurfaceDescriptorFromCanvasHTMLSelector {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUChainedStruct chain
-     *}
+     * }
      */
     public static MemorySegment chain(MemorySegment struct) {
         return struct.asSlice(chain$OFFSET, chain$LAYOUT.byteSize());
@@ -74,21 +74,21 @@ public class WGPUSurfaceDescriptorFromCanvasHTMLSelector {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUChainedStruct chain
-     *}
+     * }
      */
     public static void chain(MemorySegment struct, MemorySegment fieldValue) {
         MemorySegment.copy(fieldValue, 0L, struct, chain$OFFSET, chain$LAYOUT.byteSize());
     }
 
-    private static final AddressLayout selector$LAYOUT = (AddressLayout) $LAYOUT.select(groupElement("selector"));
+    private static final AddressLayout selector$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("selector"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const char *selector
-     *}
+     * }
      */
     public static final AddressLayout selector$layout() {
         return selector$LAYOUT;
@@ -98,9 +98,9 @@ public class WGPUSurfaceDescriptorFromCanvasHTMLSelector {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const char *selector
-     *}
+     * }
      */
     public static final long selector$offset() {
         return selector$OFFSET;
@@ -108,9 +108,9 @@ public class WGPUSurfaceDescriptorFromCanvasHTMLSelector {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const char *selector
-     *}
+     * }
      */
     public static MemorySegment selector(MemorySegment struct) {
         return struct.get(selector$LAYOUT, selector$OFFSET);
@@ -118,9 +118,9 @@ public class WGPUSurfaceDescriptorFromCanvasHTMLSelector {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const char *selector
-     *}
+     * }
      */
     public static void selector(MemorySegment struct, MemorySegment fieldValue) {
         struct.set(selector$LAYOUT, selector$OFFSET, fieldValue);
@@ -137,9 +137,7 @@ public class WGPUSurfaceDescriptorFromCanvasHTMLSelector {
     /**
      * The size (in bytes) of this struct
      */
-    public static long sizeof() {
-        return layout().byteSize();
-    }
+    public static long sizeof() { return layout().byteSize(); }
 
     /**
      * Allocate a segment of size {@code layout().byteSize()} using {@code allocator}

@@ -9,13 +9,13 @@ import static java.lang.foreign.MemoryLayout.PathElement.groupElement;
 import static java.lang.foreign.ValueLayout.OfInt;
 
 /**
- * {@snippet lang = c:
+ * {@snippet lang=c :
  * struct WGPUOrigin3D {
  *     uint32_t x;
  *     uint32_t y;
  *     uint32_t z;
  * }
- *}
+ * }
  */
 public class WGPUOrigin3D {
 
@@ -24,9 +24,9 @@ public class WGPUOrigin3D {
     }
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
-            wgpu_h.C_INT.withName("x"),
-            wgpu_h.C_INT.withName("y"),
-            wgpu_h.C_INT.withName("z")
+        wgpu_h.C_INT.withName("x"),
+        wgpu_h.C_INT.withName("y"),
+        wgpu_h.C_INT.withName("z")
     ).withName("WGPUOrigin3D");
 
     /**
@@ -36,13 +36,13 @@ public class WGPUOrigin3D {
         return $LAYOUT;
     }
 
-    private static final OfInt x$LAYOUT = (OfInt) $LAYOUT.select(groupElement("x"));
+    private static final OfInt x$LAYOUT = (OfInt)$LAYOUT.select(groupElement("x"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * uint32_t x
-     *}
+     * }
      */
     public static final OfInt x$layout() {
         return x$LAYOUT;
@@ -52,9 +52,9 @@ public class WGPUOrigin3D {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * uint32_t x
-     *}
+     * }
      */
     public static final long x$offset() {
         return x$OFFSET;
@@ -62,9 +62,9 @@ public class WGPUOrigin3D {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * uint32_t x
-     *}
+     * }
      */
     public static int x(MemorySegment struct) {
         return struct.get(x$LAYOUT, x$OFFSET);
@@ -72,21 +72,21 @@ public class WGPUOrigin3D {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * uint32_t x
-     *}
+     * }
      */
     public static void x(MemorySegment struct, int fieldValue) {
         struct.set(x$LAYOUT, x$OFFSET, fieldValue);
     }
 
-    private static final OfInt y$LAYOUT = (OfInt) $LAYOUT.select(groupElement("y"));
+    private static final OfInt y$LAYOUT = (OfInt)$LAYOUT.select(groupElement("y"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * uint32_t y
-     *}
+     * }
      */
     public static final OfInt y$layout() {
         return y$LAYOUT;
@@ -96,9 +96,9 @@ public class WGPUOrigin3D {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * uint32_t y
-     *}
+     * }
      */
     public static final long y$offset() {
         return y$OFFSET;
@@ -106,9 +106,9 @@ public class WGPUOrigin3D {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * uint32_t y
-     *}
+     * }
      */
     public static int y(MemorySegment struct) {
         return struct.get(y$LAYOUT, y$OFFSET);
@@ -116,21 +116,21 @@ public class WGPUOrigin3D {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * uint32_t y
-     *}
+     * }
      */
     public static void y(MemorySegment struct, int fieldValue) {
         struct.set(y$LAYOUT, y$OFFSET, fieldValue);
     }
 
-    private static final OfInt z$LAYOUT = (OfInt) $LAYOUT.select(groupElement("z"));
+    private static final OfInt z$LAYOUT = (OfInt)$LAYOUT.select(groupElement("z"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * uint32_t z
-     *}
+     * }
      */
     public static final OfInt z$layout() {
         return z$LAYOUT;
@@ -140,9 +140,9 @@ public class WGPUOrigin3D {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * uint32_t z
-     *}
+     * }
      */
     public static final long z$offset() {
         return z$OFFSET;
@@ -150,9 +150,9 @@ public class WGPUOrigin3D {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * uint32_t z
-     *}
+     * }
      */
     public static int z(MemorySegment struct) {
         return struct.get(z$LAYOUT, z$OFFSET);
@@ -160,9 +160,9 @@ public class WGPUOrigin3D {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * uint32_t z
-     *}
+     * }
      */
     public static void z(MemorySegment struct, int fieldValue) {
         struct.set(z$LAYOUT, z$OFFSET, fieldValue);
@@ -179,9 +179,7 @@ public class WGPUOrigin3D {
     /**
      * The size (in bytes) of this struct
      */
-    public static long sizeof() {
-        return layout().byteSize();
-    }
+    public static long sizeof() { return layout().byteSize(); }
 
     /**
      * Allocate a segment of size {@code layout().byteSize()} using {@code allocator}

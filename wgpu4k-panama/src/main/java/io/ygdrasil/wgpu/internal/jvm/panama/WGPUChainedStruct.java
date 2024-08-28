@@ -9,12 +9,12 @@ import static java.lang.foreign.MemoryLayout.PathElement.groupElement;
 import static java.lang.foreign.ValueLayout.OfInt;
 
 /**
- * {@snippet lang = c:
+ * {@snippet lang=c :
  * struct WGPUChainedStruct {
  *     const struct WGPUChainedStruct *next;
  *     WGPUSType sType;
  * }
- *}
+ * }
  */
 public class WGPUChainedStruct {
 
@@ -23,9 +23,9 @@ public class WGPUChainedStruct {
     }
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
-            wgpu_h.C_POINTER.withName("next"),
-            wgpu_h.C_INT.withName("sType"),
-            MemoryLayout.paddingLayout(4)
+        wgpu_h.C_POINTER.withName("next"),
+        wgpu_h.C_INT.withName("sType"),
+        MemoryLayout.paddingLayout(4)
     ).withName("WGPUChainedStruct");
 
     /**
@@ -35,13 +35,13 @@ public class WGPUChainedStruct {
         return $LAYOUT;
     }
 
-    private static final AddressLayout next$LAYOUT = (AddressLayout) $LAYOUT.select(groupElement("next"));
+    private static final AddressLayout next$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("next"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const struct WGPUChainedStruct *next
-     *}
+     * }
      */
     public static final AddressLayout next$layout() {
         return next$LAYOUT;
@@ -51,9 +51,9 @@ public class WGPUChainedStruct {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const struct WGPUChainedStruct *next
-     *}
+     * }
      */
     public static final long next$offset() {
         return next$OFFSET;
@@ -61,9 +61,9 @@ public class WGPUChainedStruct {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const struct WGPUChainedStruct *next
-     *}
+     * }
      */
     public static MemorySegment next(MemorySegment struct) {
         return struct.get(next$LAYOUT, next$OFFSET);
@@ -71,21 +71,21 @@ public class WGPUChainedStruct {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const struct WGPUChainedStruct *next
-     *}
+     * }
      */
     public static void next(MemorySegment struct, MemorySegment fieldValue) {
         struct.set(next$LAYOUT, next$OFFSET, fieldValue);
     }
 
-    private static final OfInt sType$LAYOUT = (OfInt) $LAYOUT.select(groupElement("sType"));
+    private static final OfInt sType$LAYOUT = (OfInt)$LAYOUT.select(groupElement("sType"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUSType sType
-     *}
+     * }
      */
     public static final OfInt sType$layout() {
         return sType$LAYOUT;
@@ -95,9 +95,9 @@ public class WGPUChainedStruct {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUSType sType
-     *}
+     * }
      */
     public static final long sType$offset() {
         return sType$OFFSET;
@@ -105,9 +105,9 @@ public class WGPUChainedStruct {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUSType sType
-     *}
+     * }
      */
     public static int sType(MemorySegment struct) {
         return struct.get(sType$LAYOUT, sType$OFFSET);
@@ -115,9 +115,9 @@ public class WGPUChainedStruct {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUSType sType
-     *}
+     * }
      */
     public static void sType(MemorySegment struct, int fieldValue) {
         struct.set(sType$LAYOUT, sType$OFFSET, fieldValue);
@@ -134,9 +134,7 @@ public class WGPUChainedStruct {
     /**
      * The size (in bytes) of this struct
      */
-    public static long sizeof() {
-        return layout().byteSize();
-    }
+    public static long sizeof() { return layout().byteSize(); }
 
     /**
      * Allocate a segment of size {@code layout().byteSize()} using {@code allocator}

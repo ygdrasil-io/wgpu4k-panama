@@ -9,9 +9,9 @@ import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
 /**
- * {@snippet lang = c:
+ * {@snippet lang=c :
  * typedef void (*WGPUProcQueueSubmit)(WGPUQueue, size_t, const WGPUCommandBuffer *)
- *}
+ * }
  */
 public class WGPUProcQueueSubmit {
 
@@ -27,9 +27,9 @@ public class WGPUProcQueueSubmit {
     }
 
     private static final FunctionDescriptor $DESC = FunctionDescriptor.ofVoid(
-            wgpu_h.C_POINTER,
-            wgpu_h.C_LONG,
-            wgpu_h.C_POINTER
+        wgpu_h.C_POINTER,
+        wgpu_h.C_LONG,
+        wgpu_h.C_POINTER
     );
 
     /**
@@ -54,9 +54,9 @@ public class WGPUProcQueueSubmit {
     /**
      * Invoke the upcall stub {@code funcPtr}, with given parameters
      */
-    public static void invoke(MemorySegment funcPtr, MemorySegment queue, long commandCount, MemorySegment commands) {
+    public static void invoke(MemorySegment funcPtr,MemorySegment queue, long commandCount, MemorySegment commands) {
         try {
-            DOWN$MH.invokeExact(funcPtr, queue, commandCount, commands);
+             DOWN$MH.invokeExact(funcPtr, queue, commandCount, commands);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }

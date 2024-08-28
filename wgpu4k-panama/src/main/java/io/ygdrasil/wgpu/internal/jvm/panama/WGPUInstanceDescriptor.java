@@ -8,11 +8,11 @@ import java.util.function.Consumer;
 import static java.lang.foreign.MemoryLayout.PathElement.groupElement;
 
 /**
- * {@snippet lang = c:
+ * {@snippet lang=c :
  * struct WGPUInstanceDescriptor {
  *     const WGPUChainedStruct *nextInChain;
  * }
- *}
+ * }
  */
 public class WGPUInstanceDescriptor {
 
@@ -21,7 +21,7 @@ public class WGPUInstanceDescriptor {
     }
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
-            wgpu_h.C_POINTER.withName("nextInChain")
+        wgpu_h.C_POINTER.withName("nextInChain")
     ).withName("WGPUInstanceDescriptor");
 
     /**
@@ -31,13 +31,13 @@ public class WGPUInstanceDescriptor {
         return $LAYOUT;
     }
 
-    private static final AddressLayout nextInChain$LAYOUT = (AddressLayout) $LAYOUT.select(groupElement("nextInChain"));
+    private static final AddressLayout nextInChain$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("nextInChain"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPUChainedStruct *nextInChain
-     *}
+     * }
      */
     public static final AddressLayout nextInChain$layout() {
         return nextInChain$LAYOUT;
@@ -47,9 +47,9 @@ public class WGPUInstanceDescriptor {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPUChainedStruct *nextInChain
-     *}
+     * }
      */
     public static final long nextInChain$offset() {
         return nextInChain$OFFSET;
@@ -57,9 +57,9 @@ public class WGPUInstanceDescriptor {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPUChainedStruct *nextInChain
-     *}
+     * }
      */
     public static MemorySegment nextInChain(MemorySegment struct) {
         return struct.get(nextInChain$LAYOUT, nextInChain$OFFSET);
@@ -67,9 +67,9 @@ public class WGPUInstanceDescriptor {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPUChainedStruct *nextInChain
-     *}
+     * }
      */
     public static void nextInChain(MemorySegment struct, MemorySegment fieldValue) {
         struct.set(nextInChain$LAYOUT, nextInChain$OFFSET, fieldValue);
@@ -86,9 +86,7 @@ public class WGPUInstanceDescriptor {
     /**
      * The size (in bytes) of this struct
      */
-    public static long sizeof() {
-        return layout().byteSize();
-    }
+    public static long sizeof() { return layout().byteSize(); }
 
     /**
      * Allocate a segment of size {@code layout().byteSize()} using {@code allocator}

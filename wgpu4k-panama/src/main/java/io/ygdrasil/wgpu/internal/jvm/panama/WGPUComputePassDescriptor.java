@@ -13,13 +13,13 @@ import static java.lang.foreign.ValueLayout.*;
 import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 /**
- * {@snippet lang = c:
+ * {@snippet lang=c :
  * struct WGPUComputePassDescriptor {
  *     const WGPUChainedStruct *nextInChain;
  *     const char *label;
  *     const WGPUComputePassTimestampWrites *timestampWrites;
  * }
- *}
+ * }
  */
 public class WGPUComputePassDescriptor {
 
@@ -28,9 +28,9 @@ public class WGPUComputePassDescriptor {
     }
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
-            wgpu_h.C_POINTER.withName("nextInChain"),
-            wgpu_h.C_POINTER.withName("label"),
-            wgpu_h.C_POINTER.withName("timestampWrites")
+        wgpu_h.C_POINTER.withName("nextInChain"),
+        wgpu_h.C_POINTER.withName("label"),
+        wgpu_h.C_POINTER.withName("timestampWrites")
     ).withName("WGPUComputePassDescriptor");
 
     /**
@@ -40,13 +40,13 @@ public class WGPUComputePassDescriptor {
         return $LAYOUT;
     }
 
-    private static final AddressLayout nextInChain$LAYOUT = (AddressLayout) $LAYOUT.select(groupElement("nextInChain"));
+    private static final AddressLayout nextInChain$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("nextInChain"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPUChainedStruct *nextInChain
-     *}
+     * }
      */
     public static final AddressLayout nextInChain$layout() {
         return nextInChain$LAYOUT;
@@ -56,9 +56,9 @@ public class WGPUComputePassDescriptor {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPUChainedStruct *nextInChain
-     *}
+     * }
      */
     public static final long nextInChain$offset() {
         return nextInChain$OFFSET;
@@ -66,9 +66,9 @@ public class WGPUComputePassDescriptor {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPUChainedStruct *nextInChain
-     *}
+     * }
      */
     public static MemorySegment nextInChain(MemorySegment struct) {
         return struct.get(nextInChain$LAYOUT, nextInChain$OFFSET);
@@ -76,21 +76,21 @@ public class WGPUComputePassDescriptor {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPUChainedStruct *nextInChain
-     *}
+     * }
      */
     public static void nextInChain(MemorySegment struct, MemorySegment fieldValue) {
         struct.set(nextInChain$LAYOUT, nextInChain$OFFSET, fieldValue);
     }
 
-    private static final AddressLayout label$LAYOUT = (AddressLayout) $LAYOUT.select(groupElement("label"));
+    private static final AddressLayout label$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("label"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const char *label
-     *}
+     * }
      */
     public static final AddressLayout label$layout() {
         return label$LAYOUT;
@@ -100,9 +100,9 @@ public class WGPUComputePassDescriptor {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const char *label
-     *}
+     * }
      */
     public static final long label$offset() {
         return label$OFFSET;
@@ -110,9 +110,9 @@ public class WGPUComputePassDescriptor {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const char *label
-     *}
+     * }
      */
     public static MemorySegment label(MemorySegment struct) {
         return struct.get(label$LAYOUT, label$OFFSET);
@@ -120,21 +120,21 @@ public class WGPUComputePassDescriptor {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const char *label
-     *}
+     * }
      */
     public static void label(MemorySegment struct, MemorySegment fieldValue) {
         struct.set(label$LAYOUT, label$OFFSET, fieldValue);
     }
 
-    private static final AddressLayout timestampWrites$LAYOUT = (AddressLayout) $LAYOUT.select(groupElement("timestampWrites"));
+    private static final AddressLayout timestampWrites$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("timestampWrites"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPUComputePassTimestampWrites *timestampWrites
-     *}
+     * }
      */
     public static final AddressLayout timestampWrites$layout() {
         return timestampWrites$LAYOUT;
@@ -144,9 +144,9 @@ public class WGPUComputePassDescriptor {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPUComputePassTimestampWrites *timestampWrites
-     *}
+     * }
      */
     public static final long timestampWrites$offset() {
         return timestampWrites$OFFSET;
@@ -154,9 +154,9 @@ public class WGPUComputePassDescriptor {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPUComputePassTimestampWrites *timestampWrites
-     *}
+     * }
      */
     public static MemorySegment timestampWrites(MemorySegment struct) {
         return struct.get(timestampWrites$LAYOUT, timestampWrites$OFFSET);
@@ -164,9 +164,9 @@ public class WGPUComputePassDescriptor {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPUComputePassTimestampWrites *timestampWrites
-     *}
+     * }
      */
     public static void timestampWrites(MemorySegment struct, MemorySegment fieldValue) {
         struct.set(timestampWrites$LAYOUT, timestampWrites$OFFSET, fieldValue);
@@ -183,9 +183,7 @@ public class WGPUComputePassDescriptor {
     /**
      * The size (in bytes) of this struct
      */
-    public static long sizeof() {
-        return layout().byteSize();
-    }
+    public static long sizeof() { return layout().byteSize(); }
 
     /**
      * Allocate a segment of size {@code layout().byteSize()} using {@code allocator}

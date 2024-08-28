@@ -13,13 +13,13 @@ import static java.lang.foreign.ValueLayout.*;
 import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 /**
- * {@snippet lang = c:
+ * {@snippet lang=c :
  * struct WGPUShaderModuleCompilationHint {
  *     const WGPUChainedStruct *nextInChain;
  *     const char *entryPoint;
  *     WGPUPipelineLayout layout;
  * }
- *}
+ * }
  */
 public class WGPUShaderModuleCompilationHint {
 
@@ -28,9 +28,9 @@ public class WGPUShaderModuleCompilationHint {
     }
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
-            wgpu_h.C_POINTER.withName("nextInChain"),
-            wgpu_h.C_POINTER.withName("entryPoint"),
-            wgpu_h.C_POINTER.withName("layout")
+        wgpu_h.C_POINTER.withName("nextInChain"),
+        wgpu_h.C_POINTER.withName("entryPoint"),
+        wgpu_h.C_POINTER.withName("layout")
     ).withName("WGPUShaderModuleCompilationHint");
 
     /**
@@ -40,13 +40,13 @@ public class WGPUShaderModuleCompilationHint {
         return $LAYOUT;
     }
 
-    private static final AddressLayout nextInChain$LAYOUT = (AddressLayout) $LAYOUT.select(groupElement("nextInChain"));
+    private static final AddressLayout nextInChain$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("nextInChain"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPUChainedStruct *nextInChain
-     *}
+     * }
      */
     public static final AddressLayout nextInChain$layout() {
         return nextInChain$LAYOUT;
@@ -56,9 +56,9 @@ public class WGPUShaderModuleCompilationHint {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPUChainedStruct *nextInChain
-     *}
+     * }
      */
     public static final long nextInChain$offset() {
         return nextInChain$OFFSET;
@@ -66,9 +66,9 @@ public class WGPUShaderModuleCompilationHint {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPUChainedStruct *nextInChain
-     *}
+     * }
      */
     public static MemorySegment nextInChain(MemorySegment struct) {
         return struct.get(nextInChain$LAYOUT, nextInChain$OFFSET);
@@ -76,21 +76,21 @@ public class WGPUShaderModuleCompilationHint {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPUChainedStruct *nextInChain
-     *}
+     * }
      */
     public static void nextInChain(MemorySegment struct, MemorySegment fieldValue) {
         struct.set(nextInChain$LAYOUT, nextInChain$OFFSET, fieldValue);
     }
 
-    private static final AddressLayout entryPoint$LAYOUT = (AddressLayout) $LAYOUT.select(groupElement("entryPoint"));
+    private static final AddressLayout entryPoint$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("entryPoint"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const char *entryPoint
-     *}
+     * }
      */
     public static final AddressLayout entryPoint$layout() {
         return entryPoint$LAYOUT;
@@ -100,9 +100,9 @@ public class WGPUShaderModuleCompilationHint {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const char *entryPoint
-     *}
+     * }
      */
     public static final long entryPoint$offset() {
         return entryPoint$OFFSET;
@@ -110,9 +110,9 @@ public class WGPUShaderModuleCompilationHint {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const char *entryPoint
-     *}
+     * }
      */
     public static MemorySegment entryPoint(MemorySegment struct) {
         return struct.get(entryPoint$LAYOUT, entryPoint$OFFSET);
@@ -120,21 +120,21 @@ public class WGPUShaderModuleCompilationHint {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const char *entryPoint
-     *}
+     * }
      */
     public static void entryPoint(MemorySegment struct, MemorySegment fieldValue) {
         struct.set(entryPoint$LAYOUT, entryPoint$OFFSET, fieldValue);
     }
 
-    private static final AddressLayout layout$LAYOUT = (AddressLayout) $LAYOUT.select(groupElement("layout"));
+    private static final AddressLayout layout$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("layout"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUPipelineLayout layout
-     *}
+     * }
      */
     public static final AddressLayout layout$layout() {
         return layout$LAYOUT;
@@ -144,9 +144,9 @@ public class WGPUShaderModuleCompilationHint {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUPipelineLayout layout
-     *}
+     * }
      */
     public static final long layout$offset() {
         return layout$OFFSET;
@@ -154,9 +154,9 @@ public class WGPUShaderModuleCompilationHint {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUPipelineLayout layout
-     *}
+     * }
      */
     public static MemorySegment layout(MemorySegment struct) {
         return struct.get(layout$LAYOUT, layout$OFFSET);
@@ -164,9 +164,9 @@ public class WGPUShaderModuleCompilationHint {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUPipelineLayout layout
-     *}
+     * }
      */
     public static void layout(MemorySegment struct, MemorySegment fieldValue) {
         struct.set(layout$LAYOUT, layout$OFFSET, fieldValue);
@@ -183,9 +183,7 @@ public class WGPUShaderModuleCompilationHint {
     /**
      * The size (in bytes) of this struct
      */
-    public static long sizeof() {
-        return layout().byteSize();
-    }
+    public static long sizeof() { return layout().byteSize(); }
 
     /**
      * Allocate a segment of size {@code layout().byteSize()} using {@code allocator}

@@ -9,9 +9,9 @@ import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
 /**
- * {@snippet lang = c:
+ * {@snippet lang=c :
  * typedef WGPUBool (*WGPUProcDeviceGetLimits)(WGPUDevice, WGPUSupportedLimits *)
- *}
+ * }
  */
 public class WGPUProcDeviceGetLimits {
 
@@ -27,9 +27,9 @@ public class WGPUProcDeviceGetLimits {
     }
 
     private static final FunctionDescriptor $DESC = FunctionDescriptor.of(
-            wgpu_h.C_INT,
-            wgpu_h.C_POINTER,
-            wgpu_h.C_POINTER
+        wgpu_h.C_INT,
+        wgpu_h.C_POINTER,
+        wgpu_h.C_POINTER
     );
 
     /**
@@ -54,7 +54,7 @@ public class WGPUProcDeviceGetLimits {
     /**
      * Invoke the upcall stub {@code funcPtr}, with given parameters
      */
-    public static int invoke(MemorySegment funcPtr, MemorySegment device, MemorySegment limits) {
+    public static int invoke(MemorySegment funcPtr,MemorySegment device, MemorySegment limits) {
         try {
             return (int) DOWN$MH.invokeExact(funcPtr, device, limits);
         } catch (Throwable ex$) {

@@ -9,9 +9,9 @@ import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
 /**
- * {@snippet lang = c:
+ * {@snippet lang=c :
  * typedef void (*WGPUProcSurfaceSetLabel)(WGPUSurface, const char *)
- *}
+ * }
  */
 public class WGPUProcSurfaceSetLabel {
 
@@ -27,8 +27,8 @@ public class WGPUProcSurfaceSetLabel {
     }
 
     private static final FunctionDescriptor $DESC = FunctionDescriptor.ofVoid(
-            wgpu_h.C_POINTER,
-            wgpu_h.C_POINTER
+        wgpu_h.C_POINTER,
+        wgpu_h.C_POINTER
     );
 
     /**
@@ -53,9 +53,9 @@ public class WGPUProcSurfaceSetLabel {
     /**
      * Invoke the upcall stub {@code funcPtr}, with given parameters
      */
-    public static void invoke(MemorySegment funcPtr, MemorySegment surface, MemorySegment label) {
+    public static void invoke(MemorySegment funcPtr,MemorySegment surface, MemorySegment label) {
         try {
-            DOWN$MH.invokeExact(funcPtr, surface, label);
+             DOWN$MH.invokeExact(funcPtr, surface, label);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }

@@ -13,12 +13,12 @@ import static java.lang.foreign.ValueLayout.*;
 import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 /**
- * {@snippet lang = c:
+ * {@snippet lang=c :
  * struct WGPUBindGroupLayoutEntryExtras {
  *     WGPUChainedStruct chain;
  *     uint32_t count;
  * }
- *}
+ * }
  */
 public class WGPUBindGroupLayoutEntryExtras {
 
@@ -27,9 +27,9 @@ public class WGPUBindGroupLayoutEntryExtras {
     }
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
-            WGPUChainedStruct.layout().withName("chain"),
-            wgpu_h.C_INT.withName("count"),
-            MemoryLayout.paddingLayout(4)
+        WGPUChainedStruct.layout().withName("chain"),
+        wgpu_h.C_INT.withName("count"),
+        MemoryLayout.paddingLayout(4)
     ).withName("WGPUBindGroupLayoutEntryExtras");
 
     /**
@@ -39,13 +39,13 @@ public class WGPUBindGroupLayoutEntryExtras {
         return $LAYOUT;
     }
 
-    private static final GroupLayout chain$LAYOUT = (GroupLayout) $LAYOUT.select(groupElement("chain"));
+    private static final GroupLayout chain$LAYOUT = (GroupLayout)$LAYOUT.select(groupElement("chain"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUChainedStruct chain
-     *}
+     * }
      */
     public static final GroupLayout chain$layout() {
         return chain$LAYOUT;
@@ -55,9 +55,9 @@ public class WGPUBindGroupLayoutEntryExtras {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUChainedStruct chain
-     *}
+     * }
      */
     public static final long chain$offset() {
         return chain$OFFSET;
@@ -65,9 +65,9 @@ public class WGPUBindGroupLayoutEntryExtras {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUChainedStruct chain
-     *}
+     * }
      */
     public static MemorySegment chain(MemorySegment struct) {
         return struct.asSlice(chain$OFFSET, chain$LAYOUT.byteSize());
@@ -75,21 +75,21 @@ public class WGPUBindGroupLayoutEntryExtras {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUChainedStruct chain
-     *}
+     * }
      */
     public static void chain(MemorySegment struct, MemorySegment fieldValue) {
         MemorySegment.copy(fieldValue, 0L, struct, chain$OFFSET, chain$LAYOUT.byteSize());
     }
 
-    private static final OfInt count$LAYOUT = (OfInt) $LAYOUT.select(groupElement("count"));
+    private static final OfInt count$LAYOUT = (OfInt)$LAYOUT.select(groupElement("count"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * uint32_t count
-     *}
+     * }
      */
     public static final OfInt count$layout() {
         return count$LAYOUT;
@@ -99,9 +99,9 @@ public class WGPUBindGroupLayoutEntryExtras {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * uint32_t count
-     *}
+     * }
      */
     public static final long count$offset() {
         return count$OFFSET;
@@ -109,9 +109,9 @@ public class WGPUBindGroupLayoutEntryExtras {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * uint32_t count
-     *}
+     * }
      */
     public static int count(MemorySegment struct) {
         return struct.get(count$LAYOUT, count$OFFSET);
@@ -119,9 +119,9 @@ public class WGPUBindGroupLayoutEntryExtras {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * uint32_t count
-     *}
+     * }
      */
     public static void count(MemorySegment struct, int fieldValue) {
         struct.set(count$LAYOUT, count$OFFSET, fieldValue);
@@ -138,9 +138,7 @@ public class WGPUBindGroupLayoutEntryExtras {
     /**
      * The size (in bytes) of this struct
      */
-    public static long sizeof() {
-        return layout().byteSize();
-    }
+    public static long sizeof() { return layout().byteSize(); }
 
     /**
      * Allocate a segment of size {@code layout().byteSize()} using {@code allocator}

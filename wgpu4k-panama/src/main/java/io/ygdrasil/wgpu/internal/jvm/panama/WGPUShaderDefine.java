@@ -8,12 +8,12 @@ import java.util.function.Consumer;
 import static java.lang.foreign.MemoryLayout.PathElement.groupElement;
 
 /**
- * {@snippet lang = c:
+ * {@snippet lang=c :
  * struct WGPUShaderDefine {
  *     const char *name;
  *     const char *value;
  * }
- *}
+ * }
  */
 public class WGPUShaderDefine {
 
@@ -22,8 +22,8 @@ public class WGPUShaderDefine {
     }
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
-            wgpu_h.C_POINTER.withName("name"),
-            wgpu_h.C_POINTER.withName("value")
+        wgpu_h.C_POINTER.withName("name"),
+        wgpu_h.C_POINTER.withName("value")
     ).withName("WGPUShaderDefine");
 
     /**
@@ -33,13 +33,13 @@ public class WGPUShaderDefine {
         return $LAYOUT;
     }
 
-    private static final AddressLayout name$LAYOUT = (AddressLayout) $LAYOUT.select(groupElement("name"));
+    private static final AddressLayout name$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("name"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const char *name
-     *}
+     * }
      */
     public static final AddressLayout name$layout() {
         return name$LAYOUT;
@@ -49,9 +49,9 @@ public class WGPUShaderDefine {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const char *name
-     *}
+     * }
      */
     public static final long name$offset() {
         return name$OFFSET;
@@ -59,9 +59,9 @@ public class WGPUShaderDefine {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const char *name
-     *}
+     * }
      */
     public static MemorySegment name(MemorySegment struct) {
         return struct.get(name$LAYOUT, name$OFFSET);
@@ -69,21 +69,21 @@ public class WGPUShaderDefine {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const char *name
-     *}
+     * }
      */
     public static void name(MemorySegment struct, MemorySegment fieldValue) {
         struct.set(name$LAYOUT, name$OFFSET, fieldValue);
     }
 
-    private static final AddressLayout value$LAYOUT = (AddressLayout) $LAYOUT.select(groupElement("value"));
+    private static final AddressLayout value$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("value"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const char *value
-     *}
+     * }
      */
     public static final AddressLayout value$layout() {
         return value$LAYOUT;
@@ -93,9 +93,9 @@ public class WGPUShaderDefine {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const char *value
-     *}
+     * }
      */
     public static final long value$offset() {
         return value$OFFSET;
@@ -103,9 +103,9 @@ public class WGPUShaderDefine {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const char *value
-     *}
+     * }
      */
     public static MemorySegment value(MemorySegment struct) {
         return struct.get(value$LAYOUT, value$OFFSET);
@@ -113,9 +113,9 @@ public class WGPUShaderDefine {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const char *value
-     *}
+     * }
      */
     public static void value(MemorySegment struct, MemorySegment fieldValue) {
         struct.set(value$LAYOUT, value$OFFSET, fieldValue);
@@ -132,9 +132,7 @@ public class WGPUShaderDefine {
     /**
      * The size (in bytes) of this struct
      */
-    public static long sizeof() {
-        return layout().byteSize();
-    }
+    public static long sizeof() { return layout().byteSize(); }
 
     /**
      * Allocate a segment of size {@code layout().byteSize()} using {@code allocator}

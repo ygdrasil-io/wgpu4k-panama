@@ -9,14 +9,14 @@ import static java.lang.foreign.MemoryLayout.PathElement.groupElement;
 import static java.lang.foreign.ValueLayout.OfInt;
 
 /**
- * {@snippet lang = c:
+ * {@snippet lang=c :
  * struct WGPUStencilFaceState {
  *     WGPUCompareFunction compare;
  *     WGPUStencilOperation failOp;
  *     WGPUStencilOperation depthFailOp;
  *     WGPUStencilOperation passOp;
  * }
- *}
+ * }
  */
 public class WGPUStencilFaceState {
 
@@ -25,10 +25,10 @@ public class WGPUStencilFaceState {
     }
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
-            wgpu_h.C_INT.withName("compare"),
-            wgpu_h.C_INT.withName("failOp"),
-            wgpu_h.C_INT.withName("depthFailOp"),
-            wgpu_h.C_INT.withName("passOp")
+        wgpu_h.C_INT.withName("compare"),
+        wgpu_h.C_INT.withName("failOp"),
+        wgpu_h.C_INT.withName("depthFailOp"),
+        wgpu_h.C_INT.withName("passOp")
     ).withName("WGPUStencilFaceState");
 
     /**
@@ -38,13 +38,13 @@ public class WGPUStencilFaceState {
         return $LAYOUT;
     }
 
-    private static final OfInt compare$LAYOUT = (OfInt) $LAYOUT.select(groupElement("compare"));
+    private static final OfInt compare$LAYOUT = (OfInt)$LAYOUT.select(groupElement("compare"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUCompareFunction compare
-     *}
+     * }
      */
     public static final OfInt compare$layout() {
         return compare$LAYOUT;
@@ -54,9 +54,9 @@ public class WGPUStencilFaceState {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUCompareFunction compare
-     *}
+     * }
      */
     public static final long compare$offset() {
         return compare$OFFSET;
@@ -64,9 +64,9 @@ public class WGPUStencilFaceState {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUCompareFunction compare
-     *}
+     * }
      */
     public static int compare(MemorySegment struct) {
         return struct.get(compare$LAYOUT, compare$OFFSET);
@@ -74,21 +74,21 @@ public class WGPUStencilFaceState {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUCompareFunction compare
-     *}
+     * }
      */
     public static void compare(MemorySegment struct, int fieldValue) {
         struct.set(compare$LAYOUT, compare$OFFSET, fieldValue);
     }
 
-    private static final OfInt failOp$LAYOUT = (OfInt) $LAYOUT.select(groupElement("failOp"));
+    private static final OfInt failOp$LAYOUT = (OfInt)$LAYOUT.select(groupElement("failOp"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUStencilOperation failOp
-     *}
+     * }
      */
     public static final OfInt failOp$layout() {
         return failOp$LAYOUT;
@@ -98,9 +98,9 @@ public class WGPUStencilFaceState {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUStencilOperation failOp
-     *}
+     * }
      */
     public static final long failOp$offset() {
         return failOp$OFFSET;
@@ -108,9 +108,9 @@ public class WGPUStencilFaceState {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUStencilOperation failOp
-     *}
+     * }
      */
     public static int failOp(MemorySegment struct) {
         return struct.get(failOp$LAYOUT, failOp$OFFSET);
@@ -118,21 +118,21 @@ public class WGPUStencilFaceState {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUStencilOperation failOp
-     *}
+     * }
      */
     public static void failOp(MemorySegment struct, int fieldValue) {
         struct.set(failOp$LAYOUT, failOp$OFFSET, fieldValue);
     }
 
-    private static final OfInt depthFailOp$LAYOUT = (OfInt) $LAYOUT.select(groupElement("depthFailOp"));
+    private static final OfInt depthFailOp$LAYOUT = (OfInt)$LAYOUT.select(groupElement("depthFailOp"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUStencilOperation depthFailOp
-     *}
+     * }
      */
     public static final OfInt depthFailOp$layout() {
         return depthFailOp$LAYOUT;
@@ -142,9 +142,9 @@ public class WGPUStencilFaceState {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUStencilOperation depthFailOp
-     *}
+     * }
      */
     public static final long depthFailOp$offset() {
         return depthFailOp$OFFSET;
@@ -152,9 +152,9 @@ public class WGPUStencilFaceState {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUStencilOperation depthFailOp
-     *}
+     * }
      */
     public static int depthFailOp(MemorySegment struct) {
         return struct.get(depthFailOp$LAYOUT, depthFailOp$OFFSET);
@@ -162,21 +162,21 @@ public class WGPUStencilFaceState {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUStencilOperation depthFailOp
-     *}
+     * }
      */
     public static void depthFailOp(MemorySegment struct, int fieldValue) {
         struct.set(depthFailOp$LAYOUT, depthFailOp$OFFSET, fieldValue);
     }
 
-    private static final OfInt passOp$LAYOUT = (OfInt) $LAYOUT.select(groupElement("passOp"));
+    private static final OfInt passOp$LAYOUT = (OfInt)$LAYOUT.select(groupElement("passOp"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUStencilOperation passOp
-     *}
+     * }
      */
     public static final OfInt passOp$layout() {
         return passOp$LAYOUT;
@@ -186,9 +186,9 @@ public class WGPUStencilFaceState {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUStencilOperation passOp
-     *}
+     * }
      */
     public static final long passOp$offset() {
         return passOp$OFFSET;
@@ -196,9 +196,9 @@ public class WGPUStencilFaceState {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUStencilOperation passOp
-     *}
+     * }
      */
     public static int passOp(MemorySegment struct) {
         return struct.get(passOp$LAYOUT, passOp$OFFSET);
@@ -206,9 +206,9 @@ public class WGPUStencilFaceState {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUStencilOperation passOp
-     *}
+     * }
      */
     public static void passOp(MemorySegment struct, int fieldValue) {
         struct.set(passOp$LAYOUT, passOp$OFFSET, fieldValue);
@@ -225,9 +225,7 @@ public class WGPUStencilFaceState {
     /**
      * The size (in bytes) of this struct
      */
-    public static long sizeof() {
-        return layout().byteSize();
-    }
+    public static long sizeof() { return layout().byteSize(); }
 
     /**
      * Allocate a segment of size {@code layout().byteSize()} using {@code allocator}

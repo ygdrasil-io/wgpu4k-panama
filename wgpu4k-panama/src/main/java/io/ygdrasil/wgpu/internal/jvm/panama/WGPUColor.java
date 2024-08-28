@@ -9,14 +9,14 @@ import static java.lang.foreign.MemoryLayout.PathElement.groupElement;
 import static java.lang.foreign.ValueLayout.OfDouble;
 
 /**
- * {@snippet lang = c:
+ * {@snippet lang=c :
  * struct WGPUColor {
  *     double r;
  *     double g;
  *     double b;
  *     double a;
  * }
- *}
+ * }
  */
 public class WGPUColor {
 
@@ -25,10 +25,10 @@ public class WGPUColor {
     }
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
-            wgpu_h.C_DOUBLE.withName("r"),
-            wgpu_h.C_DOUBLE.withName("g"),
-            wgpu_h.C_DOUBLE.withName("b"),
-            wgpu_h.C_DOUBLE.withName("a")
+        wgpu_h.C_DOUBLE.withName("r"),
+        wgpu_h.C_DOUBLE.withName("g"),
+        wgpu_h.C_DOUBLE.withName("b"),
+        wgpu_h.C_DOUBLE.withName("a")
     ).withName("WGPUColor");
 
     /**
@@ -38,13 +38,13 @@ public class WGPUColor {
         return $LAYOUT;
     }
 
-    private static final OfDouble r$LAYOUT = (OfDouble) $LAYOUT.select(groupElement("r"));
+    private static final OfDouble r$LAYOUT = (OfDouble)$LAYOUT.select(groupElement("r"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * double r
-     *}
+     * }
      */
     public static final OfDouble r$layout() {
         return r$LAYOUT;
@@ -54,9 +54,9 @@ public class WGPUColor {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * double r
-     *}
+     * }
      */
     public static final long r$offset() {
         return r$OFFSET;
@@ -64,9 +64,9 @@ public class WGPUColor {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * double r
-     *}
+     * }
      */
     public static double r(MemorySegment struct) {
         return struct.get(r$LAYOUT, r$OFFSET);
@@ -74,21 +74,21 @@ public class WGPUColor {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * double r
-     *}
+     * }
      */
     public static void r(MemorySegment struct, double fieldValue) {
         struct.set(r$LAYOUT, r$OFFSET, fieldValue);
     }
 
-    private static final OfDouble g$LAYOUT = (OfDouble) $LAYOUT.select(groupElement("g"));
+    private static final OfDouble g$LAYOUT = (OfDouble)$LAYOUT.select(groupElement("g"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * double g
-     *}
+     * }
      */
     public static final OfDouble g$layout() {
         return g$LAYOUT;
@@ -98,9 +98,9 @@ public class WGPUColor {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * double g
-     *}
+     * }
      */
     public static final long g$offset() {
         return g$OFFSET;
@@ -108,9 +108,9 @@ public class WGPUColor {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * double g
-     *}
+     * }
      */
     public static double g(MemorySegment struct) {
         return struct.get(g$LAYOUT, g$OFFSET);
@@ -118,21 +118,21 @@ public class WGPUColor {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * double g
-     *}
+     * }
      */
     public static void g(MemorySegment struct, double fieldValue) {
         struct.set(g$LAYOUT, g$OFFSET, fieldValue);
     }
 
-    private static final OfDouble b$LAYOUT = (OfDouble) $LAYOUT.select(groupElement("b"));
+    private static final OfDouble b$LAYOUT = (OfDouble)$LAYOUT.select(groupElement("b"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * double b
-     *}
+     * }
      */
     public static final OfDouble b$layout() {
         return b$LAYOUT;
@@ -142,9 +142,9 @@ public class WGPUColor {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * double b
-     *}
+     * }
      */
     public static final long b$offset() {
         return b$OFFSET;
@@ -152,9 +152,9 @@ public class WGPUColor {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * double b
-     *}
+     * }
      */
     public static double b(MemorySegment struct) {
         return struct.get(b$LAYOUT, b$OFFSET);
@@ -162,21 +162,21 @@ public class WGPUColor {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * double b
-     *}
+     * }
      */
     public static void b(MemorySegment struct, double fieldValue) {
         struct.set(b$LAYOUT, b$OFFSET, fieldValue);
     }
 
-    private static final OfDouble a$LAYOUT = (OfDouble) $LAYOUT.select(groupElement("a"));
+    private static final OfDouble a$LAYOUT = (OfDouble)$LAYOUT.select(groupElement("a"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * double a
-     *}
+     * }
      */
     public static final OfDouble a$layout() {
         return a$LAYOUT;
@@ -186,9 +186,9 @@ public class WGPUColor {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * double a
-     *}
+     * }
      */
     public static final long a$offset() {
         return a$OFFSET;
@@ -196,9 +196,9 @@ public class WGPUColor {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * double a
-     *}
+     * }
      */
     public static double a(MemorySegment struct) {
         return struct.get(a$LAYOUT, a$OFFSET);
@@ -206,9 +206,9 @@ public class WGPUColor {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * double a
-     *}
+     * }
      */
     public static void a(MemorySegment struct, double fieldValue) {
         struct.set(a$LAYOUT, a$OFFSET, fieldValue);
@@ -225,9 +225,7 @@ public class WGPUColor {
     /**
      * The size (in bytes) of this struct
      */
-    public static long sizeof() {
-        return layout().byteSize();
-    }
+    public static long sizeof() { return layout().byteSize(); }
 
     /**
      * Allocate a segment of size {@code layout().byteSize()} using {@code allocator}

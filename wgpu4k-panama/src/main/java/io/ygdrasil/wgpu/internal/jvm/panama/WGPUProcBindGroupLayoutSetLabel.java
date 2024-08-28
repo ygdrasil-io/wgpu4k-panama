@@ -13,9 +13,9 @@ import static java.lang.foreign.ValueLayout.*;
 import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 /**
- * {@snippet lang = c:
+ * {@snippet lang=c :
  * typedef void (*WGPUProcBindGroupLayoutSetLabel)(WGPUBindGroupLayout, const char *)
- *}
+ * }
  */
 public class WGPUProcBindGroupLayoutSetLabel {
 
@@ -31,8 +31,8 @@ public class WGPUProcBindGroupLayoutSetLabel {
     }
 
     private static final FunctionDescriptor $DESC = FunctionDescriptor.ofVoid(
-            wgpu_h.C_POINTER,
-            wgpu_h.C_POINTER
+        wgpu_h.C_POINTER,
+        wgpu_h.C_POINTER
     );
 
     /**
@@ -57,9 +57,9 @@ public class WGPUProcBindGroupLayoutSetLabel {
     /**
      * Invoke the upcall stub {@code funcPtr}, with given parameters
      */
-    public static void invoke(MemorySegment funcPtr, MemorySegment bindGroupLayout, MemorySegment label) {
+    public static void invoke(MemorySegment funcPtr,MemorySegment bindGroupLayout, MemorySegment label) {
         try {
-            DOWN$MH.invokeExact(funcPtr, bindGroupLayout, label);
+             DOWN$MH.invokeExact(funcPtr, bindGroupLayout, label);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }

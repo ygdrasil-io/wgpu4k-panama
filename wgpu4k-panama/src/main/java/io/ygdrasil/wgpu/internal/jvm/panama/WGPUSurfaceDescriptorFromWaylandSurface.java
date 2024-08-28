@@ -13,13 +13,13 @@ import static java.lang.foreign.ValueLayout.*;
 import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 /**
- * {@snippet lang = c:
+ * {@snippet lang=c :
  * struct WGPUSurfaceDescriptorFromWaylandSurface {
  *     WGPUChainedStruct chain;
  *     void *display;
  *     void *surface;
  * }
- *}
+ * }
  */
 public class WGPUSurfaceDescriptorFromWaylandSurface {
 
@@ -28,9 +28,9 @@ public class WGPUSurfaceDescriptorFromWaylandSurface {
     }
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
-            WGPUChainedStruct.layout().withName("chain"),
-            wgpu_h.C_POINTER.withName("display"),
-            wgpu_h.C_POINTER.withName("surface")
+        WGPUChainedStruct.layout().withName("chain"),
+        wgpu_h.C_POINTER.withName("display"),
+        wgpu_h.C_POINTER.withName("surface")
     ).withName("WGPUSurfaceDescriptorFromWaylandSurface");
 
     /**
@@ -40,13 +40,13 @@ public class WGPUSurfaceDescriptorFromWaylandSurface {
         return $LAYOUT;
     }
 
-    private static final GroupLayout chain$LAYOUT = (GroupLayout) $LAYOUT.select(groupElement("chain"));
+    private static final GroupLayout chain$LAYOUT = (GroupLayout)$LAYOUT.select(groupElement("chain"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUChainedStruct chain
-     *}
+     * }
      */
     public static final GroupLayout chain$layout() {
         return chain$LAYOUT;
@@ -56,9 +56,9 @@ public class WGPUSurfaceDescriptorFromWaylandSurface {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUChainedStruct chain
-     *}
+     * }
      */
     public static final long chain$offset() {
         return chain$OFFSET;
@@ -66,9 +66,9 @@ public class WGPUSurfaceDescriptorFromWaylandSurface {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUChainedStruct chain
-     *}
+     * }
      */
     public static MemorySegment chain(MemorySegment struct) {
         return struct.asSlice(chain$OFFSET, chain$LAYOUT.byteSize());
@@ -76,21 +76,21 @@ public class WGPUSurfaceDescriptorFromWaylandSurface {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUChainedStruct chain
-     *}
+     * }
      */
     public static void chain(MemorySegment struct, MemorySegment fieldValue) {
         MemorySegment.copy(fieldValue, 0L, struct, chain$OFFSET, chain$LAYOUT.byteSize());
     }
 
-    private static final AddressLayout display$LAYOUT = (AddressLayout) $LAYOUT.select(groupElement("display"));
+    private static final AddressLayout display$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("display"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * void *display
-     *}
+     * }
      */
     public static final AddressLayout display$layout() {
         return display$LAYOUT;
@@ -100,9 +100,9 @@ public class WGPUSurfaceDescriptorFromWaylandSurface {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * void *display
-     *}
+     * }
      */
     public static final long display$offset() {
         return display$OFFSET;
@@ -110,9 +110,9 @@ public class WGPUSurfaceDescriptorFromWaylandSurface {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * void *display
-     *}
+     * }
      */
     public static MemorySegment display(MemorySegment struct) {
         return struct.get(display$LAYOUT, display$OFFSET);
@@ -120,21 +120,21 @@ public class WGPUSurfaceDescriptorFromWaylandSurface {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * void *display
-     *}
+     * }
      */
     public static void display(MemorySegment struct, MemorySegment fieldValue) {
         struct.set(display$LAYOUT, display$OFFSET, fieldValue);
     }
 
-    private static final AddressLayout surface$LAYOUT = (AddressLayout) $LAYOUT.select(groupElement("surface"));
+    private static final AddressLayout surface$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("surface"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * void *surface
-     *}
+     * }
      */
     public static final AddressLayout surface$layout() {
         return surface$LAYOUT;
@@ -144,9 +144,9 @@ public class WGPUSurfaceDescriptorFromWaylandSurface {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * void *surface
-     *}
+     * }
      */
     public static final long surface$offset() {
         return surface$OFFSET;
@@ -154,9 +154,9 @@ public class WGPUSurfaceDescriptorFromWaylandSurface {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * void *surface
-     *}
+     * }
      */
     public static MemorySegment surface(MemorySegment struct) {
         return struct.get(surface$LAYOUT, surface$OFFSET);
@@ -164,9 +164,9 @@ public class WGPUSurfaceDescriptorFromWaylandSurface {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * void *surface
-     *}
+     * }
      */
     public static void surface(MemorySegment struct, MemorySegment fieldValue) {
         struct.set(surface$LAYOUT, surface$OFFSET, fieldValue);
@@ -183,9 +183,7 @@ public class WGPUSurfaceDescriptorFromWaylandSurface {
     /**
      * The size (in bytes) of this struct
      */
-    public static long sizeof() {
-        return layout().byteSize();
-    }
+    public static long sizeof() { return layout().byteSize(); }
 
     /**
      * Allocate a segment of size {@code layout().byteSize()} using {@code allocator}

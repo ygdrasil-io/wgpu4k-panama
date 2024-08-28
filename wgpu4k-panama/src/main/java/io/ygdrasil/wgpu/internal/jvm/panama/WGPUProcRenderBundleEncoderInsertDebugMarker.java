@@ -13,9 +13,9 @@ import static java.lang.foreign.ValueLayout.*;
 import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 /**
- * {@snippet lang = c:
+ * {@snippet lang=c :
  * typedef void (*WGPUProcRenderBundleEncoderInsertDebugMarker)(WGPURenderBundleEncoder, const char *)
- *}
+ * }
  */
 public class WGPUProcRenderBundleEncoderInsertDebugMarker {
 
@@ -31,8 +31,8 @@ public class WGPUProcRenderBundleEncoderInsertDebugMarker {
     }
 
     private static final FunctionDescriptor $DESC = FunctionDescriptor.ofVoid(
-            wgpu_h.C_POINTER,
-            wgpu_h.C_POINTER
+        wgpu_h.C_POINTER,
+        wgpu_h.C_POINTER
     );
 
     /**
@@ -57,9 +57,9 @@ public class WGPUProcRenderBundleEncoderInsertDebugMarker {
     /**
      * Invoke the upcall stub {@code funcPtr}, with given parameters
      */
-    public static void invoke(MemorySegment funcPtr, MemorySegment renderBundleEncoder, MemorySegment markerLabel) {
+    public static void invoke(MemorySegment funcPtr,MemorySegment renderBundleEncoder, MemorySegment markerLabel) {
         try {
-            DOWN$MH.invokeExact(funcPtr, renderBundleEncoder, markerLabel);
+             DOWN$MH.invokeExact(funcPtr, renderBundleEncoder, markerLabel);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }

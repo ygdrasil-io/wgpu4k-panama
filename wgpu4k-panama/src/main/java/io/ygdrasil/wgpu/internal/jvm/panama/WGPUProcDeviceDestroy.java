@@ -9,9 +9,9 @@ import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
 /**
- * {@snippet lang = c:
+ * {@snippet lang=c :
  * typedef void (*WGPUProcDeviceDestroy)(WGPUDevice)
- *}
+ * }
  */
 public class WGPUProcDeviceDestroy {
 
@@ -27,7 +27,7 @@ public class WGPUProcDeviceDestroy {
     }
 
     private static final FunctionDescriptor $DESC = FunctionDescriptor.ofVoid(
-            wgpu_h.C_POINTER
+        wgpu_h.C_POINTER
     );
 
     /**
@@ -52,9 +52,9 @@ public class WGPUProcDeviceDestroy {
     /**
      * Invoke the upcall stub {@code funcPtr}, with given parameters
      */
-    public static void invoke(MemorySegment funcPtr, MemorySegment device) {
+    public static void invoke(MemorySegment funcPtr,MemorySegment device) {
         try {
-            DOWN$MH.invokeExact(funcPtr, device);
+             DOWN$MH.invokeExact(funcPtr, device);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }

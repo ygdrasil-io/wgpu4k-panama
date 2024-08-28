@@ -8,12 +8,12 @@ import java.util.function.Consumer;
 import static java.lang.foreign.MemoryLayout.PathElement.groupElement;
 
 /**
- * {@snippet lang = c:
+ * {@snippet lang=c :
  * struct WGPUDeviceExtras {
  *     WGPUChainedStruct chain;
  *     const char *tracePath;
  * }
- *}
+ * }
  */
 public class WGPUDeviceExtras {
 
@@ -22,8 +22,8 @@ public class WGPUDeviceExtras {
     }
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
-            WGPUChainedStruct.layout().withName("chain"),
-            wgpu_h.C_POINTER.withName("tracePath")
+        WGPUChainedStruct.layout().withName("chain"),
+        wgpu_h.C_POINTER.withName("tracePath")
     ).withName("WGPUDeviceExtras");
 
     /**
@@ -33,13 +33,13 @@ public class WGPUDeviceExtras {
         return $LAYOUT;
     }
 
-    private static final GroupLayout chain$LAYOUT = (GroupLayout) $LAYOUT.select(groupElement("chain"));
+    private static final GroupLayout chain$LAYOUT = (GroupLayout)$LAYOUT.select(groupElement("chain"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUChainedStruct chain
-     *}
+     * }
      */
     public static final GroupLayout chain$layout() {
         return chain$LAYOUT;
@@ -49,9 +49,9 @@ public class WGPUDeviceExtras {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUChainedStruct chain
-     *}
+     * }
      */
     public static final long chain$offset() {
         return chain$OFFSET;
@@ -59,9 +59,9 @@ public class WGPUDeviceExtras {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUChainedStruct chain
-     *}
+     * }
      */
     public static MemorySegment chain(MemorySegment struct) {
         return struct.asSlice(chain$OFFSET, chain$LAYOUT.byteSize());
@@ -69,21 +69,21 @@ public class WGPUDeviceExtras {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUChainedStruct chain
-     *}
+     * }
      */
     public static void chain(MemorySegment struct, MemorySegment fieldValue) {
         MemorySegment.copy(fieldValue, 0L, struct, chain$OFFSET, chain$LAYOUT.byteSize());
     }
 
-    private static final AddressLayout tracePath$LAYOUT = (AddressLayout) $LAYOUT.select(groupElement("tracePath"));
+    private static final AddressLayout tracePath$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("tracePath"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const char *tracePath
-     *}
+     * }
      */
     public static final AddressLayout tracePath$layout() {
         return tracePath$LAYOUT;
@@ -93,9 +93,9 @@ public class WGPUDeviceExtras {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const char *tracePath
-     *}
+     * }
      */
     public static final long tracePath$offset() {
         return tracePath$OFFSET;
@@ -103,9 +103,9 @@ public class WGPUDeviceExtras {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const char *tracePath
-     *}
+     * }
      */
     public static MemorySegment tracePath(MemorySegment struct) {
         return struct.get(tracePath$LAYOUT, tracePath$OFFSET);
@@ -113,9 +113,9 @@ public class WGPUDeviceExtras {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const char *tracePath
-     *}
+     * }
      */
     public static void tracePath(MemorySegment struct, MemorySegment fieldValue) {
         struct.set(tracePath$LAYOUT, tracePath$OFFSET, fieldValue);
@@ -132,9 +132,7 @@ public class WGPUDeviceExtras {
     /**
      * The size (in bytes) of this struct
      */
-    public static long sizeof() {
-        return layout().byteSize();
-    }
+    public static long sizeof() { return layout().byteSize(); }
 
     /**
      * Allocate a segment of size {@code layout().byteSize()} using {@code allocator}

@@ -9,9 +9,9 @@ import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
 /**
- * {@snippet lang = c:
+ * {@snippet lang=c :
  * typedef void (*WGPUProcQueueWriteBuffer)(WGPUQueue, WGPUBuffer, uint64_t, const void *, size_t)
- *}
+ * }
  */
 public class WGPUProcQueueWriteBuffer {
 
@@ -27,11 +27,11 @@ public class WGPUProcQueueWriteBuffer {
     }
 
     private static final FunctionDescriptor $DESC = FunctionDescriptor.ofVoid(
-            wgpu_h.C_POINTER,
-            wgpu_h.C_POINTER,
-            wgpu_h.C_LONG_LONG,
-            wgpu_h.C_POINTER,
-            wgpu_h.C_LONG
+        wgpu_h.C_POINTER,
+        wgpu_h.C_POINTER,
+        wgpu_h.C_LONG_LONG,
+        wgpu_h.C_POINTER,
+        wgpu_h.C_LONG
     );
 
     /**
@@ -56,9 +56,9 @@ public class WGPUProcQueueWriteBuffer {
     /**
      * Invoke the upcall stub {@code funcPtr}, with given parameters
      */
-    public static void invoke(MemorySegment funcPtr, MemorySegment queue, MemorySegment buffer, long bufferOffset, MemorySegment data, long size) {
+    public static void invoke(MemorySegment funcPtr,MemorySegment queue, MemorySegment buffer, long bufferOffset, MemorySegment data, long size) {
         try {
-            DOWN$MH.invokeExact(funcPtr, queue, buffer, bufferOffset, data, size);
+             DOWN$MH.invokeExact(funcPtr, queue, buffer, bufferOffset, data, size);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }

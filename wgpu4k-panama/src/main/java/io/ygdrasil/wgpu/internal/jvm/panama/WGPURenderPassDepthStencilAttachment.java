@@ -13,7 +13,7 @@ import static java.lang.foreign.ValueLayout.*;
 import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 /**
- * {@snippet lang = c:
+ * {@snippet lang=c :
  * struct WGPURenderPassDepthStencilAttachment {
  *     WGPUTextureView view;
  *     WGPULoadOp depthLoadOp;
@@ -25,7 +25,7 @@ import static java.lang.foreign.MemoryLayout.PathElement.*;
  *     uint32_t stencilClearValue;
  *     WGPUBool stencilReadOnly;
  * }
- *}
+ * }
  */
 public class WGPURenderPassDepthStencilAttachment {
 
@@ -34,15 +34,15 @@ public class WGPURenderPassDepthStencilAttachment {
     }
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
-            wgpu_h.C_POINTER.withName("view"),
-            wgpu_h.C_INT.withName("depthLoadOp"),
-            wgpu_h.C_INT.withName("depthStoreOp"),
-            wgpu_h.C_FLOAT.withName("depthClearValue"),
-            wgpu_h.C_INT.withName("depthReadOnly"),
-            wgpu_h.C_INT.withName("stencilLoadOp"),
-            wgpu_h.C_INT.withName("stencilStoreOp"),
-            wgpu_h.C_INT.withName("stencilClearValue"),
-            wgpu_h.C_INT.withName("stencilReadOnly")
+        wgpu_h.C_POINTER.withName("view"),
+        wgpu_h.C_INT.withName("depthLoadOp"),
+        wgpu_h.C_INT.withName("depthStoreOp"),
+        wgpu_h.C_FLOAT.withName("depthClearValue"),
+        wgpu_h.C_INT.withName("depthReadOnly"),
+        wgpu_h.C_INT.withName("stencilLoadOp"),
+        wgpu_h.C_INT.withName("stencilStoreOp"),
+        wgpu_h.C_INT.withName("stencilClearValue"),
+        wgpu_h.C_INT.withName("stencilReadOnly")
     ).withName("WGPURenderPassDepthStencilAttachment");
 
     /**
@@ -52,13 +52,13 @@ public class WGPURenderPassDepthStencilAttachment {
         return $LAYOUT;
     }
 
-    private static final AddressLayout view$LAYOUT = (AddressLayout) $LAYOUT.select(groupElement("view"));
+    private static final AddressLayout view$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("view"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUTextureView view
-     *}
+     * }
      */
     public static final AddressLayout view$layout() {
         return view$LAYOUT;
@@ -68,9 +68,9 @@ public class WGPURenderPassDepthStencilAttachment {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUTextureView view
-     *}
+     * }
      */
     public static final long view$offset() {
         return view$OFFSET;
@@ -78,9 +78,9 @@ public class WGPURenderPassDepthStencilAttachment {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUTextureView view
-     *}
+     * }
      */
     public static MemorySegment view(MemorySegment struct) {
         return struct.get(view$LAYOUT, view$OFFSET);
@@ -88,21 +88,21 @@ public class WGPURenderPassDepthStencilAttachment {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUTextureView view
-     *}
+     * }
      */
     public static void view(MemorySegment struct, MemorySegment fieldValue) {
         struct.set(view$LAYOUT, view$OFFSET, fieldValue);
     }
 
-    private static final OfInt depthLoadOp$LAYOUT = (OfInt) $LAYOUT.select(groupElement("depthLoadOp"));
+    private static final OfInt depthLoadOp$LAYOUT = (OfInt)$LAYOUT.select(groupElement("depthLoadOp"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPULoadOp depthLoadOp
-     *}
+     * }
      */
     public static final OfInt depthLoadOp$layout() {
         return depthLoadOp$LAYOUT;
@@ -112,9 +112,9 @@ public class WGPURenderPassDepthStencilAttachment {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPULoadOp depthLoadOp
-     *}
+     * }
      */
     public static final long depthLoadOp$offset() {
         return depthLoadOp$OFFSET;
@@ -122,9 +122,9 @@ public class WGPURenderPassDepthStencilAttachment {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPULoadOp depthLoadOp
-     *}
+     * }
      */
     public static int depthLoadOp(MemorySegment struct) {
         return struct.get(depthLoadOp$LAYOUT, depthLoadOp$OFFSET);
@@ -132,21 +132,21 @@ public class WGPURenderPassDepthStencilAttachment {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPULoadOp depthLoadOp
-     *}
+     * }
      */
     public static void depthLoadOp(MemorySegment struct, int fieldValue) {
         struct.set(depthLoadOp$LAYOUT, depthLoadOp$OFFSET, fieldValue);
     }
 
-    private static final OfInt depthStoreOp$LAYOUT = (OfInt) $LAYOUT.select(groupElement("depthStoreOp"));
+    private static final OfInt depthStoreOp$LAYOUT = (OfInt)$LAYOUT.select(groupElement("depthStoreOp"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUStoreOp depthStoreOp
-     *}
+     * }
      */
     public static final OfInt depthStoreOp$layout() {
         return depthStoreOp$LAYOUT;
@@ -156,9 +156,9 @@ public class WGPURenderPassDepthStencilAttachment {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUStoreOp depthStoreOp
-     *}
+     * }
      */
     public static final long depthStoreOp$offset() {
         return depthStoreOp$OFFSET;
@@ -166,9 +166,9 @@ public class WGPURenderPassDepthStencilAttachment {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUStoreOp depthStoreOp
-     *}
+     * }
      */
     public static int depthStoreOp(MemorySegment struct) {
         return struct.get(depthStoreOp$LAYOUT, depthStoreOp$OFFSET);
@@ -176,21 +176,21 @@ public class WGPURenderPassDepthStencilAttachment {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUStoreOp depthStoreOp
-     *}
+     * }
      */
     public static void depthStoreOp(MemorySegment struct, int fieldValue) {
         struct.set(depthStoreOp$LAYOUT, depthStoreOp$OFFSET, fieldValue);
     }
 
-    private static final OfFloat depthClearValue$LAYOUT = (OfFloat) $LAYOUT.select(groupElement("depthClearValue"));
+    private static final OfFloat depthClearValue$LAYOUT = (OfFloat)$LAYOUT.select(groupElement("depthClearValue"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * float depthClearValue
-     *}
+     * }
      */
     public static final OfFloat depthClearValue$layout() {
         return depthClearValue$LAYOUT;
@@ -200,9 +200,9 @@ public class WGPURenderPassDepthStencilAttachment {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * float depthClearValue
-     *}
+     * }
      */
     public static final long depthClearValue$offset() {
         return depthClearValue$OFFSET;
@@ -210,9 +210,9 @@ public class WGPURenderPassDepthStencilAttachment {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * float depthClearValue
-     *}
+     * }
      */
     public static float depthClearValue(MemorySegment struct) {
         return struct.get(depthClearValue$LAYOUT, depthClearValue$OFFSET);
@@ -220,21 +220,21 @@ public class WGPURenderPassDepthStencilAttachment {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * float depthClearValue
-     *}
+     * }
      */
     public static void depthClearValue(MemorySegment struct, float fieldValue) {
         struct.set(depthClearValue$LAYOUT, depthClearValue$OFFSET, fieldValue);
     }
 
-    private static final OfInt depthReadOnly$LAYOUT = (OfInt) $LAYOUT.select(groupElement("depthReadOnly"));
+    private static final OfInt depthReadOnly$LAYOUT = (OfInt)$LAYOUT.select(groupElement("depthReadOnly"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUBool depthReadOnly
-     *}
+     * }
      */
     public static final OfInt depthReadOnly$layout() {
         return depthReadOnly$LAYOUT;
@@ -244,9 +244,9 @@ public class WGPURenderPassDepthStencilAttachment {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUBool depthReadOnly
-     *}
+     * }
      */
     public static final long depthReadOnly$offset() {
         return depthReadOnly$OFFSET;
@@ -254,9 +254,9 @@ public class WGPURenderPassDepthStencilAttachment {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUBool depthReadOnly
-     *}
+     * }
      */
     public static int depthReadOnly(MemorySegment struct) {
         return struct.get(depthReadOnly$LAYOUT, depthReadOnly$OFFSET);
@@ -264,21 +264,21 @@ public class WGPURenderPassDepthStencilAttachment {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUBool depthReadOnly
-     *}
+     * }
      */
     public static void depthReadOnly(MemorySegment struct, int fieldValue) {
         struct.set(depthReadOnly$LAYOUT, depthReadOnly$OFFSET, fieldValue);
     }
 
-    private static final OfInt stencilLoadOp$LAYOUT = (OfInt) $LAYOUT.select(groupElement("stencilLoadOp"));
+    private static final OfInt stencilLoadOp$LAYOUT = (OfInt)$LAYOUT.select(groupElement("stencilLoadOp"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPULoadOp stencilLoadOp
-     *}
+     * }
      */
     public static final OfInt stencilLoadOp$layout() {
         return stencilLoadOp$LAYOUT;
@@ -288,9 +288,9 @@ public class WGPURenderPassDepthStencilAttachment {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPULoadOp stencilLoadOp
-     *}
+     * }
      */
     public static final long stencilLoadOp$offset() {
         return stencilLoadOp$OFFSET;
@@ -298,9 +298,9 @@ public class WGPURenderPassDepthStencilAttachment {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPULoadOp stencilLoadOp
-     *}
+     * }
      */
     public static int stencilLoadOp(MemorySegment struct) {
         return struct.get(stencilLoadOp$LAYOUT, stencilLoadOp$OFFSET);
@@ -308,21 +308,21 @@ public class WGPURenderPassDepthStencilAttachment {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPULoadOp stencilLoadOp
-     *}
+     * }
      */
     public static void stencilLoadOp(MemorySegment struct, int fieldValue) {
         struct.set(stencilLoadOp$LAYOUT, stencilLoadOp$OFFSET, fieldValue);
     }
 
-    private static final OfInt stencilStoreOp$LAYOUT = (OfInt) $LAYOUT.select(groupElement("stencilStoreOp"));
+    private static final OfInt stencilStoreOp$LAYOUT = (OfInt)$LAYOUT.select(groupElement("stencilStoreOp"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUStoreOp stencilStoreOp
-     *}
+     * }
      */
     public static final OfInt stencilStoreOp$layout() {
         return stencilStoreOp$LAYOUT;
@@ -332,9 +332,9 @@ public class WGPURenderPassDepthStencilAttachment {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUStoreOp stencilStoreOp
-     *}
+     * }
      */
     public static final long stencilStoreOp$offset() {
         return stencilStoreOp$OFFSET;
@@ -342,9 +342,9 @@ public class WGPURenderPassDepthStencilAttachment {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUStoreOp stencilStoreOp
-     *}
+     * }
      */
     public static int stencilStoreOp(MemorySegment struct) {
         return struct.get(stencilStoreOp$LAYOUT, stencilStoreOp$OFFSET);
@@ -352,21 +352,21 @@ public class WGPURenderPassDepthStencilAttachment {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUStoreOp stencilStoreOp
-     *}
+     * }
      */
     public static void stencilStoreOp(MemorySegment struct, int fieldValue) {
         struct.set(stencilStoreOp$LAYOUT, stencilStoreOp$OFFSET, fieldValue);
     }
 
-    private static final OfInt stencilClearValue$LAYOUT = (OfInt) $LAYOUT.select(groupElement("stencilClearValue"));
+    private static final OfInt stencilClearValue$LAYOUT = (OfInt)$LAYOUT.select(groupElement("stencilClearValue"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * uint32_t stencilClearValue
-     *}
+     * }
      */
     public static final OfInt stencilClearValue$layout() {
         return stencilClearValue$LAYOUT;
@@ -376,9 +376,9 @@ public class WGPURenderPassDepthStencilAttachment {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * uint32_t stencilClearValue
-     *}
+     * }
      */
     public static final long stencilClearValue$offset() {
         return stencilClearValue$OFFSET;
@@ -386,9 +386,9 @@ public class WGPURenderPassDepthStencilAttachment {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * uint32_t stencilClearValue
-     *}
+     * }
      */
     public static int stencilClearValue(MemorySegment struct) {
         return struct.get(stencilClearValue$LAYOUT, stencilClearValue$OFFSET);
@@ -396,21 +396,21 @@ public class WGPURenderPassDepthStencilAttachment {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * uint32_t stencilClearValue
-     *}
+     * }
      */
     public static void stencilClearValue(MemorySegment struct, int fieldValue) {
         struct.set(stencilClearValue$LAYOUT, stencilClearValue$OFFSET, fieldValue);
     }
 
-    private static final OfInt stencilReadOnly$LAYOUT = (OfInt) $LAYOUT.select(groupElement("stencilReadOnly"));
+    private static final OfInt stencilReadOnly$LAYOUT = (OfInt)$LAYOUT.select(groupElement("stencilReadOnly"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUBool stencilReadOnly
-     *}
+     * }
      */
     public static final OfInt stencilReadOnly$layout() {
         return stencilReadOnly$LAYOUT;
@@ -420,9 +420,9 @@ public class WGPURenderPassDepthStencilAttachment {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUBool stencilReadOnly
-     *}
+     * }
      */
     public static final long stencilReadOnly$offset() {
         return stencilReadOnly$OFFSET;
@@ -430,9 +430,9 @@ public class WGPURenderPassDepthStencilAttachment {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUBool stencilReadOnly
-     *}
+     * }
      */
     public static int stencilReadOnly(MemorySegment struct) {
         return struct.get(stencilReadOnly$LAYOUT, stencilReadOnly$OFFSET);
@@ -440,9 +440,9 @@ public class WGPURenderPassDepthStencilAttachment {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUBool stencilReadOnly
-     *}
+     * }
      */
     public static void stencilReadOnly(MemorySegment struct, int fieldValue) {
         struct.set(stencilReadOnly$LAYOUT, stencilReadOnly$OFFSET, fieldValue);
@@ -459,9 +459,7 @@ public class WGPURenderPassDepthStencilAttachment {
     /**
      * The size (in bytes) of this struct
      */
-    public static long sizeof() {
-        return layout().byteSize();
-    }
+    public static long sizeof() { return layout().byteSize(); }
 
     /**
      * Allocate a segment of size {@code layout().byteSize()} using {@code allocator}

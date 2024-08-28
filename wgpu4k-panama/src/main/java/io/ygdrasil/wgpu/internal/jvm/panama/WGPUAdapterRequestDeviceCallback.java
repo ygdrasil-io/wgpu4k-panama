@@ -13,9 +13,9 @@ import static java.lang.foreign.ValueLayout.*;
 import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 /**
- * {@snippet lang = c:
+ * {@snippet lang=c :
  * typedef void (*WGPUAdapterRequestDeviceCallback)(WGPURequestDeviceStatus, WGPUDevice, const char *, void *)
- *}
+ * }
  */
 public class WGPUAdapterRequestDeviceCallback {
 
@@ -31,10 +31,10 @@ public class WGPUAdapterRequestDeviceCallback {
     }
 
     private static final FunctionDescriptor $DESC = FunctionDescriptor.ofVoid(
-            wgpu_h.C_INT,
-            wgpu_h.C_POINTER,
-            wgpu_h.C_POINTER,
-            wgpu_h.C_POINTER
+        wgpu_h.C_INT,
+        wgpu_h.C_POINTER,
+        wgpu_h.C_POINTER,
+        wgpu_h.C_POINTER
     );
 
     /**
@@ -59,9 +59,9 @@ public class WGPUAdapterRequestDeviceCallback {
     /**
      * Invoke the upcall stub {@code funcPtr}, with given parameters
      */
-    public static void invoke(MemorySegment funcPtr, int status, MemorySegment device, MemorySegment message, MemorySegment userdata) {
+    public static void invoke(MemorySegment funcPtr,int status, MemorySegment device, MemorySegment message, MemorySegment userdata) {
         try {
-            DOWN$MH.invokeExact(funcPtr, status, device, message, userdata);
+             DOWN$MH.invokeExact(funcPtr, status, device, message, userdata);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }

@@ -13,9 +13,9 @@ import static java.lang.foreign.ValueLayout.*;
 import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 /**
- * {@snippet lang = c:
+ * {@snippet lang=c :
  * typedef void (*WGPUProcCommandEncoderCopyBufferToTexture)(WGPUCommandEncoder, const WGPUImageCopyBuffer *, const WGPUImageCopyTexture *, const WGPUExtent3D *)
- *}
+ * }
  */
 public class WGPUProcCommandEncoderCopyBufferToTexture {
 
@@ -31,10 +31,10 @@ public class WGPUProcCommandEncoderCopyBufferToTexture {
     }
 
     private static final FunctionDescriptor $DESC = FunctionDescriptor.ofVoid(
-            wgpu_h.C_POINTER,
-            wgpu_h.C_POINTER,
-            wgpu_h.C_POINTER,
-            wgpu_h.C_POINTER
+        wgpu_h.C_POINTER,
+        wgpu_h.C_POINTER,
+        wgpu_h.C_POINTER,
+        wgpu_h.C_POINTER
     );
 
     /**
@@ -59,9 +59,9 @@ public class WGPUProcCommandEncoderCopyBufferToTexture {
     /**
      * Invoke the upcall stub {@code funcPtr}, with given parameters
      */
-    public static void invoke(MemorySegment funcPtr, MemorySegment commandEncoder, MemorySegment source, MemorySegment destination, MemorySegment copySize) {
+    public static void invoke(MemorySegment funcPtr,MemorySegment commandEncoder, MemorySegment source, MemorySegment destination, MemorySegment copySize) {
         try {
-            DOWN$MH.invokeExact(funcPtr, commandEncoder, source, destination, copySize);
+             DOWN$MH.invokeExact(funcPtr, commandEncoder, source, destination, copySize);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }

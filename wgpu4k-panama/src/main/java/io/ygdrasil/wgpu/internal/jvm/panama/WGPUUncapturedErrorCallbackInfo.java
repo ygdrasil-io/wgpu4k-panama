@@ -13,13 +13,13 @@ import static java.lang.foreign.ValueLayout.*;
 import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 /**
- * {@snippet lang = c:
+ * {@snippet lang=c :
  * struct WGPUUncapturedErrorCallbackInfo {
  *     const WGPUChainedStruct *nextInChain;
  *     WGPUErrorCallback callback;
  *     void *userdata;
  * }
- *}
+ * }
  */
 public class WGPUUncapturedErrorCallbackInfo {
 
@@ -28,9 +28,9 @@ public class WGPUUncapturedErrorCallbackInfo {
     }
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
-            wgpu_h.C_POINTER.withName("nextInChain"),
-            wgpu_h.C_POINTER.withName("callback"),
-            wgpu_h.C_POINTER.withName("userdata")
+        wgpu_h.C_POINTER.withName("nextInChain"),
+        wgpu_h.C_POINTER.withName("callback"),
+        wgpu_h.C_POINTER.withName("userdata")
     ).withName("WGPUUncapturedErrorCallbackInfo");
 
     /**
@@ -40,13 +40,13 @@ public class WGPUUncapturedErrorCallbackInfo {
         return $LAYOUT;
     }
 
-    private static final AddressLayout nextInChain$LAYOUT = (AddressLayout) $LAYOUT.select(groupElement("nextInChain"));
+    private static final AddressLayout nextInChain$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("nextInChain"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPUChainedStruct *nextInChain
-     *}
+     * }
      */
     public static final AddressLayout nextInChain$layout() {
         return nextInChain$LAYOUT;
@@ -56,9 +56,9 @@ public class WGPUUncapturedErrorCallbackInfo {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPUChainedStruct *nextInChain
-     *}
+     * }
      */
     public static final long nextInChain$offset() {
         return nextInChain$OFFSET;
@@ -66,9 +66,9 @@ public class WGPUUncapturedErrorCallbackInfo {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPUChainedStruct *nextInChain
-     *}
+     * }
      */
     public static MemorySegment nextInChain(MemorySegment struct) {
         return struct.get(nextInChain$LAYOUT, nextInChain$OFFSET);
@@ -76,21 +76,21 @@ public class WGPUUncapturedErrorCallbackInfo {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPUChainedStruct *nextInChain
-     *}
+     * }
      */
     public static void nextInChain(MemorySegment struct, MemorySegment fieldValue) {
         struct.set(nextInChain$LAYOUT, nextInChain$OFFSET, fieldValue);
     }
 
-    private static final AddressLayout callback$LAYOUT = (AddressLayout) $LAYOUT.select(groupElement("callback"));
+    private static final AddressLayout callback$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("callback"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUErrorCallback callback
-     *}
+     * }
      */
     public static final AddressLayout callback$layout() {
         return callback$LAYOUT;
@@ -100,9 +100,9 @@ public class WGPUUncapturedErrorCallbackInfo {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUErrorCallback callback
-     *}
+     * }
      */
     public static final long callback$offset() {
         return callback$OFFSET;
@@ -110,9 +110,9 @@ public class WGPUUncapturedErrorCallbackInfo {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUErrorCallback callback
-     *}
+     * }
      */
     public static MemorySegment callback(MemorySegment struct) {
         return struct.get(callback$LAYOUT, callback$OFFSET);
@@ -120,21 +120,21 @@ public class WGPUUncapturedErrorCallbackInfo {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUErrorCallback callback
-     *}
+     * }
      */
     public static void callback(MemorySegment struct, MemorySegment fieldValue) {
         struct.set(callback$LAYOUT, callback$OFFSET, fieldValue);
     }
 
-    private static final AddressLayout userdata$LAYOUT = (AddressLayout) $LAYOUT.select(groupElement("userdata"));
+    private static final AddressLayout userdata$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("userdata"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * void *userdata
-     *}
+     * }
      */
     public static final AddressLayout userdata$layout() {
         return userdata$LAYOUT;
@@ -144,9 +144,9 @@ public class WGPUUncapturedErrorCallbackInfo {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * void *userdata
-     *}
+     * }
      */
     public static final long userdata$offset() {
         return userdata$OFFSET;
@@ -154,9 +154,9 @@ public class WGPUUncapturedErrorCallbackInfo {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * void *userdata
-     *}
+     * }
      */
     public static MemorySegment userdata(MemorySegment struct) {
         return struct.get(userdata$LAYOUT, userdata$OFFSET);
@@ -164,9 +164,9 @@ public class WGPUUncapturedErrorCallbackInfo {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * void *userdata
-     *}
+     * }
      */
     public static void userdata(MemorySegment struct, MemorySegment fieldValue) {
         struct.set(userdata$LAYOUT, userdata$OFFSET, fieldValue);
@@ -183,9 +183,7 @@ public class WGPUUncapturedErrorCallbackInfo {
     /**
      * The size (in bytes) of this struct
      */
-    public static long sizeof() {
-        return layout().byteSize();
-    }
+    public static long sizeof() { return layout().byteSize(); }
 
     /**
      * Allocate a segment of size {@code layout().byteSize()} using {@code allocator}

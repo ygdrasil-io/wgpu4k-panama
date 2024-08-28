@@ -13,9 +13,9 @@ import static java.lang.foreign.ValueLayout.*;
 import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 /**
- * {@snippet lang = c:
+ * {@snippet lang=c :
  * typedef void (*WGPUProcRenderPassEncoderSetScissorRect)(WGPURenderPassEncoder, uint32_t, uint32_t, uint32_t, uint32_t)
- *}
+ * }
  */
 public class WGPUProcRenderPassEncoderSetScissorRect {
 
@@ -31,11 +31,11 @@ public class WGPUProcRenderPassEncoderSetScissorRect {
     }
 
     private static final FunctionDescriptor $DESC = FunctionDescriptor.ofVoid(
-            wgpu_h.C_POINTER,
-            wgpu_h.C_INT,
-            wgpu_h.C_INT,
-            wgpu_h.C_INT,
-            wgpu_h.C_INT
+        wgpu_h.C_POINTER,
+        wgpu_h.C_INT,
+        wgpu_h.C_INT,
+        wgpu_h.C_INT,
+        wgpu_h.C_INT
     );
 
     /**
@@ -60,9 +60,9 @@ public class WGPUProcRenderPassEncoderSetScissorRect {
     /**
      * Invoke the upcall stub {@code funcPtr}, with given parameters
      */
-    public static void invoke(MemorySegment funcPtr, MemorySegment renderPassEncoder, int x, int y, int width, int height) {
+    public static void invoke(MemorySegment funcPtr,MemorySegment renderPassEncoder, int x, int y, int width, int height) {
         try {
-            DOWN$MH.invokeExact(funcPtr, renderPassEncoder, x, y, width, height);
+             DOWN$MH.invokeExact(funcPtr, renderPassEncoder, x, y, width, height);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }

@@ -13,13 +13,13 @@ import static java.lang.foreign.ValueLayout.*;
 import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 /**
- * {@snippet lang = c:
+ * {@snippet lang=c :
  * struct WGPUSurfaceDescriptorFromWindowsHWND {
  *     WGPUChainedStruct chain;
  *     void *hinstance;
  *     void *hwnd;
  * }
- *}
+ * }
  */
 public class WGPUSurfaceDescriptorFromWindowsHWND {
 
@@ -28,9 +28,9 @@ public class WGPUSurfaceDescriptorFromWindowsHWND {
     }
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
-            WGPUChainedStruct.layout().withName("chain"),
-            wgpu_h.C_POINTER.withName("hinstance"),
-            wgpu_h.C_POINTER.withName("hwnd")
+        WGPUChainedStruct.layout().withName("chain"),
+        wgpu_h.C_POINTER.withName("hinstance"),
+        wgpu_h.C_POINTER.withName("hwnd")
     ).withName("WGPUSurfaceDescriptorFromWindowsHWND");
 
     /**
@@ -40,13 +40,13 @@ public class WGPUSurfaceDescriptorFromWindowsHWND {
         return $LAYOUT;
     }
 
-    private static final GroupLayout chain$LAYOUT = (GroupLayout) $LAYOUT.select(groupElement("chain"));
+    private static final GroupLayout chain$LAYOUT = (GroupLayout)$LAYOUT.select(groupElement("chain"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUChainedStruct chain
-     *}
+     * }
      */
     public static final GroupLayout chain$layout() {
         return chain$LAYOUT;
@@ -56,9 +56,9 @@ public class WGPUSurfaceDescriptorFromWindowsHWND {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUChainedStruct chain
-     *}
+     * }
      */
     public static final long chain$offset() {
         return chain$OFFSET;
@@ -66,9 +66,9 @@ public class WGPUSurfaceDescriptorFromWindowsHWND {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUChainedStruct chain
-     *}
+     * }
      */
     public static MemorySegment chain(MemorySegment struct) {
         return struct.asSlice(chain$OFFSET, chain$LAYOUT.byteSize());
@@ -76,21 +76,21 @@ public class WGPUSurfaceDescriptorFromWindowsHWND {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUChainedStruct chain
-     *}
+     * }
      */
     public static void chain(MemorySegment struct, MemorySegment fieldValue) {
         MemorySegment.copy(fieldValue, 0L, struct, chain$OFFSET, chain$LAYOUT.byteSize());
     }
 
-    private static final AddressLayout hinstance$LAYOUT = (AddressLayout) $LAYOUT.select(groupElement("hinstance"));
+    private static final AddressLayout hinstance$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("hinstance"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * void *hinstance
-     *}
+     * }
      */
     public static final AddressLayout hinstance$layout() {
         return hinstance$LAYOUT;
@@ -100,9 +100,9 @@ public class WGPUSurfaceDescriptorFromWindowsHWND {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * void *hinstance
-     *}
+     * }
      */
     public static final long hinstance$offset() {
         return hinstance$OFFSET;
@@ -110,9 +110,9 @@ public class WGPUSurfaceDescriptorFromWindowsHWND {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * void *hinstance
-     *}
+     * }
      */
     public static MemorySegment hinstance(MemorySegment struct) {
         return struct.get(hinstance$LAYOUT, hinstance$OFFSET);
@@ -120,21 +120,21 @@ public class WGPUSurfaceDescriptorFromWindowsHWND {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * void *hinstance
-     *}
+     * }
      */
     public static void hinstance(MemorySegment struct, MemorySegment fieldValue) {
         struct.set(hinstance$LAYOUT, hinstance$OFFSET, fieldValue);
     }
 
-    private static final AddressLayout hwnd$LAYOUT = (AddressLayout) $LAYOUT.select(groupElement("hwnd"));
+    private static final AddressLayout hwnd$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("hwnd"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * void *hwnd
-     *}
+     * }
      */
     public static final AddressLayout hwnd$layout() {
         return hwnd$LAYOUT;
@@ -144,9 +144,9 @@ public class WGPUSurfaceDescriptorFromWindowsHWND {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * void *hwnd
-     *}
+     * }
      */
     public static final long hwnd$offset() {
         return hwnd$OFFSET;
@@ -154,9 +154,9 @@ public class WGPUSurfaceDescriptorFromWindowsHWND {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * void *hwnd
-     *}
+     * }
      */
     public static MemorySegment hwnd(MemorySegment struct) {
         return struct.get(hwnd$LAYOUT, hwnd$OFFSET);
@@ -164,9 +164,9 @@ public class WGPUSurfaceDescriptorFromWindowsHWND {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * void *hwnd
-     *}
+     * }
      */
     public static void hwnd(MemorySegment struct, MemorySegment fieldValue) {
         struct.set(hwnd$LAYOUT, hwnd$OFFSET, fieldValue);
@@ -183,9 +183,7 @@ public class WGPUSurfaceDescriptorFromWindowsHWND {
     /**
      * The size (in bytes) of this struct
      */
-    public static long sizeof() {
-        return layout().byteSize();
-    }
+    public static long sizeof() { return layout().byteSize(); }
 
     /**
      * Allocate a segment of size {@code layout().byteSize()} using {@code allocator}

@@ -13,14 +13,14 @@ import static java.lang.foreign.ValueLayout.*;
 import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 /**
- * {@snippet lang = c:
+ * {@snippet lang=c :
  * struct WGPUComputePipelineDescriptor {
  *     const WGPUChainedStruct *nextInChain;
  *     const char *label;
  *     WGPUPipelineLayout layout;
  *     WGPUProgrammableStageDescriptor compute;
  * }
- *}
+ * }
  */
 public class WGPUComputePipelineDescriptor {
 
@@ -29,10 +29,10 @@ public class WGPUComputePipelineDescriptor {
     }
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
-            wgpu_h.C_POINTER.withName("nextInChain"),
-            wgpu_h.C_POINTER.withName("label"),
-            wgpu_h.C_POINTER.withName("layout"),
-            WGPUProgrammableStageDescriptor.layout().withName("compute")
+        wgpu_h.C_POINTER.withName("nextInChain"),
+        wgpu_h.C_POINTER.withName("label"),
+        wgpu_h.C_POINTER.withName("layout"),
+        WGPUProgrammableStageDescriptor.layout().withName("compute")
     ).withName("WGPUComputePipelineDescriptor");
 
     /**
@@ -42,13 +42,13 @@ public class WGPUComputePipelineDescriptor {
         return $LAYOUT;
     }
 
-    private static final AddressLayout nextInChain$LAYOUT = (AddressLayout) $LAYOUT.select(groupElement("nextInChain"));
+    private static final AddressLayout nextInChain$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("nextInChain"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPUChainedStruct *nextInChain
-     *}
+     * }
      */
     public static final AddressLayout nextInChain$layout() {
         return nextInChain$LAYOUT;
@@ -58,9 +58,9 @@ public class WGPUComputePipelineDescriptor {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPUChainedStruct *nextInChain
-     *}
+     * }
      */
     public static final long nextInChain$offset() {
         return nextInChain$OFFSET;
@@ -68,9 +68,9 @@ public class WGPUComputePipelineDescriptor {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPUChainedStruct *nextInChain
-     *}
+     * }
      */
     public static MemorySegment nextInChain(MemorySegment struct) {
         return struct.get(nextInChain$LAYOUT, nextInChain$OFFSET);
@@ -78,21 +78,21 @@ public class WGPUComputePipelineDescriptor {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPUChainedStruct *nextInChain
-     *}
+     * }
      */
     public static void nextInChain(MemorySegment struct, MemorySegment fieldValue) {
         struct.set(nextInChain$LAYOUT, nextInChain$OFFSET, fieldValue);
     }
 
-    private static final AddressLayout label$LAYOUT = (AddressLayout) $LAYOUT.select(groupElement("label"));
+    private static final AddressLayout label$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("label"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const char *label
-     *}
+     * }
      */
     public static final AddressLayout label$layout() {
         return label$LAYOUT;
@@ -102,9 +102,9 @@ public class WGPUComputePipelineDescriptor {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const char *label
-     *}
+     * }
      */
     public static final long label$offset() {
         return label$OFFSET;
@@ -112,9 +112,9 @@ public class WGPUComputePipelineDescriptor {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const char *label
-     *}
+     * }
      */
     public static MemorySegment label(MemorySegment struct) {
         return struct.get(label$LAYOUT, label$OFFSET);
@@ -122,21 +122,21 @@ public class WGPUComputePipelineDescriptor {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const char *label
-     *}
+     * }
      */
     public static void label(MemorySegment struct, MemorySegment fieldValue) {
         struct.set(label$LAYOUT, label$OFFSET, fieldValue);
     }
 
-    private static final AddressLayout layout$LAYOUT = (AddressLayout) $LAYOUT.select(groupElement("layout"));
+    private static final AddressLayout layout$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("layout"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUPipelineLayout layout
-     *}
+     * }
      */
     public static final AddressLayout layout$layout() {
         return layout$LAYOUT;
@@ -146,9 +146,9 @@ public class WGPUComputePipelineDescriptor {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUPipelineLayout layout
-     *}
+     * }
      */
     public static final long layout$offset() {
         return layout$OFFSET;
@@ -156,9 +156,9 @@ public class WGPUComputePipelineDescriptor {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUPipelineLayout layout
-     *}
+     * }
      */
     public static MemorySegment layout(MemorySegment struct) {
         return struct.get(layout$LAYOUT, layout$OFFSET);
@@ -166,21 +166,21 @@ public class WGPUComputePipelineDescriptor {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUPipelineLayout layout
-     *}
+     * }
      */
     public static void layout(MemorySegment struct, MemorySegment fieldValue) {
         struct.set(layout$LAYOUT, layout$OFFSET, fieldValue);
     }
 
-    private static final GroupLayout compute$LAYOUT = (GroupLayout) $LAYOUT.select(groupElement("compute"));
+    private static final GroupLayout compute$LAYOUT = (GroupLayout)$LAYOUT.select(groupElement("compute"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUProgrammableStageDescriptor compute
-     *}
+     * }
      */
     public static final GroupLayout compute$layout() {
         return compute$LAYOUT;
@@ -190,9 +190,9 @@ public class WGPUComputePipelineDescriptor {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUProgrammableStageDescriptor compute
-     *}
+     * }
      */
     public static final long compute$offset() {
         return compute$OFFSET;
@@ -200,9 +200,9 @@ public class WGPUComputePipelineDescriptor {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUProgrammableStageDescriptor compute
-     *}
+     * }
      */
     public static MemorySegment compute(MemorySegment struct) {
         return struct.asSlice(compute$OFFSET, compute$LAYOUT.byteSize());
@@ -210,9 +210,9 @@ public class WGPUComputePipelineDescriptor {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUProgrammableStageDescriptor compute
-     *}
+     * }
      */
     public static void compute(MemorySegment struct, MemorySegment fieldValue) {
         MemorySegment.copy(fieldValue, 0L, struct, compute$OFFSET, compute$LAYOUT.byteSize());
@@ -229,9 +229,7 @@ public class WGPUComputePipelineDescriptor {
     /**
      * The size (in bytes) of this struct
      */
-    public static long sizeof() {
-        return layout().byteSize();
-    }
+    public static long sizeof() { return layout().byteSize(); }
 
     /**
      * Allocate a segment of size {@code layout().byteSize()} using {@code allocator}

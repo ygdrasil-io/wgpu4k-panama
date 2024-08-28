@@ -9,7 +9,7 @@ import static java.lang.foreign.MemoryLayout.PathElement.groupElement;
 import static java.lang.foreign.ValueLayout.OfInt;
 
 /**
- * {@snippet lang = c:
+ * {@snippet lang=c :
  * struct WGPUPrimitiveState {
  *     const WGPUChainedStruct *nextInChain;
  *     WGPUPrimitiveTopology topology;
@@ -17,7 +17,7 @@ import static java.lang.foreign.ValueLayout.OfInt;
  *     WGPUFrontFace frontFace;
  *     WGPUCullMode cullMode;
  * }
- *}
+ * }
  */
 public class WGPUPrimitiveState {
 
@@ -26,11 +26,11 @@ public class WGPUPrimitiveState {
     }
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
-            wgpu_h.C_POINTER.withName("nextInChain"),
-            wgpu_h.C_INT.withName("topology"),
-            wgpu_h.C_INT.withName("stripIndexFormat"),
-            wgpu_h.C_INT.withName("frontFace"),
-            wgpu_h.C_INT.withName("cullMode")
+        wgpu_h.C_POINTER.withName("nextInChain"),
+        wgpu_h.C_INT.withName("topology"),
+        wgpu_h.C_INT.withName("stripIndexFormat"),
+        wgpu_h.C_INT.withName("frontFace"),
+        wgpu_h.C_INT.withName("cullMode")
     ).withName("WGPUPrimitiveState");
 
     /**
@@ -40,13 +40,13 @@ public class WGPUPrimitiveState {
         return $LAYOUT;
     }
 
-    private static final AddressLayout nextInChain$LAYOUT = (AddressLayout) $LAYOUT.select(groupElement("nextInChain"));
+    private static final AddressLayout nextInChain$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("nextInChain"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPUChainedStruct *nextInChain
-     *}
+     * }
      */
     public static final AddressLayout nextInChain$layout() {
         return nextInChain$LAYOUT;
@@ -56,9 +56,9 @@ public class WGPUPrimitiveState {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPUChainedStruct *nextInChain
-     *}
+     * }
      */
     public static final long nextInChain$offset() {
         return nextInChain$OFFSET;
@@ -66,9 +66,9 @@ public class WGPUPrimitiveState {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPUChainedStruct *nextInChain
-     *}
+     * }
      */
     public static MemorySegment nextInChain(MemorySegment struct) {
         return struct.get(nextInChain$LAYOUT, nextInChain$OFFSET);
@@ -76,21 +76,21 @@ public class WGPUPrimitiveState {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPUChainedStruct *nextInChain
-     *}
+     * }
      */
     public static void nextInChain(MemorySegment struct, MemorySegment fieldValue) {
         struct.set(nextInChain$LAYOUT, nextInChain$OFFSET, fieldValue);
     }
 
-    private static final OfInt topology$LAYOUT = (OfInt) $LAYOUT.select(groupElement("topology"));
+    private static final OfInt topology$LAYOUT = (OfInt)$LAYOUT.select(groupElement("topology"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUPrimitiveTopology topology
-     *}
+     * }
      */
     public static final OfInt topology$layout() {
         return topology$LAYOUT;
@@ -100,9 +100,9 @@ public class WGPUPrimitiveState {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUPrimitiveTopology topology
-     *}
+     * }
      */
     public static final long topology$offset() {
         return topology$OFFSET;
@@ -110,9 +110,9 @@ public class WGPUPrimitiveState {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUPrimitiveTopology topology
-     *}
+     * }
      */
     public static int topology(MemorySegment struct) {
         return struct.get(topology$LAYOUT, topology$OFFSET);
@@ -120,21 +120,21 @@ public class WGPUPrimitiveState {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUPrimitiveTopology topology
-     *}
+     * }
      */
     public static void topology(MemorySegment struct, int fieldValue) {
         struct.set(topology$LAYOUT, topology$OFFSET, fieldValue);
     }
 
-    private static final OfInt stripIndexFormat$LAYOUT = (OfInt) $LAYOUT.select(groupElement("stripIndexFormat"));
+    private static final OfInt stripIndexFormat$LAYOUT = (OfInt)$LAYOUT.select(groupElement("stripIndexFormat"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUIndexFormat stripIndexFormat
-     *}
+     * }
      */
     public static final OfInt stripIndexFormat$layout() {
         return stripIndexFormat$LAYOUT;
@@ -144,9 +144,9 @@ public class WGPUPrimitiveState {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUIndexFormat stripIndexFormat
-     *}
+     * }
      */
     public static final long stripIndexFormat$offset() {
         return stripIndexFormat$OFFSET;
@@ -154,9 +154,9 @@ public class WGPUPrimitiveState {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUIndexFormat stripIndexFormat
-     *}
+     * }
      */
     public static int stripIndexFormat(MemorySegment struct) {
         return struct.get(stripIndexFormat$LAYOUT, stripIndexFormat$OFFSET);
@@ -164,21 +164,21 @@ public class WGPUPrimitiveState {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUIndexFormat stripIndexFormat
-     *}
+     * }
      */
     public static void stripIndexFormat(MemorySegment struct, int fieldValue) {
         struct.set(stripIndexFormat$LAYOUT, stripIndexFormat$OFFSET, fieldValue);
     }
 
-    private static final OfInt frontFace$LAYOUT = (OfInt) $LAYOUT.select(groupElement("frontFace"));
+    private static final OfInt frontFace$LAYOUT = (OfInt)$LAYOUT.select(groupElement("frontFace"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUFrontFace frontFace
-     *}
+     * }
      */
     public static final OfInt frontFace$layout() {
         return frontFace$LAYOUT;
@@ -188,9 +188,9 @@ public class WGPUPrimitiveState {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUFrontFace frontFace
-     *}
+     * }
      */
     public static final long frontFace$offset() {
         return frontFace$OFFSET;
@@ -198,9 +198,9 @@ public class WGPUPrimitiveState {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUFrontFace frontFace
-     *}
+     * }
      */
     public static int frontFace(MemorySegment struct) {
         return struct.get(frontFace$LAYOUT, frontFace$OFFSET);
@@ -208,21 +208,21 @@ public class WGPUPrimitiveState {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUFrontFace frontFace
-     *}
+     * }
      */
     public static void frontFace(MemorySegment struct, int fieldValue) {
         struct.set(frontFace$LAYOUT, frontFace$OFFSET, fieldValue);
     }
 
-    private static final OfInt cullMode$LAYOUT = (OfInt) $LAYOUT.select(groupElement("cullMode"));
+    private static final OfInt cullMode$LAYOUT = (OfInt)$LAYOUT.select(groupElement("cullMode"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUCullMode cullMode
-     *}
+     * }
      */
     public static final OfInt cullMode$layout() {
         return cullMode$LAYOUT;
@@ -232,9 +232,9 @@ public class WGPUPrimitiveState {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUCullMode cullMode
-     *}
+     * }
      */
     public static final long cullMode$offset() {
         return cullMode$OFFSET;
@@ -242,9 +242,9 @@ public class WGPUPrimitiveState {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUCullMode cullMode
-     *}
+     * }
      */
     public static int cullMode(MemorySegment struct) {
         return struct.get(cullMode$LAYOUT, cullMode$OFFSET);
@@ -252,9 +252,9 @@ public class WGPUPrimitiveState {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUCullMode cullMode
-     *}
+     * }
      */
     public static void cullMode(MemorySegment struct, int fieldValue) {
         struct.set(cullMode$LAYOUT, cullMode$OFFSET, fieldValue);
@@ -271,9 +271,7 @@ public class WGPUPrimitiveState {
     /**
      * The size (in bytes) of this struct
      */
-    public static long sizeof() {
-        return layout().byteSize();
-    }
+    public static long sizeof() { return layout().byteSize(); }
 
     /**
      * Allocate a segment of size {@code layout().byteSize()} using {@code allocator}

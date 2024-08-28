@@ -13,9 +13,9 @@ import static java.lang.foreign.ValueLayout.*;
 import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 /**
- * {@snippet lang = c:
+ * {@snippet lang=c :
  * typedef void (*WGPUProcCommandEncoderClearBuffer)(WGPUCommandEncoder, WGPUBuffer, uint64_t, uint64_t)
- *}
+ * }
  */
 public class WGPUProcCommandEncoderClearBuffer {
 
@@ -31,10 +31,10 @@ public class WGPUProcCommandEncoderClearBuffer {
     }
 
     private static final FunctionDescriptor $DESC = FunctionDescriptor.ofVoid(
-            wgpu_h.C_POINTER,
-            wgpu_h.C_POINTER,
-            wgpu_h.C_LONG_LONG,
-            wgpu_h.C_LONG_LONG
+        wgpu_h.C_POINTER,
+        wgpu_h.C_POINTER,
+        wgpu_h.C_LONG_LONG,
+        wgpu_h.C_LONG_LONG
     );
 
     /**
@@ -59,9 +59,9 @@ public class WGPUProcCommandEncoderClearBuffer {
     /**
      * Invoke the upcall stub {@code funcPtr}, with given parameters
      */
-    public static void invoke(MemorySegment funcPtr, MemorySegment commandEncoder, MemorySegment buffer, long offset, long size) {
+    public static void invoke(MemorySegment funcPtr,MemorySegment commandEncoder, MemorySegment buffer, long offset, long size) {
         try {
-            DOWN$MH.invokeExact(funcPtr, commandEncoder, buffer, offset, size);
+             DOWN$MH.invokeExact(funcPtr, commandEncoder, buffer, offset, size);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }

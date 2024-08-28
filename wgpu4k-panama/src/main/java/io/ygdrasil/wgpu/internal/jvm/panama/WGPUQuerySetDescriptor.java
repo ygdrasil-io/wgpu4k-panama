@@ -9,14 +9,14 @@ import static java.lang.foreign.MemoryLayout.PathElement.groupElement;
 import static java.lang.foreign.ValueLayout.OfInt;
 
 /**
- * {@snippet lang = c:
+ * {@snippet lang=c :
  * struct WGPUQuerySetDescriptor {
  *     const WGPUChainedStruct *nextInChain;
  *     const char *label;
  *     WGPUQueryType type;
  *     uint32_t count;
  * }
- *}
+ * }
  */
 public class WGPUQuerySetDescriptor {
 
@@ -25,10 +25,10 @@ public class WGPUQuerySetDescriptor {
     }
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
-            wgpu_h.C_POINTER.withName("nextInChain"),
-            wgpu_h.C_POINTER.withName("label"),
-            wgpu_h.C_INT.withName("type"),
-            wgpu_h.C_INT.withName("count")
+        wgpu_h.C_POINTER.withName("nextInChain"),
+        wgpu_h.C_POINTER.withName("label"),
+        wgpu_h.C_INT.withName("type"),
+        wgpu_h.C_INT.withName("count")
     ).withName("WGPUQuerySetDescriptor");
 
     /**
@@ -38,13 +38,13 @@ public class WGPUQuerySetDescriptor {
         return $LAYOUT;
     }
 
-    private static final AddressLayout nextInChain$LAYOUT = (AddressLayout) $LAYOUT.select(groupElement("nextInChain"));
+    private static final AddressLayout nextInChain$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("nextInChain"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPUChainedStruct *nextInChain
-     *}
+     * }
      */
     public static final AddressLayout nextInChain$layout() {
         return nextInChain$LAYOUT;
@@ -54,9 +54,9 @@ public class WGPUQuerySetDescriptor {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPUChainedStruct *nextInChain
-     *}
+     * }
      */
     public static final long nextInChain$offset() {
         return nextInChain$OFFSET;
@@ -64,9 +64,9 @@ public class WGPUQuerySetDescriptor {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPUChainedStruct *nextInChain
-     *}
+     * }
      */
     public static MemorySegment nextInChain(MemorySegment struct) {
         return struct.get(nextInChain$LAYOUT, nextInChain$OFFSET);
@@ -74,21 +74,21 @@ public class WGPUQuerySetDescriptor {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPUChainedStruct *nextInChain
-     *}
+     * }
      */
     public static void nextInChain(MemorySegment struct, MemorySegment fieldValue) {
         struct.set(nextInChain$LAYOUT, nextInChain$OFFSET, fieldValue);
     }
 
-    private static final AddressLayout label$LAYOUT = (AddressLayout) $LAYOUT.select(groupElement("label"));
+    private static final AddressLayout label$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("label"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const char *label
-     *}
+     * }
      */
     public static final AddressLayout label$layout() {
         return label$LAYOUT;
@@ -98,9 +98,9 @@ public class WGPUQuerySetDescriptor {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const char *label
-     *}
+     * }
      */
     public static final long label$offset() {
         return label$OFFSET;
@@ -108,9 +108,9 @@ public class WGPUQuerySetDescriptor {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const char *label
-     *}
+     * }
      */
     public static MemorySegment label(MemorySegment struct) {
         return struct.get(label$LAYOUT, label$OFFSET);
@@ -118,21 +118,21 @@ public class WGPUQuerySetDescriptor {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const char *label
-     *}
+     * }
      */
     public static void label(MemorySegment struct, MemorySegment fieldValue) {
         struct.set(label$LAYOUT, label$OFFSET, fieldValue);
     }
 
-    private static final OfInt type$LAYOUT = (OfInt) $LAYOUT.select(groupElement("type"));
+    private static final OfInt type$LAYOUT = (OfInt)$LAYOUT.select(groupElement("type"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUQueryType type
-     *}
+     * }
      */
     public static final OfInt type$layout() {
         return type$LAYOUT;
@@ -142,9 +142,9 @@ public class WGPUQuerySetDescriptor {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUQueryType type
-     *}
+     * }
      */
     public static final long type$offset() {
         return type$OFFSET;
@@ -152,9 +152,9 @@ public class WGPUQuerySetDescriptor {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUQueryType type
-     *}
+     * }
      */
     public static int type(MemorySegment struct) {
         return struct.get(type$LAYOUT, type$OFFSET);
@@ -162,21 +162,21 @@ public class WGPUQuerySetDescriptor {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUQueryType type
-     *}
+     * }
      */
     public static void type(MemorySegment struct, int fieldValue) {
         struct.set(type$LAYOUT, type$OFFSET, fieldValue);
     }
 
-    private static final OfInt count$LAYOUT = (OfInt) $LAYOUT.select(groupElement("count"));
+    private static final OfInt count$LAYOUT = (OfInt)$LAYOUT.select(groupElement("count"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * uint32_t count
-     *}
+     * }
      */
     public static final OfInt count$layout() {
         return count$LAYOUT;
@@ -186,9 +186,9 @@ public class WGPUQuerySetDescriptor {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * uint32_t count
-     *}
+     * }
      */
     public static final long count$offset() {
         return count$OFFSET;
@@ -196,9 +196,9 @@ public class WGPUQuerySetDescriptor {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * uint32_t count
-     *}
+     * }
      */
     public static int count(MemorySegment struct) {
         return struct.get(count$LAYOUT, count$OFFSET);
@@ -206,9 +206,9 @@ public class WGPUQuerySetDescriptor {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * uint32_t count
-     *}
+     * }
      */
     public static void count(MemorySegment struct, int fieldValue) {
         struct.set(count$LAYOUT, count$OFFSET, fieldValue);
@@ -225,9 +225,7 @@ public class WGPUQuerySetDescriptor {
     /**
      * The size (in bytes) of this struct
      */
-    public static long sizeof() {
-        return layout().byteSize();
-    }
+    public static long sizeof() { return layout().byteSize(); }
 
     /**
      * Allocate a segment of size {@code layout().byteSize()} using {@code allocator}

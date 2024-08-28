@@ -13,9 +13,9 @@ import static java.lang.foreign.ValueLayout.*;
 import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 /**
- * {@snippet lang = c:
+ * {@snippet lang=c :
  * typedef void (*WGPUProcQueueOnSubmittedWorkDone)(WGPUQueue, WGPUQueueOnSubmittedWorkDoneCallback, void *)
- *}
+ * }
  */
 public class WGPUProcQueueOnSubmittedWorkDone {
 
@@ -31,9 +31,9 @@ public class WGPUProcQueueOnSubmittedWorkDone {
     }
 
     private static final FunctionDescriptor $DESC = FunctionDescriptor.ofVoid(
-            wgpu_h.C_POINTER,
-            wgpu_h.C_POINTER,
-            wgpu_h.C_POINTER
+        wgpu_h.C_POINTER,
+        wgpu_h.C_POINTER,
+        wgpu_h.C_POINTER
     );
 
     /**
@@ -58,9 +58,9 @@ public class WGPUProcQueueOnSubmittedWorkDone {
     /**
      * Invoke the upcall stub {@code funcPtr}, with given parameters
      */
-    public static void invoke(MemorySegment funcPtr, MemorySegment queue, MemorySegment callback, MemorySegment userdata) {
+    public static void invoke(MemorySegment funcPtr,MemorySegment queue, MemorySegment callback, MemorySegment userdata) {
         try {
-            DOWN$MH.invokeExact(funcPtr, queue, callback, userdata);
+             DOWN$MH.invokeExact(funcPtr, queue, callback, userdata);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }

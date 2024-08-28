@@ -9,13 +9,13 @@ import static java.lang.foreign.MemoryLayout.PathElement.groupElement;
 import static java.lang.foreign.ValueLayout.OfDouble;
 
 /**
- * {@snippet lang = c:
+ * {@snippet lang=c :
  * struct WGPUConstantEntry {
  *     const WGPUChainedStruct *nextInChain;
  *     const char *key;
  *     double value;
  * }
- *}
+ * }
  */
 public class WGPUConstantEntry {
 
@@ -24,9 +24,9 @@ public class WGPUConstantEntry {
     }
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
-            wgpu_h.C_POINTER.withName("nextInChain"),
-            wgpu_h.C_POINTER.withName("key"),
-            wgpu_h.C_DOUBLE.withName("value")
+        wgpu_h.C_POINTER.withName("nextInChain"),
+        wgpu_h.C_POINTER.withName("key"),
+        wgpu_h.C_DOUBLE.withName("value")
     ).withName("WGPUConstantEntry");
 
     /**
@@ -36,13 +36,13 @@ public class WGPUConstantEntry {
         return $LAYOUT;
     }
 
-    private static final AddressLayout nextInChain$LAYOUT = (AddressLayout) $LAYOUT.select(groupElement("nextInChain"));
+    private static final AddressLayout nextInChain$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("nextInChain"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPUChainedStruct *nextInChain
-     *}
+     * }
      */
     public static final AddressLayout nextInChain$layout() {
         return nextInChain$LAYOUT;
@@ -52,9 +52,9 @@ public class WGPUConstantEntry {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPUChainedStruct *nextInChain
-     *}
+     * }
      */
     public static final long nextInChain$offset() {
         return nextInChain$OFFSET;
@@ -62,9 +62,9 @@ public class WGPUConstantEntry {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPUChainedStruct *nextInChain
-     *}
+     * }
      */
     public static MemorySegment nextInChain(MemorySegment struct) {
         return struct.get(nextInChain$LAYOUT, nextInChain$OFFSET);
@@ -72,21 +72,21 @@ public class WGPUConstantEntry {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPUChainedStruct *nextInChain
-     *}
+     * }
      */
     public static void nextInChain(MemorySegment struct, MemorySegment fieldValue) {
         struct.set(nextInChain$LAYOUT, nextInChain$OFFSET, fieldValue);
     }
 
-    private static final AddressLayout key$LAYOUT = (AddressLayout) $LAYOUT.select(groupElement("key"));
+    private static final AddressLayout key$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("key"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const char *key
-     *}
+     * }
      */
     public static final AddressLayout key$layout() {
         return key$LAYOUT;
@@ -96,9 +96,9 @@ public class WGPUConstantEntry {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const char *key
-     *}
+     * }
      */
     public static final long key$offset() {
         return key$OFFSET;
@@ -106,9 +106,9 @@ public class WGPUConstantEntry {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const char *key
-     *}
+     * }
      */
     public static MemorySegment key(MemorySegment struct) {
         return struct.get(key$LAYOUT, key$OFFSET);
@@ -116,21 +116,21 @@ public class WGPUConstantEntry {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const char *key
-     *}
+     * }
      */
     public static void key(MemorySegment struct, MemorySegment fieldValue) {
         struct.set(key$LAYOUT, key$OFFSET, fieldValue);
     }
 
-    private static final OfDouble value$LAYOUT = (OfDouble) $LAYOUT.select(groupElement("value"));
+    private static final OfDouble value$LAYOUT = (OfDouble)$LAYOUT.select(groupElement("value"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * double value
-     *}
+     * }
      */
     public static final OfDouble value$layout() {
         return value$LAYOUT;
@@ -140,9 +140,9 @@ public class WGPUConstantEntry {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * double value
-     *}
+     * }
      */
     public static final long value$offset() {
         return value$OFFSET;
@@ -150,9 +150,9 @@ public class WGPUConstantEntry {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * double value
-     *}
+     * }
      */
     public static double value(MemorySegment struct) {
         return struct.get(value$LAYOUT, value$OFFSET);
@@ -160,9 +160,9 @@ public class WGPUConstantEntry {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * double value
-     *}
+     * }
      */
     public static void value(MemorySegment struct, double fieldValue) {
         struct.set(value$LAYOUT, value$OFFSET, fieldValue);
@@ -179,9 +179,7 @@ public class WGPUConstantEntry {
     /**
      * The size (in bytes) of this struct
      */
-    public static long sizeof() {
-        return layout().byteSize();
-    }
+    public static long sizeof() { return layout().byteSize(); }
 
     /**
      * Allocate a segment of size {@code layout().byteSize()} using {@code allocator}

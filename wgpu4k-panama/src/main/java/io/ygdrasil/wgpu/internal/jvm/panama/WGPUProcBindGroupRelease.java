@@ -9,9 +9,9 @@ import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
 /**
- * {@snippet lang = c:
+ * {@snippet lang=c :
  * typedef void (*WGPUProcBindGroupRelease)(WGPUBindGroup)
- *}
+ * }
  */
 public class WGPUProcBindGroupRelease {
 
@@ -27,7 +27,7 @@ public class WGPUProcBindGroupRelease {
     }
 
     private static final FunctionDescriptor $DESC = FunctionDescriptor.ofVoid(
-            wgpu_h.C_POINTER
+        wgpu_h.C_POINTER
     );
 
     /**
@@ -52,9 +52,9 @@ public class WGPUProcBindGroupRelease {
     /**
      * Invoke the upcall stub {@code funcPtr}, with given parameters
      */
-    public static void invoke(MemorySegment funcPtr, MemorySegment bindGroup) {
+    public static void invoke(MemorySegment funcPtr,MemorySegment bindGroup) {
         try {
-            DOWN$MH.invokeExact(funcPtr, bindGroup);
+             DOWN$MH.invokeExact(funcPtr, bindGroup);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }

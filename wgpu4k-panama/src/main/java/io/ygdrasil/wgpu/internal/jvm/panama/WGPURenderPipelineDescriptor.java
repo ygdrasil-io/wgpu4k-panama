@@ -13,7 +13,7 @@ import static java.lang.foreign.ValueLayout.*;
 import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 /**
- * {@snippet lang = c:
+ * {@snippet lang=c :
  * struct WGPURenderPipelineDescriptor {
  *     const WGPUChainedStruct *nextInChain;
  *     const char *label;
@@ -24,7 +24,7 @@ import static java.lang.foreign.MemoryLayout.PathElement.*;
  *     WGPUMultisampleState multisample;
  *     const WGPUFragmentState *fragment;
  * }
- *}
+ * }
  */
 public class WGPURenderPipelineDescriptor {
 
@@ -33,14 +33,14 @@ public class WGPURenderPipelineDescriptor {
     }
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
-            wgpu_h.C_POINTER.withName("nextInChain"),
-            wgpu_h.C_POINTER.withName("label"),
-            wgpu_h.C_POINTER.withName("layout"),
-            WGPUVertexState.layout().withName("vertex"),
-            WGPUPrimitiveState.layout().withName("primitive"),
-            wgpu_h.C_POINTER.withName("depthStencil"),
-            WGPUMultisampleState.layout().withName("multisample"),
-            wgpu_h.C_POINTER.withName("fragment")
+        wgpu_h.C_POINTER.withName("nextInChain"),
+        wgpu_h.C_POINTER.withName("label"),
+        wgpu_h.C_POINTER.withName("layout"),
+        WGPUVertexState.layout().withName("vertex"),
+        WGPUPrimitiveState.layout().withName("primitive"),
+        wgpu_h.C_POINTER.withName("depthStencil"),
+        WGPUMultisampleState.layout().withName("multisample"),
+        wgpu_h.C_POINTER.withName("fragment")
     ).withName("WGPURenderPipelineDescriptor");
 
     /**
@@ -50,13 +50,13 @@ public class WGPURenderPipelineDescriptor {
         return $LAYOUT;
     }
 
-    private static final AddressLayout nextInChain$LAYOUT = (AddressLayout) $LAYOUT.select(groupElement("nextInChain"));
+    private static final AddressLayout nextInChain$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("nextInChain"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPUChainedStruct *nextInChain
-     *}
+     * }
      */
     public static final AddressLayout nextInChain$layout() {
         return nextInChain$LAYOUT;
@@ -66,9 +66,9 @@ public class WGPURenderPipelineDescriptor {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPUChainedStruct *nextInChain
-     *}
+     * }
      */
     public static final long nextInChain$offset() {
         return nextInChain$OFFSET;
@@ -76,9 +76,9 @@ public class WGPURenderPipelineDescriptor {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPUChainedStruct *nextInChain
-     *}
+     * }
      */
     public static MemorySegment nextInChain(MemorySegment struct) {
         return struct.get(nextInChain$LAYOUT, nextInChain$OFFSET);
@@ -86,21 +86,21 @@ public class WGPURenderPipelineDescriptor {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPUChainedStruct *nextInChain
-     *}
+     * }
      */
     public static void nextInChain(MemorySegment struct, MemorySegment fieldValue) {
         struct.set(nextInChain$LAYOUT, nextInChain$OFFSET, fieldValue);
     }
 
-    private static final AddressLayout label$LAYOUT = (AddressLayout) $LAYOUT.select(groupElement("label"));
+    private static final AddressLayout label$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("label"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const char *label
-     *}
+     * }
      */
     public static final AddressLayout label$layout() {
         return label$LAYOUT;
@@ -110,9 +110,9 @@ public class WGPURenderPipelineDescriptor {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const char *label
-     *}
+     * }
      */
     public static final long label$offset() {
         return label$OFFSET;
@@ -120,9 +120,9 @@ public class WGPURenderPipelineDescriptor {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const char *label
-     *}
+     * }
      */
     public static MemorySegment label(MemorySegment struct) {
         return struct.get(label$LAYOUT, label$OFFSET);
@@ -130,21 +130,21 @@ public class WGPURenderPipelineDescriptor {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const char *label
-     *}
+     * }
      */
     public static void label(MemorySegment struct, MemorySegment fieldValue) {
         struct.set(label$LAYOUT, label$OFFSET, fieldValue);
     }
 
-    private static final AddressLayout layout$LAYOUT = (AddressLayout) $LAYOUT.select(groupElement("layout"));
+    private static final AddressLayout layout$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("layout"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUPipelineLayout layout
-     *}
+     * }
      */
     public static final AddressLayout layout$layout() {
         return layout$LAYOUT;
@@ -154,9 +154,9 @@ public class WGPURenderPipelineDescriptor {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUPipelineLayout layout
-     *}
+     * }
      */
     public static final long layout$offset() {
         return layout$OFFSET;
@@ -164,9 +164,9 @@ public class WGPURenderPipelineDescriptor {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUPipelineLayout layout
-     *}
+     * }
      */
     public static MemorySegment layout(MemorySegment struct) {
         return struct.get(layout$LAYOUT, layout$OFFSET);
@@ -174,21 +174,21 @@ public class WGPURenderPipelineDescriptor {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUPipelineLayout layout
-     *}
+     * }
      */
     public static void layout(MemorySegment struct, MemorySegment fieldValue) {
         struct.set(layout$LAYOUT, layout$OFFSET, fieldValue);
     }
 
-    private static final GroupLayout vertex$LAYOUT = (GroupLayout) $LAYOUT.select(groupElement("vertex"));
+    private static final GroupLayout vertex$LAYOUT = (GroupLayout)$LAYOUT.select(groupElement("vertex"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUVertexState vertex
-     *}
+     * }
      */
     public static final GroupLayout vertex$layout() {
         return vertex$LAYOUT;
@@ -198,9 +198,9 @@ public class WGPURenderPipelineDescriptor {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUVertexState vertex
-     *}
+     * }
      */
     public static final long vertex$offset() {
         return vertex$OFFSET;
@@ -208,9 +208,9 @@ public class WGPURenderPipelineDescriptor {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUVertexState vertex
-     *}
+     * }
      */
     public static MemorySegment vertex(MemorySegment struct) {
         return struct.asSlice(vertex$OFFSET, vertex$LAYOUT.byteSize());
@@ -218,21 +218,21 @@ public class WGPURenderPipelineDescriptor {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUVertexState vertex
-     *}
+     * }
      */
     public static void vertex(MemorySegment struct, MemorySegment fieldValue) {
         MemorySegment.copy(fieldValue, 0L, struct, vertex$OFFSET, vertex$LAYOUT.byteSize());
     }
 
-    private static final GroupLayout primitive$LAYOUT = (GroupLayout) $LAYOUT.select(groupElement("primitive"));
+    private static final GroupLayout primitive$LAYOUT = (GroupLayout)$LAYOUT.select(groupElement("primitive"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUPrimitiveState primitive
-     *}
+     * }
      */
     public static final GroupLayout primitive$layout() {
         return primitive$LAYOUT;
@@ -242,9 +242,9 @@ public class WGPURenderPipelineDescriptor {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUPrimitiveState primitive
-     *}
+     * }
      */
     public static final long primitive$offset() {
         return primitive$OFFSET;
@@ -252,9 +252,9 @@ public class WGPURenderPipelineDescriptor {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUPrimitiveState primitive
-     *}
+     * }
      */
     public static MemorySegment primitive(MemorySegment struct) {
         return struct.asSlice(primitive$OFFSET, primitive$LAYOUT.byteSize());
@@ -262,21 +262,21 @@ public class WGPURenderPipelineDescriptor {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUPrimitiveState primitive
-     *}
+     * }
      */
     public static void primitive(MemorySegment struct, MemorySegment fieldValue) {
         MemorySegment.copy(fieldValue, 0L, struct, primitive$OFFSET, primitive$LAYOUT.byteSize());
     }
 
-    private static final AddressLayout depthStencil$LAYOUT = (AddressLayout) $LAYOUT.select(groupElement("depthStencil"));
+    private static final AddressLayout depthStencil$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("depthStencil"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPUDepthStencilState *depthStencil
-     *}
+     * }
      */
     public static final AddressLayout depthStencil$layout() {
         return depthStencil$LAYOUT;
@@ -286,9 +286,9 @@ public class WGPURenderPipelineDescriptor {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPUDepthStencilState *depthStencil
-     *}
+     * }
      */
     public static final long depthStencil$offset() {
         return depthStencil$OFFSET;
@@ -296,9 +296,9 @@ public class WGPURenderPipelineDescriptor {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPUDepthStencilState *depthStencil
-     *}
+     * }
      */
     public static MemorySegment depthStencil(MemorySegment struct) {
         return struct.get(depthStencil$LAYOUT, depthStencil$OFFSET);
@@ -306,21 +306,21 @@ public class WGPURenderPipelineDescriptor {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPUDepthStencilState *depthStencil
-     *}
+     * }
      */
     public static void depthStencil(MemorySegment struct, MemorySegment fieldValue) {
         struct.set(depthStencil$LAYOUT, depthStencil$OFFSET, fieldValue);
     }
 
-    private static final GroupLayout multisample$LAYOUT = (GroupLayout) $LAYOUT.select(groupElement("multisample"));
+    private static final GroupLayout multisample$LAYOUT = (GroupLayout)$LAYOUT.select(groupElement("multisample"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUMultisampleState multisample
-     *}
+     * }
      */
     public static final GroupLayout multisample$layout() {
         return multisample$LAYOUT;
@@ -330,9 +330,9 @@ public class WGPURenderPipelineDescriptor {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUMultisampleState multisample
-     *}
+     * }
      */
     public static final long multisample$offset() {
         return multisample$OFFSET;
@@ -340,9 +340,9 @@ public class WGPURenderPipelineDescriptor {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUMultisampleState multisample
-     *}
+     * }
      */
     public static MemorySegment multisample(MemorySegment struct) {
         return struct.asSlice(multisample$OFFSET, multisample$LAYOUT.byteSize());
@@ -350,21 +350,21 @@ public class WGPURenderPipelineDescriptor {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUMultisampleState multisample
-     *}
+     * }
      */
     public static void multisample(MemorySegment struct, MemorySegment fieldValue) {
         MemorySegment.copy(fieldValue, 0L, struct, multisample$OFFSET, multisample$LAYOUT.byteSize());
     }
 
-    private static final AddressLayout fragment$LAYOUT = (AddressLayout) $LAYOUT.select(groupElement("fragment"));
+    private static final AddressLayout fragment$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("fragment"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPUFragmentState *fragment
-     *}
+     * }
      */
     public static final AddressLayout fragment$layout() {
         return fragment$LAYOUT;
@@ -374,9 +374,9 @@ public class WGPURenderPipelineDescriptor {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPUFragmentState *fragment
-     *}
+     * }
      */
     public static final long fragment$offset() {
         return fragment$OFFSET;
@@ -384,9 +384,9 @@ public class WGPURenderPipelineDescriptor {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPUFragmentState *fragment
-     *}
+     * }
      */
     public static MemorySegment fragment(MemorySegment struct) {
         return struct.get(fragment$LAYOUT, fragment$OFFSET);
@@ -394,9 +394,9 @@ public class WGPURenderPipelineDescriptor {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPUFragmentState *fragment
-     *}
+     * }
      */
     public static void fragment(MemorySegment struct, MemorySegment fieldValue) {
         struct.set(fragment$LAYOUT, fragment$OFFSET, fieldValue);
@@ -413,9 +413,7 @@ public class WGPURenderPipelineDescriptor {
     /**
      * The size (in bytes) of this struct
      */
-    public static long sizeof() {
-        return layout().byteSize();
-    }
+    public static long sizeof() { return layout().byteSize(); }
 
     /**
      * Allocate a segment of size {@code layout().byteSize()} using {@code allocator}

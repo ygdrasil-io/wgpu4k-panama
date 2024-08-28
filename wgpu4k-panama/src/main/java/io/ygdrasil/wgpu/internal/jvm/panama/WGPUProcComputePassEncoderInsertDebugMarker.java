@@ -13,9 +13,9 @@ import static java.lang.foreign.ValueLayout.*;
 import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 /**
- * {@snippet lang = c:
+ * {@snippet lang=c :
  * typedef void (*WGPUProcComputePassEncoderInsertDebugMarker)(WGPUComputePassEncoder, const char *)
- *}
+ * }
  */
 public class WGPUProcComputePassEncoderInsertDebugMarker {
 
@@ -31,8 +31,8 @@ public class WGPUProcComputePassEncoderInsertDebugMarker {
     }
 
     private static final FunctionDescriptor $DESC = FunctionDescriptor.ofVoid(
-            wgpu_h.C_POINTER,
-            wgpu_h.C_POINTER
+        wgpu_h.C_POINTER,
+        wgpu_h.C_POINTER
     );
 
     /**
@@ -57,9 +57,9 @@ public class WGPUProcComputePassEncoderInsertDebugMarker {
     /**
      * Invoke the upcall stub {@code funcPtr}, with given parameters
      */
-    public static void invoke(MemorySegment funcPtr, MemorySegment computePassEncoder, MemorySegment markerLabel) {
+    public static void invoke(MemorySegment funcPtr,MemorySegment computePassEncoder, MemorySegment markerLabel) {
         try {
-            DOWN$MH.invokeExact(funcPtr, computePassEncoder, markerLabel);
+             DOWN$MH.invokeExact(funcPtr, computePassEncoder, markerLabel);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }

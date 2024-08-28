@@ -13,9 +13,9 @@ import static java.lang.foreign.ValueLayout.*;
 import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 /**
- * {@snippet lang = c:
+ * {@snippet lang=c :
  * typedef WGPUQuerySet (*WGPUProcDeviceCreateQuerySet)(WGPUDevice, const WGPUQuerySetDescriptor *)
- *}
+ * }
  */
 public class WGPUProcDeviceCreateQuerySet {
 
@@ -31,9 +31,9 @@ public class WGPUProcDeviceCreateQuerySet {
     }
 
     private static final FunctionDescriptor $DESC = FunctionDescriptor.of(
-            wgpu_h.C_POINTER,
-            wgpu_h.C_POINTER,
-            wgpu_h.C_POINTER
+        wgpu_h.C_POINTER,
+        wgpu_h.C_POINTER,
+        wgpu_h.C_POINTER
     );
 
     /**
@@ -58,7 +58,7 @@ public class WGPUProcDeviceCreateQuerySet {
     /**
      * Invoke the upcall stub {@code funcPtr}, with given parameters
      */
-    public static MemorySegment invoke(MemorySegment funcPtr, MemorySegment device, MemorySegment descriptor) {
+    public static MemorySegment invoke(MemorySegment funcPtr,MemorySegment device, MemorySegment descriptor) {
         try {
             return (MemorySegment) DOWN$MH.invokeExact(funcPtr, device, descriptor);
         } catch (Throwable ex$) {

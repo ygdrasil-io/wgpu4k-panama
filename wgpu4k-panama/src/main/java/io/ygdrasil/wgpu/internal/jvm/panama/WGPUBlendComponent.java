@@ -9,13 +9,13 @@ import static java.lang.foreign.MemoryLayout.PathElement.groupElement;
 import static java.lang.foreign.ValueLayout.OfInt;
 
 /**
- * {@snippet lang = c:
+ * {@snippet lang=c :
  * struct WGPUBlendComponent {
  *     WGPUBlendOperation operation;
  *     WGPUBlendFactor srcFactor;
  *     WGPUBlendFactor dstFactor;
  * }
- *}
+ * }
  */
 public class WGPUBlendComponent {
 
@@ -24,9 +24,9 @@ public class WGPUBlendComponent {
     }
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
-            wgpu_h.C_INT.withName("operation"),
-            wgpu_h.C_INT.withName("srcFactor"),
-            wgpu_h.C_INT.withName("dstFactor")
+        wgpu_h.C_INT.withName("operation"),
+        wgpu_h.C_INT.withName("srcFactor"),
+        wgpu_h.C_INT.withName("dstFactor")
     ).withName("WGPUBlendComponent");
 
     /**
@@ -36,13 +36,13 @@ public class WGPUBlendComponent {
         return $LAYOUT;
     }
 
-    private static final OfInt operation$LAYOUT = (OfInt) $LAYOUT.select(groupElement("operation"));
+    private static final OfInt operation$LAYOUT = (OfInt)$LAYOUT.select(groupElement("operation"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUBlendOperation operation
-     *}
+     * }
      */
     public static final OfInt operation$layout() {
         return operation$LAYOUT;
@@ -52,9 +52,9 @@ public class WGPUBlendComponent {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUBlendOperation operation
-     *}
+     * }
      */
     public static final long operation$offset() {
         return operation$OFFSET;
@@ -62,9 +62,9 @@ public class WGPUBlendComponent {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUBlendOperation operation
-     *}
+     * }
      */
     public static int operation(MemorySegment struct) {
         return struct.get(operation$LAYOUT, operation$OFFSET);
@@ -72,21 +72,21 @@ public class WGPUBlendComponent {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUBlendOperation operation
-     *}
+     * }
      */
     public static void operation(MemorySegment struct, int fieldValue) {
         struct.set(operation$LAYOUT, operation$OFFSET, fieldValue);
     }
 
-    private static final OfInt srcFactor$LAYOUT = (OfInt) $LAYOUT.select(groupElement("srcFactor"));
+    private static final OfInt srcFactor$LAYOUT = (OfInt)$LAYOUT.select(groupElement("srcFactor"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUBlendFactor srcFactor
-     *}
+     * }
      */
     public static final OfInt srcFactor$layout() {
         return srcFactor$LAYOUT;
@@ -96,9 +96,9 @@ public class WGPUBlendComponent {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUBlendFactor srcFactor
-     *}
+     * }
      */
     public static final long srcFactor$offset() {
         return srcFactor$OFFSET;
@@ -106,9 +106,9 @@ public class WGPUBlendComponent {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUBlendFactor srcFactor
-     *}
+     * }
      */
     public static int srcFactor(MemorySegment struct) {
         return struct.get(srcFactor$LAYOUT, srcFactor$OFFSET);
@@ -116,21 +116,21 @@ public class WGPUBlendComponent {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUBlendFactor srcFactor
-     *}
+     * }
      */
     public static void srcFactor(MemorySegment struct, int fieldValue) {
         struct.set(srcFactor$LAYOUT, srcFactor$OFFSET, fieldValue);
     }
 
-    private static final OfInt dstFactor$LAYOUT = (OfInt) $LAYOUT.select(groupElement("dstFactor"));
+    private static final OfInt dstFactor$LAYOUT = (OfInt)$LAYOUT.select(groupElement("dstFactor"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUBlendFactor dstFactor
-     *}
+     * }
      */
     public static final OfInt dstFactor$layout() {
         return dstFactor$LAYOUT;
@@ -140,9 +140,9 @@ public class WGPUBlendComponent {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUBlendFactor dstFactor
-     *}
+     * }
      */
     public static final long dstFactor$offset() {
         return dstFactor$OFFSET;
@@ -150,9 +150,9 @@ public class WGPUBlendComponent {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUBlendFactor dstFactor
-     *}
+     * }
      */
     public static int dstFactor(MemorySegment struct) {
         return struct.get(dstFactor$LAYOUT, dstFactor$OFFSET);
@@ -160,9 +160,9 @@ public class WGPUBlendComponent {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUBlendFactor dstFactor
-     *}
+     * }
      */
     public static void dstFactor(MemorySegment struct, int fieldValue) {
         struct.set(dstFactor$LAYOUT, dstFactor$OFFSET, fieldValue);
@@ -179,9 +179,7 @@ public class WGPUBlendComponent {
     /**
      * The size (in bytes) of this struct
      */
-    public static long sizeof() {
-        return layout().byteSize();
-    }
+    public static long sizeof() { return layout().byteSize(); }
 
     /**
      * Allocate a segment of size {@code layout().byteSize()} using {@code allocator}

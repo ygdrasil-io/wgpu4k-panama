@@ -13,9 +13,9 @@ import static java.lang.foreign.ValueLayout.*;
 import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 /**
- * {@snippet lang = c:
+ * {@snippet lang=c :
  * typedef size_t (*WGPUProcAdapterEnumerateFeatures)(WGPUAdapter, WGPUFeatureName *)
- *}
+ * }
  */
 public class WGPUProcAdapterEnumerateFeatures {
 
@@ -31,9 +31,9 @@ public class WGPUProcAdapterEnumerateFeatures {
     }
 
     private static final FunctionDescriptor $DESC = FunctionDescriptor.of(
-            wgpu_h.C_LONG,
-            wgpu_h.C_POINTER,
-            wgpu_h.C_POINTER
+        wgpu_h.C_LONG,
+        wgpu_h.C_POINTER,
+        wgpu_h.C_POINTER
     );
 
     /**
@@ -58,7 +58,7 @@ public class WGPUProcAdapterEnumerateFeatures {
     /**
      * Invoke the upcall stub {@code funcPtr}, with given parameters
      */
-    public static long invoke(MemorySegment funcPtr, MemorySegment adapter, MemorySegment features) {
+    public static long invoke(MemorySegment funcPtr,MemorySegment adapter, MemorySegment features) {
         try {
             return (long) DOWN$MH.invokeExact(funcPtr, adapter, features);
         } catch (Throwable ex$) {

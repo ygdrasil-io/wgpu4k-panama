@@ -9,12 +9,12 @@ import static java.lang.foreign.MemoryLayout.PathElement.groupElement;
 import static java.lang.foreign.ValueLayout.OfInt;
 
 /**
- * {@snippet lang = c:
+ * {@snippet lang=c :
  * struct WGPUNativeLimits {
  *     uint32_t maxPushConstantSize;
  *     uint32_t maxNonSamplerBindings;
  * }
- *}
+ * }
  */
 public class WGPUNativeLimits {
 
@@ -23,8 +23,8 @@ public class WGPUNativeLimits {
     }
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
-            wgpu_h.C_INT.withName("maxPushConstantSize"),
-            wgpu_h.C_INT.withName("maxNonSamplerBindings")
+        wgpu_h.C_INT.withName("maxPushConstantSize"),
+        wgpu_h.C_INT.withName("maxNonSamplerBindings")
     ).withName("WGPUNativeLimits");
 
     /**
@@ -34,13 +34,13 @@ public class WGPUNativeLimits {
         return $LAYOUT;
     }
 
-    private static final OfInt maxPushConstantSize$LAYOUT = (OfInt) $LAYOUT.select(groupElement("maxPushConstantSize"));
+    private static final OfInt maxPushConstantSize$LAYOUT = (OfInt)$LAYOUT.select(groupElement("maxPushConstantSize"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * uint32_t maxPushConstantSize
-     *}
+     * }
      */
     public static final OfInt maxPushConstantSize$layout() {
         return maxPushConstantSize$LAYOUT;
@@ -50,9 +50,9 @@ public class WGPUNativeLimits {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * uint32_t maxPushConstantSize
-     *}
+     * }
      */
     public static final long maxPushConstantSize$offset() {
         return maxPushConstantSize$OFFSET;
@@ -60,9 +60,9 @@ public class WGPUNativeLimits {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * uint32_t maxPushConstantSize
-     *}
+     * }
      */
     public static int maxPushConstantSize(MemorySegment struct) {
         return struct.get(maxPushConstantSize$LAYOUT, maxPushConstantSize$OFFSET);
@@ -70,21 +70,21 @@ public class WGPUNativeLimits {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * uint32_t maxPushConstantSize
-     *}
+     * }
      */
     public static void maxPushConstantSize(MemorySegment struct, int fieldValue) {
         struct.set(maxPushConstantSize$LAYOUT, maxPushConstantSize$OFFSET, fieldValue);
     }
 
-    private static final OfInt maxNonSamplerBindings$LAYOUT = (OfInt) $LAYOUT.select(groupElement("maxNonSamplerBindings"));
+    private static final OfInt maxNonSamplerBindings$LAYOUT = (OfInt)$LAYOUT.select(groupElement("maxNonSamplerBindings"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * uint32_t maxNonSamplerBindings
-     *}
+     * }
      */
     public static final OfInt maxNonSamplerBindings$layout() {
         return maxNonSamplerBindings$LAYOUT;
@@ -94,9 +94,9 @@ public class WGPUNativeLimits {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * uint32_t maxNonSamplerBindings
-     *}
+     * }
      */
     public static final long maxNonSamplerBindings$offset() {
         return maxNonSamplerBindings$OFFSET;
@@ -104,9 +104,9 @@ public class WGPUNativeLimits {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * uint32_t maxNonSamplerBindings
-     *}
+     * }
      */
     public static int maxNonSamplerBindings(MemorySegment struct) {
         return struct.get(maxNonSamplerBindings$LAYOUT, maxNonSamplerBindings$OFFSET);
@@ -114,9 +114,9 @@ public class WGPUNativeLimits {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * uint32_t maxNonSamplerBindings
-     *}
+     * }
      */
     public static void maxNonSamplerBindings(MemorySegment struct, int fieldValue) {
         struct.set(maxNonSamplerBindings$LAYOUT, maxNonSamplerBindings$OFFSET, fieldValue);
@@ -133,9 +133,7 @@ public class WGPUNativeLimits {
     /**
      * The size (in bytes) of this struct
      */
-    public static long sizeof() {
-        return layout().byteSize();
-    }
+    public static long sizeof() { return layout().byteSize(); }
 
     /**
      * Allocate a segment of size {@code layout().byteSize()} using {@code allocator}
