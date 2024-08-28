@@ -18,8 +18,6 @@ jobs:
         os: [ macos-14 ]
     runs-on: ${{ matrix.os }}
     steps:
-      - name: print architecture
-        run: uname -m
       - uses: actions/checkout@v4
       - name: Set up JDK
         uses: actions/setup-java@v4
@@ -38,6 +36,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
-          gradle wrapper
+          ./gradlew fetch-native-dependencies
       - name: package
         run: ./gradlew assemble --stacktrace
