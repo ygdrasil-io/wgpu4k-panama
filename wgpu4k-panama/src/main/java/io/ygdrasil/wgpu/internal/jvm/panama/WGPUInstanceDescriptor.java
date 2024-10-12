@@ -2,15 +2,21 @@
 
 package io.ygdrasil.wgpu.internal.jvm.panama;
 
+import java.lang.invoke.*;
 import java.lang.foreign.*;
-import java.util.function.Consumer;
+import java.nio.ByteOrder;
+import java.util.*;
+import java.util.function.*;
+import java.util.stream.*;
 
-import static java.lang.foreign.MemoryLayout.PathElement.groupElement;
+import static java.lang.foreign.ValueLayout.*;
+import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 /**
  * {@snippet lang=c :
  * struct WGPUInstanceDescriptor {
  *     const WGPUChainedStruct *nextInChain;
+ *     WGPUInstanceFeatures features;
  * }
  * }
  */
@@ -21,7 +27,8 @@ public class WGPUInstanceDescriptor {
     }
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
-        wgpu_h.C_POINTER.withName("nextInChain")
+        wgpu_h.C_POINTER.withName("nextInChain"),
+        WGPUInstanceFeatures.layout().withName("features")
     ).withName("WGPUInstanceDescriptor");
 
     /**
@@ -73,6 +80,50 @@ public class WGPUInstanceDescriptor {
      */
     public static void nextInChain(MemorySegment struct, MemorySegment fieldValue) {
         struct.set(nextInChain$LAYOUT, nextInChain$OFFSET, fieldValue);
+    }
+
+    private static final GroupLayout features$LAYOUT = (GroupLayout)$LAYOUT.select(groupElement("features"));
+
+    /**
+     * Layout for field:
+     * {@snippet lang=c :
+     * WGPUInstanceFeatures features
+     * }
+     */
+    public static final GroupLayout features$layout() {
+        return features$LAYOUT;
+    }
+
+    private static final long features$OFFSET = 8;
+
+    /**
+     * Offset for field:
+     * {@snippet lang=c :
+     * WGPUInstanceFeatures features
+     * }
+     */
+    public static final long features$offset() {
+        return features$OFFSET;
+    }
+
+    /**
+     * Getter for field:
+     * {@snippet lang=c :
+     * WGPUInstanceFeatures features
+     * }
+     */
+    public static MemorySegment features(MemorySegment struct) {
+        return struct.asSlice(features$OFFSET, features$LAYOUT.byteSize());
+    }
+
+    /**
+     * Setter for field:
+     * {@snippet lang=c :
+     * WGPUInstanceFeatures features
+     * }
+     */
+    public static void features(MemorySegment struct, MemorySegment fieldValue) {
+        MemorySegment.copy(fieldValue, 0L, struct, features$OFFSET, features$LAYOUT.byteSize());
     }
 
     /**

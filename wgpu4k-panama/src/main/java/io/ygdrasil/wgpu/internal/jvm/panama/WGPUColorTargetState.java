@@ -2,11 +2,15 @@
 
 package io.ygdrasil.wgpu.internal.jvm.panama;
 
+import java.lang.invoke.*;
 import java.lang.foreign.*;
-import java.util.function.Consumer;
+import java.nio.ByteOrder;
+import java.util.*;
+import java.util.function.*;
+import java.util.stream.*;
 
-import static java.lang.foreign.MemoryLayout.PathElement.groupElement;
-import static java.lang.foreign.ValueLayout.OfInt;
+import static java.lang.foreign.ValueLayout.*;
+import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 /**
  * {@snippet lang=c :
@@ -14,7 +18,7 @@ import static java.lang.foreign.ValueLayout.OfInt;
  *     const WGPUChainedStruct *nextInChain;
  *     WGPUTextureFormat format;
  *     const WGPUBlendState *blend;
- *     WGPUColorWriteMaskFlags writeMask;
+ *     WGPUColorWriteMask writeMask;
  * }
  * }
  */
@@ -29,8 +33,7 @@ public class WGPUColorTargetState {
         wgpu_h.C_INT.withName("format"),
         MemoryLayout.paddingLayout(4),
         wgpu_h.C_POINTER.withName("blend"),
-        wgpu_h.C_INT.withName("writeMask"),
-        MemoryLayout.paddingLayout(4)
+        wgpu_h.C_LONG_LONG.withName("writeMask")
     ).withName("WGPUColorTargetState");
 
     /**
@@ -172,15 +175,15 @@ public class WGPUColorTargetState {
         struct.set(blend$LAYOUT, blend$OFFSET, fieldValue);
     }
 
-    private static final OfInt writeMask$LAYOUT = (OfInt)$LAYOUT.select(groupElement("writeMask"));
+    private static final OfLong writeMask$LAYOUT = (OfLong)$LAYOUT.select(groupElement("writeMask"));
 
     /**
      * Layout for field:
      * {@snippet lang=c :
-     * WGPUColorWriteMaskFlags writeMask
+     * WGPUColorWriteMask writeMask
      * }
      */
-    public static final OfInt writeMask$layout() {
+    public static final OfLong writeMask$layout() {
         return writeMask$LAYOUT;
     }
 
@@ -189,7 +192,7 @@ public class WGPUColorTargetState {
     /**
      * Offset for field:
      * {@snippet lang=c :
-     * WGPUColorWriteMaskFlags writeMask
+     * WGPUColorWriteMask writeMask
      * }
      */
     public static final long writeMask$offset() {
@@ -199,20 +202,20 @@ public class WGPUColorTargetState {
     /**
      * Getter for field:
      * {@snippet lang=c :
-     * WGPUColorWriteMaskFlags writeMask
+     * WGPUColorWriteMask writeMask
      * }
      */
-    public static int writeMask(MemorySegment struct) {
+    public static long writeMask(MemorySegment struct) {
         return struct.get(writeMask$LAYOUT, writeMask$OFFSET);
     }
 
     /**
      * Setter for field:
      * {@snippet lang=c :
-     * WGPUColorWriteMaskFlags writeMask
+     * WGPUColorWriteMask writeMask
      * }
      */
-    public static void writeMask(MemorySegment struct, int fieldValue) {
+    public static void writeMask(MemorySegment struct, long fieldValue) {
         struct.set(writeMask$LAYOUT, writeMask$OFFSET, fieldValue);
     }
 

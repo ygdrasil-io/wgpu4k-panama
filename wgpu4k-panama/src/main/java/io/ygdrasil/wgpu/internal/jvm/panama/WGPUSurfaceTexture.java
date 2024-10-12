@@ -2,17 +2,20 @@
 
 package io.ygdrasil.wgpu.internal.jvm.panama;
 
+import java.lang.invoke.*;
 import java.lang.foreign.*;
-import java.util.function.Consumer;
+import java.nio.ByteOrder;
+import java.util.*;
+import java.util.function.*;
+import java.util.stream.*;
 
-import static java.lang.foreign.MemoryLayout.PathElement.groupElement;
-import static java.lang.foreign.ValueLayout.OfInt;
+import static java.lang.foreign.ValueLayout.*;
+import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 /**
  * {@snippet lang=c :
  * struct WGPUSurfaceTexture {
  *     WGPUTexture texture;
- *     WGPUBool suboptimal;
  *     WGPUSurfaceGetCurrentTextureStatus status;
  * }
  * }
@@ -25,8 +28,8 @@ public class WGPUSurfaceTexture {
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
         wgpu_h.C_POINTER.withName("texture"),
-        wgpu_h.C_INT.withName("suboptimal"),
-        wgpu_h.C_INT.withName("status")
+        wgpu_h.C_INT.withName("status"),
+        MemoryLayout.paddingLayout(4)
     ).withName("WGPUSurfaceTexture");
 
     /**
@@ -80,50 +83,6 @@ public class WGPUSurfaceTexture {
         struct.set(texture$LAYOUT, texture$OFFSET, fieldValue);
     }
 
-    private static final OfInt suboptimal$LAYOUT = (OfInt)$LAYOUT.select(groupElement("suboptimal"));
-
-    /**
-     * Layout for field:
-     * {@snippet lang=c :
-     * WGPUBool suboptimal
-     * }
-     */
-    public static final OfInt suboptimal$layout() {
-        return suboptimal$LAYOUT;
-    }
-
-    private static final long suboptimal$OFFSET = 8;
-
-    /**
-     * Offset for field:
-     * {@snippet lang=c :
-     * WGPUBool suboptimal
-     * }
-     */
-    public static final long suboptimal$offset() {
-        return suboptimal$OFFSET;
-    }
-
-    /**
-     * Getter for field:
-     * {@snippet lang=c :
-     * WGPUBool suboptimal
-     * }
-     */
-    public static int suboptimal(MemorySegment struct) {
-        return struct.get(suboptimal$LAYOUT, suboptimal$OFFSET);
-    }
-
-    /**
-     * Setter for field:
-     * {@snippet lang=c :
-     * WGPUBool suboptimal
-     * }
-     */
-    public static void suboptimal(MemorySegment struct, int fieldValue) {
-        struct.set(suboptimal$LAYOUT, suboptimal$OFFSET, fieldValue);
-    }
-
     private static final OfInt status$LAYOUT = (OfInt)$LAYOUT.select(groupElement("status"));
 
     /**
@@ -136,7 +95,7 @@ public class WGPUSurfaceTexture {
         return status$LAYOUT;
     }
 
-    private static final long status$OFFSET = 12;
+    private static final long status$OFFSET = 8;
 
     /**
      * Offset for field:

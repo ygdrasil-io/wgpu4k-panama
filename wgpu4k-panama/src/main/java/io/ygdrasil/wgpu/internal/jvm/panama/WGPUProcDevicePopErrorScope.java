@@ -2,15 +2,19 @@
 
 package io.ygdrasil.wgpu.internal.jvm.panama;
 
-import java.lang.foreign.Arena;
-import java.lang.foreign.FunctionDescriptor;
-import java.lang.foreign.Linker;
-import java.lang.foreign.MemorySegment;
-import java.lang.invoke.MethodHandle;
+import java.lang.invoke.*;
+import java.lang.foreign.*;
+import java.nio.ByteOrder;
+import java.util.*;
+import java.util.function.*;
+import java.util.stream.*;
+
+import static java.lang.foreign.ValueLayout.*;
+import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 /**
  * {@snippet lang=c :
- * typedef void (*WGPUProcDevicePopErrorScope)(WGPUDevice, WGPUErrorCallback, void *)
+ * typedef WGPUFuture (*WGPUProcDevicePopErrorScope)(WGPUDevice, WGPUPopErrorScopeCallbackInfo)
  * }
  */
 public class WGPUProcDevicePopErrorScope {
@@ -23,13 +27,13 @@ public class WGPUProcDevicePopErrorScope {
      * The function pointer signature, expressed as a functional interface
      */
     public interface Function {
-        void apply(MemorySegment device, MemorySegment callback, MemorySegment userdata);
+        MemorySegment apply(MemorySegment device, MemorySegment callbackInfo);
     }
 
-    private static final FunctionDescriptor $DESC = FunctionDescriptor.ofVoid(
+    private static final FunctionDescriptor $DESC = FunctionDescriptor.of(
+        WGPUFuture.layout(),
         wgpu_h.C_POINTER,
-        wgpu_h.C_POINTER,
-        wgpu_h.C_POINTER
+        WGPUPopErrorScopeCallbackInfo.layout()
     );
 
     /**
@@ -54,9 +58,9 @@ public class WGPUProcDevicePopErrorScope {
     /**
      * Invoke the upcall stub {@code funcPtr}, with given parameters
      */
-    public static void invoke(MemorySegment funcPtr,MemorySegment device, MemorySegment callback, MemorySegment userdata) {
+    public static MemorySegment invoke(MemorySegment funcPtr, SegmentAllocator alloc,MemorySegment device, MemorySegment callbackInfo) {
         try {
-             DOWN$MH.invokeExact(funcPtr, device, callback, userdata);
+            return (MemorySegment) DOWN$MH.invokeExact(funcPtr, alloc, device, callbackInfo);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }

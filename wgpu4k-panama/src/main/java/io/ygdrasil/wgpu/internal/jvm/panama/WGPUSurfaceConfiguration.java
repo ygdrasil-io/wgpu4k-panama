@@ -2,12 +2,15 @@
 
 package io.ygdrasil.wgpu.internal.jvm.panama;
 
+import java.lang.invoke.*;
 import java.lang.foreign.*;
-import java.util.function.Consumer;
+import java.nio.ByteOrder;
+import java.util.*;
+import java.util.function.*;
+import java.util.stream.*;
 
-import static java.lang.foreign.MemoryLayout.PathElement.groupElement;
-import static java.lang.foreign.ValueLayout.OfInt;
-import static java.lang.foreign.ValueLayout.OfLong;
+import static java.lang.foreign.ValueLayout.*;
+import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 /**
  * {@snippet lang=c :
@@ -15,12 +18,12 @@ import static java.lang.foreign.ValueLayout.OfLong;
  *     const WGPUChainedStruct *nextInChain;
  *     WGPUDevice device;
  *     WGPUTextureFormat format;
- *     WGPUTextureUsageFlags usage;
+ *     WGPUTextureUsage usage;
+ *     uint32_t width;
+ *     uint32_t height;
  *     size_t viewFormatCount;
  *     const WGPUTextureFormat *viewFormats;
  *     WGPUCompositeAlphaMode alphaMode;
- *     uint32_t width;
- *     uint32_t height;
  *     WGPUPresentMode presentMode;
  * }
  * }
@@ -35,12 +38,13 @@ public class WGPUSurfaceConfiguration {
         wgpu_h.C_POINTER.withName("nextInChain"),
         wgpu_h.C_POINTER.withName("device"),
         wgpu_h.C_INT.withName("format"),
-        wgpu_h.C_INT.withName("usage"),
+        MemoryLayout.paddingLayout(4),
+        wgpu_h.C_LONG_LONG.withName("usage"),
+        wgpu_h.C_INT.withName("width"),
+        wgpu_h.C_INT.withName("height"),
         wgpu_h.C_LONG.withName("viewFormatCount"),
         wgpu_h.C_POINTER.withName("viewFormats"),
         wgpu_h.C_INT.withName("alphaMode"),
-        wgpu_h.C_INT.withName("width"),
-        wgpu_h.C_INT.withName("height"),
         wgpu_h.C_INT.withName("presentMode")
     ).withName("WGPUSurfaceConfiguration");
 
@@ -183,24 +187,24 @@ public class WGPUSurfaceConfiguration {
         struct.set(format$LAYOUT, format$OFFSET, fieldValue);
     }
 
-    private static final OfInt usage$LAYOUT = (OfInt)$LAYOUT.select(groupElement("usage"));
+    private static final OfLong usage$LAYOUT = (OfLong)$LAYOUT.select(groupElement("usage"));
 
     /**
      * Layout for field:
      * {@snippet lang=c :
-     * WGPUTextureUsageFlags usage
+     * WGPUTextureUsage usage
      * }
      */
-    public static final OfInt usage$layout() {
+    public static final OfLong usage$layout() {
         return usage$LAYOUT;
     }
 
-    private static final long usage$OFFSET = 20;
+    private static final long usage$OFFSET = 24;
 
     /**
      * Offset for field:
      * {@snippet lang=c :
-     * WGPUTextureUsageFlags usage
+     * WGPUTextureUsage usage
      * }
      */
     public static final long usage$offset() {
@@ -210,153 +214,21 @@ public class WGPUSurfaceConfiguration {
     /**
      * Getter for field:
      * {@snippet lang=c :
-     * WGPUTextureUsageFlags usage
+     * WGPUTextureUsage usage
      * }
      */
-    public static int usage(MemorySegment struct) {
+    public static long usage(MemorySegment struct) {
         return struct.get(usage$LAYOUT, usage$OFFSET);
     }
 
     /**
      * Setter for field:
      * {@snippet lang=c :
-     * WGPUTextureUsageFlags usage
+     * WGPUTextureUsage usage
      * }
      */
-    public static void usage(MemorySegment struct, int fieldValue) {
+    public static void usage(MemorySegment struct, long fieldValue) {
         struct.set(usage$LAYOUT, usage$OFFSET, fieldValue);
-    }
-
-    private static final OfLong viewFormatCount$LAYOUT = (OfLong)$LAYOUT.select(groupElement("viewFormatCount"));
-
-    /**
-     * Layout for field:
-     * {@snippet lang=c :
-     * size_t viewFormatCount
-     * }
-     */
-    public static final OfLong viewFormatCount$layout() {
-        return viewFormatCount$LAYOUT;
-    }
-
-    private static final long viewFormatCount$OFFSET = 24;
-
-    /**
-     * Offset for field:
-     * {@snippet lang=c :
-     * size_t viewFormatCount
-     * }
-     */
-    public static final long viewFormatCount$offset() {
-        return viewFormatCount$OFFSET;
-    }
-
-    /**
-     * Getter for field:
-     * {@snippet lang=c :
-     * size_t viewFormatCount
-     * }
-     */
-    public static long viewFormatCount(MemorySegment struct) {
-        return struct.get(viewFormatCount$LAYOUT, viewFormatCount$OFFSET);
-    }
-
-    /**
-     * Setter for field:
-     * {@snippet lang=c :
-     * size_t viewFormatCount
-     * }
-     */
-    public static void viewFormatCount(MemorySegment struct, long fieldValue) {
-        struct.set(viewFormatCount$LAYOUT, viewFormatCount$OFFSET, fieldValue);
-    }
-
-    private static final AddressLayout viewFormats$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("viewFormats"));
-
-    /**
-     * Layout for field:
-     * {@snippet lang=c :
-     * const WGPUTextureFormat *viewFormats
-     * }
-     */
-    public static final AddressLayout viewFormats$layout() {
-        return viewFormats$LAYOUT;
-    }
-
-    private static final long viewFormats$OFFSET = 32;
-
-    /**
-     * Offset for field:
-     * {@snippet lang=c :
-     * const WGPUTextureFormat *viewFormats
-     * }
-     */
-    public static final long viewFormats$offset() {
-        return viewFormats$OFFSET;
-    }
-
-    /**
-     * Getter for field:
-     * {@snippet lang=c :
-     * const WGPUTextureFormat *viewFormats
-     * }
-     */
-    public static MemorySegment viewFormats(MemorySegment struct) {
-        return struct.get(viewFormats$LAYOUT, viewFormats$OFFSET);
-    }
-
-    /**
-     * Setter for field:
-     * {@snippet lang=c :
-     * const WGPUTextureFormat *viewFormats
-     * }
-     */
-    public static void viewFormats(MemorySegment struct, MemorySegment fieldValue) {
-        struct.set(viewFormats$LAYOUT, viewFormats$OFFSET, fieldValue);
-    }
-
-    private static final OfInt alphaMode$LAYOUT = (OfInt)$LAYOUT.select(groupElement("alphaMode"));
-
-    /**
-     * Layout for field:
-     * {@snippet lang=c :
-     * WGPUCompositeAlphaMode alphaMode
-     * }
-     */
-    public static final OfInt alphaMode$layout() {
-        return alphaMode$LAYOUT;
-    }
-
-    private static final long alphaMode$OFFSET = 40;
-
-    /**
-     * Offset for field:
-     * {@snippet lang=c :
-     * WGPUCompositeAlphaMode alphaMode
-     * }
-     */
-    public static final long alphaMode$offset() {
-        return alphaMode$OFFSET;
-    }
-
-    /**
-     * Getter for field:
-     * {@snippet lang=c :
-     * WGPUCompositeAlphaMode alphaMode
-     * }
-     */
-    public static int alphaMode(MemorySegment struct) {
-        return struct.get(alphaMode$LAYOUT, alphaMode$OFFSET);
-    }
-
-    /**
-     * Setter for field:
-     * {@snippet lang=c :
-     * WGPUCompositeAlphaMode alphaMode
-     * }
-     */
-    public static void alphaMode(MemorySegment struct, int fieldValue) {
-        struct.set(alphaMode$LAYOUT, alphaMode$OFFSET, fieldValue);
     }
 
     private static final OfInt width$LAYOUT = (OfInt)$LAYOUT.select(groupElement("width"));
@@ -371,7 +243,7 @@ public class WGPUSurfaceConfiguration {
         return width$LAYOUT;
     }
 
-    private static final long width$OFFSET = 44;
+    private static final long width$OFFSET = 32;
 
     /**
      * Offset for field:
@@ -415,7 +287,7 @@ public class WGPUSurfaceConfiguration {
         return height$LAYOUT;
     }
 
-    private static final long height$OFFSET = 48;
+    private static final long height$OFFSET = 36;
 
     /**
      * Offset for field:
@@ -447,6 +319,138 @@ public class WGPUSurfaceConfiguration {
         struct.set(height$LAYOUT, height$OFFSET, fieldValue);
     }
 
+    private static final OfLong viewFormatCount$LAYOUT = (OfLong)$LAYOUT.select(groupElement("viewFormatCount"));
+
+    /**
+     * Layout for field:
+     * {@snippet lang=c :
+     * size_t viewFormatCount
+     * }
+     */
+    public static final OfLong viewFormatCount$layout() {
+        return viewFormatCount$LAYOUT;
+    }
+
+    private static final long viewFormatCount$OFFSET = 40;
+
+    /**
+     * Offset for field:
+     * {@snippet lang=c :
+     * size_t viewFormatCount
+     * }
+     */
+    public static final long viewFormatCount$offset() {
+        return viewFormatCount$OFFSET;
+    }
+
+    /**
+     * Getter for field:
+     * {@snippet lang=c :
+     * size_t viewFormatCount
+     * }
+     */
+    public static long viewFormatCount(MemorySegment struct) {
+        return struct.get(viewFormatCount$LAYOUT, viewFormatCount$OFFSET);
+    }
+
+    /**
+     * Setter for field:
+     * {@snippet lang=c :
+     * size_t viewFormatCount
+     * }
+     */
+    public static void viewFormatCount(MemorySegment struct, long fieldValue) {
+        struct.set(viewFormatCount$LAYOUT, viewFormatCount$OFFSET, fieldValue);
+    }
+
+    private static final AddressLayout viewFormats$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("viewFormats"));
+
+    /**
+     * Layout for field:
+     * {@snippet lang=c :
+     * const WGPUTextureFormat *viewFormats
+     * }
+     */
+    public static final AddressLayout viewFormats$layout() {
+        return viewFormats$LAYOUT;
+    }
+
+    private static final long viewFormats$OFFSET = 48;
+
+    /**
+     * Offset for field:
+     * {@snippet lang=c :
+     * const WGPUTextureFormat *viewFormats
+     * }
+     */
+    public static final long viewFormats$offset() {
+        return viewFormats$OFFSET;
+    }
+
+    /**
+     * Getter for field:
+     * {@snippet lang=c :
+     * const WGPUTextureFormat *viewFormats
+     * }
+     */
+    public static MemorySegment viewFormats(MemorySegment struct) {
+        return struct.get(viewFormats$LAYOUT, viewFormats$OFFSET);
+    }
+
+    /**
+     * Setter for field:
+     * {@snippet lang=c :
+     * const WGPUTextureFormat *viewFormats
+     * }
+     */
+    public static void viewFormats(MemorySegment struct, MemorySegment fieldValue) {
+        struct.set(viewFormats$LAYOUT, viewFormats$OFFSET, fieldValue);
+    }
+
+    private static final OfInt alphaMode$LAYOUT = (OfInt)$LAYOUT.select(groupElement("alphaMode"));
+
+    /**
+     * Layout for field:
+     * {@snippet lang=c :
+     * WGPUCompositeAlphaMode alphaMode
+     * }
+     */
+    public static final OfInt alphaMode$layout() {
+        return alphaMode$LAYOUT;
+    }
+
+    private static final long alphaMode$OFFSET = 56;
+
+    /**
+     * Offset for field:
+     * {@snippet lang=c :
+     * WGPUCompositeAlphaMode alphaMode
+     * }
+     */
+    public static final long alphaMode$offset() {
+        return alphaMode$OFFSET;
+    }
+
+    /**
+     * Getter for field:
+     * {@snippet lang=c :
+     * WGPUCompositeAlphaMode alphaMode
+     * }
+     */
+    public static int alphaMode(MemorySegment struct) {
+        return struct.get(alphaMode$LAYOUT, alphaMode$OFFSET);
+    }
+
+    /**
+     * Setter for field:
+     * {@snippet lang=c :
+     * WGPUCompositeAlphaMode alphaMode
+     * }
+     */
+    public static void alphaMode(MemorySegment struct, int fieldValue) {
+        struct.set(alphaMode$LAYOUT, alphaMode$OFFSET, fieldValue);
+    }
+
     private static final OfInt presentMode$LAYOUT = (OfInt)$LAYOUT.select(groupElement("presentMode"));
 
     /**
@@ -459,7 +463,7 @@ public class WGPUSurfaceConfiguration {
         return presentMode$LAYOUT;
     }
 
-    private static final long presentMode$OFFSET = 52;
+    private static final long presentMode$OFFSET = 60;
 
     /**
      * Offset for field:

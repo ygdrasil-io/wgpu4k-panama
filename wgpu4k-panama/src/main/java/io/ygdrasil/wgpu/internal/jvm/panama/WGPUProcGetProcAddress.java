@@ -2,15 +2,19 @@
 
 package io.ygdrasil.wgpu.internal.jvm.panama;
 
-import java.lang.foreign.Arena;
-import java.lang.foreign.FunctionDescriptor;
-import java.lang.foreign.Linker;
-import java.lang.foreign.MemorySegment;
-import java.lang.invoke.MethodHandle;
+import java.lang.invoke.*;
+import java.lang.foreign.*;
+import java.nio.ByteOrder;
+import java.util.*;
+import java.util.function.*;
+import java.util.stream.*;
+
+import static java.lang.foreign.ValueLayout.*;
+import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 /**
  * {@snippet lang=c :
- * typedef WGPUProc (*WGPUProcGetProcAddress)(WGPUDevice, const char *)
+ * typedef WGPUProc (*WGPUProcGetProcAddress)(WGPUStringView)
  * }
  */
 public class WGPUProcGetProcAddress {
@@ -23,13 +27,12 @@ public class WGPUProcGetProcAddress {
      * The function pointer signature, expressed as a functional interface
      */
     public interface Function {
-        MemorySegment apply(MemorySegment device, MemorySegment procName);
+        MemorySegment apply(MemorySegment procName);
     }
 
     private static final FunctionDescriptor $DESC = FunctionDescriptor.of(
         wgpu_h.C_POINTER,
-        wgpu_h.C_POINTER,
-        wgpu_h.C_POINTER
+        WGPUStringView.layout()
     );
 
     /**
@@ -54,9 +57,9 @@ public class WGPUProcGetProcAddress {
     /**
      * Invoke the upcall stub {@code funcPtr}, with given parameters
      */
-    public static MemorySegment invoke(MemorySegment funcPtr,MemorySegment device, MemorySegment procName) {
+    public static MemorySegment invoke(MemorySegment funcPtr,MemorySegment procName) {
         try {
-            return (MemorySegment) DOWN$MH.invokeExact(funcPtr, device, procName);
+            return (MemorySegment) DOWN$MH.invokeExact(funcPtr, procName);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }

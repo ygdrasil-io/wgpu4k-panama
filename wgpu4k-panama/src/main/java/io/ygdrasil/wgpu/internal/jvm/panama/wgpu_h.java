@@ -2,13 +2,15 @@
 
 package io.ygdrasil.wgpu.internal.jvm.panama;
 
+import java.lang.invoke.*;
 import java.lang.foreign.*;
-import java.lang.invoke.MethodHandle;
-import java.lang.invoke.MethodHandles;
-import java.util.Arrays;
-import java.util.stream.Collectors;
+import java.nio.ByteOrder;
+import java.util.*;
+import java.util.function.*;
+import java.util.stream.*;
 
 import static java.lang.foreign.ValueLayout.*;
+import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 public class wgpu_h {
 
@@ -218,6 +220,15 @@ public class wgpu_h {
      */
     public static int __has_ptrcheck() {
         return __has_ptrcheck;
+    }
+    private static final int USE_CLANG_TYPES = (int)0L;
+    /**
+     * {@snippet lang=c :
+     * #define USE_CLANG_TYPES 0
+     * }
+     */
+    public static int USE_CLANG_TYPES() {
+        return USE_CLANG_TYPES;
     }
     private static final int __PTHREAD_SIZE__ = (int)8176L;
     /**
@@ -741,94 +752,16 @@ public class wgpu_h {
     public static final AddressLayout __darwin_pthread_t = wgpu_h.C_POINTER;
     /**
      * {@snippet lang=c :
-     * typedef unsigned char u_int8_t
+     * typedef __darwin_intptr_t intptr_t
      * }
      */
-    public static final OfByte u_int8_t = wgpu_h.C_CHAR;
-    /**
-     * {@snippet lang=c :
-     * typedef unsigned short u_int16_t
-     * }
-     */
-    public static final OfShort u_int16_t = wgpu_h.C_SHORT;
-    /**
-     * {@snippet lang=c :
-     * typedef unsigned int u_int32_t
-     * }
-     */
-    public static final OfInt u_int32_t = wgpu_h.C_INT;
-    /**
-     * {@snippet lang=c :
-     * typedef unsigned long long u_int64_t
-     * }
-     */
-    public static final OfLong u_int64_t = wgpu_h.C_LONG_LONG;
-    /**
-     * {@snippet lang=c :
-     * typedef int64_t register_t
-     * }
-     */
-    public static final OfLong register_t = wgpu_h.C_LONG_LONG;
+    public static final OfLong intptr_t = wgpu_h.C_LONG;
     /**
      * {@snippet lang=c :
      * typedef unsigned long uintptr_t
      * }
      */
     public static final OfLong uintptr_t = wgpu_h.C_LONG;
-    /**
-     * {@snippet lang=c :
-     * typedef u_int64_t user_addr_t
-     * }
-     */
-    public static final OfLong user_addr_t = wgpu_h.C_LONG_LONG;
-    /**
-     * {@snippet lang=c :
-     * typedef u_int64_t user_size_t
-     * }
-     */
-    public static final OfLong user_size_t = wgpu_h.C_LONG_LONG;
-    /**
-     * {@snippet lang=c :
-     * typedef int64_t user_ssize_t
-     * }
-     */
-    public static final OfLong user_ssize_t = wgpu_h.C_LONG_LONG;
-    /**
-     * {@snippet lang=c :
-     * typedef int64_t user_long_t
-     * }
-     */
-    public static final OfLong user_long_t = wgpu_h.C_LONG_LONG;
-    /**
-     * {@snippet lang=c :
-     * typedef u_int64_t user_ulong_t
-     * }
-     */
-    public static final OfLong user_ulong_t = wgpu_h.C_LONG_LONG;
-    /**
-     * {@snippet lang=c :
-     * typedef int64_t user_time_t
-     * }
-     */
-    public static final OfLong user_time_t = wgpu_h.C_LONG_LONG;
-    /**
-     * {@snippet lang=c :
-     * typedef int64_t user_off_t
-     * }
-     */
-    public static final OfLong user_off_t = wgpu_h.C_LONG_LONG;
-    /**
-     * {@snippet lang=c :
-     * typedef u_int64_t syscall_arg_t
-     * }
-     */
-    public static final OfLong syscall_arg_t = wgpu_h.C_LONG_LONG;
-    /**
-     * {@snippet lang=c :
-     * typedef __darwin_intptr_t intptr_t
-     * }
-     */
-    public static final OfLong intptr_t = wgpu_h.C_LONG;
     /**
      * {@snippet lang=c :
      * typedef long intmax_t
@@ -867,10 +800,10 @@ public class wgpu_h {
     public static final OfInt wchar_t = wgpu_h.C_INT;
     /**
      * {@snippet lang=c :
-     * typedef uint32_t WGPUFlags
+     * typedef uint64_t WGPUFlags
      * }
      */
-    public static final OfInt WGPUFlags = wgpu_h.C_INT;
+    public static final OfLong WGPUFlags = wgpu_h.C_LONG_LONG;
     /**
      * {@snippet lang=c :
      * typedef uint32_t WGPUBool
@@ -1405,96 +1338,6 @@ public class wgpu_h {
     public static int WGPUBufferBindingType_Force32() {
         return WGPUBufferBindingType_Force32;
     }
-    private static final int WGPUBufferMapAsyncStatus_Success = (int)0L;
-    /**
-     * {@snippet lang=c :
-     * enum WGPUBufferMapAsyncStatus.WGPUBufferMapAsyncStatus_Success = 0
-     * }
-     */
-    public static int WGPUBufferMapAsyncStatus_Success() {
-        return WGPUBufferMapAsyncStatus_Success;
-    }
-    private static final int WGPUBufferMapAsyncStatus_ValidationError = (int)1L;
-    /**
-     * {@snippet lang=c :
-     * enum WGPUBufferMapAsyncStatus.WGPUBufferMapAsyncStatus_ValidationError = 1
-     * }
-     */
-    public static int WGPUBufferMapAsyncStatus_ValidationError() {
-        return WGPUBufferMapAsyncStatus_ValidationError;
-    }
-    private static final int WGPUBufferMapAsyncStatus_Unknown = (int)2L;
-    /**
-     * {@snippet lang=c :
-     * enum WGPUBufferMapAsyncStatus.WGPUBufferMapAsyncStatus_Unknown = 2
-     * }
-     */
-    public static int WGPUBufferMapAsyncStatus_Unknown() {
-        return WGPUBufferMapAsyncStatus_Unknown;
-    }
-    private static final int WGPUBufferMapAsyncStatus_DeviceLost = (int)3L;
-    /**
-     * {@snippet lang=c :
-     * enum WGPUBufferMapAsyncStatus.WGPUBufferMapAsyncStatus_DeviceLost = 3
-     * }
-     */
-    public static int WGPUBufferMapAsyncStatus_DeviceLost() {
-        return WGPUBufferMapAsyncStatus_DeviceLost;
-    }
-    private static final int WGPUBufferMapAsyncStatus_DestroyedBeforeCallback = (int)4L;
-    /**
-     * {@snippet lang=c :
-     * enum WGPUBufferMapAsyncStatus.WGPUBufferMapAsyncStatus_DestroyedBeforeCallback = 4
-     * }
-     */
-    public static int WGPUBufferMapAsyncStatus_DestroyedBeforeCallback() {
-        return WGPUBufferMapAsyncStatus_DestroyedBeforeCallback;
-    }
-    private static final int WGPUBufferMapAsyncStatus_UnmappedBeforeCallback = (int)5L;
-    /**
-     * {@snippet lang=c :
-     * enum WGPUBufferMapAsyncStatus.WGPUBufferMapAsyncStatus_UnmappedBeforeCallback = 5
-     * }
-     */
-    public static int WGPUBufferMapAsyncStatus_UnmappedBeforeCallback() {
-        return WGPUBufferMapAsyncStatus_UnmappedBeforeCallback;
-    }
-    private static final int WGPUBufferMapAsyncStatus_MappingAlreadyPending = (int)6L;
-    /**
-     * {@snippet lang=c :
-     * enum WGPUBufferMapAsyncStatus.WGPUBufferMapAsyncStatus_MappingAlreadyPending = 6
-     * }
-     */
-    public static int WGPUBufferMapAsyncStatus_MappingAlreadyPending() {
-        return WGPUBufferMapAsyncStatus_MappingAlreadyPending;
-    }
-    private static final int WGPUBufferMapAsyncStatus_OffsetOutOfRange = (int)7L;
-    /**
-     * {@snippet lang=c :
-     * enum WGPUBufferMapAsyncStatus.WGPUBufferMapAsyncStatus_OffsetOutOfRange = 7
-     * }
-     */
-    public static int WGPUBufferMapAsyncStatus_OffsetOutOfRange() {
-        return WGPUBufferMapAsyncStatus_OffsetOutOfRange;
-    }
-    private static final int WGPUBufferMapAsyncStatus_SizeOutOfRange = (int)8L;
-    /**
-     * {@snippet lang=c :
-     * enum WGPUBufferMapAsyncStatus.WGPUBufferMapAsyncStatus_SizeOutOfRange = 8
-     * }
-     */
-    public static int WGPUBufferMapAsyncStatus_SizeOutOfRange() {
-        return WGPUBufferMapAsyncStatus_SizeOutOfRange;
-    }
-    private static final int WGPUBufferMapAsyncStatus_Force32 = (int)2147483647L;
-    /**
-     * {@snippet lang=c :
-     * enum WGPUBufferMapAsyncStatus.WGPUBufferMapAsyncStatus_Force32 = 2147483647
-     * }
-     */
-    public static int WGPUBufferMapAsyncStatus_Force32() {
-        return WGPUBufferMapAsyncStatus_Force32;
-    }
     private static final int WGPUBufferMapState_Unmapped = (int)0L;
     /**
      * {@snippet lang=c :
@@ -1530,6 +1373,42 @@ public class wgpu_h {
      */
     public static int WGPUBufferMapState_Force32() {
         return WGPUBufferMapState_Force32;
+    }
+    private static final int WGPUCallbackMode_WaitAnyOnly = (int)1L;
+    /**
+     * {@snippet lang=c :
+     * enum WGPUCallbackMode.WGPUCallbackMode_WaitAnyOnly = 1
+     * }
+     */
+    public static int WGPUCallbackMode_WaitAnyOnly() {
+        return WGPUCallbackMode_WaitAnyOnly;
+    }
+    private static final int WGPUCallbackMode_AllowProcessEvents = (int)2L;
+    /**
+     * {@snippet lang=c :
+     * enum WGPUCallbackMode.WGPUCallbackMode_AllowProcessEvents = 2
+     * }
+     */
+    public static int WGPUCallbackMode_AllowProcessEvents() {
+        return WGPUCallbackMode_AllowProcessEvents;
+    }
+    private static final int WGPUCallbackMode_AllowSpontaneous = (int)3L;
+    /**
+     * {@snippet lang=c :
+     * enum WGPUCallbackMode.WGPUCallbackMode_AllowSpontaneous = 3
+     * }
+     */
+    public static int WGPUCallbackMode_AllowSpontaneous() {
+        return WGPUCallbackMode_AllowSpontaneous;
+    }
+    private static final int WGPUCallbackMode_Force32 = (int)2147483647L;
+    /**
+     * {@snippet lang=c :
+     * enum WGPUCallbackMode.WGPUCallbackMode_Force32 = 2147483647
+     * }
+     */
+    public static int WGPUCallbackMode_Force32() {
+        return WGPUCallbackMode_Force32;
     }
     private static final int WGPUCompareFunction_Undefined = (int)0L;
     /**
@@ -1621,37 +1500,46 @@ public class wgpu_h {
     public static int WGPUCompareFunction_Force32() {
         return WGPUCompareFunction_Force32;
     }
-    private static final int WGPUCompilationInfoRequestStatus_Success = (int)0L;
+    private static final int WGPUCompilationInfoRequestStatus_Success = (int)1L;
     /**
      * {@snippet lang=c :
-     * enum WGPUCompilationInfoRequestStatus.WGPUCompilationInfoRequestStatus_Success = 0
+     * enum WGPUCompilationInfoRequestStatus.WGPUCompilationInfoRequestStatus_Success = 1
      * }
      */
     public static int WGPUCompilationInfoRequestStatus_Success() {
         return WGPUCompilationInfoRequestStatus_Success;
     }
-    private static final int WGPUCompilationInfoRequestStatus_Error = (int)1L;
+    private static final int WGPUCompilationInfoRequestStatus_InstanceDropped = (int)2L;
     /**
      * {@snippet lang=c :
-     * enum WGPUCompilationInfoRequestStatus.WGPUCompilationInfoRequestStatus_Error = 1
+     * enum WGPUCompilationInfoRequestStatus.WGPUCompilationInfoRequestStatus_InstanceDropped = 2
+     * }
+     */
+    public static int WGPUCompilationInfoRequestStatus_InstanceDropped() {
+        return WGPUCompilationInfoRequestStatus_InstanceDropped;
+    }
+    private static final int WGPUCompilationInfoRequestStatus_Error = (int)3L;
+    /**
+     * {@snippet lang=c :
+     * enum WGPUCompilationInfoRequestStatus.WGPUCompilationInfoRequestStatus_Error = 3
      * }
      */
     public static int WGPUCompilationInfoRequestStatus_Error() {
         return WGPUCompilationInfoRequestStatus_Error;
     }
-    private static final int WGPUCompilationInfoRequestStatus_DeviceLost = (int)2L;
+    private static final int WGPUCompilationInfoRequestStatus_DeviceLost = (int)4L;
     /**
      * {@snippet lang=c :
-     * enum WGPUCompilationInfoRequestStatus.WGPUCompilationInfoRequestStatus_DeviceLost = 2
+     * enum WGPUCompilationInfoRequestStatus.WGPUCompilationInfoRequestStatus_DeviceLost = 4
      * }
      */
     public static int WGPUCompilationInfoRequestStatus_DeviceLost() {
         return WGPUCompilationInfoRequestStatus_DeviceLost;
     }
-    private static final int WGPUCompilationInfoRequestStatus_Unknown = (int)3L;
+    private static final int WGPUCompilationInfoRequestStatus_Unknown = (int)5L;
     /**
      * {@snippet lang=c :
-     * enum WGPUCompilationInfoRequestStatus.WGPUCompilationInfoRequestStatus_Unknown = 3
+     * enum WGPUCompilationInfoRequestStatus.WGPUCompilationInfoRequestStatus_Unknown = 5
      * }
      */
     public static int WGPUCompilationInfoRequestStatus_Unknown() {
@@ -1756,55 +1644,64 @@ public class wgpu_h {
     public static int WGPUCompositeAlphaMode_Force32() {
         return WGPUCompositeAlphaMode_Force32;
     }
-    private static final int WGPUCreatePipelineAsyncStatus_Success = (int)0L;
+    private static final int WGPUCreatePipelineAsyncStatus_Success = (int)1L;
     /**
      * {@snippet lang=c :
-     * enum WGPUCreatePipelineAsyncStatus.WGPUCreatePipelineAsyncStatus_Success = 0
+     * enum WGPUCreatePipelineAsyncStatus.WGPUCreatePipelineAsyncStatus_Success = 1
      * }
      */
     public static int WGPUCreatePipelineAsyncStatus_Success() {
         return WGPUCreatePipelineAsyncStatus_Success;
     }
-    private static final int WGPUCreatePipelineAsyncStatus_ValidationError = (int)1L;
+    private static final int WGPUCreatePipelineAsyncStatus_InstanceDropped = (int)2L;
     /**
      * {@snippet lang=c :
-     * enum WGPUCreatePipelineAsyncStatus.WGPUCreatePipelineAsyncStatus_ValidationError = 1
+     * enum WGPUCreatePipelineAsyncStatus.WGPUCreatePipelineAsyncStatus_InstanceDropped = 2
+     * }
+     */
+    public static int WGPUCreatePipelineAsyncStatus_InstanceDropped() {
+        return WGPUCreatePipelineAsyncStatus_InstanceDropped;
+    }
+    private static final int WGPUCreatePipelineAsyncStatus_ValidationError = (int)3L;
+    /**
+     * {@snippet lang=c :
+     * enum WGPUCreatePipelineAsyncStatus.WGPUCreatePipelineAsyncStatus_ValidationError = 3
      * }
      */
     public static int WGPUCreatePipelineAsyncStatus_ValidationError() {
         return WGPUCreatePipelineAsyncStatus_ValidationError;
     }
-    private static final int WGPUCreatePipelineAsyncStatus_InternalError = (int)2L;
+    private static final int WGPUCreatePipelineAsyncStatus_InternalError = (int)4L;
     /**
      * {@snippet lang=c :
-     * enum WGPUCreatePipelineAsyncStatus.WGPUCreatePipelineAsyncStatus_InternalError = 2
+     * enum WGPUCreatePipelineAsyncStatus.WGPUCreatePipelineAsyncStatus_InternalError = 4
      * }
      */
     public static int WGPUCreatePipelineAsyncStatus_InternalError() {
         return WGPUCreatePipelineAsyncStatus_InternalError;
     }
-    private static final int WGPUCreatePipelineAsyncStatus_DeviceLost = (int)3L;
+    private static final int WGPUCreatePipelineAsyncStatus_DeviceLost = (int)5L;
     /**
      * {@snippet lang=c :
-     * enum WGPUCreatePipelineAsyncStatus.WGPUCreatePipelineAsyncStatus_DeviceLost = 3
+     * enum WGPUCreatePipelineAsyncStatus.WGPUCreatePipelineAsyncStatus_DeviceLost = 5
      * }
      */
     public static int WGPUCreatePipelineAsyncStatus_DeviceLost() {
         return WGPUCreatePipelineAsyncStatus_DeviceLost;
     }
-    private static final int WGPUCreatePipelineAsyncStatus_DeviceDestroyed = (int)4L;
+    private static final int WGPUCreatePipelineAsyncStatus_DeviceDestroyed = (int)6L;
     /**
      * {@snippet lang=c :
-     * enum WGPUCreatePipelineAsyncStatus.WGPUCreatePipelineAsyncStatus_DeviceDestroyed = 4
+     * enum WGPUCreatePipelineAsyncStatus.WGPUCreatePipelineAsyncStatus_DeviceDestroyed = 6
      * }
      */
     public static int WGPUCreatePipelineAsyncStatus_DeviceDestroyed() {
         return WGPUCreatePipelineAsyncStatus_DeviceDestroyed;
     }
-    private static final int WGPUCreatePipelineAsyncStatus_Unknown = (int)5L;
+    private static final int WGPUCreatePipelineAsyncStatus_Unknown = (int)7L;
     /**
      * {@snippet lang=c :
-     * enum WGPUCreatePipelineAsyncStatus.WGPUCreatePipelineAsyncStatus_Unknown = 5
+     * enum WGPUCreatePipelineAsyncStatus.WGPUCreatePipelineAsyncStatus_Unknown = 7
      * }
      */
     public static int WGPUCreatePipelineAsyncStatus_Unknown() {
@@ -1872,6 +1769,24 @@ public class wgpu_h {
      */
     public static int WGPUDeviceLostReason_Destroyed() {
         return WGPUDeviceLostReason_Destroyed;
+    }
+    private static final int WGPUDeviceLostReason_InstanceDropped = (int)3L;
+    /**
+     * {@snippet lang=c :
+     * enum WGPUDeviceLostReason.WGPUDeviceLostReason_InstanceDropped = 3
+     * }
+     */
+    public static int WGPUDeviceLostReason_InstanceDropped() {
+        return WGPUDeviceLostReason_InstanceDropped;
+    }
+    private static final int WGPUDeviceLostReason_FailedCreation = (int)4L;
+    /**
+     * {@snippet lang=c :
+     * enum WGPUDeviceLostReason.WGPUDeviceLostReason_FailedCreation = 4
+     * }
+     */
+    public static int WGPUDeviceLostReason_FailedCreation() {
+        return WGPUDeviceLostReason_FailedCreation;
     }
     private static final int WGPUDeviceLostReason_Force32 = (int)2147483647L;
     /**
@@ -2026,64 +1941,82 @@ public class wgpu_h {
     public static int WGPUFeatureName_TextureCompressionBC() {
         return WGPUFeatureName_TextureCompressionBC;
     }
-    private static final int WGPUFeatureName_TextureCompressionETC2 = (int)5L;
+    private static final int WGPUFeatureName_TextureCompressionBCSliced3D = (int)5L;
     /**
      * {@snippet lang=c :
-     * enum WGPUFeatureName.WGPUFeatureName_TextureCompressionETC2 = 5
+     * enum WGPUFeatureName.WGPUFeatureName_TextureCompressionBCSliced3D = 5
+     * }
+     */
+    public static int WGPUFeatureName_TextureCompressionBCSliced3D() {
+        return WGPUFeatureName_TextureCompressionBCSliced3D;
+    }
+    private static final int WGPUFeatureName_TextureCompressionETC2 = (int)6L;
+    /**
+     * {@snippet lang=c :
+     * enum WGPUFeatureName.WGPUFeatureName_TextureCompressionETC2 = 6
      * }
      */
     public static int WGPUFeatureName_TextureCompressionETC2() {
         return WGPUFeatureName_TextureCompressionETC2;
     }
-    private static final int WGPUFeatureName_TextureCompressionASTC = (int)6L;
+    private static final int WGPUFeatureName_TextureCompressionASTC = (int)7L;
     /**
      * {@snippet lang=c :
-     * enum WGPUFeatureName.WGPUFeatureName_TextureCompressionASTC = 6
+     * enum WGPUFeatureName.WGPUFeatureName_TextureCompressionASTC = 7
      * }
      */
     public static int WGPUFeatureName_TextureCompressionASTC() {
         return WGPUFeatureName_TextureCompressionASTC;
     }
-    private static final int WGPUFeatureName_IndirectFirstInstance = (int)7L;
+    private static final int WGPUFeatureName_TextureCompressionASTCSliced3D = (int)8L;
     /**
      * {@snippet lang=c :
-     * enum WGPUFeatureName.WGPUFeatureName_IndirectFirstInstance = 7
+     * enum WGPUFeatureName.WGPUFeatureName_TextureCompressionASTCSliced3D = 8
+     * }
+     */
+    public static int WGPUFeatureName_TextureCompressionASTCSliced3D() {
+        return WGPUFeatureName_TextureCompressionASTCSliced3D;
+    }
+    private static final int WGPUFeatureName_IndirectFirstInstance = (int)9L;
+    /**
+     * {@snippet lang=c :
+     * enum WGPUFeatureName.WGPUFeatureName_IndirectFirstInstance = 9
      * }
      */
     public static int WGPUFeatureName_IndirectFirstInstance() {
         return WGPUFeatureName_IndirectFirstInstance;
     }
-    private static final int WGPUFeatureName_ShaderF16 = (int)8L;
+    private static final int WGPUFeatureName_ShaderF16 = (int)10L;
     /**
      * {@snippet lang=c :
-     * enum WGPUFeatureName.WGPUFeatureName_ShaderF16 = 8
+     * enum WGPUFeatureName.WGPUFeatureName_ShaderF16 = 10
      * }
      */
     public static int WGPUFeatureName_ShaderF16() {
         return WGPUFeatureName_ShaderF16;
     }
-    private static final int WGPUFeatureName_RG11B10UfloatRenderable = (int)9L;
+    private static final int WGPUFeatureName_RG11B10UfloatRenderable = (int)11L;
     /**
      * {@snippet lang=c :
-     * enum WGPUFeatureName.WGPUFeatureName_RG11B10UfloatRenderable = 9
+     * enum WGPUFeatureName.WGPUFeatureName_RG11B10UfloatRenderable = 11
      * }
      */
     public static int WGPUFeatureName_RG11B10UfloatRenderable() {
         return WGPUFeatureName_RG11B10UfloatRenderable;
     }
-    private static final int WGPUFeatureName_BGRA8UnormStorage = (int)10L;
+    private static final int WGPUFeatureName_BGRA8UnormStorage = (int)12L;
     /**
      * {@snippet lang=c :
-     * enum WGPUFeatureName.WGPUFeatureName_BGRA8UnormStorage = 10
+     * enum WGPUFeatureName.WGPUFeatureName_BGRA8UnormStorage = 12
      * }
      */
     public static int WGPUFeatureName_BGRA8UnormStorage() {
         return WGPUFeatureName_BGRA8UnormStorage;
     }
-    private static final int WGPUFeatureName_Float32Filterable = (int)11L;
+    private static final int WGPUFeatureName_Float32Filterable = (int)13L;
     /**
      * {@snippet lang=c :
-     * enum WGPUFeatureName.WGPUFeatureName_Float32Filterable = 11
+     * enum WGPUFeatureName.WGPUFeatureName_Float32Filterable = 13
      * }
      */
     public static int WGPUFeatureName_Float32Filterable() {
@@ -2197,23 +2130,23 @@ public class wgpu_h {
     public static int WGPULoadOp_Undefined() {
         return WGPULoadOp_Undefined;
     }
-    private static final int WGPULoadOp_Clear = (int)1L;
+    private static final int WGPULoadOp_Load = (int)1L;
     /**
      * {@snippet lang=c :
-     * enum WGPULoadOp.WGPULoadOp_Clear = 1
-     * }
-     */
-    public static int WGPULoadOp_Clear() {
-        return WGPULoadOp_Clear;
-    }
-    private static final int WGPULoadOp_Load = (int)2L;
-    /**
-     * {@snippet lang=c :
-     * enum WGPULoadOp.WGPULoadOp_Load = 2
+     * enum WGPULoadOp.WGPULoadOp_Load = 1
      * }
      */
     public static int WGPULoadOp_Load() {
         return WGPULoadOp_Load;
+    }
+    private static final int WGPULoadOp_Clear = (int)2L;
+    /**
+     * {@snippet lang=c :
+     * enum WGPULoadOp.WGPULoadOp_Clear = 2
+     * }
+     */
+    public static int WGPULoadOp_Clear() {
+        return WGPULoadOp_Clear;
     }
     private static final int WGPULoadOp_Force32 = (int)2147483647L;
     /**
@@ -2223,6 +2156,60 @@ public class wgpu_h {
      */
     public static int WGPULoadOp_Force32() {
         return WGPULoadOp_Force32;
+    }
+    private static final int WGPUMapAsyncStatus_Success = (int)1L;
+    /**
+     * {@snippet lang=c :
+     * enum WGPUMapAsyncStatus.WGPUMapAsyncStatus_Success = 1
+     * }
+     */
+    public static int WGPUMapAsyncStatus_Success() {
+        return WGPUMapAsyncStatus_Success;
+    }
+    private static final int WGPUMapAsyncStatus_InstanceDropped = (int)2L;
+    /**
+     * {@snippet lang=c :
+     * enum WGPUMapAsyncStatus.WGPUMapAsyncStatus_InstanceDropped = 2
+     * }
+     */
+    public static int WGPUMapAsyncStatus_InstanceDropped() {
+        return WGPUMapAsyncStatus_InstanceDropped;
+    }
+    private static final int WGPUMapAsyncStatus_Error = (int)3L;
+    /**
+     * {@snippet lang=c :
+     * enum WGPUMapAsyncStatus.WGPUMapAsyncStatus_Error = 3
+     * }
+     */
+    public static int WGPUMapAsyncStatus_Error() {
+        return WGPUMapAsyncStatus_Error;
+    }
+    private static final int WGPUMapAsyncStatus_Aborted = (int)4L;
+    /**
+     * {@snippet lang=c :
+     * enum WGPUMapAsyncStatus.WGPUMapAsyncStatus_Aborted = 4
+     * }
+     */
+    public static int WGPUMapAsyncStatus_Aborted() {
+        return WGPUMapAsyncStatus_Aborted;
+    }
+    private static final int WGPUMapAsyncStatus_Unknown = (int)5L;
+    /**
+     * {@snippet lang=c :
+     * enum WGPUMapAsyncStatus.WGPUMapAsyncStatus_Unknown = 5
+     * }
+     */
+    public static int WGPUMapAsyncStatus_Unknown() {
+        return WGPUMapAsyncStatus_Unknown;
+    }
+    private static final int WGPUMapAsyncStatus_Force32 = (int)2147483647L;
+    /**
+     * {@snippet lang=c :
+     * enum WGPUMapAsyncStatus.WGPUMapAsyncStatus_Force32 = 2147483647
+     * }
+     */
+    public static int WGPUMapAsyncStatus_Force32() {
+        return WGPUMapAsyncStatus_Force32;
     }
     private static final int WGPUMipmapFilterMode_Nearest = (int)0L;
     /**
@@ -2250,6 +2237,69 @@ public class wgpu_h {
      */
     public static int WGPUMipmapFilterMode_Force32() {
         return WGPUMipmapFilterMode_Force32;
+    }
+    private static final int WGPUOptionalBool_False = (int)0L;
+    /**
+     * {@snippet lang=c :
+     * enum WGPUOptionalBool.WGPUOptionalBool_False = 0
+     * }
+     */
+    public static int WGPUOptionalBool_False() {
+        return WGPUOptionalBool_False;
+    }
+    private static final int WGPUOptionalBool_True = (int)1L;
+    /**
+     * {@snippet lang=c :
+     * enum WGPUOptionalBool.WGPUOptionalBool_True = 1
+     * }
+     */
+    public static int WGPUOptionalBool_True() {
+        return WGPUOptionalBool_True;
+    }
+    private static final int WGPUOptionalBool_Undefined = (int)2L;
+    /**
+     * {@snippet lang=c :
+     * enum WGPUOptionalBool.WGPUOptionalBool_Undefined = 2
+     * }
+     */
+    public static int WGPUOptionalBool_Undefined() {
+        return WGPUOptionalBool_Undefined;
+    }
+    private static final int WGPUOptionalBool_Force32 = (int)2147483647L;
+    /**
+     * {@snippet lang=c :
+     * enum WGPUOptionalBool.WGPUOptionalBool_Force32 = 2147483647
+     * }
+     */
+    public static int WGPUOptionalBool_Force32() {
+        return WGPUOptionalBool_Force32;
+    }
+    private static final int WGPUPopErrorScopeStatus_Success = (int)1L;
+    /**
+     * {@snippet lang=c :
+     * enum WGPUPopErrorScopeStatus.WGPUPopErrorScopeStatus_Success = 1
+     * }
+     */
+    public static int WGPUPopErrorScopeStatus_Success() {
+        return WGPUPopErrorScopeStatus_Success;
+    }
+    private static final int WGPUPopErrorScopeStatus_InstanceDropped = (int)2L;
+    /**
+     * {@snippet lang=c :
+     * enum WGPUPopErrorScopeStatus.WGPUPopErrorScopeStatus_InstanceDropped = 2
+     * }
+     */
+    public static int WGPUPopErrorScopeStatus_InstanceDropped() {
+        return WGPUPopErrorScopeStatus_InstanceDropped;
+    }
+    private static final int WGPUPopErrorScopeStatus_Force32 = (int)2147483647L;
+    /**
+     * {@snippet lang=c :
+     * enum WGPUPopErrorScopeStatus.WGPUPopErrorScopeStatus_Force32 = 2147483647
+     * }
+     */
+    public static int WGPUPopErrorScopeStatus_Force32() {
+        return WGPUPopErrorScopeStatus_Force32;
     }
     private static final int WGPUPowerPreference_Undefined = (int)0L;
     /**
@@ -2287,37 +2337,46 @@ public class wgpu_h {
     public static int WGPUPowerPreference_Force32() {
         return WGPUPowerPreference_Force32;
     }
-    private static final int WGPUPresentMode_Fifo = (int)0L;
+    private static final int WGPUPresentMode_Undefined = (int)0L;
     /**
      * {@snippet lang=c :
-     * enum WGPUPresentMode.WGPUPresentMode_Fifo = 0
+     * enum WGPUPresentMode.WGPUPresentMode_Undefined = 0
+     * }
+     */
+    public static int WGPUPresentMode_Undefined() {
+        return WGPUPresentMode_Undefined;
+    }
+    private static final int WGPUPresentMode_Fifo = (int)1L;
+    /**
+     * {@snippet lang=c :
+     * enum WGPUPresentMode.WGPUPresentMode_Fifo = 1
      * }
      */
     public static int WGPUPresentMode_Fifo() {
         return WGPUPresentMode_Fifo;
     }
-    private static final int WGPUPresentMode_FifoRelaxed = (int)1L;
+    private static final int WGPUPresentMode_FifoRelaxed = (int)2L;
     /**
      * {@snippet lang=c :
-     * enum WGPUPresentMode.WGPUPresentMode_FifoRelaxed = 1
+     * enum WGPUPresentMode.WGPUPresentMode_FifoRelaxed = 2
      * }
      */
     public static int WGPUPresentMode_FifoRelaxed() {
         return WGPUPresentMode_FifoRelaxed;
     }
-    private static final int WGPUPresentMode_Immediate = (int)2L;
+    private static final int WGPUPresentMode_Immediate = (int)3L;
     /**
      * {@snippet lang=c :
-     * enum WGPUPresentMode.WGPUPresentMode_Immediate = 2
+     * enum WGPUPresentMode.WGPUPresentMode_Immediate = 3
      * }
      */
     public static int WGPUPresentMode_Immediate() {
         return WGPUPresentMode_Immediate;
     }
-    private static final int WGPUPresentMode_Mailbox = (int)3L;
+    private static final int WGPUPresentMode_Mailbox = (int)4L;
     /**
      * {@snippet lang=c :
-     * enum WGPUPresentMode.WGPUPresentMode_Mailbox = 3
+     * enum WGPUPresentMode.WGPUPresentMode_Mailbox = 4
      * }
      */
     public static int WGPUPresentMode_Mailbox() {
@@ -2413,37 +2472,46 @@ public class wgpu_h {
     public static int WGPUQueryType_Force32() {
         return WGPUQueryType_Force32;
     }
-    private static final int WGPUQueueWorkDoneStatus_Success = (int)0L;
+    private static final int WGPUQueueWorkDoneStatus_Success = (int)1L;
     /**
      * {@snippet lang=c :
-     * enum WGPUQueueWorkDoneStatus.WGPUQueueWorkDoneStatus_Success = 0
+     * enum WGPUQueueWorkDoneStatus.WGPUQueueWorkDoneStatus_Success = 1
      * }
      */
     public static int WGPUQueueWorkDoneStatus_Success() {
         return WGPUQueueWorkDoneStatus_Success;
     }
-    private static final int WGPUQueueWorkDoneStatus_Error = (int)1L;
+    private static final int WGPUQueueWorkDoneStatus_InstanceDropped = (int)2L;
     /**
      * {@snippet lang=c :
-     * enum WGPUQueueWorkDoneStatus.WGPUQueueWorkDoneStatus_Error = 1
+     * enum WGPUQueueWorkDoneStatus.WGPUQueueWorkDoneStatus_InstanceDropped = 2
+     * }
+     */
+    public static int WGPUQueueWorkDoneStatus_InstanceDropped() {
+        return WGPUQueueWorkDoneStatus_InstanceDropped;
+    }
+    private static final int WGPUQueueWorkDoneStatus_Error = (int)3L;
+    /**
+     * {@snippet lang=c :
+     * enum WGPUQueueWorkDoneStatus.WGPUQueueWorkDoneStatus_Error = 3
      * }
      */
     public static int WGPUQueueWorkDoneStatus_Error() {
         return WGPUQueueWorkDoneStatus_Error;
     }
-    private static final int WGPUQueueWorkDoneStatus_Unknown = (int)2L;
+    private static final int WGPUQueueWorkDoneStatus_Unknown = (int)4L;
     /**
      * {@snippet lang=c :
-     * enum WGPUQueueWorkDoneStatus.WGPUQueueWorkDoneStatus_Unknown = 2
+     * enum WGPUQueueWorkDoneStatus.WGPUQueueWorkDoneStatus_Unknown = 4
      * }
      */
     public static int WGPUQueueWorkDoneStatus_Unknown() {
         return WGPUQueueWorkDoneStatus_Unknown;
     }
-    private static final int WGPUQueueWorkDoneStatus_DeviceLost = (int)3L;
+    private static final int WGPUQueueWorkDoneStatus_DeviceLost = (int)5L;
     /**
      * {@snippet lang=c :
-     * enum WGPUQueueWorkDoneStatus.WGPUQueueWorkDoneStatus_DeviceLost = 3
+     * enum WGPUQueueWorkDoneStatus.WGPUQueueWorkDoneStatus_DeviceLost = 5
      * }
      */
     public static int WGPUQueueWorkDoneStatus_DeviceLost() {
@@ -2458,37 +2526,46 @@ public class wgpu_h {
     public static int WGPUQueueWorkDoneStatus_Force32() {
         return WGPUQueueWorkDoneStatus_Force32;
     }
-    private static final int WGPURequestAdapterStatus_Success = (int)0L;
+    private static final int WGPURequestAdapterStatus_Success = (int)1L;
     /**
      * {@snippet lang=c :
-     * enum WGPURequestAdapterStatus.WGPURequestAdapterStatus_Success = 0
+     * enum WGPURequestAdapterStatus.WGPURequestAdapterStatus_Success = 1
      * }
      */
     public static int WGPURequestAdapterStatus_Success() {
         return WGPURequestAdapterStatus_Success;
     }
-    private static final int WGPURequestAdapterStatus_Unavailable = (int)1L;
+    private static final int WGPURequestAdapterStatus_InstanceDropped = (int)2L;
     /**
      * {@snippet lang=c :
-     * enum WGPURequestAdapterStatus.WGPURequestAdapterStatus_Unavailable = 1
+     * enum WGPURequestAdapterStatus.WGPURequestAdapterStatus_InstanceDropped = 2
+     * }
+     */
+    public static int WGPURequestAdapterStatus_InstanceDropped() {
+        return WGPURequestAdapterStatus_InstanceDropped;
+    }
+    private static final int WGPURequestAdapterStatus_Unavailable = (int)3L;
+    /**
+     * {@snippet lang=c :
+     * enum WGPURequestAdapterStatus.WGPURequestAdapterStatus_Unavailable = 3
      * }
      */
     public static int WGPURequestAdapterStatus_Unavailable() {
         return WGPURequestAdapterStatus_Unavailable;
     }
-    private static final int WGPURequestAdapterStatus_Error = (int)2L;
+    private static final int WGPURequestAdapterStatus_Error = (int)4L;
     /**
      * {@snippet lang=c :
-     * enum WGPURequestAdapterStatus.WGPURequestAdapterStatus_Error = 2
+     * enum WGPURequestAdapterStatus.WGPURequestAdapterStatus_Error = 4
      * }
      */
     public static int WGPURequestAdapterStatus_Error() {
         return WGPURequestAdapterStatus_Error;
     }
-    private static final int WGPURequestAdapterStatus_Unknown = (int)3L;
+    private static final int WGPURequestAdapterStatus_Unknown = (int)5L;
     /**
      * {@snippet lang=c :
-     * enum WGPURequestAdapterStatus.WGPURequestAdapterStatus_Unknown = 3
+     * enum WGPURequestAdapterStatus.WGPURequestAdapterStatus_Unknown = 5
      * }
      */
     public static int WGPURequestAdapterStatus_Unknown() {
@@ -2503,28 +2580,37 @@ public class wgpu_h {
     public static int WGPURequestAdapterStatus_Force32() {
         return WGPURequestAdapterStatus_Force32;
     }
-    private static final int WGPURequestDeviceStatus_Success = (int)0L;
+    private static final int WGPURequestDeviceStatus_Success = (int)1L;
     /**
      * {@snippet lang=c :
-     * enum WGPURequestDeviceStatus.WGPURequestDeviceStatus_Success = 0
+     * enum WGPURequestDeviceStatus.WGPURequestDeviceStatus_Success = 1
      * }
      */
     public static int WGPURequestDeviceStatus_Success() {
         return WGPURequestDeviceStatus_Success;
     }
-    private static final int WGPURequestDeviceStatus_Error = (int)1L;
+    private static final int WGPURequestDeviceStatus_InstanceDropped = (int)2L;
     /**
      * {@snippet lang=c :
-     * enum WGPURequestDeviceStatus.WGPURequestDeviceStatus_Error = 1
+     * enum WGPURequestDeviceStatus.WGPURequestDeviceStatus_InstanceDropped = 2
+     * }
+     */
+    public static int WGPURequestDeviceStatus_InstanceDropped() {
+        return WGPURequestDeviceStatus_InstanceDropped;
+    }
+    private static final int WGPURequestDeviceStatus_Error = (int)3L;
+    /**
+     * {@snippet lang=c :
+     * enum WGPURequestDeviceStatus.WGPURequestDeviceStatus_Error = 3
      * }
      */
     public static int WGPURequestDeviceStatus_Error() {
         return WGPURequestDeviceStatus_Error;
     }
-    private static final int WGPURequestDeviceStatus_Unknown = (int)2L;
+    private static final int WGPURequestDeviceStatus_Unknown = (int)4L;
     /**
      * {@snippet lang=c :
-     * enum WGPURequestDeviceStatus.WGPURequestDeviceStatus_Unknown = 2
+     * enum WGPURequestDeviceStatus.WGPURequestDeviceStatus_Unknown = 4
      * }
      */
     public static int WGPURequestDeviceStatus_Unknown() {
@@ -2548,104 +2634,86 @@ public class wgpu_h {
     public static int WGPUSType_Invalid() {
         return WGPUSType_Invalid;
     }
-    private static final int WGPUSType_SurfaceDescriptorFromMetalLayer = (int)1L;
+    private static final int WGPUSType_ShaderSourceSPIRV = (int)1L;
     /**
      * {@snippet lang=c :
-     * enum WGPUSType.WGPUSType_SurfaceDescriptorFromMetalLayer = 1
+     * enum WGPUSType.WGPUSType_ShaderSourceSPIRV = 1
      * }
      */
-    public static int WGPUSType_SurfaceDescriptorFromMetalLayer() {
-        return WGPUSType_SurfaceDescriptorFromMetalLayer;
+    public static int WGPUSType_ShaderSourceSPIRV() {
+        return WGPUSType_ShaderSourceSPIRV;
     }
-    private static final int WGPUSType_SurfaceDescriptorFromWindowsHWND = (int)2L;
+    private static final int WGPUSType_ShaderSourceWGSL = (int)2L;
     /**
      * {@snippet lang=c :
-     * enum WGPUSType.WGPUSType_SurfaceDescriptorFromWindowsHWND = 2
+     * enum WGPUSType.WGPUSType_ShaderSourceWGSL = 2
      * }
      */
-    public static int WGPUSType_SurfaceDescriptorFromWindowsHWND() {
-        return WGPUSType_SurfaceDescriptorFromWindowsHWND;
+    public static int WGPUSType_ShaderSourceWGSL() {
+        return WGPUSType_ShaderSourceWGSL;
     }
-    private static final int WGPUSType_SurfaceDescriptorFromXlibWindow = (int)3L;
+    private static final int WGPUSType_RenderPassMaxDrawCount = (int)3L;
     /**
      * {@snippet lang=c :
-     * enum WGPUSType.WGPUSType_SurfaceDescriptorFromXlibWindow = 3
+     * enum WGPUSType.WGPUSType_RenderPassMaxDrawCount = 3
      * }
      */
-    public static int WGPUSType_SurfaceDescriptorFromXlibWindow() {
-        return WGPUSType_SurfaceDescriptorFromXlibWindow;
+    public static int WGPUSType_RenderPassMaxDrawCount() {
+        return WGPUSType_RenderPassMaxDrawCount;
     }
-    private static final int WGPUSType_SurfaceDescriptorFromCanvasHTMLSelector = (int)4L;
+    private static final int WGPUSType_SurfaceSourceMetalLayer = (int)4L;
     /**
      * {@snippet lang=c :
-     * enum WGPUSType.WGPUSType_SurfaceDescriptorFromCanvasHTMLSelector = 4
+     * enum WGPUSType.WGPUSType_SurfaceSourceMetalLayer = 4
      * }
      */
-    public static int WGPUSType_SurfaceDescriptorFromCanvasHTMLSelector() {
-        return WGPUSType_SurfaceDescriptorFromCanvasHTMLSelector;
+    public static int WGPUSType_SurfaceSourceMetalLayer() {
+        return WGPUSType_SurfaceSourceMetalLayer;
     }
-    private static final int WGPUSType_ShaderModuleSPIRVDescriptor = (int)5L;
+    private static final int WGPUSType_SurfaceSourceWindowsHWND = (int)5L;
     /**
      * {@snippet lang=c :
-     * enum WGPUSType.WGPUSType_ShaderModuleSPIRVDescriptor = 5
+     * enum WGPUSType.WGPUSType_SurfaceSourceWindowsHWND = 5
      * }
      */
-    public static int WGPUSType_ShaderModuleSPIRVDescriptor() {
-        return WGPUSType_ShaderModuleSPIRVDescriptor;
+    public static int WGPUSType_SurfaceSourceWindowsHWND() {
+        return WGPUSType_SurfaceSourceWindowsHWND;
     }
-    private static final int WGPUSType_ShaderModuleWGSLDescriptor = (int)6L;
+    private static final int WGPUSType_SurfaceSourceXlibWindow = (int)6L;
     /**
      * {@snippet lang=c :
-     * enum WGPUSType.WGPUSType_ShaderModuleWGSLDescriptor = 6
+     * enum WGPUSType.WGPUSType_SurfaceSourceXlibWindow = 6
      * }
      */
-    public static int WGPUSType_ShaderModuleWGSLDescriptor() {
-        return WGPUSType_ShaderModuleWGSLDescriptor;
+    public static int WGPUSType_SurfaceSourceXlibWindow() {
+        return WGPUSType_SurfaceSourceXlibWindow;
     }
-    private static final int WGPUSType_PrimitiveDepthClipControl = (int)7L;
+    private static final int WGPUSType_SurfaceSourceWaylandSurface = (int)7L;
     /**
      * {@snippet lang=c :
-     * enum WGPUSType.WGPUSType_PrimitiveDepthClipControl = 7
+     * enum WGPUSType.WGPUSType_SurfaceSourceWaylandSurface = 7
      * }
      */
-    public static int WGPUSType_PrimitiveDepthClipControl() {
-        return WGPUSType_PrimitiveDepthClipControl;
+    public static int WGPUSType_SurfaceSourceWaylandSurface() {
+        return WGPUSType_SurfaceSourceWaylandSurface;
     }
-    private static final int WGPUSType_SurfaceDescriptorFromWaylandSurface = (int)8L;
+    private static final int WGPUSType_SurfaceSourceAndroidNativeWindow = (int)8L;
     /**
      * {@snippet lang=c :
-     * enum WGPUSType.WGPUSType_SurfaceDescriptorFromWaylandSurface = 8
+     * enum WGPUSType.WGPUSType_SurfaceSourceAndroidNativeWindow = 8
      * }
      */
-    public static int WGPUSType_SurfaceDescriptorFromWaylandSurface() {
-        return WGPUSType_SurfaceDescriptorFromWaylandSurface;
+    public static int WGPUSType_SurfaceSourceAndroidNativeWindow() {
+        return WGPUSType_SurfaceSourceAndroidNativeWindow;
     }
-    private static final int WGPUSType_SurfaceDescriptorFromAndroidNativeWindow = (int)9L;
+    private static final int WGPUSType_SurfaceSourceXCBWindow = (int)9L;
     /**
      * {@snippet lang=c :
-     * enum WGPUSType.WGPUSType_SurfaceDescriptorFromAndroidNativeWindow = 9
+     * enum WGPUSType.WGPUSType_SurfaceSourceXCBWindow = 9
      * }
      */
-    public static int WGPUSType_SurfaceDescriptorFromAndroidNativeWindow() {
-        return WGPUSType_SurfaceDescriptorFromAndroidNativeWindow;
-    }
-    private static final int WGPUSType_SurfaceDescriptorFromXcbWindow = (int)10L;
-    /**
-     * {@snippet lang=c :
-     * enum WGPUSType.WGPUSType_SurfaceDescriptorFromXcbWindow = 10
-     * }
-     */
-    public static int WGPUSType_SurfaceDescriptorFromXcbWindow() {
-        return WGPUSType_SurfaceDescriptorFromXcbWindow;
-    }
-    private static final int WGPUSType_RenderPassDescriptorMaxDrawCount = (int)15L;
-    /**
-     * {@snippet lang=c :
-     * enum WGPUSType.WGPUSType_RenderPassDescriptorMaxDrawCount = 15
-     * }
-     */
-    public static int WGPUSType_RenderPassDescriptorMaxDrawCount() {
-        return WGPUSType_RenderPassDescriptorMaxDrawCount;
+    public static int WGPUSType_SurfaceSourceXCBWindow() {
+        return WGPUSType_SurfaceSourceXCBWindow;
     }
     private static final int WGPUSType_Force32 = (int)2147483647L;
     /**
@@ -2700,6 +2768,33 @@ public class wgpu_h {
      */
     public static int WGPUSamplerBindingType_Force32() {
         return WGPUSamplerBindingType_Force32;
+    }
+    private static final int WGPUStatus_Success = (int)0L;
+    /**
+     * {@snippet lang=c :
+     * enum WGPUStatus.WGPUStatus_Success = 0
+     * }
+     */
+    public static int WGPUStatus_Success() {
+        return WGPUStatus_Success;
+    }
+    private static final int WGPUStatus_Error = (int)1L;
+    /**
+     * {@snippet lang=c :
+     * enum WGPUStatus.WGPUStatus_Error = 1
+     * }
+     */
+    public static int WGPUStatus_Error() {
+        return WGPUStatus_Error;
+    }
+    private static final int WGPUStatus_Force32 = (int)2147483647L;
+    /**
+     * {@snippet lang=c :
+     * enum WGPUStatus.WGPUStatus_Force32 = 2147483647
+     * }
+     */
+    public static int WGPUStatus_Force32() {
+        return WGPUStatus_Force32;
     }
     private static final int WGPUStencilOperation_Keep = (int)0L;
     /**
@@ -2863,55 +2958,64 @@ public class wgpu_h {
     public static int WGPUStoreOp_Force32() {
         return WGPUStoreOp_Force32;
     }
-    private static final int WGPUSurfaceGetCurrentTextureStatus_Success = (int)0L;
+    private static final int WGPUSurfaceGetCurrentTextureStatus_SuccessOptimal = (int)0L;
     /**
      * {@snippet lang=c :
-     * enum WGPUSurfaceGetCurrentTextureStatus.WGPUSurfaceGetCurrentTextureStatus_Success = 0
+     * enum WGPUSurfaceGetCurrentTextureStatus.WGPUSurfaceGetCurrentTextureStatus_SuccessOptimal = 0
      * }
      */
-    public static int WGPUSurfaceGetCurrentTextureStatus_Success() {
-        return WGPUSurfaceGetCurrentTextureStatus_Success;
+    public static int WGPUSurfaceGetCurrentTextureStatus_SuccessOptimal() {
+        return WGPUSurfaceGetCurrentTextureStatus_SuccessOptimal;
     }
-    private static final int WGPUSurfaceGetCurrentTextureStatus_Timeout = (int)1L;
+    private static final int WGPUSurfaceGetCurrentTextureStatus_SuccessSuboptimal = (int)1L;
     /**
      * {@snippet lang=c :
-     * enum WGPUSurfaceGetCurrentTextureStatus.WGPUSurfaceGetCurrentTextureStatus_Timeout = 1
+     * enum WGPUSurfaceGetCurrentTextureStatus.WGPUSurfaceGetCurrentTextureStatus_SuccessSuboptimal = 1
+     * }
+     */
+    public static int WGPUSurfaceGetCurrentTextureStatus_SuccessSuboptimal() {
+        return WGPUSurfaceGetCurrentTextureStatus_SuccessSuboptimal;
+    }
+    private static final int WGPUSurfaceGetCurrentTextureStatus_Timeout = (int)2L;
+    /**
+     * {@snippet lang=c :
+     * enum WGPUSurfaceGetCurrentTextureStatus.WGPUSurfaceGetCurrentTextureStatus_Timeout = 2
      * }
      */
     public static int WGPUSurfaceGetCurrentTextureStatus_Timeout() {
         return WGPUSurfaceGetCurrentTextureStatus_Timeout;
     }
-    private static final int WGPUSurfaceGetCurrentTextureStatus_Outdated = (int)2L;
+    private static final int WGPUSurfaceGetCurrentTextureStatus_Outdated = (int)3L;
     /**
      * {@snippet lang=c :
-     * enum WGPUSurfaceGetCurrentTextureStatus.WGPUSurfaceGetCurrentTextureStatus_Outdated = 2
+     * enum WGPUSurfaceGetCurrentTextureStatus.WGPUSurfaceGetCurrentTextureStatus_Outdated = 3
      * }
      */
     public static int WGPUSurfaceGetCurrentTextureStatus_Outdated() {
         return WGPUSurfaceGetCurrentTextureStatus_Outdated;
     }
-    private static final int WGPUSurfaceGetCurrentTextureStatus_Lost = (int)3L;
+    private static final int WGPUSurfaceGetCurrentTextureStatus_Lost = (int)4L;
     /**
      * {@snippet lang=c :
-     * enum WGPUSurfaceGetCurrentTextureStatus.WGPUSurfaceGetCurrentTextureStatus_Lost = 3
+     * enum WGPUSurfaceGetCurrentTextureStatus.WGPUSurfaceGetCurrentTextureStatus_Lost = 4
      * }
      */
     public static int WGPUSurfaceGetCurrentTextureStatus_Lost() {
         return WGPUSurfaceGetCurrentTextureStatus_Lost;
     }
-    private static final int WGPUSurfaceGetCurrentTextureStatus_OutOfMemory = (int)4L;
+    private static final int WGPUSurfaceGetCurrentTextureStatus_OutOfMemory = (int)5L;
     /**
      * {@snippet lang=c :
-     * enum WGPUSurfaceGetCurrentTextureStatus.WGPUSurfaceGetCurrentTextureStatus_OutOfMemory = 4
+     * enum WGPUSurfaceGetCurrentTextureStatus.WGPUSurfaceGetCurrentTextureStatus_OutOfMemory = 5
      * }
      */
     public static int WGPUSurfaceGetCurrentTextureStatus_OutOfMemory() {
         return WGPUSurfaceGetCurrentTextureStatus_OutOfMemory;
     }
-    private static final int WGPUSurfaceGetCurrentTextureStatus_DeviceLost = (int)5L;
+    private static final int WGPUSurfaceGetCurrentTextureStatus_DeviceLost = (int)6L;
     /**
      * {@snippet lang=c :
-     * enum WGPUSurfaceGetCurrentTextureStatus.WGPUSurfaceGetCurrentTextureStatus_DeviceLost = 5
+     * enum WGPUSurfaceGetCurrentTextureStatus.WGPUSurfaceGetCurrentTextureStatus_DeviceLost = 6
      * }
      */
     public static int WGPUSurfaceGetCurrentTextureStatus_DeviceLost() {
@@ -4285,6 +4389,15 @@ public class wgpu_h {
     public static int WGPUVertexFormat_Sint32x4() {
         return WGPUVertexFormat_Sint32x4;
     }
+    private static final int WGPUVertexFormat_Unorm10_10_10_2 = (int)31L;
+    /**
+     * {@snippet lang=c :
+     * enum WGPUVertexFormat.WGPUVertexFormat_Unorm10_10_10_2 = 31
+     * }
+     */
+    public static int WGPUVertexFormat_Unorm10_10_10_2() {
+        return WGPUVertexFormat_Unorm10_10_10_2;
+    }
     private static final int WGPUVertexFormat_Force32 = (int)2147483647L;
     /**
      * {@snippet lang=c :
@@ -4384,351 +4497,90 @@ public class wgpu_h {
     public static int WGPUWGSLFeatureName_Force32() {
         return WGPUWGSLFeatureName_Force32;
     }
-    private static final int WGPUBufferUsage_None = (int)0L;
+    private static final int WGPUWaitStatus_Success = (int)0L;
     /**
      * {@snippet lang=c :
-     * enum WGPUBufferUsage.WGPUBufferUsage_None = 0
+     * enum WGPUWaitStatus.WGPUWaitStatus_Success = 0
      * }
      */
-    public static int WGPUBufferUsage_None() {
-        return WGPUBufferUsage_None;
+    public static int WGPUWaitStatus_Success() {
+        return WGPUWaitStatus_Success;
     }
-    private static final int WGPUBufferUsage_MapRead = (int)1L;
+    private static final int WGPUWaitStatus_TimedOut = (int)1L;
     /**
      * {@snippet lang=c :
-     * enum WGPUBufferUsage.WGPUBufferUsage_MapRead = 1
+     * enum WGPUWaitStatus.WGPUWaitStatus_TimedOut = 1
      * }
      */
-    public static int WGPUBufferUsage_MapRead() {
-        return WGPUBufferUsage_MapRead;
+    public static int WGPUWaitStatus_TimedOut() {
+        return WGPUWaitStatus_TimedOut;
     }
-    private static final int WGPUBufferUsage_MapWrite = (int)2L;
+    private static final int WGPUWaitStatus_UnsupportedTimeout = (int)2L;
     /**
      * {@snippet lang=c :
-     * enum WGPUBufferUsage.WGPUBufferUsage_MapWrite = 2
+     * enum WGPUWaitStatus.WGPUWaitStatus_UnsupportedTimeout = 2
      * }
      */
-    public static int WGPUBufferUsage_MapWrite() {
-        return WGPUBufferUsage_MapWrite;
+    public static int WGPUWaitStatus_UnsupportedTimeout() {
+        return WGPUWaitStatus_UnsupportedTimeout;
     }
-    private static final int WGPUBufferUsage_CopySrc = (int)4L;
+    private static final int WGPUWaitStatus_UnsupportedCount = (int)3L;
     /**
      * {@snippet lang=c :
-     * enum WGPUBufferUsage.WGPUBufferUsage_CopySrc = 4
+     * enum WGPUWaitStatus.WGPUWaitStatus_UnsupportedCount = 3
      * }
      */
-    public static int WGPUBufferUsage_CopySrc() {
-        return WGPUBufferUsage_CopySrc;
+    public static int WGPUWaitStatus_UnsupportedCount() {
+        return WGPUWaitStatus_UnsupportedCount;
     }
-    private static final int WGPUBufferUsage_CopyDst = (int)8L;
+    private static final int WGPUWaitStatus_UnsupportedMixedSources = (int)4L;
     /**
      * {@snippet lang=c :
-     * enum WGPUBufferUsage.WGPUBufferUsage_CopyDst = 8
+     * enum WGPUWaitStatus.WGPUWaitStatus_UnsupportedMixedSources = 4
      * }
      */
-    public static int WGPUBufferUsage_CopyDst() {
-        return WGPUBufferUsage_CopyDst;
+    public static int WGPUWaitStatus_UnsupportedMixedSources() {
+        return WGPUWaitStatus_UnsupportedMixedSources;
     }
-    private static final int WGPUBufferUsage_Index = (int)16L;
+    private static final int WGPUWaitStatus_Force32 = (int)2147483647L;
     /**
      * {@snippet lang=c :
-     * enum WGPUBufferUsage.WGPUBufferUsage_Index = 16
+     * enum WGPUWaitStatus.WGPUWaitStatus_Force32 = 2147483647
      * }
      */
-    public static int WGPUBufferUsage_Index() {
-        return WGPUBufferUsage_Index;
-    }
-    private static final int WGPUBufferUsage_Vertex = (int)32L;
-    /**
-     * {@snippet lang=c :
-     * enum WGPUBufferUsage.WGPUBufferUsage_Vertex = 32
-     * }
-     */
-    public static int WGPUBufferUsage_Vertex() {
-        return WGPUBufferUsage_Vertex;
-    }
-    private static final int WGPUBufferUsage_Uniform = (int)64L;
-    /**
-     * {@snippet lang=c :
-     * enum WGPUBufferUsage.WGPUBufferUsage_Uniform = 64
-     * }
-     */
-    public static int WGPUBufferUsage_Uniform() {
-        return WGPUBufferUsage_Uniform;
-    }
-    private static final int WGPUBufferUsage_Storage = (int)128L;
-    /**
-     * {@snippet lang=c :
-     * enum WGPUBufferUsage.WGPUBufferUsage_Storage = 128
-     * }
-     */
-    public static int WGPUBufferUsage_Storage() {
-        return WGPUBufferUsage_Storage;
-    }
-    private static final int WGPUBufferUsage_Indirect = (int)256L;
-    /**
-     * {@snippet lang=c :
-     * enum WGPUBufferUsage.WGPUBufferUsage_Indirect = 256
-     * }
-     */
-    public static int WGPUBufferUsage_Indirect() {
-        return WGPUBufferUsage_Indirect;
-    }
-    private static final int WGPUBufferUsage_QueryResolve = (int)512L;
-    /**
-     * {@snippet lang=c :
-     * enum WGPUBufferUsage.WGPUBufferUsage_QueryResolve = 512
-     * }
-     */
-    public static int WGPUBufferUsage_QueryResolve() {
-        return WGPUBufferUsage_QueryResolve;
-    }
-    private static final int WGPUBufferUsage_Force32 = (int)2147483647L;
-    /**
-     * {@snippet lang=c :
-     * enum WGPUBufferUsage.WGPUBufferUsage_Force32 = 2147483647
-     * }
-     */
-    public static int WGPUBufferUsage_Force32() {
-        return WGPUBufferUsage_Force32;
+    public static int WGPUWaitStatus_Force32() {
+        return WGPUWaitStatus_Force32;
     }
     /**
      * {@snippet lang=c :
-     * typedef WGPUFlags WGPUBufferUsageFlags
+     * typedef WGPUFlags WGPUBufferUsage
      * }
      */
-    public static final OfInt WGPUBufferUsageFlags = wgpu_h.C_INT;
-    private static final int WGPUColorWriteMask_None = (int)0L;
+    public static final OfLong WGPUBufferUsage = wgpu_h.C_LONG_LONG;
     /**
      * {@snippet lang=c :
-     * enum WGPUColorWriteMask.WGPUColorWriteMask_None = 0
+     * typedef WGPUFlags WGPUColorWriteMask
      * }
      */
-    public static int WGPUColorWriteMask_None() {
-        return WGPUColorWriteMask_None;
-    }
-    private static final int WGPUColorWriteMask_Red = (int)1L;
+    public static final OfLong WGPUColorWriteMask = wgpu_h.C_LONG_LONG;
     /**
      * {@snippet lang=c :
-     * enum WGPUColorWriteMask.WGPUColorWriteMask_Red = 1
+     * typedef WGPUFlags WGPUMapMode
      * }
      */
-    public static int WGPUColorWriteMask_Red() {
-        return WGPUColorWriteMask_Red;
-    }
-    private static final int WGPUColorWriteMask_Green = (int)2L;
+    public static final OfLong WGPUMapMode = wgpu_h.C_LONG_LONG;
     /**
      * {@snippet lang=c :
-     * enum WGPUColorWriteMask.WGPUColorWriteMask_Green = 2
+     * typedef WGPUFlags WGPUShaderStage
      * }
      */
-    public static int WGPUColorWriteMask_Green() {
-        return WGPUColorWriteMask_Green;
-    }
-    private static final int WGPUColorWriteMask_Blue = (int)4L;
+    public static final OfLong WGPUShaderStage = wgpu_h.C_LONG_LONG;
     /**
      * {@snippet lang=c :
-     * enum WGPUColorWriteMask.WGPUColorWriteMask_Blue = 4
+     * typedef WGPUFlags WGPUTextureUsage
      * }
      */
-    public static int WGPUColorWriteMask_Blue() {
-        return WGPUColorWriteMask_Blue;
-    }
-    private static final int WGPUColorWriteMask_Alpha = (int)8L;
-    /**
-     * {@snippet lang=c :
-     * enum WGPUColorWriteMask.WGPUColorWriteMask_Alpha = 8
-     * }
-     */
-    public static int WGPUColorWriteMask_Alpha() {
-        return WGPUColorWriteMask_Alpha;
-    }
-    private static final int WGPUColorWriteMask_All = (int)15L;
-    /**
-     * {@snippet lang=c :
-     * enum WGPUColorWriteMask.WGPUColorWriteMask_All = 15
-     * }
-     */
-    public static int WGPUColorWriteMask_All() {
-        return WGPUColorWriteMask_All;
-    }
-    private static final int WGPUColorWriteMask_Force32 = (int)2147483647L;
-    /**
-     * {@snippet lang=c :
-     * enum WGPUColorWriteMask.WGPUColorWriteMask_Force32 = 2147483647
-     * }
-     */
-    public static int WGPUColorWriteMask_Force32() {
-        return WGPUColorWriteMask_Force32;
-    }
-    /**
-     * {@snippet lang=c :
-     * typedef WGPUFlags WGPUColorWriteMaskFlags
-     * }
-     */
-    public static final OfInt WGPUColorWriteMaskFlags = wgpu_h.C_INT;
-    private static final int WGPUMapMode_None = (int)0L;
-    /**
-     * {@snippet lang=c :
-     * enum WGPUMapMode.WGPUMapMode_None = 0
-     * }
-     */
-    public static int WGPUMapMode_None() {
-        return WGPUMapMode_None;
-    }
-    private static final int WGPUMapMode_Read = (int)1L;
-    /**
-     * {@snippet lang=c :
-     * enum WGPUMapMode.WGPUMapMode_Read = 1
-     * }
-     */
-    public static int WGPUMapMode_Read() {
-        return WGPUMapMode_Read;
-    }
-    private static final int WGPUMapMode_Write = (int)2L;
-    /**
-     * {@snippet lang=c :
-     * enum WGPUMapMode.WGPUMapMode_Write = 2
-     * }
-     */
-    public static int WGPUMapMode_Write() {
-        return WGPUMapMode_Write;
-    }
-    private static final int WGPUMapMode_Force32 = (int)2147483647L;
-    /**
-     * {@snippet lang=c :
-     * enum WGPUMapMode.WGPUMapMode_Force32 = 2147483647
-     * }
-     */
-    public static int WGPUMapMode_Force32() {
-        return WGPUMapMode_Force32;
-    }
-    /**
-     * {@snippet lang=c :
-     * typedef WGPUFlags WGPUMapModeFlags
-     * }
-     */
-    public static final OfInt WGPUMapModeFlags = wgpu_h.C_INT;
-    private static final int WGPUShaderStage_None = (int)0L;
-    /**
-     * {@snippet lang=c :
-     * enum WGPUShaderStage.WGPUShaderStage_None = 0
-     * }
-     */
-    public static int WGPUShaderStage_None() {
-        return WGPUShaderStage_None;
-    }
-    private static final int WGPUShaderStage_Vertex = (int)1L;
-    /**
-     * {@snippet lang=c :
-     * enum WGPUShaderStage.WGPUShaderStage_Vertex = 1
-     * }
-     */
-    public static int WGPUShaderStage_Vertex() {
-        return WGPUShaderStage_Vertex;
-    }
-    private static final int WGPUShaderStage_Fragment = (int)2L;
-    /**
-     * {@snippet lang=c :
-     * enum WGPUShaderStage.WGPUShaderStage_Fragment = 2
-     * }
-     */
-    public static int WGPUShaderStage_Fragment() {
-        return WGPUShaderStage_Fragment;
-    }
-    private static final int WGPUShaderStage_Compute = (int)4L;
-    /**
-     * {@snippet lang=c :
-     * enum WGPUShaderStage.WGPUShaderStage_Compute = 4
-     * }
-     */
-    public static int WGPUShaderStage_Compute() {
-        return WGPUShaderStage_Compute;
-    }
-    private static final int WGPUShaderStage_Force32 = (int)2147483647L;
-    /**
-     * {@snippet lang=c :
-     * enum WGPUShaderStage.WGPUShaderStage_Force32 = 2147483647
-     * }
-     */
-    public static int WGPUShaderStage_Force32() {
-        return WGPUShaderStage_Force32;
-    }
-    /**
-     * {@snippet lang=c :
-     * typedef WGPUFlags WGPUShaderStageFlags
-     * }
-     */
-    public static final OfInt WGPUShaderStageFlags = wgpu_h.C_INT;
-    private static final int WGPUTextureUsage_None = (int)0L;
-    /**
-     * {@snippet lang=c :
-     * enum WGPUTextureUsage.WGPUTextureUsage_None = 0
-     * }
-     */
-    public static int WGPUTextureUsage_None() {
-        return WGPUTextureUsage_None;
-    }
-    private static final int WGPUTextureUsage_CopySrc = (int)1L;
-    /**
-     * {@snippet lang=c :
-     * enum WGPUTextureUsage.WGPUTextureUsage_CopySrc = 1
-     * }
-     */
-    public static int WGPUTextureUsage_CopySrc() {
-        return WGPUTextureUsage_CopySrc;
-    }
-    private static final int WGPUTextureUsage_CopyDst = (int)2L;
-    /**
-     * {@snippet lang=c :
-     * enum WGPUTextureUsage.WGPUTextureUsage_CopyDst = 2
-     * }
-     */
-    public static int WGPUTextureUsage_CopyDst() {
-        return WGPUTextureUsage_CopyDst;
-    }
-    private static final int WGPUTextureUsage_TextureBinding = (int)4L;
-    /**
-     * {@snippet lang=c :
-     * enum WGPUTextureUsage.WGPUTextureUsage_TextureBinding = 4
-     * }
-     */
-    public static int WGPUTextureUsage_TextureBinding() {
-        return WGPUTextureUsage_TextureBinding;
-    }
-    private static final int WGPUTextureUsage_StorageBinding = (int)8L;
-    /**
-     * {@snippet lang=c :
-     * enum WGPUTextureUsage.WGPUTextureUsage_StorageBinding = 8
-     * }
-     */
-    public static int WGPUTextureUsage_StorageBinding() {
-        return WGPUTextureUsage_StorageBinding;
-    }
-    private static final int WGPUTextureUsage_RenderAttachment = (int)16L;
-    /**
-     * {@snippet lang=c :
-     * enum WGPUTextureUsage.WGPUTextureUsage_RenderAttachment = 16
-     * }
-     */
-    public static int WGPUTextureUsage_RenderAttachment() {
-        return WGPUTextureUsage_RenderAttachment;
-    }
-    private static final int WGPUTextureUsage_Force32 = (int)2147483647L;
-    /**
-     * {@snippet lang=c :
-     * enum WGPUTextureUsage.WGPUTextureUsage_Force32 = 2147483647
-     * }
-     */
-    public static int WGPUTextureUsage_Force32() {
-        return WGPUTextureUsage_Force32;
-    }
-    /**
-     * {@snippet lang=c :
-     * typedef WGPUFlags WGPUTextureUsageFlags
-     * }
-     */
-    public static final OfInt WGPUTextureUsageFlags = wgpu_h.C_INT;
+    public static final OfLong WGPUTextureUsage = wgpu_h.C_LONG_LONG;
 
     private static class wgpuCreateInstance {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
@@ -4788,11 +4640,67 @@ public class wgpu_h {
         }
     }
 
+    private static class wgpuGetInstanceFeatures {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+            wgpu_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = wgpu_h.findOrThrow("wgpuGetInstanceFeatures");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * void wgpuGetInstanceFeatures(WGPUInstanceFeatures *features)
+     * }
+     */
+    public static FunctionDescriptor wgpuGetInstanceFeatures$descriptor() {
+        return wgpuGetInstanceFeatures.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * void wgpuGetInstanceFeatures(WGPUInstanceFeatures *features)
+     * }
+     */
+    public static MethodHandle wgpuGetInstanceFeatures$handle() {
+        return wgpuGetInstanceFeatures.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * void wgpuGetInstanceFeatures(WGPUInstanceFeatures *features)
+     * }
+     */
+    public static MemorySegment wgpuGetInstanceFeatures$address() {
+        return wgpuGetInstanceFeatures.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * void wgpuGetInstanceFeatures(WGPUInstanceFeatures *features)
+     * }
+     */
+    public static void wgpuGetInstanceFeatures(MemorySegment features) {
+        var mh$ = wgpuGetInstanceFeatures.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("wgpuGetInstanceFeatures", features);
+            }
+            mh$.invokeExact(features);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
     private static class wgpuGetProcAddress {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
             wgpu_h.C_POINTER,
-            wgpu_h.C_POINTER,
-            wgpu_h.C_POINTER
+            WGPUStringView.layout()
         );
 
         public static final MemorySegment ADDR = wgpu_h.findOrThrow("wgpuGetProcAddress");
@@ -4803,7 +4711,7 @@ public class wgpu_h {
     /**
      * Function descriptor for:
      * {@snippet lang=c :
-     * WGPUProc wgpuGetProcAddress(WGPUDevice device, const char *procName)
+     * WGPUProc wgpuGetProcAddress(WGPUStringView procName)
      * }
      */
     public static FunctionDescriptor wgpuGetProcAddress$descriptor() {
@@ -4813,7 +4721,7 @@ public class wgpu_h {
     /**
      * Downcall method handle for:
      * {@snippet lang=c :
-     * WGPUProc wgpuGetProcAddress(WGPUDevice device, const char *procName)
+     * WGPUProc wgpuGetProcAddress(WGPUStringView procName)
      * }
      */
     public static MethodHandle wgpuGetProcAddress$handle() {
@@ -4823,7 +4731,7 @@ public class wgpu_h {
     /**
      * Address for:
      * {@snippet lang=c :
-     * WGPUProc wgpuGetProcAddress(WGPUDevice device, const char *procName)
+     * WGPUProc wgpuGetProcAddress(WGPUStringView procName)
      * }
      */
     public static MemorySegment wgpuGetProcAddress$address() {
@@ -4832,29 +4740,29 @@ public class wgpu_h {
 
     /**
      * {@snippet lang=c :
-     * WGPUProc wgpuGetProcAddress(WGPUDevice device, const char *procName)
+     * WGPUProc wgpuGetProcAddress(WGPUStringView procName)
      * }
      */
-    public static MemorySegment wgpuGetProcAddress(MemorySegment device, MemorySegment procName) {
+    public static MemorySegment wgpuGetProcAddress(MemorySegment procName) {
         var mh$ = wgpuGetProcAddress.HANDLE;
         try {
             if (TRACE_DOWNCALLS) {
-                traceDowncall("wgpuGetProcAddress", device, procName);
+                traceDowncall("wgpuGetProcAddress", procName);
             }
-            return (MemorySegment)mh$.invokeExact(device, procName);
+            return (MemorySegment)mh$.invokeExact(procName);
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
     }
 
-    private static class wgpuAdapterEnumerateFeatures {
+    private static class wgpuAdapterGetFeatures {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            wgpu_h.C_LONG,
+            wgpu_h.C_INT,
             wgpu_h.C_POINTER,
             wgpu_h.C_POINTER
         );
 
-        public static final MemorySegment ADDR = wgpu_h.findOrThrow("wgpuAdapterEnumerateFeatures");
+        public static final MemorySegment ADDR = wgpu_h.findOrThrow("wgpuAdapterGetFeatures");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -4862,45 +4770,45 @@ public class wgpu_h {
     /**
      * Function descriptor for:
      * {@snippet lang=c :
-     * size_t wgpuAdapterEnumerateFeatures(WGPUAdapter adapter, WGPUFeatureName *features)
+     * WGPUStatus wgpuAdapterGetFeatures(WGPUAdapter adapter, WGPUSupportedFeatures *features)
      * }
      */
-    public static FunctionDescriptor wgpuAdapterEnumerateFeatures$descriptor() {
-        return wgpuAdapterEnumerateFeatures.DESC;
+    public static FunctionDescriptor wgpuAdapterGetFeatures$descriptor() {
+        return wgpuAdapterGetFeatures.DESC;
     }
 
     /**
      * Downcall method handle for:
      * {@snippet lang=c :
-     * size_t wgpuAdapterEnumerateFeatures(WGPUAdapter adapter, WGPUFeatureName *features)
+     * WGPUStatus wgpuAdapterGetFeatures(WGPUAdapter adapter, WGPUSupportedFeatures *features)
      * }
      */
-    public static MethodHandle wgpuAdapterEnumerateFeatures$handle() {
-        return wgpuAdapterEnumerateFeatures.HANDLE;
+    public static MethodHandle wgpuAdapterGetFeatures$handle() {
+        return wgpuAdapterGetFeatures.HANDLE;
     }
 
     /**
      * Address for:
      * {@snippet lang=c :
-     * size_t wgpuAdapterEnumerateFeatures(WGPUAdapter adapter, WGPUFeatureName *features)
+     * WGPUStatus wgpuAdapterGetFeatures(WGPUAdapter adapter, WGPUSupportedFeatures *features)
      * }
      */
-    public static MemorySegment wgpuAdapterEnumerateFeatures$address() {
-        return wgpuAdapterEnumerateFeatures.ADDR;
+    public static MemorySegment wgpuAdapterGetFeatures$address() {
+        return wgpuAdapterGetFeatures.ADDR;
     }
 
     /**
      * {@snippet lang=c :
-     * size_t wgpuAdapterEnumerateFeatures(WGPUAdapter adapter, WGPUFeatureName *features)
+     * WGPUStatus wgpuAdapterGetFeatures(WGPUAdapter adapter, WGPUSupportedFeatures *features)
      * }
      */
-    public static long wgpuAdapterEnumerateFeatures(MemorySegment adapter, MemorySegment features) {
-        var mh$ = wgpuAdapterEnumerateFeatures.HANDLE;
+    public static int wgpuAdapterGetFeatures(MemorySegment adapter, MemorySegment features) {
+        var mh$ = wgpuAdapterGetFeatures.HANDLE;
         try {
             if (TRACE_DOWNCALLS) {
-                traceDowncall("wgpuAdapterEnumerateFeatures", adapter, features);
+                traceDowncall("wgpuAdapterGetFeatures", adapter, features);
             }
-            return (long)mh$.invokeExact(adapter, features);
+            return (int)mh$.invokeExact(adapter, features);
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -5083,11 +4991,11 @@ public class wgpu_h {
     }
 
     private static class wgpuAdapterRequestDevice {
-        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            WGPUFuture.layout(),
             wgpu_h.C_POINTER,
             wgpu_h.C_POINTER,
-            wgpu_h.C_POINTER,
-            wgpu_h.C_POINTER
+            WGPURequestDeviceCallbackInfo.layout()
         );
 
         public static final MemorySegment ADDR = wgpu_h.findOrThrow("wgpuAdapterRequestDevice");
@@ -5098,7 +5006,7 @@ public class wgpu_h {
     /**
      * Function descriptor for:
      * {@snippet lang=c :
-     * void wgpuAdapterRequestDevice(WGPUAdapter adapter, const WGPUDeviceDescriptor *descriptor, WGPUAdapterRequestDeviceCallback callback, void *userdata)
+     * WGPUFuture wgpuAdapterRequestDevice(WGPUAdapter adapter, const WGPUDeviceDescriptor *descriptor, WGPURequestDeviceCallbackInfo callbackInfo)
      * }
      */
     public static FunctionDescriptor wgpuAdapterRequestDevice$descriptor() {
@@ -5108,7 +5016,7 @@ public class wgpu_h {
     /**
      * Downcall method handle for:
      * {@snippet lang=c :
-     * void wgpuAdapterRequestDevice(WGPUAdapter adapter, const WGPUDeviceDescriptor *descriptor, WGPUAdapterRequestDeviceCallback callback, void *userdata)
+     * WGPUFuture wgpuAdapterRequestDevice(WGPUAdapter adapter, const WGPUDeviceDescriptor *descriptor, WGPURequestDeviceCallbackInfo callbackInfo)
      * }
      */
     public static MethodHandle wgpuAdapterRequestDevice$handle() {
@@ -5118,7 +5026,7 @@ public class wgpu_h {
     /**
      * Address for:
      * {@snippet lang=c :
-     * void wgpuAdapterRequestDevice(WGPUAdapter adapter, const WGPUDeviceDescriptor *descriptor, WGPUAdapterRequestDeviceCallback callback, void *userdata)
+     * WGPUFuture wgpuAdapterRequestDevice(WGPUAdapter adapter, const WGPUDeviceDescriptor *descriptor, WGPURequestDeviceCallbackInfo callbackInfo)
      * }
      */
     public static MemorySegment wgpuAdapterRequestDevice$address() {
@@ -5127,27 +5035,27 @@ public class wgpu_h {
 
     /**
      * {@snippet lang=c :
-     * void wgpuAdapterRequestDevice(WGPUAdapter adapter, const WGPUDeviceDescriptor *descriptor, WGPUAdapterRequestDeviceCallback callback, void *userdata)
+     * WGPUFuture wgpuAdapterRequestDevice(WGPUAdapter adapter, const WGPUDeviceDescriptor *descriptor, WGPURequestDeviceCallbackInfo callbackInfo)
      * }
      */
-    public static void wgpuAdapterRequestDevice(MemorySegment adapter, MemorySegment descriptor, MemorySegment callback, MemorySegment userdata) {
+    public static MemorySegment wgpuAdapterRequestDevice(SegmentAllocator allocator, MemorySegment adapter, MemorySegment descriptor, MemorySegment callbackInfo) {
         var mh$ = wgpuAdapterRequestDevice.HANDLE;
         try {
             if (TRACE_DOWNCALLS) {
-                traceDowncall("wgpuAdapterRequestDevice", adapter, descriptor, callback, userdata);
+                traceDowncall("wgpuAdapterRequestDevice", allocator, adapter, descriptor, callbackInfo);
             }
-            mh$.invokeExact(adapter, descriptor, callback, userdata);
+            return (MemorySegment)mh$.invokeExact(allocator, adapter, descriptor, callbackInfo);
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
     }
 
-    private static class wgpuAdapterReference {
+    private static class wgpuAdapterAddRef {
         public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
             wgpu_h.C_POINTER
         );
 
-        public static final MemorySegment ADDR = wgpu_h.findOrThrow("wgpuAdapterReference");
+        public static final MemorySegment ADDR = wgpu_h.findOrThrow("wgpuAdapterAddRef");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -5155,43 +5063,43 @@ public class wgpu_h {
     /**
      * Function descriptor for:
      * {@snippet lang=c :
-     * void wgpuAdapterReference(WGPUAdapter adapter)
+     * void wgpuAdapterAddRef(WGPUAdapter adapter)
      * }
      */
-    public static FunctionDescriptor wgpuAdapterReference$descriptor() {
-        return wgpuAdapterReference.DESC;
+    public static FunctionDescriptor wgpuAdapterAddRef$descriptor() {
+        return wgpuAdapterAddRef.DESC;
     }
 
     /**
      * Downcall method handle for:
      * {@snippet lang=c :
-     * void wgpuAdapterReference(WGPUAdapter adapter)
+     * void wgpuAdapterAddRef(WGPUAdapter adapter)
      * }
      */
-    public static MethodHandle wgpuAdapterReference$handle() {
-        return wgpuAdapterReference.HANDLE;
+    public static MethodHandle wgpuAdapterAddRef$handle() {
+        return wgpuAdapterAddRef.HANDLE;
     }
 
     /**
      * Address for:
      * {@snippet lang=c :
-     * void wgpuAdapterReference(WGPUAdapter adapter)
+     * void wgpuAdapterAddRef(WGPUAdapter adapter)
      * }
      */
-    public static MemorySegment wgpuAdapterReference$address() {
-        return wgpuAdapterReference.ADDR;
+    public static MemorySegment wgpuAdapterAddRef$address() {
+        return wgpuAdapterAddRef.ADDR;
     }
 
     /**
      * {@snippet lang=c :
-     * void wgpuAdapterReference(WGPUAdapter adapter)
+     * void wgpuAdapterAddRef(WGPUAdapter adapter)
      * }
      */
-    public static void wgpuAdapterReference(MemorySegment adapter) {
-        var mh$ = wgpuAdapterReference.HANDLE;
+    public static void wgpuAdapterAddRef(MemorySegment adapter) {
+        var mh$ = wgpuAdapterAddRef.HANDLE;
         try {
             if (TRACE_DOWNCALLS) {
-                traceDowncall("wgpuAdapterReference", adapter);
+                traceDowncall("wgpuAdapterAddRef", adapter);
             }
             mh$.invokeExact(adapter);
         } catch (Throwable ex$) {
@@ -5316,7 +5224,7 @@ public class wgpu_h {
     private static class wgpuBindGroupSetLabel {
         public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
             wgpu_h.C_POINTER,
-            wgpu_h.C_POINTER
+            WGPUStringView.layout()
         );
 
         public static final MemorySegment ADDR = wgpu_h.findOrThrow("wgpuBindGroupSetLabel");
@@ -5327,7 +5235,7 @@ public class wgpu_h {
     /**
      * Function descriptor for:
      * {@snippet lang=c :
-     * void wgpuBindGroupSetLabel(WGPUBindGroup bindGroup, const char *label)
+     * void wgpuBindGroupSetLabel(WGPUBindGroup bindGroup, WGPUStringView label)
      * }
      */
     public static FunctionDescriptor wgpuBindGroupSetLabel$descriptor() {
@@ -5337,7 +5245,7 @@ public class wgpu_h {
     /**
      * Downcall method handle for:
      * {@snippet lang=c :
-     * void wgpuBindGroupSetLabel(WGPUBindGroup bindGroup, const char *label)
+     * void wgpuBindGroupSetLabel(WGPUBindGroup bindGroup, WGPUStringView label)
      * }
      */
     public static MethodHandle wgpuBindGroupSetLabel$handle() {
@@ -5347,7 +5255,7 @@ public class wgpu_h {
     /**
      * Address for:
      * {@snippet lang=c :
-     * void wgpuBindGroupSetLabel(WGPUBindGroup bindGroup, const char *label)
+     * void wgpuBindGroupSetLabel(WGPUBindGroup bindGroup, WGPUStringView label)
      * }
      */
     public static MemorySegment wgpuBindGroupSetLabel$address() {
@@ -5356,7 +5264,7 @@ public class wgpu_h {
 
     /**
      * {@snippet lang=c :
-     * void wgpuBindGroupSetLabel(WGPUBindGroup bindGroup, const char *label)
+     * void wgpuBindGroupSetLabel(WGPUBindGroup bindGroup, WGPUStringView label)
      * }
      */
     public static void wgpuBindGroupSetLabel(MemorySegment bindGroup, MemorySegment label) {
@@ -5371,12 +5279,12 @@ public class wgpu_h {
         }
     }
 
-    private static class wgpuBindGroupReference {
+    private static class wgpuBindGroupAddRef {
         public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
             wgpu_h.C_POINTER
         );
 
-        public static final MemorySegment ADDR = wgpu_h.findOrThrow("wgpuBindGroupReference");
+        public static final MemorySegment ADDR = wgpu_h.findOrThrow("wgpuBindGroupAddRef");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -5384,43 +5292,43 @@ public class wgpu_h {
     /**
      * Function descriptor for:
      * {@snippet lang=c :
-     * void wgpuBindGroupReference(WGPUBindGroup bindGroup)
+     * void wgpuBindGroupAddRef(WGPUBindGroup bindGroup)
      * }
      */
-    public static FunctionDescriptor wgpuBindGroupReference$descriptor() {
-        return wgpuBindGroupReference.DESC;
+    public static FunctionDescriptor wgpuBindGroupAddRef$descriptor() {
+        return wgpuBindGroupAddRef.DESC;
     }
 
     /**
      * Downcall method handle for:
      * {@snippet lang=c :
-     * void wgpuBindGroupReference(WGPUBindGroup bindGroup)
+     * void wgpuBindGroupAddRef(WGPUBindGroup bindGroup)
      * }
      */
-    public static MethodHandle wgpuBindGroupReference$handle() {
-        return wgpuBindGroupReference.HANDLE;
+    public static MethodHandle wgpuBindGroupAddRef$handle() {
+        return wgpuBindGroupAddRef.HANDLE;
     }
 
     /**
      * Address for:
      * {@snippet lang=c :
-     * void wgpuBindGroupReference(WGPUBindGroup bindGroup)
+     * void wgpuBindGroupAddRef(WGPUBindGroup bindGroup)
      * }
      */
-    public static MemorySegment wgpuBindGroupReference$address() {
-        return wgpuBindGroupReference.ADDR;
+    public static MemorySegment wgpuBindGroupAddRef$address() {
+        return wgpuBindGroupAddRef.ADDR;
     }
 
     /**
      * {@snippet lang=c :
-     * void wgpuBindGroupReference(WGPUBindGroup bindGroup)
+     * void wgpuBindGroupAddRef(WGPUBindGroup bindGroup)
      * }
      */
-    public static void wgpuBindGroupReference(MemorySegment bindGroup) {
-        var mh$ = wgpuBindGroupReference.HANDLE;
+    public static void wgpuBindGroupAddRef(MemorySegment bindGroup) {
+        var mh$ = wgpuBindGroupAddRef.HANDLE;
         try {
             if (TRACE_DOWNCALLS) {
-                traceDowncall("wgpuBindGroupReference", bindGroup);
+                traceDowncall("wgpuBindGroupAddRef", bindGroup);
             }
             mh$.invokeExact(bindGroup);
         } catch (Throwable ex$) {
@@ -5488,7 +5396,7 @@ public class wgpu_h {
     private static class wgpuBindGroupLayoutSetLabel {
         public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
             wgpu_h.C_POINTER,
-            wgpu_h.C_POINTER
+            WGPUStringView.layout()
         );
 
         public static final MemorySegment ADDR = wgpu_h.findOrThrow("wgpuBindGroupLayoutSetLabel");
@@ -5499,7 +5407,7 @@ public class wgpu_h {
     /**
      * Function descriptor for:
      * {@snippet lang=c :
-     * void wgpuBindGroupLayoutSetLabel(WGPUBindGroupLayout bindGroupLayout, const char *label)
+     * void wgpuBindGroupLayoutSetLabel(WGPUBindGroupLayout bindGroupLayout, WGPUStringView label)
      * }
      */
     public static FunctionDescriptor wgpuBindGroupLayoutSetLabel$descriptor() {
@@ -5509,7 +5417,7 @@ public class wgpu_h {
     /**
      * Downcall method handle for:
      * {@snippet lang=c :
-     * void wgpuBindGroupLayoutSetLabel(WGPUBindGroupLayout bindGroupLayout, const char *label)
+     * void wgpuBindGroupLayoutSetLabel(WGPUBindGroupLayout bindGroupLayout, WGPUStringView label)
      * }
      */
     public static MethodHandle wgpuBindGroupLayoutSetLabel$handle() {
@@ -5519,7 +5427,7 @@ public class wgpu_h {
     /**
      * Address for:
      * {@snippet lang=c :
-     * void wgpuBindGroupLayoutSetLabel(WGPUBindGroupLayout bindGroupLayout, const char *label)
+     * void wgpuBindGroupLayoutSetLabel(WGPUBindGroupLayout bindGroupLayout, WGPUStringView label)
      * }
      */
     public static MemorySegment wgpuBindGroupLayoutSetLabel$address() {
@@ -5528,7 +5436,7 @@ public class wgpu_h {
 
     /**
      * {@snippet lang=c :
-     * void wgpuBindGroupLayoutSetLabel(WGPUBindGroupLayout bindGroupLayout, const char *label)
+     * void wgpuBindGroupLayoutSetLabel(WGPUBindGroupLayout bindGroupLayout, WGPUStringView label)
      * }
      */
     public static void wgpuBindGroupLayoutSetLabel(MemorySegment bindGroupLayout, MemorySegment label) {
@@ -5543,12 +5451,12 @@ public class wgpu_h {
         }
     }
 
-    private static class wgpuBindGroupLayoutReference {
+    private static class wgpuBindGroupLayoutAddRef {
         public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
             wgpu_h.C_POINTER
         );
 
-        public static final MemorySegment ADDR = wgpu_h.findOrThrow("wgpuBindGroupLayoutReference");
+        public static final MemorySegment ADDR = wgpu_h.findOrThrow("wgpuBindGroupLayoutAddRef");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -5556,43 +5464,43 @@ public class wgpu_h {
     /**
      * Function descriptor for:
      * {@snippet lang=c :
-     * void wgpuBindGroupLayoutReference(WGPUBindGroupLayout bindGroupLayout)
+     * void wgpuBindGroupLayoutAddRef(WGPUBindGroupLayout bindGroupLayout)
      * }
      */
-    public static FunctionDescriptor wgpuBindGroupLayoutReference$descriptor() {
-        return wgpuBindGroupLayoutReference.DESC;
+    public static FunctionDescriptor wgpuBindGroupLayoutAddRef$descriptor() {
+        return wgpuBindGroupLayoutAddRef.DESC;
     }
 
     /**
      * Downcall method handle for:
      * {@snippet lang=c :
-     * void wgpuBindGroupLayoutReference(WGPUBindGroupLayout bindGroupLayout)
+     * void wgpuBindGroupLayoutAddRef(WGPUBindGroupLayout bindGroupLayout)
      * }
      */
-    public static MethodHandle wgpuBindGroupLayoutReference$handle() {
-        return wgpuBindGroupLayoutReference.HANDLE;
+    public static MethodHandle wgpuBindGroupLayoutAddRef$handle() {
+        return wgpuBindGroupLayoutAddRef.HANDLE;
     }
 
     /**
      * Address for:
      * {@snippet lang=c :
-     * void wgpuBindGroupLayoutReference(WGPUBindGroupLayout bindGroupLayout)
+     * void wgpuBindGroupLayoutAddRef(WGPUBindGroupLayout bindGroupLayout)
      * }
      */
-    public static MemorySegment wgpuBindGroupLayoutReference$address() {
-        return wgpuBindGroupLayoutReference.ADDR;
+    public static MemorySegment wgpuBindGroupLayoutAddRef$address() {
+        return wgpuBindGroupLayoutAddRef.ADDR;
     }
 
     /**
      * {@snippet lang=c :
-     * void wgpuBindGroupLayoutReference(WGPUBindGroupLayout bindGroupLayout)
+     * void wgpuBindGroupLayoutAddRef(WGPUBindGroupLayout bindGroupLayout)
      * }
      */
-    public static void wgpuBindGroupLayoutReference(MemorySegment bindGroupLayout) {
-        var mh$ = wgpuBindGroupLayoutReference.HANDLE;
+    public static void wgpuBindGroupLayoutAddRef(MemorySegment bindGroupLayout) {
+        var mh$ = wgpuBindGroupLayoutAddRef.HANDLE;
         try {
             if (TRACE_DOWNCALLS) {
-                traceDowncall("wgpuBindGroupLayoutReference", bindGroupLayout);
+                traceDowncall("wgpuBindGroupLayoutAddRef", bindGroupLayout);
             }
             mh$.invokeExact(bindGroupLayout);
         } catch (Throwable ex$) {
@@ -5952,7 +5860,7 @@ public class wgpu_h {
 
     private static class wgpuBufferGetUsage {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            wgpu_h.C_INT,
+            wgpu_h.C_LONG_LONG,
             wgpu_h.C_POINTER
         );
 
@@ -5964,7 +5872,7 @@ public class wgpu_h {
     /**
      * Function descriptor for:
      * {@snippet lang=c :
-     * WGPUBufferUsageFlags wgpuBufferGetUsage(WGPUBuffer buffer)
+     * WGPUBufferUsage wgpuBufferGetUsage(WGPUBuffer buffer)
      * }
      */
     public static FunctionDescriptor wgpuBufferGetUsage$descriptor() {
@@ -5974,7 +5882,7 @@ public class wgpu_h {
     /**
      * Downcall method handle for:
      * {@snippet lang=c :
-     * WGPUBufferUsageFlags wgpuBufferGetUsage(WGPUBuffer buffer)
+     * WGPUBufferUsage wgpuBufferGetUsage(WGPUBuffer buffer)
      * }
      */
     public static MethodHandle wgpuBufferGetUsage$handle() {
@@ -5984,7 +5892,7 @@ public class wgpu_h {
     /**
      * Address for:
      * {@snippet lang=c :
-     * WGPUBufferUsageFlags wgpuBufferGetUsage(WGPUBuffer buffer)
+     * WGPUBufferUsage wgpuBufferGetUsage(WGPUBuffer buffer)
      * }
      */
     public static MemorySegment wgpuBufferGetUsage$address() {
@@ -5993,29 +5901,29 @@ public class wgpu_h {
 
     /**
      * {@snippet lang=c :
-     * WGPUBufferUsageFlags wgpuBufferGetUsage(WGPUBuffer buffer)
+     * WGPUBufferUsage wgpuBufferGetUsage(WGPUBuffer buffer)
      * }
      */
-    public static int wgpuBufferGetUsage(MemorySegment buffer) {
+    public static long wgpuBufferGetUsage(MemorySegment buffer) {
         var mh$ = wgpuBufferGetUsage.HANDLE;
         try {
             if (TRACE_DOWNCALLS) {
                 traceDowncall("wgpuBufferGetUsage", buffer);
             }
-            return (int)mh$.invokeExact(buffer);
+            return (long)mh$.invokeExact(buffer);
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
     }
 
     private static class wgpuBufferMapAsync {
-        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            WGPUFuture.layout(),
             wgpu_h.C_POINTER,
-            wgpu_h.C_INT,
+            wgpu_h.C_LONG_LONG,
             wgpu_h.C_LONG,
             wgpu_h.C_LONG,
-            wgpu_h.C_POINTER,
-            wgpu_h.C_POINTER
+            WGPUBufferMapCallbackInfo.layout()
         );
 
         public static final MemorySegment ADDR = wgpu_h.findOrThrow("wgpuBufferMapAsync");
@@ -6026,7 +5934,7 @@ public class wgpu_h {
     /**
      * Function descriptor for:
      * {@snippet lang=c :
-     * void wgpuBufferMapAsync(WGPUBuffer buffer, WGPUMapModeFlags mode, size_t offset, size_t size, WGPUBufferMapAsyncCallback callback, void *userdata)
+     * WGPUFuture wgpuBufferMapAsync(WGPUBuffer buffer, WGPUMapMode mode, size_t offset, size_t size, WGPUBufferMapCallbackInfo callbackInfo)
      * }
      */
     public static FunctionDescriptor wgpuBufferMapAsync$descriptor() {
@@ -6036,7 +5944,7 @@ public class wgpu_h {
     /**
      * Downcall method handle for:
      * {@snippet lang=c :
-     * void wgpuBufferMapAsync(WGPUBuffer buffer, WGPUMapModeFlags mode, size_t offset, size_t size, WGPUBufferMapAsyncCallback callback, void *userdata)
+     * WGPUFuture wgpuBufferMapAsync(WGPUBuffer buffer, WGPUMapMode mode, size_t offset, size_t size, WGPUBufferMapCallbackInfo callbackInfo)
      * }
      */
     public static MethodHandle wgpuBufferMapAsync$handle() {
@@ -6046,7 +5954,7 @@ public class wgpu_h {
     /**
      * Address for:
      * {@snippet lang=c :
-     * void wgpuBufferMapAsync(WGPUBuffer buffer, WGPUMapModeFlags mode, size_t offset, size_t size, WGPUBufferMapAsyncCallback callback, void *userdata)
+     * WGPUFuture wgpuBufferMapAsync(WGPUBuffer buffer, WGPUMapMode mode, size_t offset, size_t size, WGPUBufferMapCallbackInfo callbackInfo)
      * }
      */
     public static MemorySegment wgpuBufferMapAsync$address() {
@@ -6055,16 +5963,16 @@ public class wgpu_h {
 
     /**
      * {@snippet lang=c :
-     * void wgpuBufferMapAsync(WGPUBuffer buffer, WGPUMapModeFlags mode, size_t offset, size_t size, WGPUBufferMapAsyncCallback callback, void *userdata)
+     * WGPUFuture wgpuBufferMapAsync(WGPUBuffer buffer, WGPUMapMode mode, size_t offset, size_t size, WGPUBufferMapCallbackInfo callbackInfo)
      * }
      */
-    public static void wgpuBufferMapAsync(MemorySegment buffer, int mode, long offset, long size, MemorySegment callback, MemorySegment userdata) {
+    public static MemorySegment wgpuBufferMapAsync(SegmentAllocator allocator, MemorySegment buffer, long mode, long offset, long size, MemorySegment callbackInfo) {
         var mh$ = wgpuBufferMapAsync.HANDLE;
         try {
             if (TRACE_DOWNCALLS) {
-                traceDowncall("wgpuBufferMapAsync", buffer, mode, offset, size, callback, userdata);
+                traceDowncall("wgpuBufferMapAsync", allocator, buffer, mode, offset, size, callbackInfo);
             }
-            mh$.invokeExact(buffer, mode, offset, size, callback, userdata);
+            return (MemorySegment)mh$.invokeExact(allocator, buffer, mode, offset, size, callbackInfo);
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -6073,7 +5981,7 @@ public class wgpu_h {
     private static class wgpuBufferSetLabel {
         public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
             wgpu_h.C_POINTER,
-            wgpu_h.C_POINTER
+            WGPUStringView.layout()
         );
 
         public static final MemorySegment ADDR = wgpu_h.findOrThrow("wgpuBufferSetLabel");
@@ -6084,7 +5992,7 @@ public class wgpu_h {
     /**
      * Function descriptor for:
      * {@snippet lang=c :
-     * void wgpuBufferSetLabel(WGPUBuffer buffer, const char *label)
+     * void wgpuBufferSetLabel(WGPUBuffer buffer, WGPUStringView label)
      * }
      */
     public static FunctionDescriptor wgpuBufferSetLabel$descriptor() {
@@ -6094,7 +6002,7 @@ public class wgpu_h {
     /**
      * Downcall method handle for:
      * {@snippet lang=c :
-     * void wgpuBufferSetLabel(WGPUBuffer buffer, const char *label)
+     * void wgpuBufferSetLabel(WGPUBuffer buffer, WGPUStringView label)
      * }
      */
     public static MethodHandle wgpuBufferSetLabel$handle() {
@@ -6104,7 +6012,7 @@ public class wgpu_h {
     /**
      * Address for:
      * {@snippet lang=c :
-     * void wgpuBufferSetLabel(WGPUBuffer buffer, const char *label)
+     * void wgpuBufferSetLabel(WGPUBuffer buffer, WGPUStringView label)
      * }
      */
     public static MemorySegment wgpuBufferSetLabel$address() {
@@ -6113,7 +6021,7 @@ public class wgpu_h {
 
     /**
      * {@snippet lang=c :
-     * void wgpuBufferSetLabel(WGPUBuffer buffer, const char *label)
+     * void wgpuBufferSetLabel(WGPUBuffer buffer, WGPUStringView label)
      * }
      */
     public static void wgpuBufferSetLabel(MemorySegment buffer, MemorySegment label) {
@@ -6185,12 +6093,12 @@ public class wgpu_h {
         }
     }
 
-    private static class wgpuBufferReference {
+    private static class wgpuBufferAddRef {
         public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
             wgpu_h.C_POINTER
         );
 
-        public static final MemorySegment ADDR = wgpu_h.findOrThrow("wgpuBufferReference");
+        public static final MemorySegment ADDR = wgpu_h.findOrThrow("wgpuBufferAddRef");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -6198,43 +6106,43 @@ public class wgpu_h {
     /**
      * Function descriptor for:
      * {@snippet lang=c :
-     * void wgpuBufferReference(WGPUBuffer buffer)
+     * void wgpuBufferAddRef(WGPUBuffer buffer)
      * }
      */
-    public static FunctionDescriptor wgpuBufferReference$descriptor() {
-        return wgpuBufferReference.DESC;
+    public static FunctionDescriptor wgpuBufferAddRef$descriptor() {
+        return wgpuBufferAddRef.DESC;
     }
 
     /**
      * Downcall method handle for:
      * {@snippet lang=c :
-     * void wgpuBufferReference(WGPUBuffer buffer)
+     * void wgpuBufferAddRef(WGPUBuffer buffer)
      * }
      */
-    public static MethodHandle wgpuBufferReference$handle() {
-        return wgpuBufferReference.HANDLE;
+    public static MethodHandle wgpuBufferAddRef$handle() {
+        return wgpuBufferAddRef.HANDLE;
     }
 
     /**
      * Address for:
      * {@snippet lang=c :
-     * void wgpuBufferReference(WGPUBuffer buffer)
+     * void wgpuBufferAddRef(WGPUBuffer buffer)
      * }
      */
-    public static MemorySegment wgpuBufferReference$address() {
-        return wgpuBufferReference.ADDR;
+    public static MemorySegment wgpuBufferAddRef$address() {
+        return wgpuBufferAddRef.ADDR;
     }
 
     /**
      * {@snippet lang=c :
-     * void wgpuBufferReference(WGPUBuffer buffer)
+     * void wgpuBufferAddRef(WGPUBuffer buffer)
      * }
      */
-    public static void wgpuBufferReference(MemorySegment buffer) {
-        var mh$ = wgpuBufferReference.HANDLE;
+    public static void wgpuBufferAddRef(MemorySegment buffer) {
+        var mh$ = wgpuBufferAddRef.HANDLE;
         try {
             if (TRACE_DOWNCALLS) {
-                traceDowncall("wgpuBufferReference", buffer);
+                traceDowncall("wgpuBufferAddRef", buffer);
             }
             mh$.invokeExact(buffer);
         } catch (Throwable ex$) {
@@ -6302,7 +6210,7 @@ public class wgpu_h {
     private static class wgpuCommandBufferSetLabel {
         public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
             wgpu_h.C_POINTER,
-            wgpu_h.C_POINTER
+            WGPUStringView.layout()
         );
 
         public static final MemorySegment ADDR = wgpu_h.findOrThrow("wgpuCommandBufferSetLabel");
@@ -6313,7 +6221,7 @@ public class wgpu_h {
     /**
      * Function descriptor for:
      * {@snippet lang=c :
-     * void wgpuCommandBufferSetLabel(WGPUCommandBuffer commandBuffer, const char *label)
+     * void wgpuCommandBufferSetLabel(WGPUCommandBuffer commandBuffer, WGPUStringView label)
      * }
      */
     public static FunctionDescriptor wgpuCommandBufferSetLabel$descriptor() {
@@ -6323,7 +6231,7 @@ public class wgpu_h {
     /**
      * Downcall method handle for:
      * {@snippet lang=c :
-     * void wgpuCommandBufferSetLabel(WGPUCommandBuffer commandBuffer, const char *label)
+     * void wgpuCommandBufferSetLabel(WGPUCommandBuffer commandBuffer, WGPUStringView label)
      * }
      */
     public static MethodHandle wgpuCommandBufferSetLabel$handle() {
@@ -6333,7 +6241,7 @@ public class wgpu_h {
     /**
      * Address for:
      * {@snippet lang=c :
-     * void wgpuCommandBufferSetLabel(WGPUCommandBuffer commandBuffer, const char *label)
+     * void wgpuCommandBufferSetLabel(WGPUCommandBuffer commandBuffer, WGPUStringView label)
      * }
      */
     public static MemorySegment wgpuCommandBufferSetLabel$address() {
@@ -6342,7 +6250,7 @@ public class wgpu_h {
 
     /**
      * {@snippet lang=c :
-     * void wgpuCommandBufferSetLabel(WGPUCommandBuffer commandBuffer, const char *label)
+     * void wgpuCommandBufferSetLabel(WGPUCommandBuffer commandBuffer, WGPUStringView label)
      * }
      */
     public static void wgpuCommandBufferSetLabel(MemorySegment commandBuffer, MemorySegment label) {
@@ -6357,12 +6265,12 @@ public class wgpu_h {
         }
     }
 
-    private static class wgpuCommandBufferReference {
+    private static class wgpuCommandBufferAddRef {
         public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
             wgpu_h.C_POINTER
         );
 
-        public static final MemorySegment ADDR = wgpu_h.findOrThrow("wgpuCommandBufferReference");
+        public static final MemorySegment ADDR = wgpu_h.findOrThrow("wgpuCommandBufferAddRef");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -6370,43 +6278,43 @@ public class wgpu_h {
     /**
      * Function descriptor for:
      * {@snippet lang=c :
-     * void wgpuCommandBufferReference(WGPUCommandBuffer commandBuffer)
+     * void wgpuCommandBufferAddRef(WGPUCommandBuffer commandBuffer)
      * }
      */
-    public static FunctionDescriptor wgpuCommandBufferReference$descriptor() {
-        return wgpuCommandBufferReference.DESC;
+    public static FunctionDescriptor wgpuCommandBufferAddRef$descriptor() {
+        return wgpuCommandBufferAddRef.DESC;
     }
 
     /**
      * Downcall method handle for:
      * {@snippet lang=c :
-     * void wgpuCommandBufferReference(WGPUCommandBuffer commandBuffer)
+     * void wgpuCommandBufferAddRef(WGPUCommandBuffer commandBuffer)
      * }
      */
-    public static MethodHandle wgpuCommandBufferReference$handle() {
-        return wgpuCommandBufferReference.HANDLE;
+    public static MethodHandle wgpuCommandBufferAddRef$handle() {
+        return wgpuCommandBufferAddRef.HANDLE;
     }
 
     /**
      * Address for:
      * {@snippet lang=c :
-     * void wgpuCommandBufferReference(WGPUCommandBuffer commandBuffer)
+     * void wgpuCommandBufferAddRef(WGPUCommandBuffer commandBuffer)
      * }
      */
-    public static MemorySegment wgpuCommandBufferReference$address() {
-        return wgpuCommandBufferReference.ADDR;
+    public static MemorySegment wgpuCommandBufferAddRef$address() {
+        return wgpuCommandBufferAddRef.ADDR;
     }
 
     /**
      * {@snippet lang=c :
-     * void wgpuCommandBufferReference(WGPUCommandBuffer commandBuffer)
+     * void wgpuCommandBufferAddRef(WGPUCommandBuffer commandBuffer)
      * }
      */
-    public static void wgpuCommandBufferReference(MemorySegment commandBuffer) {
-        var mh$ = wgpuCommandBufferReference.HANDLE;
+    public static void wgpuCommandBufferAddRef(MemorySegment commandBuffer) {
+        var mh$ = wgpuCommandBufferAddRef.HANDLE;
         try {
             if (TRACE_DOWNCALLS) {
-                traceDowncall("wgpuCommandBufferReference", commandBuffer);
+                traceDowncall("wgpuCommandBufferAddRef", commandBuffer);
             }
             mh$.invokeExact(commandBuffer);
         } catch (Throwable ex$) {
@@ -6953,7 +6861,7 @@ public class wgpu_h {
     private static class wgpuCommandEncoderInsertDebugMarker {
         public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
             wgpu_h.C_POINTER,
-            wgpu_h.C_POINTER
+            WGPUStringView.layout()
         );
 
         public static final MemorySegment ADDR = wgpu_h.findOrThrow("wgpuCommandEncoderInsertDebugMarker");
@@ -6964,7 +6872,7 @@ public class wgpu_h {
     /**
      * Function descriptor for:
      * {@snippet lang=c :
-     * void wgpuCommandEncoderInsertDebugMarker(WGPUCommandEncoder commandEncoder, const char *markerLabel)
+     * void wgpuCommandEncoderInsertDebugMarker(WGPUCommandEncoder commandEncoder, WGPUStringView markerLabel)
      * }
      */
     public static FunctionDescriptor wgpuCommandEncoderInsertDebugMarker$descriptor() {
@@ -6974,7 +6882,7 @@ public class wgpu_h {
     /**
      * Downcall method handle for:
      * {@snippet lang=c :
-     * void wgpuCommandEncoderInsertDebugMarker(WGPUCommandEncoder commandEncoder, const char *markerLabel)
+     * void wgpuCommandEncoderInsertDebugMarker(WGPUCommandEncoder commandEncoder, WGPUStringView markerLabel)
      * }
      */
     public static MethodHandle wgpuCommandEncoderInsertDebugMarker$handle() {
@@ -6984,7 +6892,7 @@ public class wgpu_h {
     /**
      * Address for:
      * {@snippet lang=c :
-     * void wgpuCommandEncoderInsertDebugMarker(WGPUCommandEncoder commandEncoder, const char *markerLabel)
+     * void wgpuCommandEncoderInsertDebugMarker(WGPUCommandEncoder commandEncoder, WGPUStringView markerLabel)
      * }
      */
     public static MemorySegment wgpuCommandEncoderInsertDebugMarker$address() {
@@ -6993,7 +6901,7 @@ public class wgpu_h {
 
     /**
      * {@snippet lang=c :
-     * void wgpuCommandEncoderInsertDebugMarker(WGPUCommandEncoder commandEncoder, const char *markerLabel)
+     * void wgpuCommandEncoderInsertDebugMarker(WGPUCommandEncoder commandEncoder, WGPUStringView markerLabel)
      * }
      */
     public static void wgpuCommandEncoderInsertDebugMarker(MemorySegment commandEncoder, MemorySegment markerLabel) {
@@ -7068,7 +6976,7 @@ public class wgpu_h {
     private static class wgpuCommandEncoderPushDebugGroup {
         public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
             wgpu_h.C_POINTER,
-            wgpu_h.C_POINTER
+            WGPUStringView.layout()
         );
 
         public static final MemorySegment ADDR = wgpu_h.findOrThrow("wgpuCommandEncoderPushDebugGroup");
@@ -7079,7 +6987,7 @@ public class wgpu_h {
     /**
      * Function descriptor for:
      * {@snippet lang=c :
-     * void wgpuCommandEncoderPushDebugGroup(WGPUCommandEncoder commandEncoder, const char *groupLabel)
+     * void wgpuCommandEncoderPushDebugGroup(WGPUCommandEncoder commandEncoder, WGPUStringView groupLabel)
      * }
      */
     public static FunctionDescriptor wgpuCommandEncoderPushDebugGroup$descriptor() {
@@ -7089,7 +6997,7 @@ public class wgpu_h {
     /**
      * Downcall method handle for:
      * {@snippet lang=c :
-     * void wgpuCommandEncoderPushDebugGroup(WGPUCommandEncoder commandEncoder, const char *groupLabel)
+     * void wgpuCommandEncoderPushDebugGroup(WGPUCommandEncoder commandEncoder, WGPUStringView groupLabel)
      * }
      */
     public static MethodHandle wgpuCommandEncoderPushDebugGroup$handle() {
@@ -7099,7 +7007,7 @@ public class wgpu_h {
     /**
      * Address for:
      * {@snippet lang=c :
-     * void wgpuCommandEncoderPushDebugGroup(WGPUCommandEncoder commandEncoder, const char *groupLabel)
+     * void wgpuCommandEncoderPushDebugGroup(WGPUCommandEncoder commandEncoder, WGPUStringView groupLabel)
      * }
      */
     public static MemorySegment wgpuCommandEncoderPushDebugGroup$address() {
@@ -7108,7 +7016,7 @@ public class wgpu_h {
 
     /**
      * {@snippet lang=c :
-     * void wgpuCommandEncoderPushDebugGroup(WGPUCommandEncoder commandEncoder, const char *groupLabel)
+     * void wgpuCommandEncoderPushDebugGroup(WGPUCommandEncoder commandEncoder, WGPUStringView groupLabel)
      * }
      */
     public static void wgpuCommandEncoderPushDebugGroup(MemorySegment commandEncoder, MemorySegment groupLabel) {
@@ -7188,7 +7096,7 @@ public class wgpu_h {
     private static class wgpuCommandEncoderSetLabel {
         public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
             wgpu_h.C_POINTER,
-            wgpu_h.C_POINTER
+            WGPUStringView.layout()
         );
 
         public static final MemorySegment ADDR = wgpu_h.findOrThrow("wgpuCommandEncoderSetLabel");
@@ -7199,7 +7107,7 @@ public class wgpu_h {
     /**
      * Function descriptor for:
      * {@snippet lang=c :
-     * void wgpuCommandEncoderSetLabel(WGPUCommandEncoder commandEncoder, const char *label)
+     * void wgpuCommandEncoderSetLabel(WGPUCommandEncoder commandEncoder, WGPUStringView label)
      * }
      */
     public static FunctionDescriptor wgpuCommandEncoderSetLabel$descriptor() {
@@ -7209,7 +7117,7 @@ public class wgpu_h {
     /**
      * Downcall method handle for:
      * {@snippet lang=c :
-     * void wgpuCommandEncoderSetLabel(WGPUCommandEncoder commandEncoder, const char *label)
+     * void wgpuCommandEncoderSetLabel(WGPUCommandEncoder commandEncoder, WGPUStringView label)
      * }
      */
     public static MethodHandle wgpuCommandEncoderSetLabel$handle() {
@@ -7219,7 +7127,7 @@ public class wgpu_h {
     /**
      * Address for:
      * {@snippet lang=c :
-     * void wgpuCommandEncoderSetLabel(WGPUCommandEncoder commandEncoder, const char *label)
+     * void wgpuCommandEncoderSetLabel(WGPUCommandEncoder commandEncoder, WGPUStringView label)
      * }
      */
     public static MemorySegment wgpuCommandEncoderSetLabel$address() {
@@ -7228,7 +7136,7 @@ public class wgpu_h {
 
     /**
      * {@snippet lang=c :
-     * void wgpuCommandEncoderSetLabel(WGPUCommandEncoder commandEncoder, const char *label)
+     * void wgpuCommandEncoderSetLabel(WGPUCommandEncoder commandEncoder, WGPUStringView label)
      * }
      */
     public static void wgpuCommandEncoderSetLabel(MemorySegment commandEncoder, MemorySegment label) {
@@ -7302,12 +7210,12 @@ public class wgpu_h {
         }
     }
 
-    private static class wgpuCommandEncoderReference {
+    private static class wgpuCommandEncoderAddRef {
         public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
             wgpu_h.C_POINTER
         );
 
-        public static final MemorySegment ADDR = wgpu_h.findOrThrow("wgpuCommandEncoderReference");
+        public static final MemorySegment ADDR = wgpu_h.findOrThrow("wgpuCommandEncoderAddRef");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -7315,43 +7223,43 @@ public class wgpu_h {
     /**
      * Function descriptor for:
      * {@snippet lang=c :
-     * void wgpuCommandEncoderReference(WGPUCommandEncoder commandEncoder)
+     * void wgpuCommandEncoderAddRef(WGPUCommandEncoder commandEncoder)
      * }
      */
-    public static FunctionDescriptor wgpuCommandEncoderReference$descriptor() {
-        return wgpuCommandEncoderReference.DESC;
+    public static FunctionDescriptor wgpuCommandEncoderAddRef$descriptor() {
+        return wgpuCommandEncoderAddRef.DESC;
     }
 
     /**
      * Downcall method handle for:
      * {@snippet lang=c :
-     * void wgpuCommandEncoderReference(WGPUCommandEncoder commandEncoder)
+     * void wgpuCommandEncoderAddRef(WGPUCommandEncoder commandEncoder)
      * }
      */
-    public static MethodHandle wgpuCommandEncoderReference$handle() {
-        return wgpuCommandEncoderReference.HANDLE;
+    public static MethodHandle wgpuCommandEncoderAddRef$handle() {
+        return wgpuCommandEncoderAddRef.HANDLE;
     }
 
     /**
      * Address for:
      * {@snippet lang=c :
-     * void wgpuCommandEncoderReference(WGPUCommandEncoder commandEncoder)
+     * void wgpuCommandEncoderAddRef(WGPUCommandEncoder commandEncoder)
      * }
      */
-    public static MemorySegment wgpuCommandEncoderReference$address() {
-        return wgpuCommandEncoderReference.ADDR;
+    public static MemorySegment wgpuCommandEncoderAddRef$address() {
+        return wgpuCommandEncoderAddRef.ADDR;
     }
 
     /**
      * {@snippet lang=c :
-     * void wgpuCommandEncoderReference(WGPUCommandEncoder commandEncoder)
+     * void wgpuCommandEncoderAddRef(WGPUCommandEncoder commandEncoder)
      * }
      */
-    public static void wgpuCommandEncoderReference(MemorySegment commandEncoder) {
-        var mh$ = wgpuCommandEncoderReference.HANDLE;
+    public static void wgpuCommandEncoderAddRef(MemorySegment commandEncoder) {
+        var mh$ = wgpuCommandEncoderAddRef.HANDLE;
         try {
             if (TRACE_DOWNCALLS) {
-                traceDowncall("wgpuCommandEncoderReference", commandEncoder);
+                traceDowncall("wgpuCommandEncoderAddRef", commandEncoder);
             }
             mh$.invokeExact(commandEncoder);
         } catch (Throwable ex$) {
@@ -7595,7 +7503,7 @@ public class wgpu_h {
     private static class wgpuComputePassEncoderInsertDebugMarker {
         public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
             wgpu_h.C_POINTER,
-            wgpu_h.C_POINTER
+            WGPUStringView.layout()
         );
 
         public static final MemorySegment ADDR = wgpu_h.findOrThrow("wgpuComputePassEncoderInsertDebugMarker");
@@ -7606,7 +7514,7 @@ public class wgpu_h {
     /**
      * Function descriptor for:
      * {@snippet lang=c :
-     * void wgpuComputePassEncoderInsertDebugMarker(WGPUComputePassEncoder computePassEncoder, const char *markerLabel)
+     * void wgpuComputePassEncoderInsertDebugMarker(WGPUComputePassEncoder computePassEncoder, WGPUStringView markerLabel)
      * }
      */
     public static FunctionDescriptor wgpuComputePassEncoderInsertDebugMarker$descriptor() {
@@ -7616,7 +7524,7 @@ public class wgpu_h {
     /**
      * Downcall method handle for:
      * {@snippet lang=c :
-     * void wgpuComputePassEncoderInsertDebugMarker(WGPUComputePassEncoder computePassEncoder, const char *markerLabel)
+     * void wgpuComputePassEncoderInsertDebugMarker(WGPUComputePassEncoder computePassEncoder, WGPUStringView markerLabel)
      * }
      */
     public static MethodHandle wgpuComputePassEncoderInsertDebugMarker$handle() {
@@ -7626,7 +7534,7 @@ public class wgpu_h {
     /**
      * Address for:
      * {@snippet lang=c :
-     * void wgpuComputePassEncoderInsertDebugMarker(WGPUComputePassEncoder computePassEncoder, const char *markerLabel)
+     * void wgpuComputePassEncoderInsertDebugMarker(WGPUComputePassEncoder computePassEncoder, WGPUStringView markerLabel)
      * }
      */
     public static MemorySegment wgpuComputePassEncoderInsertDebugMarker$address() {
@@ -7635,7 +7543,7 @@ public class wgpu_h {
 
     /**
      * {@snippet lang=c :
-     * void wgpuComputePassEncoderInsertDebugMarker(WGPUComputePassEncoder computePassEncoder, const char *markerLabel)
+     * void wgpuComputePassEncoderInsertDebugMarker(WGPUComputePassEncoder computePassEncoder, WGPUStringView markerLabel)
      * }
      */
     public static void wgpuComputePassEncoderInsertDebugMarker(MemorySegment computePassEncoder, MemorySegment markerLabel) {
@@ -7710,7 +7618,7 @@ public class wgpu_h {
     private static class wgpuComputePassEncoderPushDebugGroup {
         public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
             wgpu_h.C_POINTER,
-            wgpu_h.C_POINTER
+            WGPUStringView.layout()
         );
 
         public static final MemorySegment ADDR = wgpu_h.findOrThrow("wgpuComputePassEncoderPushDebugGroup");
@@ -7721,7 +7629,7 @@ public class wgpu_h {
     /**
      * Function descriptor for:
      * {@snippet lang=c :
-     * void wgpuComputePassEncoderPushDebugGroup(WGPUComputePassEncoder computePassEncoder, const char *groupLabel)
+     * void wgpuComputePassEncoderPushDebugGroup(WGPUComputePassEncoder computePassEncoder, WGPUStringView groupLabel)
      * }
      */
     public static FunctionDescriptor wgpuComputePassEncoderPushDebugGroup$descriptor() {
@@ -7731,7 +7639,7 @@ public class wgpu_h {
     /**
      * Downcall method handle for:
      * {@snippet lang=c :
-     * void wgpuComputePassEncoderPushDebugGroup(WGPUComputePassEncoder computePassEncoder, const char *groupLabel)
+     * void wgpuComputePassEncoderPushDebugGroup(WGPUComputePassEncoder computePassEncoder, WGPUStringView groupLabel)
      * }
      */
     public static MethodHandle wgpuComputePassEncoderPushDebugGroup$handle() {
@@ -7741,7 +7649,7 @@ public class wgpu_h {
     /**
      * Address for:
      * {@snippet lang=c :
-     * void wgpuComputePassEncoderPushDebugGroup(WGPUComputePassEncoder computePassEncoder, const char *groupLabel)
+     * void wgpuComputePassEncoderPushDebugGroup(WGPUComputePassEncoder computePassEncoder, WGPUStringView groupLabel)
      * }
      */
     public static MemorySegment wgpuComputePassEncoderPushDebugGroup$address() {
@@ -7750,7 +7658,7 @@ public class wgpu_h {
 
     /**
      * {@snippet lang=c :
-     * void wgpuComputePassEncoderPushDebugGroup(WGPUComputePassEncoder computePassEncoder, const char *groupLabel)
+     * void wgpuComputePassEncoderPushDebugGroup(WGPUComputePassEncoder computePassEncoder, WGPUStringView groupLabel)
      * }
      */
     public static void wgpuComputePassEncoderPushDebugGroup(MemorySegment computePassEncoder, MemorySegment groupLabel) {
@@ -7829,7 +7737,7 @@ public class wgpu_h {
     private static class wgpuComputePassEncoderSetLabel {
         public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
             wgpu_h.C_POINTER,
-            wgpu_h.C_POINTER
+            WGPUStringView.layout()
         );
 
         public static final MemorySegment ADDR = wgpu_h.findOrThrow("wgpuComputePassEncoderSetLabel");
@@ -7840,7 +7748,7 @@ public class wgpu_h {
     /**
      * Function descriptor for:
      * {@snippet lang=c :
-     * void wgpuComputePassEncoderSetLabel(WGPUComputePassEncoder computePassEncoder, const char *label)
+     * void wgpuComputePassEncoderSetLabel(WGPUComputePassEncoder computePassEncoder, WGPUStringView label)
      * }
      */
     public static FunctionDescriptor wgpuComputePassEncoderSetLabel$descriptor() {
@@ -7850,7 +7758,7 @@ public class wgpu_h {
     /**
      * Downcall method handle for:
      * {@snippet lang=c :
-     * void wgpuComputePassEncoderSetLabel(WGPUComputePassEncoder computePassEncoder, const char *label)
+     * void wgpuComputePassEncoderSetLabel(WGPUComputePassEncoder computePassEncoder, WGPUStringView label)
      * }
      */
     public static MethodHandle wgpuComputePassEncoderSetLabel$handle() {
@@ -7860,7 +7768,7 @@ public class wgpu_h {
     /**
      * Address for:
      * {@snippet lang=c :
-     * void wgpuComputePassEncoderSetLabel(WGPUComputePassEncoder computePassEncoder, const char *label)
+     * void wgpuComputePassEncoderSetLabel(WGPUComputePassEncoder computePassEncoder, WGPUStringView label)
      * }
      */
     public static MemorySegment wgpuComputePassEncoderSetLabel$address() {
@@ -7869,7 +7777,7 @@ public class wgpu_h {
 
     /**
      * {@snippet lang=c :
-     * void wgpuComputePassEncoderSetLabel(WGPUComputePassEncoder computePassEncoder, const char *label)
+     * void wgpuComputePassEncoderSetLabel(WGPUComputePassEncoder computePassEncoder, WGPUStringView label)
      * }
      */
     public static void wgpuComputePassEncoderSetLabel(MemorySegment computePassEncoder, MemorySegment label) {
@@ -7942,12 +7850,12 @@ public class wgpu_h {
         }
     }
 
-    private static class wgpuComputePassEncoderReference {
+    private static class wgpuComputePassEncoderAddRef {
         public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
             wgpu_h.C_POINTER
         );
 
-        public static final MemorySegment ADDR = wgpu_h.findOrThrow("wgpuComputePassEncoderReference");
+        public static final MemorySegment ADDR = wgpu_h.findOrThrow("wgpuComputePassEncoderAddRef");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -7955,43 +7863,43 @@ public class wgpu_h {
     /**
      * Function descriptor for:
      * {@snippet lang=c :
-     * void wgpuComputePassEncoderReference(WGPUComputePassEncoder computePassEncoder)
+     * void wgpuComputePassEncoderAddRef(WGPUComputePassEncoder computePassEncoder)
      * }
      */
-    public static FunctionDescriptor wgpuComputePassEncoderReference$descriptor() {
-        return wgpuComputePassEncoderReference.DESC;
+    public static FunctionDescriptor wgpuComputePassEncoderAddRef$descriptor() {
+        return wgpuComputePassEncoderAddRef.DESC;
     }
 
     /**
      * Downcall method handle for:
      * {@snippet lang=c :
-     * void wgpuComputePassEncoderReference(WGPUComputePassEncoder computePassEncoder)
+     * void wgpuComputePassEncoderAddRef(WGPUComputePassEncoder computePassEncoder)
      * }
      */
-    public static MethodHandle wgpuComputePassEncoderReference$handle() {
-        return wgpuComputePassEncoderReference.HANDLE;
+    public static MethodHandle wgpuComputePassEncoderAddRef$handle() {
+        return wgpuComputePassEncoderAddRef.HANDLE;
     }
 
     /**
      * Address for:
      * {@snippet lang=c :
-     * void wgpuComputePassEncoderReference(WGPUComputePassEncoder computePassEncoder)
+     * void wgpuComputePassEncoderAddRef(WGPUComputePassEncoder computePassEncoder)
      * }
      */
-    public static MemorySegment wgpuComputePassEncoderReference$address() {
-        return wgpuComputePassEncoderReference.ADDR;
+    public static MemorySegment wgpuComputePassEncoderAddRef$address() {
+        return wgpuComputePassEncoderAddRef.ADDR;
     }
 
     /**
      * {@snippet lang=c :
-     * void wgpuComputePassEncoderReference(WGPUComputePassEncoder computePassEncoder)
+     * void wgpuComputePassEncoderAddRef(WGPUComputePassEncoder computePassEncoder)
      * }
      */
-    public static void wgpuComputePassEncoderReference(MemorySegment computePassEncoder) {
-        var mh$ = wgpuComputePassEncoderReference.HANDLE;
+    public static void wgpuComputePassEncoderAddRef(MemorySegment computePassEncoder) {
+        var mh$ = wgpuComputePassEncoderAddRef.HANDLE;
         try {
             if (TRACE_DOWNCALLS) {
-                traceDowncall("wgpuComputePassEncoderReference", computePassEncoder);
+                traceDowncall("wgpuComputePassEncoderAddRef", computePassEncoder);
             }
             mh$.invokeExact(computePassEncoder);
         } catch (Throwable ex$) {
@@ -8118,7 +8026,7 @@ public class wgpu_h {
     private static class wgpuComputePipelineSetLabel {
         public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
             wgpu_h.C_POINTER,
-            wgpu_h.C_POINTER
+            WGPUStringView.layout()
         );
 
         public static final MemorySegment ADDR = wgpu_h.findOrThrow("wgpuComputePipelineSetLabel");
@@ -8129,7 +8037,7 @@ public class wgpu_h {
     /**
      * Function descriptor for:
      * {@snippet lang=c :
-     * void wgpuComputePipelineSetLabel(WGPUComputePipeline computePipeline, const char *label)
+     * void wgpuComputePipelineSetLabel(WGPUComputePipeline computePipeline, WGPUStringView label)
      * }
      */
     public static FunctionDescriptor wgpuComputePipelineSetLabel$descriptor() {
@@ -8139,7 +8047,7 @@ public class wgpu_h {
     /**
      * Downcall method handle for:
      * {@snippet lang=c :
-     * void wgpuComputePipelineSetLabel(WGPUComputePipeline computePipeline, const char *label)
+     * void wgpuComputePipelineSetLabel(WGPUComputePipeline computePipeline, WGPUStringView label)
      * }
      */
     public static MethodHandle wgpuComputePipelineSetLabel$handle() {
@@ -8149,7 +8057,7 @@ public class wgpu_h {
     /**
      * Address for:
      * {@snippet lang=c :
-     * void wgpuComputePipelineSetLabel(WGPUComputePipeline computePipeline, const char *label)
+     * void wgpuComputePipelineSetLabel(WGPUComputePipeline computePipeline, WGPUStringView label)
      * }
      */
     public static MemorySegment wgpuComputePipelineSetLabel$address() {
@@ -8158,7 +8066,7 @@ public class wgpu_h {
 
     /**
      * {@snippet lang=c :
-     * void wgpuComputePipelineSetLabel(WGPUComputePipeline computePipeline, const char *label)
+     * void wgpuComputePipelineSetLabel(WGPUComputePipeline computePipeline, WGPUStringView label)
      * }
      */
     public static void wgpuComputePipelineSetLabel(MemorySegment computePipeline, MemorySegment label) {
@@ -8173,12 +8081,12 @@ public class wgpu_h {
         }
     }
 
-    private static class wgpuComputePipelineReference {
+    private static class wgpuComputePipelineAddRef {
         public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
             wgpu_h.C_POINTER
         );
 
-        public static final MemorySegment ADDR = wgpu_h.findOrThrow("wgpuComputePipelineReference");
+        public static final MemorySegment ADDR = wgpu_h.findOrThrow("wgpuComputePipelineAddRef");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -8186,43 +8094,43 @@ public class wgpu_h {
     /**
      * Function descriptor for:
      * {@snippet lang=c :
-     * void wgpuComputePipelineReference(WGPUComputePipeline computePipeline)
+     * void wgpuComputePipelineAddRef(WGPUComputePipeline computePipeline)
      * }
      */
-    public static FunctionDescriptor wgpuComputePipelineReference$descriptor() {
-        return wgpuComputePipelineReference.DESC;
+    public static FunctionDescriptor wgpuComputePipelineAddRef$descriptor() {
+        return wgpuComputePipelineAddRef.DESC;
     }
 
     /**
      * Downcall method handle for:
      * {@snippet lang=c :
-     * void wgpuComputePipelineReference(WGPUComputePipeline computePipeline)
+     * void wgpuComputePipelineAddRef(WGPUComputePipeline computePipeline)
      * }
      */
-    public static MethodHandle wgpuComputePipelineReference$handle() {
-        return wgpuComputePipelineReference.HANDLE;
+    public static MethodHandle wgpuComputePipelineAddRef$handle() {
+        return wgpuComputePipelineAddRef.HANDLE;
     }
 
     /**
      * Address for:
      * {@snippet lang=c :
-     * void wgpuComputePipelineReference(WGPUComputePipeline computePipeline)
+     * void wgpuComputePipelineAddRef(WGPUComputePipeline computePipeline)
      * }
      */
-    public static MemorySegment wgpuComputePipelineReference$address() {
-        return wgpuComputePipelineReference.ADDR;
+    public static MemorySegment wgpuComputePipelineAddRef$address() {
+        return wgpuComputePipelineAddRef.ADDR;
     }
 
     /**
      * {@snippet lang=c :
-     * void wgpuComputePipelineReference(WGPUComputePipeline computePipeline)
+     * void wgpuComputePipelineAddRef(WGPUComputePipeline computePipeline)
      * }
      */
-    public static void wgpuComputePipelineReference(MemorySegment computePipeline) {
-        var mh$ = wgpuComputePipelineReference.HANDLE;
+    public static void wgpuComputePipelineAddRef(MemorySegment computePipeline) {
+        var mh$ = wgpuComputePipelineAddRef.HANDLE;
         try {
             if (TRACE_DOWNCALLS) {
-                traceDowncall("wgpuComputePipelineReference", computePipeline);
+                traceDowncall("wgpuComputePipelineAddRef", computePipeline);
             }
             mh$.invokeExact(computePipeline);
         } catch (Throwable ex$) {
@@ -8583,11 +8491,11 @@ public class wgpu_h {
     }
 
     private static class wgpuDeviceCreateComputePipelineAsync {
-        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            WGPUFuture.layout(),
             wgpu_h.C_POINTER,
             wgpu_h.C_POINTER,
-            wgpu_h.C_POINTER,
-            wgpu_h.C_POINTER
+            WGPUCreateComputePipelineAsyncCallbackInfo.layout()
         );
 
         public static final MemorySegment ADDR = wgpu_h.findOrThrow("wgpuDeviceCreateComputePipelineAsync");
@@ -8598,7 +8506,7 @@ public class wgpu_h {
     /**
      * Function descriptor for:
      * {@snippet lang=c :
-     * void wgpuDeviceCreateComputePipelineAsync(WGPUDevice device, const WGPUComputePipelineDescriptor *descriptor, WGPUDeviceCreateComputePipelineAsyncCallback callback, void *userdata)
+     * WGPUFuture wgpuDeviceCreateComputePipelineAsync(WGPUDevice device, const WGPUComputePipelineDescriptor *descriptor, WGPUCreateComputePipelineAsyncCallbackInfo callbackInfo)
      * }
      */
     public static FunctionDescriptor wgpuDeviceCreateComputePipelineAsync$descriptor() {
@@ -8608,7 +8516,7 @@ public class wgpu_h {
     /**
      * Downcall method handle for:
      * {@snippet lang=c :
-     * void wgpuDeviceCreateComputePipelineAsync(WGPUDevice device, const WGPUComputePipelineDescriptor *descriptor, WGPUDeviceCreateComputePipelineAsyncCallback callback, void *userdata)
+     * WGPUFuture wgpuDeviceCreateComputePipelineAsync(WGPUDevice device, const WGPUComputePipelineDescriptor *descriptor, WGPUCreateComputePipelineAsyncCallbackInfo callbackInfo)
      * }
      */
     public static MethodHandle wgpuDeviceCreateComputePipelineAsync$handle() {
@@ -8618,7 +8526,7 @@ public class wgpu_h {
     /**
      * Address for:
      * {@snippet lang=c :
-     * void wgpuDeviceCreateComputePipelineAsync(WGPUDevice device, const WGPUComputePipelineDescriptor *descriptor, WGPUDeviceCreateComputePipelineAsyncCallback callback, void *userdata)
+     * WGPUFuture wgpuDeviceCreateComputePipelineAsync(WGPUDevice device, const WGPUComputePipelineDescriptor *descriptor, WGPUCreateComputePipelineAsyncCallbackInfo callbackInfo)
      * }
      */
     public static MemorySegment wgpuDeviceCreateComputePipelineAsync$address() {
@@ -8627,16 +8535,16 @@ public class wgpu_h {
 
     /**
      * {@snippet lang=c :
-     * void wgpuDeviceCreateComputePipelineAsync(WGPUDevice device, const WGPUComputePipelineDescriptor *descriptor, WGPUDeviceCreateComputePipelineAsyncCallback callback, void *userdata)
+     * WGPUFuture wgpuDeviceCreateComputePipelineAsync(WGPUDevice device, const WGPUComputePipelineDescriptor *descriptor, WGPUCreateComputePipelineAsyncCallbackInfo callbackInfo)
      * }
      */
-    public static void wgpuDeviceCreateComputePipelineAsync(MemorySegment device, MemorySegment descriptor, MemorySegment callback, MemorySegment userdata) {
+    public static MemorySegment wgpuDeviceCreateComputePipelineAsync(SegmentAllocator allocator, MemorySegment device, MemorySegment descriptor, MemorySegment callbackInfo) {
         var mh$ = wgpuDeviceCreateComputePipelineAsync.HANDLE;
         try {
             if (TRACE_DOWNCALLS) {
-                traceDowncall("wgpuDeviceCreateComputePipelineAsync", device, descriptor, callback, userdata);
+                traceDowncall("wgpuDeviceCreateComputePipelineAsync", allocator, device, descriptor, callbackInfo);
             }
-            mh$.invokeExact(device, descriptor, callback, userdata);
+            return (MemorySegment)mh$.invokeExact(allocator, device, descriptor, callbackInfo);
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -8879,11 +8787,11 @@ public class wgpu_h {
     }
 
     private static class wgpuDeviceCreateRenderPipelineAsync {
-        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            WGPUFuture.layout(),
             wgpu_h.C_POINTER,
             wgpu_h.C_POINTER,
-            wgpu_h.C_POINTER,
-            wgpu_h.C_POINTER
+            WGPUCreateRenderPipelineAsyncCallbackInfo.layout()
         );
 
         public static final MemorySegment ADDR = wgpu_h.findOrThrow("wgpuDeviceCreateRenderPipelineAsync");
@@ -8894,7 +8802,7 @@ public class wgpu_h {
     /**
      * Function descriptor for:
      * {@snippet lang=c :
-     * void wgpuDeviceCreateRenderPipelineAsync(WGPUDevice device, const WGPURenderPipelineDescriptor *descriptor, WGPUDeviceCreateRenderPipelineAsyncCallback callback, void *userdata)
+     * WGPUFuture wgpuDeviceCreateRenderPipelineAsync(WGPUDevice device, const WGPURenderPipelineDescriptor *descriptor, WGPUCreateRenderPipelineAsyncCallbackInfo callbackInfo)
      * }
      */
     public static FunctionDescriptor wgpuDeviceCreateRenderPipelineAsync$descriptor() {
@@ -8904,7 +8812,7 @@ public class wgpu_h {
     /**
      * Downcall method handle for:
      * {@snippet lang=c :
-     * void wgpuDeviceCreateRenderPipelineAsync(WGPUDevice device, const WGPURenderPipelineDescriptor *descriptor, WGPUDeviceCreateRenderPipelineAsyncCallback callback, void *userdata)
+     * WGPUFuture wgpuDeviceCreateRenderPipelineAsync(WGPUDevice device, const WGPURenderPipelineDescriptor *descriptor, WGPUCreateRenderPipelineAsyncCallbackInfo callbackInfo)
      * }
      */
     public static MethodHandle wgpuDeviceCreateRenderPipelineAsync$handle() {
@@ -8914,7 +8822,7 @@ public class wgpu_h {
     /**
      * Address for:
      * {@snippet lang=c :
-     * void wgpuDeviceCreateRenderPipelineAsync(WGPUDevice device, const WGPURenderPipelineDescriptor *descriptor, WGPUDeviceCreateRenderPipelineAsyncCallback callback, void *userdata)
+     * WGPUFuture wgpuDeviceCreateRenderPipelineAsync(WGPUDevice device, const WGPURenderPipelineDescriptor *descriptor, WGPUCreateRenderPipelineAsyncCallbackInfo callbackInfo)
      * }
      */
     public static MemorySegment wgpuDeviceCreateRenderPipelineAsync$address() {
@@ -8923,16 +8831,16 @@ public class wgpu_h {
 
     /**
      * {@snippet lang=c :
-     * void wgpuDeviceCreateRenderPipelineAsync(WGPUDevice device, const WGPURenderPipelineDescriptor *descriptor, WGPUDeviceCreateRenderPipelineAsyncCallback callback, void *userdata)
+     * WGPUFuture wgpuDeviceCreateRenderPipelineAsync(WGPUDevice device, const WGPURenderPipelineDescriptor *descriptor, WGPUCreateRenderPipelineAsyncCallbackInfo callbackInfo)
      * }
      */
-    public static void wgpuDeviceCreateRenderPipelineAsync(MemorySegment device, MemorySegment descriptor, MemorySegment callback, MemorySegment userdata) {
+    public static MemorySegment wgpuDeviceCreateRenderPipelineAsync(SegmentAllocator allocator, MemorySegment device, MemorySegment descriptor, MemorySegment callbackInfo) {
         var mh$ = wgpuDeviceCreateRenderPipelineAsync.HANDLE;
         try {
             if (TRACE_DOWNCALLS) {
-                traceDowncall("wgpuDeviceCreateRenderPipelineAsync", device, descriptor, callback, userdata);
+                traceDowncall("wgpuDeviceCreateRenderPipelineAsync", allocator, device, descriptor, callbackInfo);
             }
-            mh$.invokeExact(device, descriptor, callback, userdata);
+            return (MemorySegment)mh$.invokeExact(allocator, device, descriptor, callbackInfo);
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -9172,14 +9080,14 @@ public class wgpu_h {
         }
     }
 
-    private static class wgpuDeviceEnumerateFeatures {
+    private static class wgpuDeviceGetFeatures {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            wgpu_h.C_LONG,
+            wgpu_h.C_INT,
             wgpu_h.C_POINTER,
             wgpu_h.C_POINTER
         );
 
-        public static final MemorySegment ADDR = wgpu_h.findOrThrow("wgpuDeviceEnumerateFeatures");
+        public static final MemorySegment ADDR = wgpu_h.findOrThrow("wgpuDeviceGetFeatures");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -9187,45 +9095,45 @@ public class wgpu_h {
     /**
      * Function descriptor for:
      * {@snippet lang=c :
-     * size_t wgpuDeviceEnumerateFeatures(WGPUDevice device, WGPUFeatureName *features)
+     * WGPUStatus wgpuDeviceGetFeatures(WGPUDevice device, WGPUSupportedFeatures *features)
      * }
      */
-    public static FunctionDescriptor wgpuDeviceEnumerateFeatures$descriptor() {
-        return wgpuDeviceEnumerateFeatures.DESC;
+    public static FunctionDescriptor wgpuDeviceGetFeatures$descriptor() {
+        return wgpuDeviceGetFeatures.DESC;
     }
 
     /**
      * Downcall method handle for:
      * {@snippet lang=c :
-     * size_t wgpuDeviceEnumerateFeatures(WGPUDevice device, WGPUFeatureName *features)
+     * WGPUStatus wgpuDeviceGetFeatures(WGPUDevice device, WGPUSupportedFeatures *features)
      * }
      */
-    public static MethodHandle wgpuDeviceEnumerateFeatures$handle() {
-        return wgpuDeviceEnumerateFeatures.HANDLE;
+    public static MethodHandle wgpuDeviceGetFeatures$handle() {
+        return wgpuDeviceGetFeatures.HANDLE;
     }
 
     /**
      * Address for:
      * {@snippet lang=c :
-     * size_t wgpuDeviceEnumerateFeatures(WGPUDevice device, WGPUFeatureName *features)
+     * WGPUStatus wgpuDeviceGetFeatures(WGPUDevice device, WGPUSupportedFeatures *features)
      * }
      */
-    public static MemorySegment wgpuDeviceEnumerateFeatures$address() {
-        return wgpuDeviceEnumerateFeatures.ADDR;
+    public static MemorySegment wgpuDeviceGetFeatures$address() {
+        return wgpuDeviceGetFeatures.ADDR;
     }
 
     /**
      * {@snippet lang=c :
-     * size_t wgpuDeviceEnumerateFeatures(WGPUDevice device, WGPUFeatureName *features)
+     * WGPUStatus wgpuDeviceGetFeatures(WGPUDevice device, WGPUSupportedFeatures *features)
      * }
      */
-    public static long wgpuDeviceEnumerateFeatures(MemorySegment device, MemorySegment features) {
-        var mh$ = wgpuDeviceEnumerateFeatures.HANDLE;
+    public static int wgpuDeviceGetFeatures(MemorySegment device, MemorySegment features) {
+        var mh$ = wgpuDeviceGetFeatures.HANDLE;
         try {
             if (TRACE_DOWNCALLS) {
-                traceDowncall("wgpuDeviceEnumerateFeatures", device, features);
+                traceDowncall("wgpuDeviceGetFeatures", device, features);
             }
-            return (long)mh$.invokeExact(device, features);
+            return (int)mh$.invokeExact(device, features);
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -9408,10 +9316,10 @@ public class wgpu_h {
     }
 
     private static class wgpuDevicePopErrorScope {
-        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            WGPUFuture.layout(),
             wgpu_h.C_POINTER,
-            wgpu_h.C_POINTER,
-            wgpu_h.C_POINTER
+            WGPUPopErrorScopeCallbackInfo.layout()
         );
 
         public static final MemorySegment ADDR = wgpu_h.findOrThrow("wgpuDevicePopErrorScope");
@@ -9422,7 +9330,7 @@ public class wgpu_h {
     /**
      * Function descriptor for:
      * {@snippet lang=c :
-     * void wgpuDevicePopErrorScope(WGPUDevice device, WGPUErrorCallback callback, void *userdata)
+     * WGPUFuture wgpuDevicePopErrorScope(WGPUDevice device, WGPUPopErrorScopeCallbackInfo callbackInfo)
      * }
      */
     public static FunctionDescriptor wgpuDevicePopErrorScope$descriptor() {
@@ -9432,7 +9340,7 @@ public class wgpu_h {
     /**
      * Downcall method handle for:
      * {@snippet lang=c :
-     * void wgpuDevicePopErrorScope(WGPUDevice device, WGPUErrorCallback callback, void *userdata)
+     * WGPUFuture wgpuDevicePopErrorScope(WGPUDevice device, WGPUPopErrorScopeCallbackInfo callbackInfo)
      * }
      */
     public static MethodHandle wgpuDevicePopErrorScope$handle() {
@@ -9442,7 +9350,7 @@ public class wgpu_h {
     /**
      * Address for:
      * {@snippet lang=c :
-     * void wgpuDevicePopErrorScope(WGPUDevice device, WGPUErrorCallback callback, void *userdata)
+     * WGPUFuture wgpuDevicePopErrorScope(WGPUDevice device, WGPUPopErrorScopeCallbackInfo callbackInfo)
      * }
      */
     public static MemorySegment wgpuDevicePopErrorScope$address() {
@@ -9451,16 +9359,16 @@ public class wgpu_h {
 
     /**
      * {@snippet lang=c :
-     * void wgpuDevicePopErrorScope(WGPUDevice device, WGPUErrorCallback callback, void *userdata)
+     * WGPUFuture wgpuDevicePopErrorScope(WGPUDevice device, WGPUPopErrorScopeCallbackInfo callbackInfo)
      * }
      */
-    public static void wgpuDevicePopErrorScope(MemorySegment device, MemorySegment callback, MemorySegment userdata) {
+    public static MemorySegment wgpuDevicePopErrorScope(SegmentAllocator allocator, MemorySegment device, MemorySegment callbackInfo) {
         var mh$ = wgpuDevicePopErrorScope.HANDLE;
         try {
             if (TRACE_DOWNCALLS) {
-                traceDowncall("wgpuDevicePopErrorScope", device, callback, userdata);
+                traceDowncall("wgpuDevicePopErrorScope", allocator, device, callbackInfo);
             }
-            mh$.invokeExact(device, callback, userdata);
+            return (MemorySegment)mh$.invokeExact(allocator, device, callbackInfo);
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -9527,7 +9435,7 @@ public class wgpu_h {
     private static class wgpuDeviceSetLabel {
         public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
             wgpu_h.C_POINTER,
-            wgpu_h.C_POINTER
+            WGPUStringView.layout()
         );
 
         public static final MemorySegment ADDR = wgpu_h.findOrThrow("wgpuDeviceSetLabel");
@@ -9538,7 +9446,7 @@ public class wgpu_h {
     /**
      * Function descriptor for:
      * {@snippet lang=c :
-     * void wgpuDeviceSetLabel(WGPUDevice device, const char *label)
+     * void wgpuDeviceSetLabel(WGPUDevice device, WGPUStringView label)
      * }
      */
     public static FunctionDescriptor wgpuDeviceSetLabel$descriptor() {
@@ -9548,7 +9456,7 @@ public class wgpu_h {
     /**
      * Downcall method handle for:
      * {@snippet lang=c :
-     * void wgpuDeviceSetLabel(WGPUDevice device, const char *label)
+     * void wgpuDeviceSetLabel(WGPUDevice device, WGPUStringView label)
      * }
      */
     public static MethodHandle wgpuDeviceSetLabel$handle() {
@@ -9558,7 +9466,7 @@ public class wgpu_h {
     /**
      * Address for:
      * {@snippet lang=c :
-     * void wgpuDeviceSetLabel(WGPUDevice device, const char *label)
+     * void wgpuDeviceSetLabel(WGPUDevice device, WGPUStringView label)
      * }
      */
     public static MemorySegment wgpuDeviceSetLabel$address() {
@@ -9567,7 +9475,7 @@ public class wgpu_h {
 
     /**
      * {@snippet lang=c :
-     * void wgpuDeviceSetLabel(WGPUDevice device, const char *label)
+     * void wgpuDeviceSetLabel(WGPUDevice device, WGPUStringView label)
      * }
      */
     public static void wgpuDeviceSetLabel(MemorySegment device, MemorySegment label) {
@@ -9582,12 +9490,12 @@ public class wgpu_h {
         }
     }
 
-    private static class wgpuDeviceReference {
+    private static class wgpuDeviceAddRef {
         public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
             wgpu_h.C_POINTER
         );
 
-        public static final MemorySegment ADDR = wgpu_h.findOrThrow("wgpuDeviceReference");
+        public static final MemorySegment ADDR = wgpu_h.findOrThrow("wgpuDeviceAddRef");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -9595,43 +9503,43 @@ public class wgpu_h {
     /**
      * Function descriptor for:
      * {@snippet lang=c :
-     * void wgpuDeviceReference(WGPUDevice device)
+     * void wgpuDeviceAddRef(WGPUDevice device)
      * }
      */
-    public static FunctionDescriptor wgpuDeviceReference$descriptor() {
-        return wgpuDeviceReference.DESC;
+    public static FunctionDescriptor wgpuDeviceAddRef$descriptor() {
+        return wgpuDeviceAddRef.DESC;
     }
 
     /**
      * Downcall method handle for:
      * {@snippet lang=c :
-     * void wgpuDeviceReference(WGPUDevice device)
+     * void wgpuDeviceAddRef(WGPUDevice device)
      * }
      */
-    public static MethodHandle wgpuDeviceReference$handle() {
-        return wgpuDeviceReference.HANDLE;
+    public static MethodHandle wgpuDeviceAddRef$handle() {
+        return wgpuDeviceAddRef.HANDLE;
     }
 
     /**
      * Address for:
      * {@snippet lang=c :
-     * void wgpuDeviceReference(WGPUDevice device)
+     * void wgpuDeviceAddRef(WGPUDevice device)
      * }
      */
-    public static MemorySegment wgpuDeviceReference$address() {
-        return wgpuDeviceReference.ADDR;
+    public static MemorySegment wgpuDeviceAddRef$address() {
+        return wgpuDeviceAddRef.ADDR;
     }
 
     /**
      * {@snippet lang=c :
-     * void wgpuDeviceReference(WGPUDevice device)
+     * void wgpuDeviceAddRef(WGPUDevice device)
      * }
      */
-    public static void wgpuDeviceReference(MemorySegment device) {
-        var mh$ = wgpuDeviceReference.HANDLE;
+    public static void wgpuDeviceAddRef(MemorySegment device) {
+        var mh$ = wgpuDeviceAddRef.HANDLE;
         try {
             if (TRACE_DOWNCALLS) {
-                traceDowncall("wgpuDeviceReference", device);
+                traceDowncall("wgpuDeviceAddRef", device);
             }
             mh$.invokeExact(device);
         } catch (Throwable ex$) {
@@ -9872,11 +9780,11 @@ public class wgpu_h {
     }
 
     private static class wgpuInstanceRequestAdapter {
-        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            WGPUFuture.layout(),
             wgpu_h.C_POINTER,
             wgpu_h.C_POINTER,
-            wgpu_h.C_POINTER,
-            wgpu_h.C_POINTER
+            WGPURequestAdapterCallbackInfo.layout()
         );
 
         public static final MemorySegment ADDR = wgpu_h.findOrThrow("wgpuInstanceRequestAdapter");
@@ -9887,7 +9795,7 @@ public class wgpu_h {
     /**
      * Function descriptor for:
      * {@snippet lang=c :
-     * void wgpuInstanceRequestAdapter(WGPUInstance instance, const WGPURequestAdapterOptions *options, WGPUInstanceRequestAdapterCallback callback, void *userdata)
+     * WGPUFuture wgpuInstanceRequestAdapter(WGPUInstance instance, const WGPURequestAdapterOptions *options, WGPURequestAdapterCallbackInfo callbackInfo)
      * }
      */
     public static FunctionDescriptor wgpuInstanceRequestAdapter$descriptor() {
@@ -9897,7 +9805,7 @@ public class wgpu_h {
     /**
      * Downcall method handle for:
      * {@snippet lang=c :
-     * void wgpuInstanceRequestAdapter(WGPUInstance instance, const WGPURequestAdapterOptions *options, WGPUInstanceRequestAdapterCallback callback, void *userdata)
+     * WGPUFuture wgpuInstanceRequestAdapter(WGPUInstance instance, const WGPURequestAdapterOptions *options, WGPURequestAdapterCallbackInfo callbackInfo)
      * }
      */
     public static MethodHandle wgpuInstanceRequestAdapter$handle() {
@@ -9907,7 +9815,7 @@ public class wgpu_h {
     /**
      * Address for:
      * {@snippet lang=c :
-     * void wgpuInstanceRequestAdapter(WGPUInstance instance, const WGPURequestAdapterOptions *options, WGPUInstanceRequestAdapterCallback callback, void *userdata)
+     * WGPUFuture wgpuInstanceRequestAdapter(WGPUInstance instance, const WGPURequestAdapterOptions *options, WGPURequestAdapterCallbackInfo callbackInfo)
      * }
      */
     public static MemorySegment wgpuInstanceRequestAdapter$address() {
@@ -9916,27 +9824,31 @@ public class wgpu_h {
 
     /**
      * {@snippet lang=c :
-     * void wgpuInstanceRequestAdapter(WGPUInstance instance, const WGPURequestAdapterOptions *options, WGPUInstanceRequestAdapterCallback callback, void *userdata)
+     * WGPUFuture wgpuInstanceRequestAdapter(WGPUInstance instance, const WGPURequestAdapterOptions *options, WGPURequestAdapterCallbackInfo callbackInfo)
      * }
      */
-    public static void wgpuInstanceRequestAdapter(MemorySegment instance, MemorySegment options, MemorySegment callback, MemorySegment userdata) {
+    public static MemorySegment wgpuInstanceRequestAdapter(SegmentAllocator allocator, MemorySegment instance, MemorySegment options, MemorySegment callbackInfo) {
         var mh$ = wgpuInstanceRequestAdapter.HANDLE;
         try {
             if (TRACE_DOWNCALLS) {
-                traceDowncall("wgpuInstanceRequestAdapter", instance, options, callback, userdata);
+                traceDowncall("wgpuInstanceRequestAdapter", allocator, instance, options, callbackInfo);
             }
-            mh$.invokeExact(instance, options, callback, userdata);
+            return (MemorySegment)mh$.invokeExact(allocator, instance, options, callbackInfo);
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
     }
 
-    private static class wgpuInstanceReference {
-        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
-            wgpu_h.C_POINTER
+    private static class wgpuInstanceWaitAny {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            wgpu_h.C_INT,
+            wgpu_h.C_POINTER,
+            wgpu_h.C_LONG,
+            wgpu_h.C_POINTER,
+            wgpu_h.C_LONG_LONG
         );
 
-        public static final MemorySegment ADDR = wgpu_h.findOrThrow("wgpuInstanceReference");
+        public static final MemorySegment ADDR = wgpu_h.findOrThrow("wgpuInstanceWaitAny");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -9944,43 +9856,100 @@ public class wgpu_h {
     /**
      * Function descriptor for:
      * {@snippet lang=c :
-     * void wgpuInstanceReference(WGPUInstance instance)
+     * WGPUWaitStatus wgpuInstanceWaitAny(WGPUInstance instance, size_t futureCount, WGPUFutureWaitInfo *futures, uint64_t timeoutNS)
      * }
      */
-    public static FunctionDescriptor wgpuInstanceReference$descriptor() {
-        return wgpuInstanceReference.DESC;
+    public static FunctionDescriptor wgpuInstanceWaitAny$descriptor() {
+        return wgpuInstanceWaitAny.DESC;
     }
 
     /**
      * Downcall method handle for:
      * {@snippet lang=c :
-     * void wgpuInstanceReference(WGPUInstance instance)
+     * WGPUWaitStatus wgpuInstanceWaitAny(WGPUInstance instance, size_t futureCount, WGPUFutureWaitInfo *futures, uint64_t timeoutNS)
      * }
      */
-    public static MethodHandle wgpuInstanceReference$handle() {
-        return wgpuInstanceReference.HANDLE;
+    public static MethodHandle wgpuInstanceWaitAny$handle() {
+        return wgpuInstanceWaitAny.HANDLE;
     }
 
     /**
      * Address for:
      * {@snippet lang=c :
-     * void wgpuInstanceReference(WGPUInstance instance)
+     * WGPUWaitStatus wgpuInstanceWaitAny(WGPUInstance instance, size_t futureCount, WGPUFutureWaitInfo *futures, uint64_t timeoutNS)
      * }
      */
-    public static MemorySegment wgpuInstanceReference$address() {
-        return wgpuInstanceReference.ADDR;
+    public static MemorySegment wgpuInstanceWaitAny$address() {
+        return wgpuInstanceWaitAny.ADDR;
     }
 
     /**
      * {@snippet lang=c :
-     * void wgpuInstanceReference(WGPUInstance instance)
+     * WGPUWaitStatus wgpuInstanceWaitAny(WGPUInstance instance, size_t futureCount, WGPUFutureWaitInfo *futures, uint64_t timeoutNS)
      * }
      */
-    public static void wgpuInstanceReference(MemorySegment instance) {
-        var mh$ = wgpuInstanceReference.HANDLE;
+    public static int wgpuInstanceWaitAny(MemorySegment instance, long futureCount, MemorySegment futures, long timeoutNS) {
+        var mh$ = wgpuInstanceWaitAny.HANDLE;
         try {
             if (TRACE_DOWNCALLS) {
-                traceDowncall("wgpuInstanceReference", instance);
+                traceDowncall("wgpuInstanceWaitAny", instance, futureCount, futures, timeoutNS);
+            }
+            return (int)mh$.invokeExact(instance, futureCount, futures, timeoutNS);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
+    private static class wgpuInstanceAddRef {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+            wgpu_h.C_POINTER
+        );
+
+        public static final MemorySegment ADDR = wgpu_h.findOrThrow("wgpuInstanceAddRef");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * void wgpuInstanceAddRef(WGPUInstance instance)
+     * }
+     */
+    public static FunctionDescriptor wgpuInstanceAddRef$descriptor() {
+        return wgpuInstanceAddRef.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * void wgpuInstanceAddRef(WGPUInstance instance)
+     * }
+     */
+    public static MethodHandle wgpuInstanceAddRef$handle() {
+        return wgpuInstanceAddRef.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * void wgpuInstanceAddRef(WGPUInstance instance)
+     * }
+     */
+    public static MemorySegment wgpuInstanceAddRef$address() {
+        return wgpuInstanceAddRef.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * void wgpuInstanceAddRef(WGPUInstance instance)
+     * }
+     */
+    public static void wgpuInstanceAddRef(MemorySegment instance) {
+        var mh$ = wgpuInstanceAddRef.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("wgpuInstanceAddRef", instance);
             }
             mh$.invokeExact(instance);
         } catch (Throwable ex$) {
@@ -10048,7 +10017,7 @@ public class wgpu_h {
     private static class wgpuPipelineLayoutSetLabel {
         public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
             wgpu_h.C_POINTER,
-            wgpu_h.C_POINTER
+            WGPUStringView.layout()
         );
 
         public static final MemorySegment ADDR = wgpu_h.findOrThrow("wgpuPipelineLayoutSetLabel");
@@ -10059,7 +10028,7 @@ public class wgpu_h {
     /**
      * Function descriptor for:
      * {@snippet lang=c :
-     * void wgpuPipelineLayoutSetLabel(WGPUPipelineLayout pipelineLayout, const char *label)
+     * void wgpuPipelineLayoutSetLabel(WGPUPipelineLayout pipelineLayout, WGPUStringView label)
      * }
      */
     public static FunctionDescriptor wgpuPipelineLayoutSetLabel$descriptor() {
@@ -10069,7 +10038,7 @@ public class wgpu_h {
     /**
      * Downcall method handle for:
      * {@snippet lang=c :
-     * void wgpuPipelineLayoutSetLabel(WGPUPipelineLayout pipelineLayout, const char *label)
+     * void wgpuPipelineLayoutSetLabel(WGPUPipelineLayout pipelineLayout, WGPUStringView label)
      * }
      */
     public static MethodHandle wgpuPipelineLayoutSetLabel$handle() {
@@ -10079,7 +10048,7 @@ public class wgpu_h {
     /**
      * Address for:
      * {@snippet lang=c :
-     * void wgpuPipelineLayoutSetLabel(WGPUPipelineLayout pipelineLayout, const char *label)
+     * void wgpuPipelineLayoutSetLabel(WGPUPipelineLayout pipelineLayout, WGPUStringView label)
      * }
      */
     public static MemorySegment wgpuPipelineLayoutSetLabel$address() {
@@ -10088,7 +10057,7 @@ public class wgpu_h {
 
     /**
      * {@snippet lang=c :
-     * void wgpuPipelineLayoutSetLabel(WGPUPipelineLayout pipelineLayout, const char *label)
+     * void wgpuPipelineLayoutSetLabel(WGPUPipelineLayout pipelineLayout, WGPUStringView label)
      * }
      */
     public static void wgpuPipelineLayoutSetLabel(MemorySegment pipelineLayout, MemorySegment label) {
@@ -10103,12 +10072,12 @@ public class wgpu_h {
         }
     }
 
-    private static class wgpuPipelineLayoutReference {
+    private static class wgpuPipelineLayoutAddRef {
         public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
             wgpu_h.C_POINTER
         );
 
-        public static final MemorySegment ADDR = wgpu_h.findOrThrow("wgpuPipelineLayoutReference");
+        public static final MemorySegment ADDR = wgpu_h.findOrThrow("wgpuPipelineLayoutAddRef");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -10116,43 +10085,43 @@ public class wgpu_h {
     /**
      * Function descriptor for:
      * {@snippet lang=c :
-     * void wgpuPipelineLayoutReference(WGPUPipelineLayout pipelineLayout)
+     * void wgpuPipelineLayoutAddRef(WGPUPipelineLayout pipelineLayout)
      * }
      */
-    public static FunctionDescriptor wgpuPipelineLayoutReference$descriptor() {
-        return wgpuPipelineLayoutReference.DESC;
+    public static FunctionDescriptor wgpuPipelineLayoutAddRef$descriptor() {
+        return wgpuPipelineLayoutAddRef.DESC;
     }
 
     /**
      * Downcall method handle for:
      * {@snippet lang=c :
-     * void wgpuPipelineLayoutReference(WGPUPipelineLayout pipelineLayout)
+     * void wgpuPipelineLayoutAddRef(WGPUPipelineLayout pipelineLayout)
      * }
      */
-    public static MethodHandle wgpuPipelineLayoutReference$handle() {
-        return wgpuPipelineLayoutReference.HANDLE;
+    public static MethodHandle wgpuPipelineLayoutAddRef$handle() {
+        return wgpuPipelineLayoutAddRef.HANDLE;
     }
 
     /**
      * Address for:
      * {@snippet lang=c :
-     * void wgpuPipelineLayoutReference(WGPUPipelineLayout pipelineLayout)
+     * void wgpuPipelineLayoutAddRef(WGPUPipelineLayout pipelineLayout)
      * }
      */
-    public static MemorySegment wgpuPipelineLayoutReference$address() {
-        return wgpuPipelineLayoutReference.ADDR;
+    public static MemorySegment wgpuPipelineLayoutAddRef$address() {
+        return wgpuPipelineLayoutAddRef.ADDR;
     }
 
     /**
      * {@snippet lang=c :
-     * void wgpuPipelineLayoutReference(WGPUPipelineLayout pipelineLayout)
+     * void wgpuPipelineLayoutAddRef(WGPUPipelineLayout pipelineLayout)
      * }
      */
-    public static void wgpuPipelineLayoutReference(MemorySegment pipelineLayout) {
-        var mh$ = wgpuPipelineLayoutReference.HANDLE;
+    public static void wgpuPipelineLayoutAddRef(MemorySegment pipelineLayout) {
+        var mh$ = wgpuPipelineLayoutAddRef.HANDLE;
         try {
             if (TRACE_DOWNCALLS) {
-                traceDowncall("wgpuPipelineLayoutReference", pipelineLayout);
+                traceDowncall("wgpuPipelineLayoutAddRef", pipelineLayout);
             }
             mh$.invokeExact(pipelineLayout);
         } catch (Throwable ex$) {
@@ -10393,7 +10362,7 @@ public class wgpu_h {
     private static class wgpuQuerySetSetLabel {
         public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
             wgpu_h.C_POINTER,
-            wgpu_h.C_POINTER
+            WGPUStringView.layout()
         );
 
         public static final MemorySegment ADDR = wgpu_h.findOrThrow("wgpuQuerySetSetLabel");
@@ -10404,7 +10373,7 @@ public class wgpu_h {
     /**
      * Function descriptor for:
      * {@snippet lang=c :
-     * void wgpuQuerySetSetLabel(WGPUQuerySet querySet, const char *label)
+     * void wgpuQuerySetSetLabel(WGPUQuerySet querySet, WGPUStringView label)
      * }
      */
     public static FunctionDescriptor wgpuQuerySetSetLabel$descriptor() {
@@ -10414,7 +10383,7 @@ public class wgpu_h {
     /**
      * Downcall method handle for:
      * {@snippet lang=c :
-     * void wgpuQuerySetSetLabel(WGPUQuerySet querySet, const char *label)
+     * void wgpuQuerySetSetLabel(WGPUQuerySet querySet, WGPUStringView label)
      * }
      */
     public static MethodHandle wgpuQuerySetSetLabel$handle() {
@@ -10424,7 +10393,7 @@ public class wgpu_h {
     /**
      * Address for:
      * {@snippet lang=c :
-     * void wgpuQuerySetSetLabel(WGPUQuerySet querySet, const char *label)
+     * void wgpuQuerySetSetLabel(WGPUQuerySet querySet, WGPUStringView label)
      * }
      */
     public static MemorySegment wgpuQuerySetSetLabel$address() {
@@ -10433,7 +10402,7 @@ public class wgpu_h {
 
     /**
      * {@snippet lang=c :
-     * void wgpuQuerySetSetLabel(WGPUQuerySet querySet, const char *label)
+     * void wgpuQuerySetSetLabel(WGPUQuerySet querySet, WGPUStringView label)
      * }
      */
     public static void wgpuQuerySetSetLabel(MemorySegment querySet, MemorySegment label) {
@@ -10448,12 +10417,12 @@ public class wgpu_h {
         }
     }
 
-    private static class wgpuQuerySetReference {
+    private static class wgpuQuerySetAddRef {
         public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
             wgpu_h.C_POINTER
         );
 
-        public static final MemorySegment ADDR = wgpu_h.findOrThrow("wgpuQuerySetReference");
+        public static final MemorySegment ADDR = wgpu_h.findOrThrow("wgpuQuerySetAddRef");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -10461,43 +10430,43 @@ public class wgpu_h {
     /**
      * Function descriptor for:
      * {@snippet lang=c :
-     * void wgpuQuerySetReference(WGPUQuerySet querySet)
+     * void wgpuQuerySetAddRef(WGPUQuerySet querySet)
      * }
      */
-    public static FunctionDescriptor wgpuQuerySetReference$descriptor() {
-        return wgpuQuerySetReference.DESC;
+    public static FunctionDescriptor wgpuQuerySetAddRef$descriptor() {
+        return wgpuQuerySetAddRef.DESC;
     }
 
     /**
      * Downcall method handle for:
      * {@snippet lang=c :
-     * void wgpuQuerySetReference(WGPUQuerySet querySet)
+     * void wgpuQuerySetAddRef(WGPUQuerySet querySet)
      * }
      */
-    public static MethodHandle wgpuQuerySetReference$handle() {
-        return wgpuQuerySetReference.HANDLE;
+    public static MethodHandle wgpuQuerySetAddRef$handle() {
+        return wgpuQuerySetAddRef.HANDLE;
     }
 
     /**
      * Address for:
      * {@snippet lang=c :
-     * void wgpuQuerySetReference(WGPUQuerySet querySet)
+     * void wgpuQuerySetAddRef(WGPUQuerySet querySet)
      * }
      */
-    public static MemorySegment wgpuQuerySetReference$address() {
-        return wgpuQuerySetReference.ADDR;
+    public static MemorySegment wgpuQuerySetAddRef$address() {
+        return wgpuQuerySetAddRef.ADDR;
     }
 
     /**
      * {@snippet lang=c :
-     * void wgpuQuerySetReference(WGPUQuerySet querySet)
+     * void wgpuQuerySetAddRef(WGPUQuerySet querySet)
      * }
      */
-    public static void wgpuQuerySetReference(MemorySegment querySet) {
-        var mh$ = wgpuQuerySetReference.HANDLE;
+    public static void wgpuQuerySetAddRef(MemorySegment querySet) {
+        var mh$ = wgpuQuerySetAddRef.HANDLE;
         try {
             if (TRACE_DOWNCALLS) {
-                traceDowncall("wgpuQuerySetReference", querySet);
+                traceDowncall("wgpuQuerySetAddRef", querySet);
             }
             mh$.invokeExact(querySet);
         } catch (Throwable ex$) {
@@ -10563,10 +10532,10 @@ public class wgpu_h {
     }
 
     private static class wgpuQueueOnSubmittedWorkDone {
-        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            WGPUFuture.layout(),
             wgpu_h.C_POINTER,
-            wgpu_h.C_POINTER,
-            wgpu_h.C_POINTER
+            WGPUQueueWorkDoneCallbackInfo.layout()
         );
 
         public static final MemorySegment ADDR = wgpu_h.findOrThrow("wgpuQueueOnSubmittedWorkDone");
@@ -10577,7 +10546,7 @@ public class wgpu_h {
     /**
      * Function descriptor for:
      * {@snippet lang=c :
-     * void wgpuQueueOnSubmittedWorkDone(WGPUQueue queue, WGPUQueueOnSubmittedWorkDoneCallback callback, void *userdata)
+     * WGPUFuture wgpuQueueOnSubmittedWorkDone(WGPUQueue queue, WGPUQueueWorkDoneCallbackInfo callbackInfo)
      * }
      */
     public static FunctionDescriptor wgpuQueueOnSubmittedWorkDone$descriptor() {
@@ -10587,7 +10556,7 @@ public class wgpu_h {
     /**
      * Downcall method handle for:
      * {@snippet lang=c :
-     * void wgpuQueueOnSubmittedWorkDone(WGPUQueue queue, WGPUQueueOnSubmittedWorkDoneCallback callback, void *userdata)
+     * WGPUFuture wgpuQueueOnSubmittedWorkDone(WGPUQueue queue, WGPUQueueWorkDoneCallbackInfo callbackInfo)
      * }
      */
     public static MethodHandle wgpuQueueOnSubmittedWorkDone$handle() {
@@ -10597,7 +10566,7 @@ public class wgpu_h {
     /**
      * Address for:
      * {@snippet lang=c :
-     * void wgpuQueueOnSubmittedWorkDone(WGPUQueue queue, WGPUQueueOnSubmittedWorkDoneCallback callback, void *userdata)
+     * WGPUFuture wgpuQueueOnSubmittedWorkDone(WGPUQueue queue, WGPUQueueWorkDoneCallbackInfo callbackInfo)
      * }
      */
     public static MemorySegment wgpuQueueOnSubmittedWorkDone$address() {
@@ -10606,16 +10575,16 @@ public class wgpu_h {
 
     /**
      * {@snippet lang=c :
-     * void wgpuQueueOnSubmittedWorkDone(WGPUQueue queue, WGPUQueueOnSubmittedWorkDoneCallback callback, void *userdata)
+     * WGPUFuture wgpuQueueOnSubmittedWorkDone(WGPUQueue queue, WGPUQueueWorkDoneCallbackInfo callbackInfo)
      * }
      */
-    public static void wgpuQueueOnSubmittedWorkDone(MemorySegment queue, MemorySegment callback, MemorySegment userdata) {
+    public static MemorySegment wgpuQueueOnSubmittedWorkDone(SegmentAllocator allocator, MemorySegment queue, MemorySegment callbackInfo) {
         var mh$ = wgpuQueueOnSubmittedWorkDone.HANDLE;
         try {
             if (TRACE_DOWNCALLS) {
-                traceDowncall("wgpuQueueOnSubmittedWorkDone", queue, callback, userdata);
+                traceDowncall("wgpuQueueOnSubmittedWorkDone", allocator, queue, callbackInfo);
             }
-            mh$.invokeExact(queue, callback, userdata);
+            return (MemorySegment)mh$.invokeExact(allocator, queue, callbackInfo);
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -10624,7 +10593,7 @@ public class wgpu_h {
     private static class wgpuQueueSetLabel {
         public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
             wgpu_h.C_POINTER,
-            wgpu_h.C_POINTER
+            WGPUStringView.layout()
         );
 
         public static final MemorySegment ADDR = wgpu_h.findOrThrow("wgpuQueueSetLabel");
@@ -10635,7 +10604,7 @@ public class wgpu_h {
     /**
      * Function descriptor for:
      * {@snippet lang=c :
-     * void wgpuQueueSetLabel(WGPUQueue queue, const char *label)
+     * void wgpuQueueSetLabel(WGPUQueue queue, WGPUStringView label)
      * }
      */
     public static FunctionDescriptor wgpuQueueSetLabel$descriptor() {
@@ -10645,7 +10614,7 @@ public class wgpu_h {
     /**
      * Downcall method handle for:
      * {@snippet lang=c :
-     * void wgpuQueueSetLabel(WGPUQueue queue, const char *label)
+     * void wgpuQueueSetLabel(WGPUQueue queue, WGPUStringView label)
      * }
      */
     public static MethodHandle wgpuQueueSetLabel$handle() {
@@ -10655,7 +10624,7 @@ public class wgpu_h {
     /**
      * Address for:
      * {@snippet lang=c :
-     * void wgpuQueueSetLabel(WGPUQueue queue, const char *label)
+     * void wgpuQueueSetLabel(WGPUQueue queue, WGPUStringView label)
      * }
      */
     public static MemorySegment wgpuQueueSetLabel$address() {
@@ -10664,7 +10633,7 @@ public class wgpu_h {
 
     /**
      * {@snippet lang=c :
-     * void wgpuQueueSetLabel(WGPUQueue queue, const char *label)
+     * void wgpuQueueSetLabel(WGPUQueue queue, WGPUStringView label)
      * }
      */
     public static void wgpuQueueSetLabel(MemorySegment queue, MemorySegment label) {
@@ -10861,12 +10830,12 @@ public class wgpu_h {
         }
     }
 
-    private static class wgpuQueueReference {
+    private static class wgpuQueueAddRef {
         public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
             wgpu_h.C_POINTER
         );
 
-        public static final MemorySegment ADDR = wgpu_h.findOrThrow("wgpuQueueReference");
+        public static final MemorySegment ADDR = wgpu_h.findOrThrow("wgpuQueueAddRef");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -10874,43 +10843,43 @@ public class wgpu_h {
     /**
      * Function descriptor for:
      * {@snippet lang=c :
-     * void wgpuQueueReference(WGPUQueue queue)
+     * void wgpuQueueAddRef(WGPUQueue queue)
      * }
      */
-    public static FunctionDescriptor wgpuQueueReference$descriptor() {
-        return wgpuQueueReference.DESC;
+    public static FunctionDescriptor wgpuQueueAddRef$descriptor() {
+        return wgpuQueueAddRef.DESC;
     }
 
     /**
      * Downcall method handle for:
      * {@snippet lang=c :
-     * void wgpuQueueReference(WGPUQueue queue)
+     * void wgpuQueueAddRef(WGPUQueue queue)
      * }
      */
-    public static MethodHandle wgpuQueueReference$handle() {
-        return wgpuQueueReference.HANDLE;
+    public static MethodHandle wgpuQueueAddRef$handle() {
+        return wgpuQueueAddRef.HANDLE;
     }
 
     /**
      * Address for:
      * {@snippet lang=c :
-     * void wgpuQueueReference(WGPUQueue queue)
+     * void wgpuQueueAddRef(WGPUQueue queue)
      * }
      */
-    public static MemorySegment wgpuQueueReference$address() {
-        return wgpuQueueReference.ADDR;
+    public static MemorySegment wgpuQueueAddRef$address() {
+        return wgpuQueueAddRef.ADDR;
     }
 
     /**
      * {@snippet lang=c :
-     * void wgpuQueueReference(WGPUQueue queue)
+     * void wgpuQueueAddRef(WGPUQueue queue)
      * }
      */
-    public static void wgpuQueueReference(MemorySegment queue) {
-        var mh$ = wgpuQueueReference.HANDLE;
+    public static void wgpuQueueAddRef(MemorySegment queue) {
+        var mh$ = wgpuQueueAddRef.HANDLE;
         try {
             if (TRACE_DOWNCALLS) {
-                traceDowncall("wgpuQueueReference", queue);
+                traceDowncall("wgpuQueueAddRef", queue);
             }
             mh$.invokeExact(queue);
         } catch (Throwable ex$) {
@@ -10978,7 +10947,7 @@ public class wgpu_h {
     private static class wgpuRenderBundleSetLabel {
         public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
             wgpu_h.C_POINTER,
-            wgpu_h.C_POINTER
+            WGPUStringView.layout()
         );
 
         public static final MemorySegment ADDR = wgpu_h.findOrThrow("wgpuRenderBundleSetLabel");
@@ -10989,7 +10958,7 @@ public class wgpu_h {
     /**
      * Function descriptor for:
      * {@snippet lang=c :
-     * void wgpuRenderBundleSetLabel(WGPURenderBundle renderBundle, const char *label)
+     * void wgpuRenderBundleSetLabel(WGPURenderBundle renderBundle, WGPUStringView label)
      * }
      */
     public static FunctionDescriptor wgpuRenderBundleSetLabel$descriptor() {
@@ -10999,7 +10968,7 @@ public class wgpu_h {
     /**
      * Downcall method handle for:
      * {@snippet lang=c :
-     * void wgpuRenderBundleSetLabel(WGPURenderBundle renderBundle, const char *label)
+     * void wgpuRenderBundleSetLabel(WGPURenderBundle renderBundle, WGPUStringView label)
      * }
      */
     public static MethodHandle wgpuRenderBundleSetLabel$handle() {
@@ -11009,7 +10978,7 @@ public class wgpu_h {
     /**
      * Address for:
      * {@snippet lang=c :
-     * void wgpuRenderBundleSetLabel(WGPURenderBundle renderBundle, const char *label)
+     * void wgpuRenderBundleSetLabel(WGPURenderBundle renderBundle, WGPUStringView label)
      * }
      */
     public static MemorySegment wgpuRenderBundleSetLabel$address() {
@@ -11018,7 +10987,7 @@ public class wgpu_h {
 
     /**
      * {@snippet lang=c :
-     * void wgpuRenderBundleSetLabel(WGPURenderBundle renderBundle, const char *label)
+     * void wgpuRenderBundleSetLabel(WGPURenderBundle renderBundle, WGPUStringView label)
      * }
      */
     public static void wgpuRenderBundleSetLabel(MemorySegment renderBundle, MemorySegment label) {
@@ -11033,12 +11002,12 @@ public class wgpu_h {
         }
     }
 
-    private static class wgpuRenderBundleReference {
+    private static class wgpuRenderBundleAddRef {
         public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
             wgpu_h.C_POINTER
         );
 
-        public static final MemorySegment ADDR = wgpu_h.findOrThrow("wgpuRenderBundleReference");
+        public static final MemorySegment ADDR = wgpu_h.findOrThrow("wgpuRenderBundleAddRef");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -11046,43 +11015,43 @@ public class wgpu_h {
     /**
      * Function descriptor for:
      * {@snippet lang=c :
-     * void wgpuRenderBundleReference(WGPURenderBundle renderBundle)
+     * void wgpuRenderBundleAddRef(WGPURenderBundle renderBundle)
      * }
      */
-    public static FunctionDescriptor wgpuRenderBundleReference$descriptor() {
-        return wgpuRenderBundleReference.DESC;
+    public static FunctionDescriptor wgpuRenderBundleAddRef$descriptor() {
+        return wgpuRenderBundleAddRef.DESC;
     }
 
     /**
      * Downcall method handle for:
      * {@snippet lang=c :
-     * void wgpuRenderBundleReference(WGPURenderBundle renderBundle)
+     * void wgpuRenderBundleAddRef(WGPURenderBundle renderBundle)
      * }
      */
-    public static MethodHandle wgpuRenderBundleReference$handle() {
-        return wgpuRenderBundleReference.HANDLE;
+    public static MethodHandle wgpuRenderBundleAddRef$handle() {
+        return wgpuRenderBundleAddRef.HANDLE;
     }
 
     /**
      * Address for:
      * {@snippet lang=c :
-     * void wgpuRenderBundleReference(WGPURenderBundle renderBundle)
+     * void wgpuRenderBundleAddRef(WGPURenderBundle renderBundle)
      * }
      */
-    public static MemorySegment wgpuRenderBundleReference$address() {
-        return wgpuRenderBundleReference.ADDR;
+    public static MemorySegment wgpuRenderBundleAddRef$address() {
+        return wgpuRenderBundleAddRef.ADDR;
     }
 
     /**
      * {@snippet lang=c :
-     * void wgpuRenderBundleReference(WGPURenderBundle renderBundle)
+     * void wgpuRenderBundleAddRef(WGPURenderBundle renderBundle)
      * }
      */
-    public static void wgpuRenderBundleReference(MemorySegment renderBundle) {
-        var mh$ = wgpuRenderBundleReference.HANDLE;
+    public static void wgpuRenderBundleAddRef(MemorySegment renderBundle) {
+        var mh$ = wgpuRenderBundleAddRef.HANDLE;
         try {
             if (TRACE_DOWNCALLS) {
-                traceDowncall("wgpuRenderBundleReference", renderBundle);
+                traceDowncall("wgpuRenderBundleAddRef", renderBundle);
             }
             mh$.invokeExact(renderBundle);
         } catch (Throwable ex$) {
@@ -11450,7 +11419,7 @@ public class wgpu_h {
     private static class wgpuRenderBundleEncoderInsertDebugMarker {
         public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
             wgpu_h.C_POINTER,
-            wgpu_h.C_POINTER
+            WGPUStringView.layout()
         );
 
         public static final MemorySegment ADDR = wgpu_h.findOrThrow("wgpuRenderBundleEncoderInsertDebugMarker");
@@ -11461,7 +11430,7 @@ public class wgpu_h {
     /**
      * Function descriptor for:
      * {@snippet lang=c :
-     * void wgpuRenderBundleEncoderInsertDebugMarker(WGPURenderBundleEncoder renderBundleEncoder, const char *markerLabel)
+     * void wgpuRenderBundleEncoderInsertDebugMarker(WGPURenderBundleEncoder renderBundleEncoder, WGPUStringView markerLabel)
      * }
      */
     public static FunctionDescriptor wgpuRenderBundleEncoderInsertDebugMarker$descriptor() {
@@ -11471,7 +11440,7 @@ public class wgpu_h {
     /**
      * Downcall method handle for:
      * {@snippet lang=c :
-     * void wgpuRenderBundleEncoderInsertDebugMarker(WGPURenderBundleEncoder renderBundleEncoder, const char *markerLabel)
+     * void wgpuRenderBundleEncoderInsertDebugMarker(WGPURenderBundleEncoder renderBundleEncoder, WGPUStringView markerLabel)
      * }
      */
     public static MethodHandle wgpuRenderBundleEncoderInsertDebugMarker$handle() {
@@ -11481,7 +11450,7 @@ public class wgpu_h {
     /**
      * Address for:
      * {@snippet lang=c :
-     * void wgpuRenderBundleEncoderInsertDebugMarker(WGPURenderBundleEncoder renderBundleEncoder, const char *markerLabel)
+     * void wgpuRenderBundleEncoderInsertDebugMarker(WGPURenderBundleEncoder renderBundleEncoder, WGPUStringView markerLabel)
      * }
      */
     public static MemorySegment wgpuRenderBundleEncoderInsertDebugMarker$address() {
@@ -11490,7 +11459,7 @@ public class wgpu_h {
 
     /**
      * {@snippet lang=c :
-     * void wgpuRenderBundleEncoderInsertDebugMarker(WGPURenderBundleEncoder renderBundleEncoder, const char *markerLabel)
+     * void wgpuRenderBundleEncoderInsertDebugMarker(WGPURenderBundleEncoder renderBundleEncoder, WGPUStringView markerLabel)
      * }
      */
     public static void wgpuRenderBundleEncoderInsertDebugMarker(MemorySegment renderBundleEncoder, MemorySegment markerLabel) {
@@ -11565,7 +11534,7 @@ public class wgpu_h {
     private static class wgpuRenderBundleEncoderPushDebugGroup {
         public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
             wgpu_h.C_POINTER,
-            wgpu_h.C_POINTER
+            WGPUStringView.layout()
         );
 
         public static final MemorySegment ADDR = wgpu_h.findOrThrow("wgpuRenderBundleEncoderPushDebugGroup");
@@ -11576,7 +11545,7 @@ public class wgpu_h {
     /**
      * Function descriptor for:
      * {@snippet lang=c :
-     * void wgpuRenderBundleEncoderPushDebugGroup(WGPURenderBundleEncoder renderBundleEncoder, const char *groupLabel)
+     * void wgpuRenderBundleEncoderPushDebugGroup(WGPURenderBundleEncoder renderBundleEncoder, WGPUStringView groupLabel)
      * }
      */
     public static FunctionDescriptor wgpuRenderBundleEncoderPushDebugGroup$descriptor() {
@@ -11586,7 +11555,7 @@ public class wgpu_h {
     /**
      * Downcall method handle for:
      * {@snippet lang=c :
-     * void wgpuRenderBundleEncoderPushDebugGroup(WGPURenderBundleEncoder renderBundleEncoder, const char *groupLabel)
+     * void wgpuRenderBundleEncoderPushDebugGroup(WGPURenderBundleEncoder renderBundleEncoder, WGPUStringView groupLabel)
      * }
      */
     public static MethodHandle wgpuRenderBundleEncoderPushDebugGroup$handle() {
@@ -11596,7 +11565,7 @@ public class wgpu_h {
     /**
      * Address for:
      * {@snippet lang=c :
-     * void wgpuRenderBundleEncoderPushDebugGroup(WGPURenderBundleEncoder renderBundleEncoder, const char *groupLabel)
+     * void wgpuRenderBundleEncoderPushDebugGroup(WGPURenderBundleEncoder renderBundleEncoder, WGPUStringView groupLabel)
      * }
      */
     public static MemorySegment wgpuRenderBundleEncoderPushDebugGroup$address() {
@@ -11605,7 +11574,7 @@ public class wgpu_h {
 
     /**
      * {@snippet lang=c :
-     * void wgpuRenderBundleEncoderPushDebugGroup(WGPURenderBundleEncoder renderBundleEncoder, const char *groupLabel)
+     * void wgpuRenderBundleEncoderPushDebugGroup(WGPURenderBundleEncoder renderBundleEncoder, WGPUStringView groupLabel)
      * }
      */
     public static void wgpuRenderBundleEncoderPushDebugGroup(MemorySegment renderBundleEncoder, MemorySegment groupLabel) {
@@ -11745,7 +11714,7 @@ public class wgpu_h {
     private static class wgpuRenderBundleEncoderSetLabel {
         public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
             wgpu_h.C_POINTER,
-            wgpu_h.C_POINTER
+            WGPUStringView.layout()
         );
 
         public static final MemorySegment ADDR = wgpu_h.findOrThrow("wgpuRenderBundleEncoderSetLabel");
@@ -11756,7 +11725,7 @@ public class wgpu_h {
     /**
      * Function descriptor for:
      * {@snippet lang=c :
-     * void wgpuRenderBundleEncoderSetLabel(WGPURenderBundleEncoder renderBundleEncoder, const char *label)
+     * void wgpuRenderBundleEncoderSetLabel(WGPURenderBundleEncoder renderBundleEncoder, WGPUStringView label)
      * }
      */
     public static FunctionDescriptor wgpuRenderBundleEncoderSetLabel$descriptor() {
@@ -11766,7 +11735,7 @@ public class wgpu_h {
     /**
      * Downcall method handle for:
      * {@snippet lang=c :
-     * void wgpuRenderBundleEncoderSetLabel(WGPURenderBundleEncoder renderBundleEncoder, const char *label)
+     * void wgpuRenderBundleEncoderSetLabel(WGPURenderBundleEncoder renderBundleEncoder, WGPUStringView label)
      * }
      */
     public static MethodHandle wgpuRenderBundleEncoderSetLabel$handle() {
@@ -11776,7 +11745,7 @@ public class wgpu_h {
     /**
      * Address for:
      * {@snippet lang=c :
-     * void wgpuRenderBundleEncoderSetLabel(WGPURenderBundleEncoder renderBundleEncoder, const char *label)
+     * void wgpuRenderBundleEncoderSetLabel(WGPURenderBundleEncoder renderBundleEncoder, WGPUStringView label)
      * }
      */
     public static MemorySegment wgpuRenderBundleEncoderSetLabel$address() {
@@ -11785,7 +11754,7 @@ public class wgpu_h {
 
     /**
      * {@snippet lang=c :
-     * void wgpuRenderBundleEncoderSetLabel(WGPURenderBundleEncoder renderBundleEncoder, const char *label)
+     * void wgpuRenderBundleEncoderSetLabel(WGPURenderBundleEncoder renderBundleEncoder, WGPUStringView label)
      * }
      */
     public static void wgpuRenderBundleEncoderSetLabel(MemorySegment renderBundleEncoder, MemorySegment label) {
@@ -11919,12 +11888,12 @@ public class wgpu_h {
         }
     }
 
-    private static class wgpuRenderBundleEncoderReference {
+    private static class wgpuRenderBundleEncoderAddRef {
         public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
             wgpu_h.C_POINTER
         );
 
-        public static final MemorySegment ADDR = wgpu_h.findOrThrow("wgpuRenderBundleEncoderReference");
+        public static final MemorySegment ADDR = wgpu_h.findOrThrow("wgpuRenderBundleEncoderAddRef");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -11932,43 +11901,43 @@ public class wgpu_h {
     /**
      * Function descriptor for:
      * {@snippet lang=c :
-     * void wgpuRenderBundleEncoderReference(WGPURenderBundleEncoder renderBundleEncoder)
+     * void wgpuRenderBundleEncoderAddRef(WGPURenderBundleEncoder renderBundleEncoder)
      * }
      */
-    public static FunctionDescriptor wgpuRenderBundleEncoderReference$descriptor() {
-        return wgpuRenderBundleEncoderReference.DESC;
+    public static FunctionDescriptor wgpuRenderBundleEncoderAddRef$descriptor() {
+        return wgpuRenderBundleEncoderAddRef.DESC;
     }
 
     /**
      * Downcall method handle for:
      * {@snippet lang=c :
-     * void wgpuRenderBundleEncoderReference(WGPURenderBundleEncoder renderBundleEncoder)
+     * void wgpuRenderBundleEncoderAddRef(WGPURenderBundleEncoder renderBundleEncoder)
      * }
      */
-    public static MethodHandle wgpuRenderBundleEncoderReference$handle() {
-        return wgpuRenderBundleEncoderReference.HANDLE;
+    public static MethodHandle wgpuRenderBundleEncoderAddRef$handle() {
+        return wgpuRenderBundleEncoderAddRef.HANDLE;
     }
 
     /**
      * Address for:
      * {@snippet lang=c :
-     * void wgpuRenderBundleEncoderReference(WGPURenderBundleEncoder renderBundleEncoder)
+     * void wgpuRenderBundleEncoderAddRef(WGPURenderBundleEncoder renderBundleEncoder)
      * }
      */
-    public static MemorySegment wgpuRenderBundleEncoderReference$address() {
-        return wgpuRenderBundleEncoderReference.ADDR;
+    public static MemorySegment wgpuRenderBundleEncoderAddRef$address() {
+        return wgpuRenderBundleEncoderAddRef.ADDR;
     }
 
     /**
      * {@snippet lang=c :
-     * void wgpuRenderBundleEncoderReference(WGPURenderBundleEncoder renderBundleEncoder)
+     * void wgpuRenderBundleEncoderAddRef(WGPURenderBundleEncoder renderBundleEncoder)
      * }
      */
-    public static void wgpuRenderBundleEncoderReference(MemorySegment renderBundleEncoder) {
-        var mh$ = wgpuRenderBundleEncoderReference.HANDLE;
+    public static void wgpuRenderBundleEncoderAddRef(MemorySegment renderBundleEncoder) {
+        var mh$ = wgpuRenderBundleEncoderAddRef.HANDLE;
         try {
             if (TRACE_DOWNCALLS) {
-                traceDowncall("wgpuRenderBundleEncoderReference", renderBundleEncoder);
+                traceDowncall("wgpuRenderBundleEncoderAddRef", renderBundleEncoder);
             }
             mh$.invokeExact(renderBundleEncoder);
         } catch (Throwable ex$) {
@@ -12508,7 +12477,7 @@ public class wgpu_h {
     private static class wgpuRenderPassEncoderInsertDebugMarker {
         public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
             wgpu_h.C_POINTER,
-            wgpu_h.C_POINTER
+            WGPUStringView.layout()
         );
 
         public static final MemorySegment ADDR = wgpu_h.findOrThrow("wgpuRenderPassEncoderInsertDebugMarker");
@@ -12519,7 +12488,7 @@ public class wgpu_h {
     /**
      * Function descriptor for:
      * {@snippet lang=c :
-     * void wgpuRenderPassEncoderInsertDebugMarker(WGPURenderPassEncoder renderPassEncoder, const char *markerLabel)
+     * void wgpuRenderPassEncoderInsertDebugMarker(WGPURenderPassEncoder renderPassEncoder, WGPUStringView markerLabel)
      * }
      */
     public static FunctionDescriptor wgpuRenderPassEncoderInsertDebugMarker$descriptor() {
@@ -12529,7 +12498,7 @@ public class wgpu_h {
     /**
      * Downcall method handle for:
      * {@snippet lang=c :
-     * void wgpuRenderPassEncoderInsertDebugMarker(WGPURenderPassEncoder renderPassEncoder, const char *markerLabel)
+     * void wgpuRenderPassEncoderInsertDebugMarker(WGPURenderPassEncoder renderPassEncoder, WGPUStringView markerLabel)
      * }
      */
     public static MethodHandle wgpuRenderPassEncoderInsertDebugMarker$handle() {
@@ -12539,7 +12508,7 @@ public class wgpu_h {
     /**
      * Address for:
      * {@snippet lang=c :
-     * void wgpuRenderPassEncoderInsertDebugMarker(WGPURenderPassEncoder renderPassEncoder, const char *markerLabel)
+     * void wgpuRenderPassEncoderInsertDebugMarker(WGPURenderPassEncoder renderPassEncoder, WGPUStringView markerLabel)
      * }
      */
     public static MemorySegment wgpuRenderPassEncoderInsertDebugMarker$address() {
@@ -12548,7 +12517,7 @@ public class wgpu_h {
 
     /**
      * {@snippet lang=c :
-     * void wgpuRenderPassEncoderInsertDebugMarker(WGPURenderPassEncoder renderPassEncoder, const char *markerLabel)
+     * void wgpuRenderPassEncoderInsertDebugMarker(WGPURenderPassEncoder renderPassEncoder, WGPUStringView markerLabel)
      * }
      */
     public static void wgpuRenderPassEncoderInsertDebugMarker(MemorySegment renderPassEncoder, MemorySegment markerLabel) {
@@ -12623,7 +12592,7 @@ public class wgpu_h {
     private static class wgpuRenderPassEncoderPushDebugGroup {
         public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
             wgpu_h.C_POINTER,
-            wgpu_h.C_POINTER
+            WGPUStringView.layout()
         );
 
         public static final MemorySegment ADDR = wgpu_h.findOrThrow("wgpuRenderPassEncoderPushDebugGroup");
@@ -12634,7 +12603,7 @@ public class wgpu_h {
     /**
      * Function descriptor for:
      * {@snippet lang=c :
-     * void wgpuRenderPassEncoderPushDebugGroup(WGPURenderPassEncoder renderPassEncoder, const char *groupLabel)
+     * void wgpuRenderPassEncoderPushDebugGroup(WGPURenderPassEncoder renderPassEncoder, WGPUStringView groupLabel)
      * }
      */
     public static FunctionDescriptor wgpuRenderPassEncoderPushDebugGroup$descriptor() {
@@ -12644,7 +12613,7 @@ public class wgpu_h {
     /**
      * Downcall method handle for:
      * {@snippet lang=c :
-     * void wgpuRenderPassEncoderPushDebugGroup(WGPURenderPassEncoder renderPassEncoder, const char *groupLabel)
+     * void wgpuRenderPassEncoderPushDebugGroup(WGPURenderPassEncoder renderPassEncoder, WGPUStringView groupLabel)
      * }
      */
     public static MethodHandle wgpuRenderPassEncoderPushDebugGroup$handle() {
@@ -12654,7 +12623,7 @@ public class wgpu_h {
     /**
      * Address for:
      * {@snippet lang=c :
-     * void wgpuRenderPassEncoderPushDebugGroup(WGPURenderPassEncoder renderPassEncoder, const char *groupLabel)
+     * void wgpuRenderPassEncoderPushDebugGroup(WGPURenderPassEncoder renderPassEncoder, WGPUStringView groupLabel)
      * }
      */
     public static MemorySegment wgpuRenderPassEncoderPushDebugGroup$address() {
@@ -12663,7 +12632,7 @@ public class wgpu_h {
 
     /**
      * {@snippet lang=c :
-     * void wgpuRenderPassEncoderPushDebugGroup(WGPURenderPassEncoder renderPassEncoder, const char *groupLabel)
+     * void wgpuRenderPassEncoderPushDebugGroup(WGPURenderPassEncoder renderPassEncoder, WGPUStringView groupLabel)
      * }
      */
     public static void wgpuRenderPassEncoderPushDebugGroup(MemorySegment renderPassEncoder, MemorySegment groupLabel) {
@@ -12861,7 +12830,7 @@ public class wgpu_h {
     private static class wgpuRenderPassEncoderSetLabel {
         public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
             wgpu_h.C_POINTER,
-            wgpu_h.C_POINTER
+            WGPUStringView.layout()
         );
 
         public static final MemorySegment ADDR = wgpu_h.findOrThrow("wgpuRenderPassEncoderSetLabel");
@@ -12872,7 +12841,7 @@ public class wgpu_h {
     /**
      * Function descriptor for:
      * {@snippet lang=c :
-     * void wgpuRenderPassEncoderSetLabel(WGPURenderPassEncoder renderPassEncoder, const char *label)
+     * void wgpuRenderPassEncoderSetLabel(WGPURenderPassEncoder renderPassEncoder, WGPUStringView label)
      * }
      */
     public static FunctionDescriptor wgpuRenderPassEncoderSetLabel$descriptor() {
@@ -12882,7 +12851,7 @@ public class wgpu_h {
     /**
      * Downcall method handle for:
      * {@snippet lang=c :
-     * void wgpuRenderPassEncoderSetLabel(WGPURenderPassEncoder renderPassEncoder, const char *label)
+     * void wgpuRenderPassEncoderSetLabel(WGPURenderPassEncoder renderPassEncoder, WGPUStringView label)
      * }
      */
     public static MethodHandle wgpuRenderPassEncoderSetLabel$handle() {
@@ -12892,7 +12861,7 @@ public class wgpu_h {
     /**
      * Address for:
      * {@snippet lang=c :
-     * void wgpuRenderPassEncoderSetLabel(WGPURenderPassEncoder renderPassEncoder, const char *label)
+     * void wgpuRenderPassEncoderSetLabel(WGPURenderPassEncoder renderPassEncoder, WGPUStringView label)
      * }
      */
     public static MemorySegment wgpuRenderPassEncoderSetLabel$address() {
@@ -12901,7 +12870,7 @@ public class wgpu_h {
 
     /**
      * {@snippet lang=c :
-     * void wgpuRenderPassEncoderSetLabel(WGPURenderPassEncoder renderPassEncoder, const char *label)
+     * void wgpuRenderPassEncoderSetLabel(WGPURenderPassEncoder renderPassEncoder, WGPUStringView label)
      * }
      */
     public static void wgpuRenderPassEncoderSetLabel(MemorySegment renderPassEncoder, MemorySegment label) {
@@ -13217,12 +13186,12 @@ public class wgpu_h {
         }
     }
 
-    private static class wgpuRenderPassEncoderReference {
+    private static class wgpuRenderPassEncoderAddRef {
         public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
             wgpu_h.C_POINTER
         );
 
-        public static final MemorySegment ADDR = wgpu_h.findOrThrow("wgpuRenderPassEncoderReference");
+        public static final MemorySegment ADDR = wgpu_h.findOrThrow("wgpuRenderPassEncoderAddRef");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -13230,43 +13199,43 @@ public class wgpu_h {
     /**
      * Function descriptor for:
      * {@snippet lang=c :
-     * void wgpuRenderPassEncoderReference(WGPURenderPassEncoder renderPassEncoder)
+     * void wgpuRenderPassEncoderAddRef(WGPURenderPassEncoder renderPassEncoder)
      * }
      */
-    public static FunctionDescriptor wgpuRenderPassEncoderReference$descriptor() {
-        return wgpuRenderPassEncoderReference.DESC;
+    public static FunctionDescriptor wgpuRenderPassEncoderAddRef$descriptor() {
+        return wgpuRenderPassEncoderAddRef.DESC;
     }
 
     /**
      * Downcall method handle for:
      * {@snippet lang=c :
-     * void wgpuRenderPassEncoderReference(WGPURenderPassEncoder renderPassEncoder)
+     * void wgpuRenderPassEncoderAddRef(WGPURenderPassEncoder renderPassEncoder)
      * }
      */
-    public static MethodHandle wgpuRenderPassEncoderReference$handle() {
-        return wgpuRenderPassEncoderReference.HANDLE;
+    public static MethodHandle wgpuRenderPassEncoderAddRef$handle() {
+        return wgpuRenderPassEncoderAddRef.HANDLE;
     }
 
     /**
      * Address for:
      * {@snippet lang=c :
-     * void wgpuRenderPassEncoderReference(WGPURenderPassEncoder renderPassEncoder)
+     * void wgpuRenderPassEncoderAddRef(WGPURenderPassEncoder renderPassEncoder)
      * }
      */
-    public static MemorySegment wgpuRenderPassEncoderReference$address() {
-        return wgpuRenderPassEncoderReference.ADDR;
+    public static MemorySegment wgpuRenderPassEncoderAddRef$address() {
+        return wgpuRenderPassEncoderAddRef.ADDR;
     }
 
     /**
      * {@snippet lang=c :
-     * void wgpuRenderPassEncoderReference(WGPURenderPassEncoder renderPassEncoder)
+     * void wgpuRenderPassEncoderAddRef(WGPURenderPassEncoder renderPassEncoder)
      * }
      */
-    public static void wgpuRenderPassEncoderReference(MemorySegment renderPassEncoder) {
-        var mh$ = wgpuRenderPassEncoderReference.HANDLE;
+    public static void wgpuRenderPassEncoderAddRef(MemorySegment renderPassEncoder) {
+        var mh$ = wgpuRenderPassEncoderAddRef.HANDLE;
         try {
             if (TRACE_DOWNCALLS) {
-                traceDowncall("wgpuRenderPassEncoderReference", renderPassEncoder);
+                traceDowncall("wgpuRenderPassEncoderAddRef", renderPassEncoder);
             }
             mh$.invokeExact(renderPassEncoder);
         } catch (Throwable ex$) {
@@ -13393,7 +13362,7 @@ public class wgpu_h {
     private static class wgpuRenderPipelineSetLabel {
         public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
             wgpu_h.C_POINTER,
-            wgpu_h.C_POINTER
+            WGPUStringView.layout()
         );
 
         public static final MemorySegment ADDR = wgpu_h.findOrThrow("wgpuRenderPipelineSetLabel");
@@ -13404,7 +13373,7 @@ public class wgpu_h {
     /**
      * Function descriptor for:
      * {@snippet lang=c :
-     * void wgpuRenderPipelineSetLabel(WGPURenderPipeline renderPipeline, const char *label)
+     * void wgpuRenderPipelineSetLabel(WGPURenderPipeline renderPipeline, WGPUStringView label)
      * }
      */
     public static FunctionDescriptor wgpuRenderPipelineSetLabel$descriptor() {
@@ -13414,7 +13383,7 @@ public class wgpu_h {
     /**
      * Downcall method handle for:
      * {@snippet lang=c :
-     * void wgpuRenderPipelineSetLabel(WGPURenderPipeline renderPipeline, const char *label)
+     * void wgpuRenderPipelineSetLabel(WGPURenderPipeline renderPipeline, WGPUStringView label)
      * }
      */
     public static MethodHandle wgpuRenderPipelineSetLabel$handle() {
@@ -13424,7 +13393,7 @@ public class wgpu_h {
     /**
      * Address for:
      * {@snippet lang=c :
-     * void wgpuRenderPipelineSetLabel(WGPURenderPipeline renderPipeline, const char *label)
+     * void wgpuRenderPipelineSetLabel(WGPURenderPipeline renderPipeline, WGPUStringView label)
      * }
      */
     public static MemorySegment wgpuRenderPipelineSetLabel$address() {
@@ -13433,7 +13402,7 @@ public class wgpu_h {
 
     /**
      * {@snippet lang=c :
-     * void wgpuRenderPipelineSetLabel(WGPURenderPipeline renderPipeline, const char *label)
+     * void wgpuRenderPipelineSetLabel(WGPURenderPipeline renderPipeline, WGPUStringView label)
      * }
      */
     public static void wgpuRenderPipelineSetLabel(MemorySegment renderPipeline, MemorySegment label) {
@@ -13448,12 +13417,12 @@ public class wgpu_h {
         }
     }
 
-    private static class wgpuRenderPipelineReference {
+    private static class wgpuRenderPipelineAddRef {
         public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
             wgpu_h.C_POINTER
         );
 
-        public static final MemorySegment ADDR = wgpu_h.findOrThrow("wgpuRenderPipelineReference");
+        public static final MemorySegment ADDR = wgpu_h.findOrThrow("wgpuRenderPipelineAddRef");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -13461,43 +13430,43 @@ public class wgpu_h {
     /**
      * Function descriptor for:
      * {@snippet lang=c :
-     * void wgpuRenderPipelineReference(WGPURenderPipeline renderPipeline)
+     * void wgpuRenderPipelineAddRef(WGPURenderPipeline renderPipeline)
      * }
      */
-    public static FunctionDescriptor wgpuRenderPipelineReference$descriptor() {
-        return wgpuRenderPipelineReference.DESC;
+    public static FunctionDescriptor wgpuRenderPipelineAddRef$descriptor() {
+        return wgpuRenderPipelineAddRef.DESC;
     }
 
     /**
      * Downcall method handle for:
      * {@snippet lang=c :
-     * void wgpuRenderPipelineReference(WGPURenderPipeline renderPipeline)
+     * void wgpuRenderPipelineAddRef(WGPURenderPipeline renderPipeline)
      * }
      */
-    public static MethodHandle wgpuRenderPipelineReference$handle() {
-        return wgpuRenderPipelineReference.HANDLE;
+    public static MethodHandle wgpuRenderPipelineAddRef$handle() {
+        return wgpuRenderPipelineAddRef.HANDLE;
     }
 
     /**
      * Address for:
      * {@snippet lang=c :
-     * void wgpuRenderPipelineReference(WGPURenderPipeline renderPipeline)
+     * void wgpuRenderPipelineAddRef(WGPURenderPipeline renderPipeline)
      * }
      */
-    public static MemorySegment wgpuRenderPipelineReference$address() {
-        return wgpuRenderPipelineReference.ADDR;
+    public static MemorySegment wgpuRenderPipelineAddRef$address() {
+        return wgpuRenderPipelineAddRef.ADDR;
     }
 
     /**
      * {@snippet lang=c :
-     * void wgpuRenderPipelineReference(WGPURenderPipeline renderPipeline)
+     * void wgpuRenderPipelineAddRef(WGPURenderPipeline renderPipeline)
      * }
      */
-    public static void wgpuRenderPipelineReference(MemorySegment renderPipeline) {
-        var mh$ = wgpuRenderPipelineReference.HANDLE;
+    public static void wgpuRenderPipelineAddRef(MemorySegment renderPipeline) {
+        var mh$ = wgpuRenderPipelineAddRef.HANDLE;
         try {
             if (TRACE_DOWNCALLS) {
-                traceDowncall("wgpuRenderPipelineReference", renderPipeline);
+                traceDowncall("wgpuRenderPipelineAddRef", renderPipeline);
             }
             mh$.invokeExact(renderPipeline);
         } catch (Throwable ex$) {
@@ -13565,7 +13534,7 @@ public class wgpu_h {
     private static class wgpuSamplerSetLabel {
         public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
             wgpu_h.C_POINTER,
-            wgpu_h.C_POINTER
+            WGPUStringView.layout()
         );
 
         public static final MemorySegment ADDR = wgpu_h.findOrThrow("wgpuSamplerSetLabel");
@@ -13576,7 +13545,7 @@ public class wgpu_h {
     /**
      * Function descriptor for:
      * {@snippet lang=c :
-     * void wgpuSamplerSetLabel(WGPUSampler sampler, const char *label)
+     * void wgpuSamplerSetLabel(WGPUSampler sampler, WGPUStringView label)
      * }
      */
     public static FunctionDescriptor wgpuSamplerSetLabel$descriptor() {
@@ -13586,7 +13555,7 @@ public class wgpu_h {
     /**
      * Downcall method handle for:
      * {@snippet lang=c :
-     * void wgpuSamplerSetLabel(WGPUSampler sampler, const char *label)
+     * void wgpuSamplerSetLabel(WGPUSampler sampler, WGPUStringView label)
      * }
      */
     public static MethodHandle wgpuSamplerSetLabel$handle() {
@@ -13596,7 +13565,7 @@ public class wgpu_h {
     /**
      * Address for:
      * {@snippet lang=c :
-     * void wgpuSamplerSetLabel(WGPUSampler sampler, const char *label)
+     * void wgpuSamplerSetLabel(WGPUSampler sampler, WGPUStringView label)
      * }
      */
     public static MemorySegment wgpuSamplerSetLabel$address() {
@@ -13605,7 +13574,7 @@ public class wgpu_h {
 
     /**
      * {@snippet lang=c :
-     * void wgpuSamplerSetLabel(WGPUSampler sampler, const char *label)
+     * void wgpuSamplerSetLabel(WGPUSampler sampler, WGPUStringView label)
      * }
      */
     public static void wgpuSamplerSetLabel(MemorySegment sampler, MemorySegment label) {
@@ -13620,12 +13589,12 @@ public class wgpu_h {
         }
     }
 
-    private static class wgpuSamplerReference {
+    private static class wgpuSamplerAddRef {
         public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
             wgpu_h.C_POINTER
         );
 
-        public static final MemorySegment ADDR = wgpu_h.findOrThrow("wgpuSamplerReference");
+        public static final MemorySegment ADDR = wgpu_h.findOrThrow("wgpuSamplerAddRef");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -13633,43 +13602,43 @@ public class wgpu_h {
     /**
      * Function descriptor for:
      * {@snippet lang=c :
-     * void wgpuSamplerReference(WGPUSampler sampler)
+     * void wgpuSamplerAddRef(WGPUSampler sampler)
      * }
      */
-    public static FunctionDescriptor wgpuSamplerReference$descriptor() {
-        return wgpuSamplerReference.DESC;
+    public static FunctionDescriptor wgpuSamplerAddRef$descriptor() {
+        return wgpuSamplerAddRef.DESC;
     }
 
     /**
      * Downcall method handle for:
      * {@snippet lang=c :
-     * void wgpuSamplerReference(WGPUSampler sampler)
+     * void wgpuSamplerAddRef(WGPUSampler sampler)
      * }
      */
-    public static MethodHandle wgpuSamplerReference$handle() {
-        return wgpuSamplerReference.HANDLE;
+    public static MethodHandle wgpuSamplerAddRef$handle() {
+        return wgpuSamplerAddRef.HANDLE;
     }
 
     /**
      * Address for:
      * {@snippet lang=c :
-     * void wgpuSamplerReference(WGPUSampler sampler)
+     * void wgpuSamplerAddRef(WGPUSampler sampler)
      * }
      */
-    public static MemorySegment wgpuSamplerReference$address() {
-        return wgpuSamplerReference.ADDR;
+    public static MemorySegment wgpuSamplerAddRef$address() {
+        return wgpuSamplerAddRef.ADDR;
     }
 
     /**
      * {@snippet lang=c :
-     * void wgpuSamplerReference(WGPUSampler sampler)
+     * void wgpuSamplerAddRef(WGPUSampler sampler)
      * }
      */
-    public static void wgpuSamplerReference(MemorySegment sampler) {
-        var mh$ = wgpuSamplerReference.HANDLE;
+    public static void wgpuSamplerAddRef(MemorySegment sampler) {
+        var mh$ = wgpuSamplerAddRef.HANDLE;
         try {
             if (TRACE_DOWNCALLS) {
-                traceDowncall("wgpuSamplerReference", sampler);
+                traceDowncall("wgpuSamplerAddRef", sampler);
             }
             mh$.invokeExact(sampler);
         } catch (Throwable ex$) {
@@ -13735,10 +13704,10 @@ public class wgpu_h {
     }
 
     private static class wgpuShaderModuleGetCompilationInfo {
-        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            WGPUFuture.layout(),
             wgpu_h.C_POINTER,
-            wgpu_h.C_POINTER,
-            wgpu_h.C_POINTER
+            WGPUCompilationInfoCallbackInfo.layout()
         );
 
         public static final MemorySegment ADDR = wgpu_h.findOrThrow("wgpuShaderModuleGetCompilationInfo");
@@ -13749,7 +13718,7 @@ public class wgpu_h {
     /**
      * Function descriptor for:
      * {@snippet lang=c :
-     * void wgpuShaderModuleGetCompilationInfo(WGPUShaderModule shaderModule, WGPUShaderModuleGetCompilationInfoCallback callback, void *userdata)
+     * WGPUFuture wgpuShaderModuleGetCompilationInfo(WGPUShaderModule shaderModule, WGPUCompilationInfoCallbackInfo callbackInfo)
      * }
      */
     public static FunctionDescriptor wgpuShaderModuleGetCompilationInfo$descriptor() {
@@ -13759,7 +13728,7 @@ public class wgpu_h {
     /**
      * Downcall method handle for:
      * {@snippet lang=c :
-     * void wgpuShaderModuleGetCompilationInfo(WGPUShaderModule shaderModule, WGPUShaderModuleGetCompilationInfoCallback callback, void *userdata)
+     * WGPUFuture wgpuShaderModuleGetCompilationInfo(WGPUShaderModule shaderModule, WGPUCompilationInfoCallbackInfo callbackInfo)
      * }
      */
     public static MethodHandle wgpuShaderModuleGetCompilationInfo$handle() {
@@ -13769,7 +13738,7 @@ public class wgpu_h {
     /**
      * Address for:
      * {@snippet lang=c :
-     * void wgpuShaderModuleGetCompilationInfo(WGPUShaderModule shaderModule, WGPUShaderModuleGetCompilationInfoCallback callback, void *userdata)
+     * WGPUFuture wgpuShaderModuleGetCompilationInfo(WGPUShaderModule shaderModule, WGPUCompilationInfoCallbackInfo callbackInfo)
      * }
      */
     public static MemorySegment wgpuShaderModuleGetCompilationInfo$address() {
@@ -13778,16 +13747,16 @@ public class wgpu_h {
 
     /**
      * {@snippet lang=c :
-     * void wgpuShaderModuleGetCompilationInfo(WGPUShaderModule shaderModule, WGPUShaderModuleGetCompilationInfoCallback callback, void *userdata)
+     * WGPUFuture wgpuShaderModuleGetCompilationInfo(WGPUShaderModule shaderModule, WGPUCompilationInfoCallbackInfo callbackInfo)
      * }
      */
-    public static void wgpuShaderModuleGetCompilationInfo(MemorySegment shaderModule, MemorySegment callback, MemorySegment userdata) {
+    public static MemorySegment wgpuShaderModuleGetCompilationInfo(SegmentAllocator allocator, MemorySegment shaderModule, MemorySegment callbackInfo) {
         var mh$ = wgpuShaderModuleGetCompilationInfo.HANDLE;
         try {
             if (TRACE_DOWNCALLS) {
-                traceDowncall("wgpuShaderModuleGetCompilationInfo", shaderModule, callback, userdata);
+                traceDowncall("wgpuShaderModuleGetCompilationInfo", allocator, shaderModule, callbackInfo);
             }
-            mh$.invokeExact(shaderModule, callback, userdata);
+            return (MemorySegment)mh$.invokeExact(allocator, shaderModule, callbackInfo);
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -13796,7 +13765,7 @@ public class wgpu_h {
     private static class wgpuShaderModuleSetLabel {
         public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
             wgpu_h.C_POINTER,
-            wgpu_h.C_POINTER
+            WGPUStringView.layout()
         );
 
         public static final MemorySegment ADDR = wgpu_h.findOrThrow("wgpuShaderModuleSetLabel");
@@ -13807,7 +13776,7 @@ public class wgpu_h {
     /**
      * Function descriptor for:
      * {@snippet lang=c :
-     * void wgpuShaderModuleSetLabel(WGPUShaderModule shaderModule, const char *label)
+     * void wgpuShaderModuleSetLabel(WGPUShaderModule shaderModule, WGPUStringView label)
      * }
      */
     public static FunctionDescriptor wgpuShaderModuleSetLabel$descriptor() {
@@ -13817,7 +13786,7 @@ public class wgpu_h {
     /**
      * Downcall method handle for:
      * {@snippet lang=c :
-     * void wgpuShaderModuleSetLabel(WGPUShaderModule shaderModule, const char *label)
+     * void wgpuShaderModuleSetLabel(WGPUShaderModule shaderModule, WGPUStringView label)
      * }
      */
     public static MethodHandle wgpuShaderModuleSetLabel$handle() {
@@ -13827,7 +13796,7 @@ public class wgpu_h {
     /**
      * Address for:
      * {@snippet lang=c :
-     * void wgpuShaderModuleSetLabel(WGPUShaderModule shaderModule, const char *label)
+     * void wgpuShaderModuleSetLabel(WGPUShaderModule shaderModule, WGPUStringView label)
      * }
      */
     public static MemorySegment wgpuShaderModuleSetLabel$address() {
@@ -13836,7 +13805,7 @@ public class wgpu_h {
 
     /**
      * {@snippet lang=c :
-     * void wgpuShaderModuleSetLabel(WGPUShaderModule shaderModule, const char *label)
+     * void wgpuShaderModuleSetLabel(WGPUShaderModule shaderModule, WGPUStringView label)
      * }
      */
     public static void wgpuShaderModuleSetLabel(MemorySegment shaderModule, MemorySegment label) {
@@ -13851,12 +13820,12 @@ public class wgpu_h {
         }
     }
 
-    private static class wgpuShaderModuleReference {
+    private static class wgpuShaderModuleAddRef {
         public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
             wgpu_h.C_POINTER
         );
 
-        public static final MemorySegment ADDR = wgpu_h.findOrThrow("wgpuShaderModuleReference");
+        public static final MemorySegment ADDR = wgpu_h.findOrThrow("wgpuShaderModuleAddRef");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -13864,43 +13833,43 @@ public class wgpu_h {
     /**
      * Function descriptor for:
      * {@snippet lang=c :
-     * void wgpuShaderModuleReference(WGPUShaderModule shaderModule)
+     * void wgpuShaderModuleAddRef(WGPUShaderModule shaderModule)
      * }
      */
-    public static FunctionDescriptor wgpuShaderModuleReference$descriptor() {
-        return wgpuShaderModuleReference.DESC;
+    public static FunctionDescriptor wgpuShaderModuleAddRef$descriptor() {
+        return wgpuShaderModuleAddRef.DESC;
     }
 
     /**
      * Downcall method handle for:
      * {@snippet lang=c :
-     * void wgpuShaderModuleReference(WGPUShaderModule shaderModule)
+     * void wgpuShaderModuleAddRef(WGPUShaderModule shaderModule)
      * }
      */
-    public static MethodHandle wgpuShaderModuleReference$handle() {
-        return wgpuShaderModuleReference.HANDLE;
+    public static MethodHandle wgpuShaderModuleAddRef$handle() {
+        return wgpuShaderModuleAddRef.HANDLE;
     }
 
     /**
      * Address for:
      * {@snippet lang=c :
-     * void wgpuShaderModuleReference(WGPUShaderModule shaderModule)
+     * void wgpuShaderModuleAddRef(WGPUShaderModule shaderModule)
      * }
      */
-    public static MemorySegment wgpuShaderModuleReference$address() {
-        return wgpuShaderModuleReference.ADDR;
+    public static MemorySegment wgpuShaderModuleAddRef$address() {
+        return wgpuShaderModuleAddRef.ADDR;
     }
 
     /**
      * {@snippet lang=c :
-     * void wgpuShaderModuleReference(WGPUShaderModule shaderModule)
+     * void wgpuShaderModuleAddRef(WGPUShaderModule shaderModule)
      * }
      */
-    public static void wgpuShaderModuleReference(MemorySegment shaderModule) {
-        var mh$ = wgpuShaderModuleReference.HANDLE;
+    public static void wgpuShaderModuleAddRef(MemorySegment shaderModule) {
+        var mh$ = wgpuShaderModuleAddRef.HANDLE;
         try {
             if (TRACE_DOWNCALLS) {
-                traceDowncall("wgpuShaderModuleReference", shaderModule);
+                traceDowncall("wgpuShaderModuleAddRef", shaderModule);
             }
             mh$.invokeExact(shaderModule);
         } catch (Throwable ex$) {
@@ -13965,6 +13934,63 @@ public class wgpu_h {
         }
     }
 
+    private static class wgpuSupportedFeaturesFreeMembers {
+        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+            WGPUSupportedFeatures.layout()
+        );
+
+        public static final MemorySegment ADDR = wgpu_h.findOrThrow("wgpuSupportedFeaturesFreeMembers");
+
+        public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
+    }
+
+    /**
+     * Function descriptor for:
+     * {@snippet lang=c :
+     * void wgpuSupportedFeaturesFreeMembers(WGPUSupportedFeatures supportedFeatures)
+     * }
+     */
+    public static FunctionDescriptor wgpuSupportedFeaturesFreeMembers$descriptor() {
+        return wgpuSupportedFeaturesFreeMembers.DESC;
+    }
+
+    /**
+     * Downcall method handle for:
+     * {@snippet lang=c :
+     * void wgpuSupportedFeaturesFreeMembers(WGPUSupportedFeatures supportedFeatures)
+     * }
+     */
+    public static MethodHandle wgpuSupportedFeaturesFreeMembers$handle() {
+        return wgpuSupportedFeaturesFreeMembers.HANDLE;
+    }
+
+    /**
+     * Address for:
+     * {@snippet lang=c :
+     * void wgpuSupportedFeaturesFreeMembers(WGPUSupportedFeatures supportedFeatures)
+     * }
+     */
+    public static MemorySegment wgpuSupportedFeaturesFreeMembers$address() {
+        return wgpuSupportedFeaturesFreeMembers.ADDR;
+    }
+
+    /**
+     * {@snippet lang=c :
+     * void wgpuSupportedFeaturesFreeMembers(WGPUSupportedFeatures supportedFeatures)
+     * }
+     */
+    public static void wgpuSupportedFeaturesFreeMembers(MemorySegment supportedFeatures) {
+        var mh$ = wgpuSupportedFeaturesFreeMembers.HANDLE;
+        try {
+            if (TRACE_DOWNCALLS) {
+                traceDowncall("wgpuSupportedFeaturesFreeMembers", supportedFeatures);
+            }
+            mh$.invokeExact(supportedFeatures);
+        } catch (Throwable ex$) {
+           throw new AssertionError("should not reach here", ex$);
+        }
+    }
+
     private static class wgpuSurfaceConfigure {
         public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
             wgpu_h.C_POINTER,
@@ -14024,7 +14050,8 @@ public class wgpu_h {
     }
 
     private static class wgpuSurfaceGetCapabilities {
-        public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
+        public static final FunctionDescriptor DESC = FunctionDescriptor.of(
+            wgpu_h.C_INT,
             wgpu_h.C_POINTER,
             wgpu_h.C_POINTER,
             wgpu_h.C_POINTER
@@ -14038,7 +14065,7 @@ public class wgpu_h {
     /**
      * Function descriptor for:
      * {@snippet lang=c :
-     * void wgpuSurfaceGetCapabilities(WGPUSurface surface, WGPUAdapter adapter, WGPUSurfaceCapabilities *capabilities)
+     * WGPUBool wgpuSurfaceGetCapabilities(WGPUSurface surface, WGPUAdapter adapter, WGPUSurfaceCapabilities *capabilities)
      * }
      */
     public static FunctionDescriptor wgpuSurfaceGetCapabilities$descriptor() {
@@ -14048,7 +14075,7 @@ public class wgpu_h {
     /**
      * Downcall method handle for:
      * {@snippet lang=c :
-     * void wgpuSurfaceGetCapabilities(WGPUSurface surface, WGPUAdapter adapter, WGPUSurfaceCapabilities *capabilities)
+     * WGPUBool wgpuSurfaceGetCapabilities(WGPUSurface surface, WGPUAdapter adapter, WGPUSurfaceCapabilities *capabilities)
      * }
      */
     public static MethodHandle wgpuSurfaceGetCapabilities$handle() {
@@ -14058,7 +14085,7 @@ public class wgpu_h {
     /**
      * Address for:
      * {@snippet lang=c :
-     * void wgpuSurfaceGetCapabilities(WGPUSurface surface, WGPUAdapter adapter, WGPUSurfaceCapabilities *capabilities)
+     * WGPUBool wgpuSurfaceGetCapabilities(WGPUSurface surface, WGPUAdapter adapter, WGPUSurfaceCapabilities *capabilities)
      * }
      */
     public static MemorySegment wgpuSurfaceGetCapabilities$address() {
@@ -14067,16 +14094,16 @@ public class wgpu_h {
 
     /**
      * {@snippet lang=c :
-     * void wgpuSurfaceGetCapabilities(WGPUSurface surface, WGPUAdapter adapter, WGPUSurfaceCapabilities *capabilities)
+     * WGPUBool wgpuSurfaceGetCapabilities(WGPUSurface surface, WGPUAdapter adapter, WGPUSurfaceCapabilities *capabilities)
      * }
      */
-    public static void wgpuSurfaceGetCapabilities(MemorySegment surface, MemorySegment adapter, MemorySegment capabilities) {
+    public static int wgpuSurfaceGetCapabilities(MemorySegment surface, MemorySegment adapter, MemorySegment capabilities) {
         var mh$ = wgpuSurfaceGetCapabilities.HANDLE;
         try {
             if (TRACE_DOWNCALLS) {
                 traceDowncall("wgpuSurfaceGetCapabilities", surface, adapter, capabilities);
             }
-            mh$.invokeExact(surface, adapter, capabilities);
+            return (int)mh$.invokeExact(surface, adapter, capabilities);
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -14200,7 +14227,7 @@ public class wgpu_h {
     private static class wgpuSurfaceSetLabel {
         public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
             wgpu_h.C_POINTER,
-            wgpu_h.C_POINTER
+            WGPUStringView.layout()
         );
 
         public static final MemorySegment ADDR = wgpu_h.findOrThrow("wgpuSurfaceSetLabel");
@@ -14211,7 +14238,7 @@ public class wgpu_h {
     /**
      * Function descriptor for:
      * {@snippet lang=c :
-     * void wgpuSurfaceSetLabel(WGPUSurface surface, const char *label)
+     * void wgpuSurfaceSetLabel(WGPUSurface surface, WGPUStringView label)
      * }
      */
     public static FunctionDescriptor wgpuSurfaceSetLabel$descriptor() {
@@ -14221,7 +14248,7 @@ public class wgpu_h {
     /**
      * Downcall method handle for:
      * {@snippet lang=c :
-     * void wgpuSurfaceSetLabel(WGPUSurface surface, const char *label)
+     * void wgpuSurfaceSetLabel(WGPUSurface surface, WGPUStringView label)
      * }
      */
     public static MethodHandle wgpuSurfaceSetLabel$handle() {
@@ -14231,7 +14258,7 @@ public class wgpu_h {
     /**
      * Address for:
      * {@snippet lang=c :
-     * void wgpuSurfaceSetLabel(WGPUSurface surface, const char *label)
+     * void wgpuSurfaceSetLabel(WGPUSurface surface, WGPUStringView label)
      * }
      */
     public static MemorySegment wgpuSurfaceSetLabel$address() {
@@ -14240,7 +14267,7 @@ public class wgpu_h {
 
     /**
      * {@snippet lang=c :
-     * void wgpuSurfaceSetLabel(WGPUSurface surface, const char *label)
+     * void wgpuSurfaceSetLabel(WGPUSurface surface, WGPUStringView label)
      * }
      */
     public static void wgpuSurfaceSetLabel(MemorySegment surface, MemorySegment label) {
@@ -14312,12 +14339,12 @@ public class wgpu_h {
         }
     }
 
-    private static class wgpuSurfaceReference {
+    private static class wgpuSurfaceAddRef {
         public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
             wgpu_h.C_POINTER
         );
 
-        public static final MemorySegment ADDR = wgpu_h.findOrThrow("wgpuSurfaceReference");
+        public static final MemorySegment ADDR = wgpu_h.findOrThrow("wgpuSurfaceAddRef");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -14325,43 +14352,43 @@ public class wgpu_h {
     /**
      * Function descriptor for:
      * {@snippet lang=c :
-     * void wgpuSurfaceReference(WGPUSurface surface)
+     * void wgpuSurfaceAddRef(WGPUSurface surface)
      * }
      */
-    public static FunctionDescriptor wgpuSurfaceReference$descriptor() {
-        return wgpuSurfaceReference.DESC;
+    public static FunctionDescriptor wgpuSurfaceAddRef$descriptor() {
+        return wgpuSurfaceAddRef.DESC;
     }
 
     /**
      * Downcall method handle for:
      * {@snippet lang=c :
-     * void wgpuSurfaceReference(WGPUSurface surface)
+     * void wgpuSurfaceAddRef(WGPUSurface surface)
      * }
      */
-    public static MethodHandle wgpuSurfaceReference$handle() {
-        return wgpuSurfaceReference.HANDLE;
+    public static MethodHandle wgpuSurfaceAddRef$handle() {
+        return wgpuSurfaceAddRef.HANDLE;
     }
 
     /**
      * Address for:
      * {@snippet lang=c :
-     * void wgpuSurfaceReference(WGPUSurface surface)
+     * void wgpuSurfaceAddRef(WGPUSurface surface)
      * }
      */
-    public static MemorySegment wgpuSurfaceReference$address() {
-        return wgpuSurfaceReference.ADDR;
+    public static MemorySegment wgpuSurfaceAddRef$address() {
+        return wgpuSurfaceAddRef.ADDR;
     }
 
     /**
      * {@snippet lang=c :
-     * void wgpuSurfaceReference(WGPUSurface surface)
+     * void wgpuSurfaceAddRef(WGPUSurface surface)
      * }
      */
-    public static void wgpuSurfaceReference(MemorySegment surface) {
-        var mh$ = wgpuSurfaceReference.HANDLE;
+    public static void wgpuSurfaceAddRef(MemorySegment surface) {
+        var mh$ = wgpuSurfaceAddRef.HANDLE;
         try {
             if (TRACE_DOWNCALLS) {
-                traceDowncall("wgpuSurfaceReference", surface);
+                traceDowncall("wgpuSurfaceAddRef", surface);
             }
             mh$.invokeExact(surface);
         } catch (Throwable ex$) {
@@ -14949,7 +14976,7 @@ public class wgpu_h {
 
     private static class wgpuTextureGetUsage {
         public static final FunctionDescriptor DESC = FunctionDescriptor.of(
-            wgpu_h.C_INT,
+            wgpu_h.C_LONG_LONG,
             wgpu_h.C_POINTER
         );
 
@@ -14961,7 +14988,7 @@ public class wgpu_h {
     /**
      * Function descriptor for:
      * {@snippet lang=c :
-     * WGPUTextureUsageFlags wgpuTextureGetUsage(WGPUTexture texture)
+     * WGPUTextureUsage wgpuTextureGetUsage(WGPUTexture texture)
      * }
      */
     public static FunctionDescriptor wgpuTextureGetUsage$descriptor() {
@@ -14971,7 +14998,7 @@ public class wgpu_h {
     /**
      * Downcall method handle for:
      * {@snippet lang=c :
-     * WGPUTextureUsageFlags wgpuTextureGetUsage(WGPUTexture texture)
+     * WGPUTextureUsage wgpuTextureGetUsage(WGPUTexture texture)
      * }
      */
     public static MethodHandle wgpuTextureGetUsage$handle() {
@@ -14981,7 +15008,7 @@ public class wgpu_h {
     /**
      * Address for:
      * {@snippet lang=c :
-     * WGPUTextureUsageFlags wgpuTextureGetUsage(WGPUTexture texture)
+     * WGPUTextureUsage wgpuTextureGetUsage(WGPUTexture texture)
      * }
      */
     public static MemorySegment wgpuTextureGetUsage$address() {
@@ -14990,16 +15017,16 @@ public class wgpu_h {
 
     /**
      * {@snippet lang=c :
-     * WGPUTextureUsageFlags wgpuTextureGetUsage(WGPUTexture texture)
+     * WGPUTextureUsage wgpuTextureGetUsage(WGPUTexture texture)
      * }
      */
-    public static int wgpuTextureGetUsage(MemorySegment texture) {
+    public static long wgpuTextureGetUsage(MemorySegment texture) {
         var mh$ = wgpuTextureGetUsage.HANDLE;
         try {
             if (TRACE_DOWNCALLS) {
                 traceDowncall("wgpuTextureGetUsage", texture);
             }
-            return (int)mh$.invokeExact(texture);
+            return (long)mh$.invokeExact(texture);
         } catch (Throwable ex$) {
            throw new AssertionError("should not reach here", ex$);
         }
@@ -15066,7 +15093,7 @@ public class wgpu_h {
     private static class wgpuTextureSetLabel {
         public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
             wgpu_h.C_POINTER,
-            wgpu_h.C_POINTER
+            WGPUStringView.layout()
         );
 
         public static final MemorySegment ADDR = wgpu_h.findOrThrow("wgpuTextureSetLabel");
@@ -15077,7 +15104,7 @@ public class wgpu_h {
     /**
      * Function descriptor for:
      * {@snippet lang=c :
-     * void wgpuTextureSetLabel(WGPUTexture texture, const char *label)
+     * void wgpuTextureSetLabel(WGPUTexture texture, WGPUStringView label)
      * }
      */
     public static FunctionDescriptor wgpuTextureSetLabel$descriptor() {
@@ -15087,7 +15114,7 @@ public class wgpu_h {
     /**
      * Downcall method handle for:
      * {@snippet lang=c :
-     * void wgpuTextureSetLabel(WGPUTexture texture, const char *label)
+     * void wgpuTextureSetLabel(WGPUTexture texture, WGPUStringView label)
      * }
      */
     public static MethodHandle wgpuTextureSetLabel$handle() {
@@ -15097,7 +15124,7 @@ public class wgpu_h {
     /**
      * Address for:
      * {@snippet lang=c :
-     * void wgpuTextureSetLabel(WGPUTexture texture, const char *label)
+     * void wgpuTextureSetLabel(WGPUTexture texture, WGPUStringView label)
      * }
      */
     public static MemorySegment wgpuTextureSetLabel$address() {
@@ -15106,7 +15133,7 @@ public class wgpu_h {
 
     /**
      * {@snippet lang=c :
-     * void wgpuTextureSetLabel(WGPUTexture texture, const char *label)
+     * void wgpuTextureSetLabel(WGPUTexture texture, WGPUStringView label)
      * }
      */
     public static void wgpuTextureSetLabel(MemorySegment texture, MemorySegment label) {
@@ -15121,12 +15148,12 @@ public class wgpu_h {
         }
     }
 
-    private static class wgpuTextureReference {
+    private static class wgpuTextureAddRef {
         public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
             wgpu_h.C_POINTER
         );
 
-        public static final MemorySegment ADDR = wgpu_h.findOrThrow("wgpuTextureReference");
+        public static final MemorySegment ADDR = wgpu_h.findOrThrow("wgpuTextureAddRef");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -15134,43 +15161,43 @@ public class wgpu_h {
     /**
      * Function descriptor for:
      * {@snippet lang=c :
-     * void wgpuTextureReference(WGPUTexture texture)
+     * void wgpuTextureAddRef(WGPUTexture texture)
      * }
      */
-    public static FunctionDescriptor wgpuTextureReference$descriptor() {
-        return wgpuTextureReference.DESC;
+    public static FunctionDescriptor wgpuTextureAddRef$descriptor() {
+        return wgpuTextureAddRef.DESC;
     }
 
     /**
      * Downcall method handle for:
      * {@snippet lang=c :
-     * void wgpuTextureReference(WGPUTexture texture)
+     * void wgpuTextureAddRef(WGPUTexture texture)
      * }
      */
-    public static MethodHandle wgpuTextureReference$handle() {
-        return wgpuTextureReference.HANDLE;
+    public static MethodHandle wgpuTextureAddRef$handle() {
+        return wgpuTextureAddRef.HANDLE;
     }
 
     /**
      * Address for:
      * {@snippet lang=c :
-     * void wgpuTextureReference(WGPUTexture texture)
+     * void wgpuTextureAddRef(WGPUTexture texture)
      * }
      */
-    public static MemorySegment wgpuTextureReference$address() {
-        return wgpuTextureReference.ADDR;
+    public static MemorySegment wgpuTextureAddRef$address() {
+        return wgpuTextureAddRef.ADDR;
     }
 
     /**
      * {@snippet lang=c :
-     * void wgpuTextureReference(WGPUTexture texture)
+     * void wgpuTextureAddRef(WGPUTexture texture)
      * }
      */
-    public static void wgpuTextureReference(MemorySegment texture) {
-        var mh$ = wgpuTextureReference.HANDLE;
+    public static void wgpuTextureAddRef(MemorySegment texture) {
+        var mh$ = wgpuTextureAddRef.HANDLE;
         try {
             if (TRACE_DOWNCALLS) {
-                traceDowncall("wgpuTextureReference", texture);
+                traceDowncall("wgpuTextureAddRef", texture);
             }
             mh$.invokeExact(texture);
         } catch (Throwable ex$) {
@@ -15238,7 +15265,7 @@ public class wgpu_h {
     private static class wgpuTextureViewSetLabel {
         public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
             wgpu_h.C_POINTER,
-            wgpu_h.C_POINTER
+            WGPUStringView.layout()
         );
 
         public static final MemorySegment ADDR = wgpu_h.findOrThrow("wgpuTextureViewSetLabel");
@@ -15249,7 +15276,7 @@ public class wgpu_h {
     /**
      * Function descriptor for:
      * {@snippet lang=c :
-     * void wgpuTextureViewSetLabel(WGPUTextureView textureView, const char *label)
+     * void wgpuTextureViewSetLabel(WGPUTextureView textureView, WGPUStringView label)
      * }
      */
     public static FunctionDescriptor wgpuTextureViewSetLabel$descriptor() {
@@ -15259,7 +15286,7 @@ public class wgpu_h {
     /**
      * Downcall method handle for:
      * {@snippet lang=c :
-     * void wgpuTextureViewSetLabel(WGPUTextureView textureView, const char *label)
+     * void wgpuTextureViewSetLabel(WGPUTextureView textureView, WGPUStringView label)
      * }
      */
     public static MethodHandle wgpuTextureViewSetLabel$handle() {
@@ -15269,7 +15296,7 @@ public class wgpu_h {
     /**
      * Address for:
      * {@snippet lang=c :
-     * void wgpuTextureViewSetLabel(WGPUTextureView textureView, const char *label)
+     * void wgpuTextureViewSetLabel(WGPUTextureView textureView, WGPUStringView label)
      * }
      */
     public static MemorySegment wgpuTextureViewSetLabel$address() {
@@ -15278,7 +15305,7 @@ public class wgpu_h {
 
     /**
      * {@snippet lang=c :
-     * void wgpuTextureViewSetLabel(WGPUTextureView textureView, const char *label)
+     * void wgpuTextureViewSetLabel(WGPUTextureView textureView, WGPUStringView label)
      * }
      */
     public static void wgpuTextureViewSetLabel(MemorySegment textureView, MemorySegment label) {
@@ -15293,12 +15320,12 @@ public class wgpu_h {
         }
     }
 
-    private static class wgpuTextureViewReference {
+    private static class wgpuTextureViewAddRef {
         public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
             wgpu_h.C_POINTER
         );
 
-        public static final MemorySegment ADDR = wgpu_h.findOrThrow("wgpuTextureViewReference");
+        public static final MemorySegment ADDR = wgpu_h.findOrThrow("wgpuTextureViewAddRef");
 
         public static final MethodHandle HANDLE = Linker.nativeLinker().downcallHandle(ADDR, DESC);
     }
@@ -15306,43 +15333,43 @@ public class wgpu_h {
     /**
      * Function descriptor for:
      * {@snippet lang=c :
-     * void wgpuTextureViewReference(WGPUTextureView textureView)
+     * void wgpuTextureViewAddRef(WGPUTextureView textureView)
      * }
      */
-    public static FunctionDescriptor wgpuTextureViewReference$descriptor() {
-        return wgpuTextureViewReference.DESC;
+    public static FunctionDescriptor wgpuTextureViewAddRef$descriptor() {
+        return wgpuTextureViewAddRef.DESC;
     }
 
     /**
      * Downcall method handle for:
      * {@snippet lang=c :
-     * void wgpuTextureViewReference(WGPUTextureView textureView)
+     * void wgpuTextureViewAddRef(WGPUTextureView textureView)
      * }
      */
-    public static MethodHandle wgpuTextureViewReference$handle() {
-        return wgpuTextureViewReference.HANDLE;
+    public static MethodHandle wgpuTextureViewAddRef$handle() {
+        return wgpuTextureViewAddRef.HANDLE;
     }
 
     /**
      * Address for:
      * {@snippet lang=c :
-     * void wgpuTextureViewReference(WGPUTextureView textureView)
+     * void wgpuTextureViewAddRef(WGPUTextureView textureView)
      * }
      */
-    public static MemorySegment wgpuTextureViewReference$address() {
-        return wgpuTextureViewReference.ADDR;
+    public static MemorySegment wgpuTextureViewAddRef$address() {
+        return wgpuTextureViewAddRef.ADDR;
     }
 
     /**
      * {@snippet lang=c :
-     * void wgpuTextureViewReference(WGPUTextureView textureView)
+     * void wgpuTextureViewAddRef(WGPUTextureView textureView)
      * }
      */
-    public static void wgpuTextureViewReference(MemorySegment textureView) {
-        var mh$ = wgpuTextureViewReference.HANDLE;
+    public static void wgpuTextureViewAddRef(MemorySegment textureView) {
+        var mh$ = wgpuTextureViewAddRef.HANDLE;
         try {
             if (TRACE_DOWNCALLS) {
-                traceDowncall("wgpuTextureViewReference", textureView);
+                traceDowncall("wgpuTextureViewAddRef", textureView);
             }
             mh$.invokeExact(textureView);
         } catch (Throwable ex$) {
@@ -15784,153 +15811,18 @@ public class wgpu_h {
     public static int WGPULogLevel_Force32() {
         return WGPULogLevel_Force32;
     }
-    private static final int WGPUInstanceBackend_All = (int)0L;
     /**
      * {@snippet lang=c :
-     * enum WGPUInstanceBackend.WGPUInstanceBackend_All = 0
+     * typedef WGPUFlags WGPUInstanceBackend
      * }
      */
-    public static int WGPUInstanceBackend_All() {
-        return WGPUInstanceBackend_All;
-    }
-    private static final int WGPUInstanceBackend_Vulkan = (int)1L;
+    public static final OfLong WGPUInstanceBackend = wgpu_h.C_LONG_LONG;
     /**
      * {@snippet lang=c :
-     * enum WGPUInstanceBackend.WGPUInstanceBackend_Vulkan = 1
+     * typedef WGPUFlags WGPUInstanceFlag
      * }
      */
-    public static int WGPUInstanceBackend_Vulkan() {
-        return WGPUInstanceBackend_Vulkan;
-    }
-    private static final int WGPUInstanceBackend_GL = (int)2L;
-    /**
-     * {@snippet lang=c :
-     * enum WGPUInstanceBackend.WGPUInstanceBackend_GL = 2
-     * }
-     */
-    public static int WGPUInstanceBackend_GL() {
-        return WGPUInstanceBackend_GL;
-    }
-    private static final int WGPUInstanceBackend_Metal = (int)4L;
-    /**
-     * {@snippet lang=c :
-     * enum WGPUInstanceBackend.WGPUInstanceBackend_Metal = 4
-     * }
-     */
-    public static int WGPUInstanceBackend_Metal() {
-        return WGPUInstanceBackend_Metal;
-    }
-    private static final int WGPUInstanceBackend_DX12 = (int)8L;
-    /**
-     * {@snippet lang=c :
-     * enum WGPUInstanceBackend.WGPUInstanceBackend_DX12 = 8
-     * }
-     */
-    public static int WGPUInstanceBackend_DX12() {
-        return WGPUInstanceBackend_DX12;
-    }
-    private static final int WGPUInstanceBackend_DX11 = (int)16L;
-    /**
-     * {@snippet lang=c :
-     * enum WGPUInstanceBackend.WGPUInstanceBackend_DX11 = 16
-     * }
-     */
-    public static int WGPUInstanceBackend_DX11() {
-        return WGPUInstanceBackend_DX11;
-    }
-    private static final int WGPUInstanceBackend_BrowserWebGPU = (int)32L;
-    /**
-     * {@snippet lang=c :
-     * enum WGPUInstanceBackend.WGPUInstanceBackend_BrowserWebGPU = 32
-     * }
-     */
-    public static int WGPUInstanceBackend_BrowserWebGPU() {
-        return WGPUInstanceBackend_BrowserWebGPU;
-    }
-    private static final int WGPUInstanceBackend_Primary = (int)45L;
-    /**
-     * {@snippet lang=c :
-     * enum WGPUInstanceBackend.WGPUInstanceBackend_Primary = 45
-     * }
-     */
-    public static int WGPUInstanceBackend_Primary() {
-        return WGPUInstanceBackend_Primary;
-    }
-    private static final int WGPUInstanceBackend_Secondary = (int)18L;
-    /**
-     * {@snippet lang=c :
-     * enum WGPUInstanceBackend.WGPUInstanceBackend_Secondary = 18
-     * }
-     */
-    public static int WGPUInstanceBackend_Secondary() {
-        return WGPUInstanceBackend_Secondary;
-    }
-    private static final int WGPUInstanceBackend_Force32 = (int)2147483647L;
-    /**
-     * {@snippet lang=c :
-     * enum WGPUInstanceBackend.WGPUInstanceBackend_Force32 = 2147483647
-     * }
-     */
-    public static int WGPUInstanceBackend_Force32() {
-        return WGPUInstanceBackend_Force32;
-    }
-    /**
-     * {@snippet lang=c :
-     * typedef WGPUFlags WGPUInstanceBackendFlags
-     * }
-     */
-    public static final OfInt WGPUInstanceBackendFlags = wgpu_h.C_INT;
-    private static final int WGPUInstanceFlag_Default = (int)0L;
-    /**
-     * {@snippet lang=c :
-     * enum WGPUInstanceFlag.WGPUInstanceFlag_Default = 0
-     * }
-     */
-    public static int WGPUInstanceFlag_Default() {
-        return WGPUInstanceFlag_Default;
-    }
-    private static final int WGPUInstanceFlag_Debug = (int)1L;
-    /**
-     * {@snippet lang=c :
-     * enum WGPUInstanceFlag.WGPUInstanceFlag_Debug = 1
-     * }
-     */
-    public static int WGPUInstanceFlag_Debug() {
-        return WGPUInstanceFlag_Debug;
-    }
-    private static final int WGPUInstanceFlag_Validation = (int)2L;
-    /**
-     * {@snippet lang=c :
-     * enum WGPUInstanceFlag.WGPUInstanceFlag_Validation = 2
-     * }
-     */
-    public static int WGPUInstanceFlag_Validation() {
-        return WGPUInstanceFlag_Validation;
-    }
-    private static final int WGPUInstanceFlag_DiscardHalLabels = (int)4L;
-    /**
-     * {@snippet lang=c :
-     * enum WGPUInstanceFlag.WGPUInstanceFlag_DiscardHalLabels = 4
-     * }
-     */
-    public static int WGPUInstanceFlag_DiscardHalLabels() {
-        return WGPUInstanceFlag_DiscardHalLabels;
-    }
-    private static final int WGPUInstanceFlag_Force32 = (int)2147483647L;
-    /**
-     * {@snippet lang=c :
-     * enum WGPUInstanceFlag.WGPUInstanceFlag_Force32 = 2147483647
-     * }
-     */
-    public static int WGPUInstanceFlag_Force32() {
-        return WGPUInstanceFlag_Force32;
-    }
-    /**
-     * {@snippet lang=c :
-     * typedef WGPUFlags WGPUInstanceFlags
-     * }
-     */
-    public static final OfInt WGPUInstanceFlags = wgpu_h.C_INT;
+    public static final OfLong WGPUInstanceFlag = wgpu_h.C_LONG_LONG;
     private static final int WGPUDx12Compiler_Undefined = (int)0L;
     /**
      * {@snippet lang=c :
@@ -16566,7 +16458,7 @@ public class wgpu_h {
     private static class wgpuRenderPassEncoderSetPushConstants {
         public static final FunctionDescriptor DESC = FunctionDescriptor.ofVoid(
             wgpu_h.C_POINTER,
-            wgpu_h.C_INT,
+            wgpu_h.C_LONG_LONG,
             wgpu_h.C_INT,
             wgpu_h.C_INT,
             wgpu_h.C_POINTER
@@ -16580,7 +16472,7 @@ public class wgpu_h {
     /**
      * Function descriptor for:
      * {@snippet lang=c :
-     * void wgpuRenderPassEncoderSetPushConstants(WGPURenderPassEncoder encoder, WGPUShaderStageFlags stages, uint32_t offset, uint32_t sizeBytes, const void *data)
+     * void wgpuRenderPassEncoderSetPushConstants(WGPURenderPassEncoder encoder, WGPUShaderStage stages, uint32_t offset, uint32_t sizeBytes, const void *data)
      * }
      */
     public static FunctionDescriptor wgpuRenderPassEncoderSetPushConstants$descriptor() {
@@ -16590,7 +16482,7 @@ public class wgpu_h {
     /**
      * Downcall method handle for:
      * {@snippet lang=c :
-     * void wgpuRenderPassEncoderSetPushConstants(WGPURenderPassEncoder encoder, WGPUShaderStageFlags stages, uint32_t offset, uint32_t sizeBytes, const void *data)
+     * void wgpuRenderPassEncoderSetPushConstants(WGPURenderPassEncoder encoder, WGPUShaderStage stages, uint32_t offset, uint32_t sizeBytes, const void *data)
      * }
      */
     public static MethodHandle wgpuRenderPassEncoderSetPushConstants$handle() {
@@ -16600,7 +16492,7 @@ public class wgpu_h {
     /**
      * Address for:
      * {@snippet lang=c :
-     * void wgpuRenderPassEncoderSetPushConstants(WGPURenderPassEncoder encoder, WGPUShaderStageFlags stages, uint32_t offset, uint32_t sizeBytes, const void *data)
+     * void wgpuRenderPassEncoderSetPushConstants(WGPURenderPassEncoder encoder, WGPUShaderStage stages, uint32_t offset, uint32_t sizeBytes, const void *data)
      * }
      */
     public static MemorySegment wgpuRenderPassEncoderSetPushConstants$address() {
@@ -16609,10 +16501,10 @@ public class wgpu_h {
 
     /**
      * {@snippet lang=c :
-     * void wgpuRenderPassEncoderSetPushConstants(WGPURenderPassEncoder encoder, WGPUShaderStageFlags stages, uint32_t offset, uint32_t sizeBytes, const void *data)
+     * void wgpuRenderPassEncoderSetPushConstants(WGPURenderPassEncoder encoder, WGPUShaderStage stages, uint32_t offset, uint32_t sizeBytes, const void *data)
      * }
      */
-    public static void wgpuRenderPassEncoderSetPushConstants(MemorySegment encoder, int stages, int offset, int sizeBytes, MemorySegment data) {
+    public static void wgpuRenderPassEncoderSetPushConstants(MemorySegment encoder, long stages, int offset, int sizeBytes, MemorySegment data) {
         var mh$ = wgpuRenderPassEncoderSetPushConstants.HANDLE;
         try {
             if (TRACE_DOWNCALLS) {
@@ -17147,15 +17039,6 @@ public class wgpu_h {
     public static MemorySegment __DARWIN_NULL() {
         return __DARWIN_NULL;
     }
-    private static final long USER_ADDR_NULL = 0L;
-    /**
-     * {@snippet lang=c :
-     * #define USER_ADDR_NULL 0
-     * }
-     */
-    public static long USER_ADDR_NULL() {
-        return USER_ADDR_NULL;
-    }
     private static final long INT64_MAX = 9223372036854775807L;
     /**
      * {@snippet lang=c :
@@ -17588,40 +17471,40 @@ public class wgpu_h {
     public static MemorySegment NULL() {
         return NULL;
     }
-    private static final long WGPU_ARRAY_LAYER_COUNT_UNDEFINED = 4294967295L;
+    private static final int WGPU_ARRAY_LAYER_COUNT_UNDEFINED = (int)4294967295L;
     /**
      * {@snippet lang=c :
      * #define WGPU_ARRAY_LAYER_COUNT_UNDEFINED 4294967295
      * }
      */
-    public static long WGPU_ARRAY_LAYER_COUNT_UNDEFINED() {
+    public static int WGPU_ARRAY_LAYER_COUNT_UNDEFINED() {
         return WGPU_ARRAY_LAYER_COUNT_UNDEFINED;
     }
-    private static final long WGPU_COPY_STRIDE_UNDEFINED = 4294967295L;
+    private static final int WGPU_COPY_STRIDE_UNDEFINED = (int)4294967295L;
     /**
      * {@snippet lang=c :
      * #define WGPU_COPY_STRIDE_UNDEFINED 4294967295
      * }
      */
-    public static long WGPU_COPY_STRIDE_UNDEFINED() {
+    public static int WGPU_COPY_STRIDE_UNDEFINED() {
         return WGPU_COPY_STRIDE_UNDEFINED;
     }
-    private static final long WGPU_DEPTH_SLICE_UNDEFINED = 4294967295L;
+    private static final int WGPU_DEPTH_SLICE_UNDEFINED = (int)4294967295L;
     /**
      * {@snippet lang=c :
      * #define WGPU_DEPTH_SLICE_UNDEFINED 4294967295
      * }
      */
-    public static long WGPU_DEPTH_SLICE_UNDEFINED() {
+    public static int WGPU_DEPTH_SLICE_UNDEFINED() {
         return WGPU_DEPTH_SLICE_UNDEFINED;
     }
-    private static final long WGPU_LIMIT_U32_UNDEFINED = 4294967295L;
+    private static final int WGPU_LIMIT_U32_UNDEFINED = (int)4294967295L;
     /**
      * {@snippet lang=c :
      * #define WGPU_LIMIT_U32_UNDEFINED 4294967295
      * }
      */
-    public static long WGPU_LIMIT_U32_UNDEFINED() {
+    public static int WGPU_LIMIT_U32_UNDEFINED() {
         return WGPU_LIMIT_U32_UNDEFINED;
     }
     private static final long WGPU_LIMIT_U64_UNDEFINED = -1L;
@@ -17633,22 +17516,22 @@ public class wgpu_h {
     public static long WGPU_LIMIT_U64_UNDEFINED() {
         return WGPU_LIMIT_U64_UNDEFINED;
     }
-    private static final long WGPU_MIP_LEVEL_COUNT_UNDEFINED = 4294967295L;
+    private static final int WGPU_MIP_LEVEL_COUNT_UNDEFINED = (int)4294967295L;
     /**
      * {@snippet lang=c :
      * #define WGPU_MIP_LEVEL_COUNT_UNDEFINED 4294967295
      * }
      */
-    public static long WGPU_MIP_LEVEL_COUNT_UNDEFINED() {
+    public static int WGPU_MIP_LEVEL_COUNT_UNDEFINED() {
         return WGPU_MIP_LEVEL_COUNT_UNDEFINED;
     }
-    private static final long WGPU_QUERY_SET_INDEX_UNDEFINED = 4294967295L;
+    private static final int WGPU_QUERY_SET_INDEX_UNDEFINED = (int)4294967295L;
     /**
      * {@snippet lang=c :
      * #define WGPU_QUERY_SET_INDEX_UNDEFINED 4294967295
      * }
      */
-    public static long WGPU_QUERY_SET_INDEX_UNDEFINED() {
+    public static int WGPU_QUERY_SET_INDEX_UNDEFINED() {
         return WGPU_QUERY_SET_INDEX_UNDEFINED;
     }
     private static final long WGPU_WHOLE_MAP_SIZE = -1L;
@@ -17668,6 +17551,15 @@ public class wgpu_h {
      */
     public static long WGPU_WHOLE_SIZE() {
         return WGPU_WHOLE_SIZE;
+    }
+    private static final long WGPU_STRLEN = -1L;
+    /**
+     * {@snippet lang=c :
+     * #define WGPU_STRLEN -1
+     * }
+     */
+    public static long WGPU_STRLEN() {
+        return WGPU_STRLEN;
     }
 }
 

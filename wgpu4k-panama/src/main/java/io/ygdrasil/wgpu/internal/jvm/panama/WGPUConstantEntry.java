@@ -2,17 +2,21 @@
 
 package io.ygdrasil.wgpu.internal.jvm.panama;
 
+import java.lang.invoke.*;
 import java.lang.foreign.*;
-import java.util.function.Consumer;
+import java.nio.ByteOrder;
+import java.util.*;
+import java.util.function.*;
+import java.util.stream.*;
 
-import static java.lang.foreign.MemoryLayout.PathElement.groupElement;
-import static java.lang.foreign.ValueLayout.OfDouble;
+import static java.lang.foreign.ValueLayout.*;
+import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 /**
  * {@snippet lang=c :
  * struct WGPUConstantEntry {
  *     const WGPUChainedStruct *nextInChain;
- *     const char *key;
+ *     WGPUStringView key;
  *     double value;
  * }
  * }
@@ -25,7 +29,7 @@ public class WGPUConstantEntry {
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
         wgpu_h.C_POINTER.withName("nextInChain"),
-        wgpu_h.C_POINTER.withName("key"),
+        WGPUStringView.layout().withName("key"),
         wgpu_h.C_DOUBLE.withName("value")
     ).withName("WGPUConstantEntry");
 
@@ -80,15 +84,15 @@ public class WGPUConstantEntry {
         struct.set(nextInChain$LAYOUT, nextInChain$OFFSET, fieldValue);
     }
 
-    private static final AddressLayout key$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("key"));
+    private static final GroupLayout key$LAYOUT = (GroupLayout)$LAYOUT.select(groupElement("key"));
 
     /**
      * Layout for field:
      * {@snippet lang=c :
-     * const char *key
+     * WGPUStringView key
      * }
      */
-    public static final AddressLayout key$layout() {
+    public static final GroupLayout key$layout() {
         return key$LAYOUT;
     }
 
@@ -97,7 +101,7 @@ public class WGPUConstantEntry {
     /**
      * Offset for field:
      * {@snippet lang=c :
-     * const char *key
+     * WGPUStringView key
      * }
      */
     public static final long key$offset() {
@@ -107,21 +111,21 @@ public class WGPUConstantEntry {
     /**
      * Getter for field:
      * {@snippet lang=c :
-     * const char *key
+     * WGPUStringView key
      * }
      */
     public static MemorySegment key(MemorySegment struct) {
-        return struct.get(key$LAYOUT, key$OFFSET);
+        return struct.asSlice(key$OFFSET, key$LAYOUT.byteSize());
     }
 
     /**
      * Setter for field:
      * {@snippet lang=c :
-     * const char *key
+     * WGPUStringView key
      * }
      */
     public static void key(MemorySegment struct, MemorySegment fieldValue) {
-        struct.set(key$LAYOUT, key$OFFSET, fieldValue);
+        MemorySegment.copy(fieldValue, 0L, struct, key$OFFSET, key$LAYOUT.byteSize());
     }
 
     private static final OfDouble value$LAYOUT = (OfDouble)$LAYOUT.select(groupElement("value"));
@@ -136,7 +140,7 @@ public class WGPUConstantEntry {
         return value$LAYOUT;
     }
 
-    private static final long value$OFFSET = 16;
+    private static final long value$OFFSET = 24;
 
     /**
      * Offset for field:

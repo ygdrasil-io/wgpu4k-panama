@@ -2,19 +2,22 @@
 
 package io.ygdrasil.wgpu.internal.jvm.panama;
 
+import java.lang.invoke.*;
 import java.lang.foreign.*;
-import java.util.function.Consumer;
+import java.nio.ByteOrder;
+import java.util.*;
+import java.util.function.*;
+import java.util.stream.*;
 
-import static java.lang.foreign.MemoryLayout.PathElement.groupElement;
-import static java.lang.foreign.ValueLayout.OfFloat;
-import static java.lang.foreign.ValueLayout.OfInt;
+import static java.lang.foreign.ValueLayout.*;
+import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 /**
  * {@snippet lang=c :
  * struct WGPUDepthStencilState {
  *     const WGPUChainedStruct *nextInChain;
  *     WGPUTextureFormat format;
- *     WGPUBool depthWriteEnabled;
+ *     WGPUOptionalBool depthWriteEnabled;
  *     WGPUCompareFunction depthCompare;
  *     WGPUStencilFaceState stencilFront;
  *     WGPUStencilFaceState stencilBack;
@@ -146,7 +149,7 @@ public class WGPUDepthStencilState {
     /**
      * Layout for field:
      * {@snippet lang=c :
-     * WGPUBool depthWriteEnabled
+     * WGPUOptionalBool depthWriteEnabled
      * }
      */
     public static final OfInt depthWriteEnabled$layout() {
@@ -158,7 +161,7 @@ public class WGPUDepthStencilState {
     /**
      * Offset for field:
      * {@snippet lang=c :
-     * WGPUBool depthWriteEnabled
+     * WGPUOptionalBool depthWriteEnabled
      * }
      */
     public static final long depthWriteEnabled$offset() {
@@ -168,7 +171,7 @@ public class WGPUDepthStencilState {
     /**
      * Getter for field:
      * {@snippet lang=c :
-     * WGPUBool depthWriteEnabled
+     * WGPUOptionalBool depthWriteEnabled
      * }
      */
     public static int depthWriteEnabled(MemorySegment struct) {
@@ -178,7 +181,7 @@ public class WGPUDepthStencilState {
     /**
      * Setter for field:
      * {@snippet lang=c :
-     * WGPUBool depthWriteEnabled
+     * WGPUOptionalBool depthWriteEnabled
      * }
      */
     public static void depthWriteEnabled(MemorySegment struct, int fieldValue) {

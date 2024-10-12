@@ -2,20 +2,24 @@
 
 package io.ygdrasil.wgpu.internal.jvm.panama;
 
+import java.lang.invoke.*;
 import java.lang.foreign.*;
-import java.util.function.Consumer;
+import java.nio.ByteOrder;
+import java.util.*;
+import java.util.function.*;
+import java.util.stream.*;
 
-import static java.lang.foreign.MemoryLayout.PathElement.groupElement;
-import static java.lang.foreign.ValueLayout.OfInt;
+import static java.lang.foreign.ValueLayout.*;
+import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 /**
  * {@snippet lang=c :
  * struct WGPUAdapterInfo {
  *     WGPUChainedStructOut *nextInChain;
- *     const char *vendor;
- *     const char *architecture;
- *     const char *device;
- *     const char *description;
+ *     WGPUStringView vendor;
+ *     WGPUStringView architecture;
+ *     WGPUStringView device;
+ *     WGPUStringView description;
  *     WGPUBackendType backendType;
  *     WGPUAdapterType adapterType;
  *     uint32_t vendorID;
@@ -31,10 +35,10 @@ public class WGPUAdapterInfo {
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
         wgpu_h.C_POINTER.withName("nextInChain"),
-        wgpu_h.C_POINTER.withName("vendor"),
-        wgpu_h.C_POINTER.withName("architecture"),
-        wgpu_h.C_POINTER.withName("device"),
-        wgpu_h.C_POINTER.withName("description"),
+        WGPUStringView.layout().withName("vendor"),
+        WGPUStringView.layout().withName("architecture"),
+        WGPUStringView.layout().withName("device"),
+        WGPUStringView.layout().withName("description"),
         wgpu_h.C_INT.withName("backendType"),
         wgpu_h.C_INT.withName("adapterType"),
         wgpu_h.C_INT.withName("vendorID"),
@@ -92,15 +96,15 @@ public class WGPUAdapterInfo {
         struct.set(nextInChain$LAYOUT, nextInChain$OFFSET, fieldValue);
     }
 
-    private static final AddressLayout vendor$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("vendor"));
+    private static final GroupLayout vendor$LAYOUT = (GroupLayout)$LAYOUT.select(groupElement("vendor"));
 
     /**
      * Layout for field:
      * {@snippet lang=c :
-     * const char *vendor
+     * WGPUStringView vendor
      * }
      */
-    public static final AddressLayout vendor$layout() {
+    public static final GroupLayout vendor$layout() {
         return vendor$LAYOUT;
     }
 
@@ -109,7 +113,7 @@ public class WGPUAdapterInfo {
     /**
      * Offset for field:
      * {@snippet lang=c :
-     * const char *vendor
+     * WGPUStringView vendor
      * }
      */
     public static final long vendor$offset() {
@@ -119,41 +123,41 @@ public class WGPUAdapterInfo {
     /**
      * Getter for field:
      * {@snippet lang=c :
-     * const char *vendor
+     * WGPUStringView vendor
      * }
      */
     public static MemorySegment vendor(MemorySegment struct) {
-        return struct.get(vendor$LAYOUT, vendor$OFFSET);
+        return struct.asSlice(vendor$OFFSET, vendor$LAYOUT.byteSize());
     }
 
     /**
      * Setter for field:
      * {@snippet lang=c :
-     * const char *vendor
+     * WGPUStringView vendor
      * }
      */
     public static void vendor(MemorySegment struct, MemorySegment fieldValue) {
-        struct.set(vendor$LAYOUT, vendor$OFFSET, fieldValue);
+        MemorySegment.copy(fieldValue, 0L, struct, vendor$OFFSET, vendor$LAYOUT.byteSize());
     }
 
-    private static final AddressLayout architecture$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("architecture"));
+    private static final GroupLayout architecture$LAYOUT = (GroupLayout)$LAYOUT.select(groupElement("architecture"));
 
     /**
      * Layout for field:
      * {@snippet lang=c :
-     * const char *architecture
+     * WGPUStringView architecture
      * }
      */
-    public static final AddressLayout architecture$layout() {
+    public static final GroupLayout architecture$layout() {
         return architecture$LAYOUT;
     }
 
-    private static final long architecture$OFFSET = 16;
+    private static final long architecture$OFFSET = 24;
 
     /**
      * Offset for field:
      * {@snippet lang=c :
-     * const char *architecture
+     * WGPUStringView architecture
      * }
      */
     public static final long architecture$offset() {
@@ -163,41 +167,41 @@ public class WGPUAdapterInfo {
     /**
      * Getter for field:
      * {@snippet lang=c :
-     * const char *architecture
+     * WGPUStringView architecture
      * }
      */
     public static MemorySegment architecture(MemorySegment struct) {
-        return struct.get(architecture$LAYOUT, architecture$OFFSET);
+        return struct.asSlice(architecture$OFFSET, architecture$LAYOUT.byteSize());
     }
 
     /**
      * Setter for field:
      * {@snippet lang=c :
-     * const char *architecture
+     * WGPUStringView architecture
      * }
      */
     public static void architecture(MemorySegment struct, MemorySegment fieldValue) {
-        struct.set(architecture$LAYOUT, architecture$OFFSET, fieldValue);
+        MemorySegment.copy(fieldValue, 0L, struct, architecture$OFFSET, architecture$LAYOUT.byteSize());
     }
 
-    private static final AddressLayout device$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("device"));
+    private static final GroupLayout device$LAYOUT = (GroupLayout)$LAYOUT.select(groupElement("device"));
 
     /**
      * Layout for field:
      * {@snippet lang=c :
-     * const char *device
+     * WGPUStringView device
      * }
      */
-    public static final AddressLayout device$layout() {
+    public static final GroupLayout device$layout() {
         return device$LAYOUT;
     }
 
-    private static final long device$OFFSET = 24;
+    private static final long device$OFFSET = 40;
 
     /**
      * Offset for field:
      * {@snippet lang=c :
-     * const char *device
+     * WGPUStringView device
      * }
      */
     public static final long device$offset() {
@@ -207,41 +211,41 @@ public class WGPUAdapterInfo {
     /**
      * Getter for field:
      * {@snippet lang=c :
-     * const char *device
+     * WGPUStringView device
      * }
      */
     public static MemorySegment device(MemorySegment struct) {
-        return struct.get(device$LAYOUT, device$OFFSET);
+        return struct.asSlice(device$OFFSET, device$LAYOUT.byteSize());
     }
 
     /**
      * Setter for field:
      * {@snippet lang=c :
-     * const char *device
+     * WGPUStringView device
      * }
      */
     public static void device(MemorySegment struct, MemorySegment fieldValue) {
-        struct.set(device$LAYOUT, device$OFFSET, fieldValue);
+        MemorySegment.copy(fieldValue, 0L, struct, device$OFFSET, device$LAYOUT.byteSize());
     }
 
-    private static final AddressLayout description$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("description"));
+    private static final GroupLayout description$LAYOUT = (GroupLayout)$LAYOUT.select(groupElement("description"));
 
     /**
      * Layout for field:
      * {@snippet lang=c :
-     * const char *description
+     * WGPUStringView description
      * }
      */
-    public static final AddressLayout description$layout() {
+    public static final GroupLayout description$layout() {
         return description$LAYOUT;
     }
 
-    private static final long description$OFFSET = 32;
+    private static final long description$OFFSET = 56;
 
     /**
      * Offset for field:
      * {@snippet lang=c :
-     * const char *description
+     * WGPUStringView description
      * }
      */
     public static final long description$offset() {
@@ -251,21 +255,21 @@ public class WGPUAdapterInfo {
     /**
      * Getter for field:
      * {@snippet lang=c :
-     * const char *description
+     * WGPUStringView description
      * }
      */
     public static MemorySegment description(MemorySegment struct) {
-        return struct.get(description$LAYOUT, description$OFFSET);
+        return struct.asSlice(description$OFFSET, description$LAYOUT.byteSize());
     }
 
     /**
      * Setter for field:
      * {@snippet lang=c :
-     * const char *description
+     * WGPUStringView description
      * }
      */
     public static void description(MemorySegment struct, MemorySegment fieldValue) {
-        struct.set(description$LAYOUT, description$OFFSET, fieldValue);
+        MemorySegment.copy(fieldValue, 0L, struct, description$OFFSET, description$LAYOUT.byteSize());
     }
 
     private static final OfInt backendType$LAYOUT = (OfInt)$LAYOUT.select(groupElement("backendType"));
@@ -280,7 +284,7 @@ public class WGPUAdapterInfo {
         return backendType$LAYOUT;
     }
 
-    private static final long backendType$OFFSET = 40;
+    private static final long backendType$OFFSET = 72;
 
     /**
      * Offset for field:
@@ -324,7 +328,7 @@ public class WGPUAdapterInfo {
         return adapterType$LAYOUT;
     }
 
-    private static final long adapterType$OFFSET = 44;
+    private static final long adapterType$OFFSET = 76;
 
     /**
      * Offset for field:
@@ -368,7 +372,7 @@ public class WGPUAdapterInfo {
         return vendorID$LAYOUT;
     }
 
-    private static final long vendorID$OFFSET = 48;
+    private static final long vendorID$OFFSET = 80;
 
     /**
      * Offset for field:
@@ -412,7 +416,7 @@ public class WGPUAdapterInfo {
         return deviceID$LAYOUT;
     }
 
-    private static final long deviceID$OFFSET = 52;
+    private static final long deviceID$OFFSET = 84;
 
     /**
      * Offset for field:

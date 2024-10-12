@@ -2,16 +2,21 @@
 
 package io.ygdrasil.wgpu.internal.jvm.panama;
 
+import java.lang.invoke.*;
 import java.lang.foreign.*;
-import java.util.function.Consumer;
+import java.nio.ByteOrder;
+import java.util.*;
+import java.util.function.*;
+import java.util.stream.*;
 
-import static java.lang.foreign.MemoryLayout.PathElement.groupElement;
+import static java.lang.foreign.ValueLayout.*;
+import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 /**
  * {@snippet lang=c :
  * struct WGPUDeviceExtras {
  *     WGPUChainedStruct chain;
- *     const char *tracePath;
+ *     WGPUStringView tracePath;
  * }
  * }
  */
@@ -23,7 +28,7 @@ public class WGPUDeviceExtras {
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
         WGPUChainedStruct.layout().withName("chain"),
-        wgpu_h.C_POINTER.withName("tracePath")
+        WGPUStringView.layout().withName("tracePath")
     ).withName("WGPUDeviceExtras");
 
     /**
@@ -77,15 +82,15 @@ public class WGPUDeviceExtras {
         MemorySegment.copy(fieldValue, 0L, struct, chain$OFFSET, chain$LAYOUT.byteSize());
     }
 
-    private static final AddressLayout tracePath$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("tracePath"));
+    private static final GroupLayout tracePath$LAYOUT = (GroupLayout)$LAYOUT.select(groupElement("tracePath"));
 
     /**
      * Layout for field:
      * {@snippet lang=c :
-     * const char *tracePath
+     * WGPUStringView tracePath
      * }
      */
-    public static final AddressLayout tracePath$layout() {
+    public static final GroupLayout tracePath$layout() {
         return tracePath$LAYOUT;
     }
 
@@ -94,7 +99,7 @@ public class WGPUDeviceExtras {
     /**
      * Offset for field:
      * {@snippet lang=c :
-     * const char *tracePath
+     * WGPUStringView tracePath
      * }
      */
     public static final long tracePath$offset() {
@@ -104,21 +109,21 @@ public class WGPUDeviceExtras {
     /**
      * Getter for field:
      * {@snippet lang=c :
-     * const char *tracePath
+     * WGPUStringView tracePath
      * }
      */
     public static MemorySegment tracePath(MemorySegment struct) {
-        return struct.get(tracePath$LAYOUT, tracePath$OFFSET);
+        return struct.asSlice(tracePath$OFFSET, tracePath$LAYOUT.byteSize());
     }
 
     /**
      * Setter for field:
      * {@snippet lang=c :
-     * const char *tracePath
+     * WGPUStringView tracePath
      * }
      */
     public static void tracePath(MemorySegment struct, MemorySegment fieldValue) {
-        struct.set(tracePath$LAYOUT, tracePath$OFFSET, fieldValue);
+        MemorySegment.copy(fieldValue, 0L, struct, tracePath$OFFSET, tracePath$LAYOUT.byteSize());
     }
 
     /**

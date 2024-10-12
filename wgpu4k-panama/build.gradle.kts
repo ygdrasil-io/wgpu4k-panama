@@ -1,3 +1,4 @@
+import java.nio.file.Files
 
 plugins {
     kotlin("jvm")
@@ -32,7 +33,7 @@ java {
 
 tasks.jextract {
     // Set to true to regenerate binding, jextract must be on your path
-    onlyIf { false }
+    onlyIf { true }
 
     header(buildNativeResourcesDirectory.resolve("wgpu.h").absolutePath) {
 
@@ -56,24 +57,36 @@ configureDownloadTasks {
     baseUrl = "${project.properties["wgpu.base.url"]}${libs.versions.wgpu.get()}/"
 
     download("wgpu-macos-aarch64-release.zip") {
-        extract("webgpu.h", buildNativeResourcesDirectory.resolve("webgpu.h"))
-        extract("wgpu.h", buildNativeResourcesDirectory.resolve("wgpu.h"))
-        extract("libwgpu_native.dylib", resourcesDirectory.resolve("darwin-aarch64").resolve("libWGPU.dylib"))
+        extract("include/webgpu/webgpu.h", buildNativeResourcesDirectory.resolve("webgpu.h")).doLast {
+            Files.move(
+                buildNativeResourcesDirectory.resolve("include").resolve("webgpu").resolve("webgpu.h").toPath(),
+                buildNativeResourcesDirectory.resolve("webgpu.h").toPath()
+            )
+            buildNativeResourcesDirectory.resolve("include").deleteRecursively()
+        }
+        extract("include/wgpu/wgpu.h", buildNativeResourcesDirectory.resolve("wgpu.h")).doLast {
+            Files.move(
+                buildNativeResourcesDirectory.resolve("include").resolve("wgpu").resolve("wgpu.h").toPath(),
+                buildNativeResourcesDirectory.resolve("wgpu.h").toPath()
+            )
+            buildNativeResourcesDirectory.resolve("include").deleteRecursively()
+        }
+        extract("lib/libwgpu_native.dylib", resourcesDirectory.resolve("darwin-aarch64").resolve("libWGPU.dylib"))
     }
 
     download("wgpu-macos-x86_64-release.zip") {
-        extract("libwgpu_native.dylib", resourcesDirectory.resolve("darwin-x86-64").resolve("libWGPU.dylib"))
+        extract("lib/libwgpu_native.dylib", resourcesDirectory.resolve("darwin-x86-64").resolve("libWGPU.dylib"))
     }
 
     download("wgpu-windows-x86_64-msvc-release.zip") {
-        extract("wgpu_native.dll", resourcesDirectory.resolve("win32-x86-64").resolve("WGPU.dll"))
+        extract("lib/wgpu_native.dll", resourcesDirectory.resolve("win32-x86-64").resolve("WGPU.dll"))
     }
 
     download("wgpu-linux-x86_64-release.zip") {
-        extract("libwgpu_native.so", resourcesDirectory.resolve("linux-x86-64").resolve("libWGPU.so"))
+        extract("lib/libwgpu_native.so", resourcesDirectory.resolve("linux-x86-64").resolve("libWGPU.so"))
     }
 
     download("wgpu-linux-aarch64-release.zip") {
-        extract("libwgpu_native.so", resourcesDirectory.resolve("linux-aarch64").resolve("libWGPU.so"))
+        extract("lib/libwgpu_native.so", resourcesDirectory.resolve("linux-aarch64").resolve("libWGPU.so"))
     }
 }

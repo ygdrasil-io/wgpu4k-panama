@@ -2,15 +2,19 @@
 
 package io.ygdrasil.wgpu.internal.jvm.panama;
 
-import java.lang.foreign.Arena;
-import java.lang.foreign.FunctionDescriptor;
-import java.lang.foreign.Linker;
-import java.lang.foreign.MemorySegment;
-import java.lang.invoke.MethodHandle;
+import java.lang.invoke.*;
+import java.lang.foreign.*;
+import java.nio.ByteOrder;
+import java.util.*;
+import java.util.function.*;
+import java.util.stream.*;
+
+import static java.lang.foreign.ValueLayout.*;
+import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 /**
  * {@snippet lang=c :
- * typedef void (*WGPUProcAdapterRequestDevice)(WGPUAdapter, const WGPUDeviceDescriptor *, WGPUAdapterRequestDeviceCallback, void *)
+ * typedef WGPUFuture (*WGPUProcAdapterRequestDevice)(WGPUAdapter, const WGPUDeviceDescriptor *, WGPURequestDeviceCallbackInfo)
  * }
  */
 public class WGPUProcAdapterRequestDevice {
@@ -23,14 +27,14 @@ public class WGPUProcAdapterRequestDevice {
      * The function pointer signature, expressed as a functional interface
      */
     public interface Function {
-        void apply(MemorySegment adapter, MemorySegment descriptor, MemorySegment callback, MemorySegment userdata);
+        MemorySegment apply(MemorySegment adapter, MemorySegment descriptor, MemorySegment callbackInfo);
     }
 
-    private static final FunctionDescriptor $DESC = FunctionDescriptor.ofVoid(
+    private static final FunctionDescriptor $DESC = FunctionDescriptor.of(
+        WGPUFuture.layout(),
         wgpu_h.C_POINTER,
         wgpu_h.C_POINTER,
-        wgpu_h.C_POINTER,
-        wgpu_h.C_POINTER
+        WGPURequestDeviceCallbackInfo.layout()
     );
 
     /**
@@ -55,9 +59,9 @@ public class WGPUProcAdapterRequestDevice {
     /**
      * Invoke the upcall stub {@code funcPtr}, with given parameters
      */
-    public static void invoke(MemorySegment funcPtr,MemorySegment adapter, MemorySegment descriptor, MemorySegment callback, MemorySegment userdata) {
+    public static MemorySegment invoke(MemorySegment funcPtr, SegmentAllocator alloc,MemorySegment adapter, MemorySegment descriptor, MemorySegment callbackInfo) {
         try {
-             DOWN$MH.invokeExact(funcPtr, adapter, descriptor, callback, userdata);
+            return (MemorySegment) DOWN$MH.invokeExact(funcPtr, alloc, adapter, descriptor, callbackInfo);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }

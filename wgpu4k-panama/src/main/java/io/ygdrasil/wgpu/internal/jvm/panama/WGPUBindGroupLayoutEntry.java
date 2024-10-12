@@ -2,18 +2,22 @@
 
 package io.ygdrasil.wgpu.internal.jvm.panama;
 
+import java.lang.invoke.*;
 import java.lang.foreign.*;
-import java.util.function.Consumer;
+import java.nio.ByteOrder;
+import java.util.*;
+import java.util.function.*;
+import java.util.stream.*;
 
-import static java.lang.foreign.MemoryLayout.PathElement.groupElement;
-import static java.lang.foreign.ValueLayout.OfInt;
+import static java.lang.foreign.ValueLayout.*;
+import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 /**
  * {@snippet lang=c :
  * struct WGPUBindGroupLayoutEntry {
  *     const WGPUChainedStruct *nextInChain;
  *     uint32_t binding;
- *     WGPUShaderStageFlags visibility;
+ *     WGPUShaderStage visibility;
  *     WGPUBufferBindingLayout buffer;
  *     WGPUSamplerBindingLayout sampler;
  *     WGPUTextureBindingLayout texture;
@@ -30,7 +34,8 @@ public class WGPUBindGroupLayoutEntry {
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
         wgpu_h.C_POINTER.withName("nextInChain"),
         wgpu_h.C_INT.withName("binding"),
-        wgpu_h.C_INT.withName("visibility"),
+        MemoryLayout.paddingLayout(4),
+        wgpu_h.C_LONG_LONG.withName("visibility"),
         WGPUBufferBindingLayout.layout().withName("buffer"),
         WGPUSamplerBindingLayout.layout().withName("sampler"),
         WGPUTextureBindingLayout.layout().withName("texture"),
@@ -132,24 +137,24 @@ public class WGPUBindGroupLayoutEntry {
         struct.set(binding$LAYOUT, binding$OFFSET, fieldValue);
     }
 
-    private static final OfInt visibility$LAYOUT = (OfInt)$LAYOUT.select(groupElement("visibility"));
+    private static final OfLong visibility$LAYOUT = (OfLong)$LAYOUT.select(groupElement("visibility"));
 
     /**
      * Layout for field:
      * {@snippet lang=c :
-     * WGPUShaderStageFlags visibility
+     * WGPUShaderStage visibility
      * }
      */
-    public static final OfInt visibility$layout() {
+    public static final OfLong visibility$layout() {
         return visibility$LAYOUT;
     }
 
-    private static final long visibility$OFFSET = 12;
+    private static final long visibility$OFFSET = 16;
 
     /**
      * Offset for field:
      * {@snippet lang=c :
-     * WGPUShaderStageFlags visibility
+     * WGPUShaderStage visibility
      * }
      */
     public static final long visibility$offset() {
@@ -159,20 +164,20 @@ public class WGPUBindGroupLayoutEntry {
     /**
      * Getter for field:
      * {@snippet lang=c :
-     * WGPUShaderStageFlags visibility
+     * WGPUShaderStage visibility
      * }
      */
-    public static int visibility(MemorySegment struct) {
+    public static long visibility(MemorySegment struct) {
         return struct.get(visibility$LAYOUT, visibility$OFFSET);
     }
 
     /**
      * Setter for field:
      * {@snippet lang=c :
-     * WGPUShaderStageFlags visibility
+     * WGPUShaderStage visibility
      * }
      */
-    public static void visibility(MemorySegment struct, int fieldValue) {
+    public static void visibility(MemorySegment struct, long fieldValue) {
         struct.set(visibility$LAYOUT, visibility$OFFSET, fieldValue);
     }
 
@@ -188,7 +193,7 @@ public class WGPUBindGroupLayoutEntry {
         return buffer$LAYOUT;
     }
 
-    private static final long buffer$OFFSET = 16;
+    private static final long buffer$OFFSET = 24;
 
     /**
      * Offset for field:
@@ -232,7 +237,7 @@ public class WGPUBindGroupLayoutEntry {
         return sampler$LAYOUT;
     }
 
-    private static final long sampler$OFFSET = 40;
+    private static final long sampler$OFFSET = 48;
 
     /**
      * Offset for field:
@@ -276,7 +281,7 @@ public class WGPUBindGroupLayoutEntry {
         return texture$LAYOUT;
     }
 
-    private static final long texture$OFFSET = 56;
+    private static final long texture$OFFSET = 64;
 
     /**
      * Offset for field:
@@ -320,7 +325,7 @@ public class WGPUBindGroupLayoutEntry {
         return storageTexture$LAYOUT;
     }
 
-    private static final long storageTexture$OFFSET = 80;
+    private static final long storageTexture$OFFSET = 88;
 
     /**
      * Offset for field:

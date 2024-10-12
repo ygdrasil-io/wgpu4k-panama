@@ -2,22 +2,26 @@
 
 package io.ygdrasil.wgpu.internal.jvm.panama;
 
+import java.lang.invoke.*;
 import java.lang.foreign.*;
-import java.util.function.Consumer;
+import java.nio.ByteOrder;
+import java.util.*;
+import java.util.function.*;
+import java.util.stream.*;
 
-import static java.lang.foreign.MemoryLayout.PathElement.groupElement;
-import static java.lang.foreign.ValueLayout.OfInt;
+import static java.lang.foreign.ValueLayout.*;
+import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 /**
  * {@snippet lang=c :
  * struct WGPUInstanceExtras {
  *     WGPUChainedStruct chain;
- *     WGPUInstanceBackendFlags backends;
- *     WGPUInstanceFlags flags;
+ *     WGPUInstanceBackend backends;
+ *     WGPUInstanceFlag flags;
  *     WGPUDx12Compiler dx12ShaderCompiler;
  *     WGPUGles3MinorVersion gles3MinorVersion;
- *     const char *dxilPath;
- *     const char *dxcPath;
+ *     WGPUStringView dxilPath;
+ *     WGPUStringView dxcPath;
  * }
  * }
  */
@@ -29,12 +33,12 @@ public class WGPUInstanceExtras {
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
         WGPUChainedStruct.layout().withName("chain"),
-        wgpu_h.C_INT.withName("backends"),
-        wgpu_h.C_INT.withName("flags"),
+        wgpu_h.C_LONG_LONG.withName("backends"),
+        wgpu_h.C_LONG_LONG.withName("flags"),
         wgpu_h.C_INT.withName("dx12ShaderCompiler"),
         wgpu_h.C_INT.withName("gles3MinorVersion"),
-        wgpu_h.C_POINTER.withName("dxilPath"),
-        wgpu_h.C_POINTER.withName("dxcPath")
+        WGPUStringView.layout().withName("dxilPath"),
+        WGPUStringView.layout().withName("dxcPath")
     ).withName("WGPUInstanceExtras");
 
     /**
@@ -88,15 +92,15 @@ public class WGPUInstanceExtras {
         MemorySegment.copy(fieldValue, 0L, struct, chain$OFFSET, chain$LAYOUT.byteSize());
     }
 
-    private static final OfInt backends$LAYOUT = (OfInt)$LAYOUT.select(groupElement("backends"));
+    private static final OfLong backends$LAYOUT = (OfLong)$LAYOUT.select(groupElement("backends"));
 
     /**
      * Layout for field:
      * {@snippet lang=c :
-     * WGPUInstanceBackendFlags backends
+     * WGPUInstanceBackend backends
      * }
      */
-    public static final OfInt backends$layout() {
+    public static final OfLong backends$layout() {
         return backends$LAYOUT;
     }
 
@@ -105,7 +109,7 @@ public class WGPUInstanceExtras {
     /**
      * Offset for field:
      * {@snippet lang=c :
-     * WGPUInstanceBackendFlags backends
+     * WGPUInstanceBackend backends
      * }
      */
     public static final long backends$offset() {
@@ -115,41 +119,41 @@ public class WGPUInstanceExtras {
     /**
      * Getter for field:
      * {@snippet lang=c :
-     * WGPUInstanceBackendFlags backends
+     * WGPUInstanceBackend backends
      * }
      */
-    public static int backends(MemorySegment struct) {
+    public static long backends(MemorySegment struct) {
         return struct.get(backends$LAYOUT, backends$OFFSET);
     }
 
     /**
      * Setter for field:
      * {@snippet lang=c :
-     * WGPUInstanceBackendFlags backends
+     * WGPUInstanceBackend backends
      * }
      */
-    public static void backends(MemorySegment struct, int fieldValue) {
+    public static void backends(MemorySegment struct, long fieldValue) {
         struct.set(backends$LAYOUT, backends$OFFSET, fieldValue);
     }
 
-    private static final OfInt flags$LAYOUT = (OfInt)$LAYOUT.select(groupElement("flags"));
+    private static final OfLong flags$LAYOUT = (OfLong)$LAYOUT.select(groupElement("flags"));
 
     /**
      * Layout for field:
      * {@snippet lang=c :
-     * WGPUInstanceFlags flags
+     * WGPUInstanceFlag flags
      * }
      */
-    public static final OfInt flags$layout() {
+    public static final OfLong flags$layout() {
         return flags$LAYOUT;
     }
 
-    private static final long flags$OFFSET = 20;
+    private static final long flags$OFFSET = 24;
 
     /**
      * Offset for field:
      * {@snippet lang=c :
-     * WGPUInstanceFlags flags
+     * WGPUInstanceFlag flags
      * }
      */
     public static final long flags$offset() {
@@ -159,20 +163,20 @@ public class WGPUInstanceExtras {
     /**
      * Getter for field:
      * {@snippet lang=c :
-     * WGPUInstanceFlags flags
+     * WGPUInstanceFlag flags
      * }
      */
-    public static int flags(MemorySegment struct) {
+    public static long flags(MemorySegment struct) {
         return struct.get(flags$LAYOUT, flags$OFFSET);
     }
 
     /**
      * Setter for field:
      * {@snippet lang=c :
-     * WGPUInstanceFlags flags
+     * WGPUInstanceFlag flags
      * }
      */
-    public static void flags(MemorySegment struct, int fieldValue) {
+    public static void flags(MemorySegment struct, long fieldValue) {
         struct.set(flags$LAYOUT, flags$OFFSET, fieldValue);
     }
 
@@ -188,7 +192,7 @@ public class WGPUInstanceExtras {
         return dx12ShaderCompiler$LAYOUT;
     }
 
-    private static final long dx12ShaderCompiler$OFFSET = 24;
+    private static final long dx12ShaderCompiler$OFFSET = 32;
 
     /**
      * Offset for field:
@@ -232,7 +236,7 @@ public class WGPUInstanceExtras {
         return gles3MinorVersion$LAYOUT;
     }
 
-    private static final long gles3MinorVersion$OFFSET = 28;
+    private static final long gles3MinorVersion$OFFSET = 36;
 
     /**
      * Offset for field:
@@ -264,24 +268,24 @@ public class WGPUInstanceExtras {
         struct.set(gles3MinorVersion$LAYOUT, gles3MinorVersion$OFFSET, fieldValue);
     }
 
-    private static final AddressLayout dxilPath$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("dxilPath"));
+    private static final GroupLayout dxilPath$LAYOUT = (GroupLayout)$LAYOUT.select(groupElement("dxilPath"));
 
     /**
      * Layout for field:
      * {@snippet lang=c :
-     * const char *dxilPath
+     * WGPUStringView dxilPath
      * }
      */
-    public static final AddressLayout dxilPath$layout() {
+    public static final GroupLayout dxilPath$layout() {
         return dxilPath$LAYOUT;
     }
 
-    private static final long dxilPath$OFFSET = 32;
+    private static final long dxilPath$OFFSET = 40;
 
     /**
      * Offset for field:
      * {@snippet lang=c :
-     * const char *dxilPath
+     * WGPUStringView dxilPath
      * }
      */
     public static final long dxilPath$offset() {
@@ -291,41 +295,41 @@ public class WGPUInstanceExtras {
     /**
      * Getter for field:
      * {@snippet lang=c :
-     * const char *dxilPath
+     * WGPUStringView dxilPath
      * }
      */
     public static MemorySegment dxilPath(MemorySegment struct) {
-        return struct.get(dxilPath$LAYOUT, dxilPath$OFFSET);
+        return struct.asSlice(dxilPath$OFFSET, dxilPath$LAYOUT.byteSize());
     }
 
     /**
      * Setter for field:
      * {@snippet lang=c :
-     * const char *dxilPath
+     * WGPUStringView dxilPath
      * }
      */
     public static void dxilPath(MemorySegment struct, MemorySegment fieldValue) {
-        struct.set(dxilPath$LAYOUT, dxilPath$OFFSET, fieldValue);
+        MemorySegment.copy(fieldValue, 0L, struct, dxilPath$OFFSET, dxilPath$LAYOUT.byteSize());
     }
 
-    private static final AddressLayout dxcPath$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("dxcPath"));
+    private static final GroupLayout dxcPath$LAYOUT = (GroupLayout)$LAYOUT.select(groupElement("dxcPath"));
 
     /**
      * Layout for field:
      * {@snippet lang=c :
-     * const char *dxcPath
+     * WGPUStringView dxcPath
      * }
      */
-    public static final AddressLayout dxcPath$layout() {
+    public static final GroupLayout dxcPath$layout() {
         return dxcPath$LAYOUT;
     }
 
-    private static final long dxcPath$OFFSET = 40;
+    private static final long dxcPath$OFFSET = 56;
 
     /**
      * Offset for field:
      * {@snippet lang=c :
-     * const char *dxcPath
+     * WGPUStringView dxcPath
      * }
      */
     public static final long dxcPath$offset() {
@@ -335,21 +339,21 @@ public class WGPUInstanceExtras {
     /**
      * Getter for field:
      * {@snippet lang=c :
-     * const char *dxcPath
+     * WGPUStringView dxcPath
      * }
      */
     public static MemorySegment dxcPath(MemorySegment struct) {
-        return struct.get(dxcPath$LAYOUT, dxcPath$OFFSET);
+        return struct.asSlice(dxcPath$OFFSET, dxcPath$LAYOUT.byteSize());
     }
 
     /**
      * Setter for field:
      * {@snippet lang=c :
-     * const char *dxcPath
+     * WGPUStringView dxcPath
      * }
      */
     public static void dxcPath(MemorySegment struct, MemorySegment fieldValue) {
-        struct.set(dxcPath$LAYOUT, dxcPath$OFFSET, fieldValue);
+        MemorySegment.copy(fieldValue, 0L, struct, dxcPath$OFFSET, dxcPath$LAYOUT.byteSize());
     }
 
     /**

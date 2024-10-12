@@ -2,15 +2,19 @@
 
 package io.ygdrasil.wgpu.internal.jvm.panama;
 
-import java.lang.foreign.Arena;
-import java.lang.foreign.FunctionDescriptor;
-import java.lang.foreign.Linker;
-import java.lang.foreign.MemorySegment;
-import java.lang.invoke.MethodHandle;
+import java.lang.invoke.*;
+import java.lang.foreign.*;
+import java.nio.ByteOrder;
+import java.util.*;
+import java.util.function.*;
+import java.util.stream.*;
+
+import static java.lang.foreign.ValueLayout.*;
+import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 /**
  * {@snippet lang=c :
- * typedef void (*WGPUDeviceLostCallback)(WGPUDeviceLostReason, const char *, void *)
+ * typedef void (*WGPUDeviceLostCallback)(const WGPUDevice *, WGPUDeviceLostReason, WGPUStringView, void *, void *)
  * }
  */
 public class WGPUDeviceLostCallback {
@@ -23,11 +27,13 @@ public class WGPUDeviceLostCallback {
      * The function pointer signature, expressed as a functional interface
      */
     public interface Function {
-        void apply(int reason, MemorySegment message, MemorySegment userdata);
+        void apply(MemorySegment device, int reason, MemorySegment message, MemorySegment userdata1, MemorySegment userdata2);
     }
 
     private static final FunctionDescriptor $DESC = FunctionDescriptor.ofVoid(
+        wgpu_h.C_POINTER,
         wgpu_h.C_INT,
+        WGPUStringView.layout(),
         wgpu_h.C_POINTER,
         wgpu_h.C_POINTER
     );
@@ -54,9 +60,9 @@ public class WGPUDeviceLostCallback {
     /**
      * Invoke the upcall stub {@code funcPtr}, with given parameters
      */
-    public static void invoke(MemorySegment funcPtr,int reason, MemorySegment message, MemorySegment userdata) {
+    public static void invoke(MemorySegment funcPtr,MemorySegment device, int reason, MemorySegment message, MemorySegment userdata1, MemorySegment userdata2) {
         try {
-             DOWN$MH.invokeExact(funcPtr, reason, message, userdata);
+             DOWN$MH.invokeExact(funcPtr, device, reason, message, userdata1, userdata2);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }

@@ -2,18 +2,21 @@
 
 package io.ygdrasil.wgpu.internal.jvm.panama;
 
+import java.lang.invoke.*;
 import java.lang.foreign.*;
-import java.util.function.Consumer;
+import java.nio.ByteOrder;
+import java.util.*;
+import java.util.function.*;
+import java.util.stream.*;
 
-import static java.lang.foreign.MemoryLayout.PathElement.groupElement;
-import static java.lang.foreign.ValueLayout.OfInt;
-import static java.lang.foreign.ValueLayout.OfLong;
+import static java.lang.foreign.ValueLayout.*;
+import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 /**
  * {@snippet lang=c :
  * struct WGPUCompilationMessage {
  *     const WGPUChainedStruct *nextInChain;
- *     const char *message;
+ *     WGPUStringView message;
  *     WGPUCompilationMessageType type;
  *     uint64_t lineNum;
  *     uint64_t linePos;
@@ -33,7 +36,7 @@ public class WGPUCompilationMessage {
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
         wgpu_h.C_POINTER.withName("nextInChain"),
-        wgpu_h.C_POINTER.withName("message"),
+        WGPUStringView.layout().withName("message"),
         wgpu_h.C_INT.withName("type"),
         MemoryLayout.paddingLayout(4),
         wgpu_h.C_LONG_LONG.withName("lineNum"),
@@ -96,15 +99,15 @@ public class WGPUCompilationMessage {
         struct.set(nextInChain$LAYOUT, nextInChain$OFFSET, fieldValue);
     }
 
-    private static final AddressLayout message$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("message"));
+    private static final GroupLayout message$LAYOUT = (GroupLayout)$LAYOUT.select(groupElement("message"));
 
     /**
      * Layout for field:
      * {@snippet lang=c :
-     * const char *message
+     * WGPUStringView message
      * }
      */
-    public static final AddressLayout message$layout() {
+    public static final GroupLayout message$layout() {
         return message$LAYOUT;
     }
 
@@ -113,7 +116,7 @@ public class WGPUCompilationMessage {
     /**
      * Offset for field:
      * {@snippet lang=c :
-     * const char *message
+     * WGPUStringView message
      * }
      */
     public static final long message$offset() {
@@ -123,21 +126,21 @@ public class WGPUCompilationMessage {
     /**
      * Getter for field:
      * {@snippet lang=c :
-     * const char *message
+     * WGPUStringView message
      * }
      */
     public static MemorySegment message(MemorySegment struct) {
-        return struct.get(message$LAYOUT, message$OFFSET);
+        return struct.asSlice(message$OFFSET, message$LAYOUT.byteSize());
     }
 
     /**
      * Setter for field:
      * {@snippet lang=c :
-     * const char *message
+     * WGPUStringView message
      * }
      */
     public static void message(MemorySegment struct, MemorySegment fieldValue) {
-        struct.set(message$LAYOUT, message$OFFSET, fieldValue);
+        MemorySegment.copy(fieldValue, 0L, struct, message$OFFSET, message$LAYOUT.byteSize());
     }
 
     private static final OfInt type$LAYOUT = (OfInt)$LAYOUT.select(groupElement("type"));
@@ -152,7 +155,7 @@ public class WGPUCompilationMessage {
         return type$LAYOUT;
     }
 
-    private static final long type$OFFSET = 16;
+    private static final long type$OFFSET = 24;
 
     /**
      * Offset for field:
@@ -196,7 +199,7 @@ public class WGPUCompilationMessage {
         return lineNum$LAYOUT;
     }
 
-    private static final long lineNum$OFFSET = 24;
+    private static final long lineNum$OFFSET = 32;
 
     /**
      * Offset for field:
@@ -240,7 +243,7 @@ public class WGPUCompilationMessage {
         return linePos$LAYOUT;
     }
 
-    private static final long linePos$OFFSET = 32;
+    private static final long linePos$OFFSET = 40;
 
     /**
      * Offset for field:
@@ -284,7 +287,7 @@ public class WGPUCompilationMessage {
         return offset$LAYOUT;
     }
 
-    private static final long offset$OFFSET = 40;
+    private static final long offset$OFFSET = 48;
 
     /**
      * Offset for field:
@@ -328,7 +331,7 @@ public class WGPUCompilationMessage {
         return length$LAYOUT;
     }
 
-    private static final long length$OFFSET = 48;
+    private static final long length$OFFSET = 56;
 
     /**
      * Offset for field:
@@ -372,7 +375,7 @@ public class WGPUCompilationMessage {
         return utf16LinePos$LAYOUT;
     }
 
-    private static final long utf16LinePos$OFFSET = 56;
+    private static final long utf16LinePos$OFFSET = 64;
 
     /**
      * Offset for field:
@@ -416,7 +419,7 @@ public class WGPUCompilationMessage {
         return utf16Offset$LAYOUT;
     }
 
-    private static final long utf16Offset$OFFSET = 64;
+    private static final long utf16Offset$OFFSET = 72;
 
     /**
      * Offset for field:
@@ -460,7 +463,7 @@ public class WGPUCompilationMessage {
         return utf16Length$LAYOUT;
     }
 
-    private static final long utf16Length$OFFSET = 72;
+    private static final long utf16Length$OFFSET = 80;
 
     /**
      * Offset for field:

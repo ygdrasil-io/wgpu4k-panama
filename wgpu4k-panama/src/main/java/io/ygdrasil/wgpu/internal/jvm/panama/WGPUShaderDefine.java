@@ -2,16 +2,21 @@
 
 package io.ygdrasil.wgpu.internal.jvm.panama;
 
+import java.lang.invoke.*;
 import java.lang.foreign.*;
-import java.util.function.Consumer;
+import java.nio.ByteOrder;
+import java.util.*;
+import java.util.function.*;
+import java.util.stream.*;
 
-import static java.lang.foreign.MemoryLayout.PathElement.groupElement;
+import static java.lang.foreign.ValueLayout.*;
+import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 /**
  * {@snippet lang=c :
  * struct WGPUShaderDefine {
- *     const char *name;
- *     const char *value;
+ *     WGPUStringView name;
+ *     WGPUStringView value;
  * }
  * }
  */
@@ -22,8 +27,8 @@ public class WGPUShaderDefine {
     }
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
-        wgpu_h.C_POINTER.withName("name"),
-        wgpu_h.C_POINTER.withName("value")
+        WGPUStringView.layout().withName("name"),
+        WGPUStringView.layout().withName("value")
     ).withName("WGPUShaderDefine");
 
     /**
@@ -33,15 +38,15 @@ public class WGPUShaderDefine {
         return $LAYOUT;
     }
 
-    private static final AddressLayout name$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("name"));
+    private static final GroupLayout name$LAYOUT = (GroupLayout)$LAYOUT.select(groupElement("name"));
 
     /**
      * Layout for field:
      * {@snippet lang=c :
-     * const char *name
+     * WGPUStringView name
      * }
      */
-    public static final AddressLayout name$layout() {
+    public static final GroupLayout name$layout() {
         return name$LAYOUT;
     }
 
@@ -50,7 +55,7 @@ public class WGPUShaderDefine {
     /**
      * Offset for field:
      * {@snippet lang=c :
-     * const char *name
+     * WGPUStringView name
      * }
      */
     public static final long name$offset() {
@@ -60,41 +65,41 @@ public class WGPUShaderDefine {
     /**
      * Getter for field:
      * {@snippet lang=c :
-     * const char *name
+     * WGPUStringView name
      * }
      */
     public static MemorySegment name(MemorySegment struct) {
-        return struct.get(name$LAYOUT, name$OFFSET);
+        return struct.asSlice(name$OFFSET, name$LAYOUT.byteSize());
     }
 
     /**
      * Setter for field:
      * {@snippet lang=c :
-     * const char *name
+     * WGPUStringView name
      * }
      */
     public static void name(MemorySegment struct, MemorySegment fieldValue) {
-        struct.set(name$LAYOUT, name$OFFSET, fieldValue);
+        MemorySegment.copy(fieldValue, 0L, struct, name$OFFSET, name$LAYOUT.byteSize());
     }
 
-    private static final AddressLayout value$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("value"));
+    private static final GroupLayout value$LAYOUT = (GroupLayout)$LAYOUT.select(groupElement("value"));
 
     /**
      * Layout for field:
      * {@snippet lang=c :
-     * const char *value
+     * WGPUStringView value
      * }
      */
-    public static final AddressLayout value$layout() {
+    public static final GroupLayout value$layout() {
         return value$LAYOUT;
     }
 
-    private static final long value$OFFSET = 8;
+    private static final long value$OFFSET = 16;
 
     /**
      * Offset for field:
      * {@snippet lang=c :
-     * const char *value
+     * WGPUStringView value
      * }
      */
     public static final long value$offset() {
@@ -104,21 +109,21 @@ public class WGPUShaderDefine {
     /**
      * Getter for field:
      * {@snippet lang=c :
-     * const char *value
+     * WGPUStringView value
      * }
      */
     public static MemorySegment value(MemorySegment struct) {
-        return struct.get(value$LAYOUT, value$OFFSET);
+        return struct.asSlice(value$OFFSET, value$LAYOUT.byteSize());
     }
 
     /**
      * Setter for field:
      * {@snippet lang=c :
-     * const char *value
+     * WGPUStringView value
      * }
      */
     public static void value(MemorySegment struct, MemorySegment fieldValue) {
-        struct.set(value$LAYOUT, value$OFFSET, fieldValue);
+        MemorySegment.copy(fieldValue, 0L, struct, value$OFFSET, value$LAYOUT.byteSize());
     }
 
     /**

@@ -2,18 +2,22 @@
 
 package io.ygdrasil.wgpu.internal.jvm.panama;
 
+import java.lang.invoke.*;
 import java.lang.foreign.*;
-import java.util.function.Consumer;
+import java.nio.ByteOrder;
+import java.util.*;
+import java.util.function.*;
+import java.util.stream.*;
 
-import static java.lang.foreign.MemoryLayout.PathElement.groupElement;
-import static java.lang.foreign.ValueLayout.OfLong;
+import static java.lang.foreign.ValueLayout.*;
+import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 /**
  * {@snippet lang=c :
  * struct WGPUVertexState {
  *     const WGPUChainedStruct *nextInChain;
  *     WGPUShaderModule module;
- *     const char *entryPoint;
+ *     WGPUStringView entryPoint;
  *     size_t constantCount;
  *     const WGPUConstantEntry *constants;
  *     size_t bufferCount;
@@ -30,7 +34,7 @@ public class WGPUVertexState {
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
         wgpu_h.C_POINTER.withName("nextInChain"),
         wgpu_h.C_POINTER.withName("module"),
-        wgpu_h.C_POINTER.withName("entryPoint"),
+        WGPUStringView.layout().withName("entryPoint"),
         wgpu_h.C_LONG.withName("constantCount"),
         wgpu_h.C_POINTER.withName("constants"),
         wgpu_h.C_LONG.withName("bufferCount"),
@@ -132,15 +136,15 @@ public class WGPUVertexState {
         struct.set(module$LAYOUT, module$OFFSET, fieldValue);
     }
 
-    private static final AddressLayout entryPoint$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("entryPoint"));
+    private static final GroupLayout entryPoint$LAYOUT = (GroupLayout)$LAYOUT.select(groupElement("entryPoint"));
 
     /**
      * Layout for field:
      * {@snippet lang=c :
-     * const char *entryPoint
+     * WGPUStringView entryPoint
      * }
      */
-    public static final AddressLayout entryPoint$layout() {
+    public static final GroupLayout entryPoint$layout() {
         return entryPoint$LAYOUT;
     }
 
@@ -149,7 +153,7 @@ public class WGPUVertexState {
     /**
      * Offset for field:
      * {@snippet lang=c :
-     * const char *entryPoint
+     * WGPUStringView entryPoint
      * }
      */
     public static final long entryPoint$offset() {
@@ -159,21 +163,21 @@ public class WGPUVertexState {
     /**
      * Getter for field:
      * {@snippet lang=c :
-     * const char *entryPoint
+     * WGPUStringView entryPoint
      * }
      */
     public static MemorySegment entryPoint(MemorySegment struct) {
-        return struct.get(entryPoint$LAYOUT, entryPoint$OFFSET);
+        return struct.asSlice(entryPoint$OFFSET, entryPoint$LAYOUT.byteSize());
     }
 
     /**
      * Setter for field:
      * {@snippet lang=c :
-     * const char *entryPoint
+     * WGPUStringView entryPoint
      * }
      */
     public static void entryPoint(MemorySegment struct, MemorySegment fieldValue) {
-        struct.set(entryPoint$LAYOUT, entryPoint$OFFSET, fieldValue);
+        MemorySegment.copy(fieldValue, 0L, struct, entryPoint$OFFSET, entryPoint$LAYOUT.byteSize());
     }
 
     private static final OfLong constantCount$LAYOUT = (OfLong)$LAYOUT.select(groupElement("constantCount"));
@@ -188,7 +192,7 @@ public class WGPUVertexState {
         return constantCount$LAYOUT;
     }
 
-    private static final long constantCount$OFFSET = 24;
+    private static final long constantCount$OFFSET = 32;
 
     /**
      * Offset for field:
@@ -232,7 +236,7 @@ public class WGPUVertexState {
         return constants$LAYOUT;
     }
 
-    private static final long constants$OFFSET = 32;
+    private static final long constants$OFFSET = 40;
 
     /**
      * Offset for field:
@@ -276,7 +280,7 @@ public class WGPUVertexState {
         return bufferCount$LAYOUT;
     }
 
-    private static final long bufferCount$OFFSET = 40;
+    private static final long bufferCount$OFFSET = 48;
 
     /**
      * Offset for field:
@@ -320,7 +324,7 @@ public class WGPUVertexState {
         return buffers$LAYOUT;
     }
 
-    private static final long buffers$OFFSET = 48;
+    private static final long buffers$OFFSET = 56;
 
     /**
      * Offset for field:

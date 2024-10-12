@@ -2,11 +2,15 @@
 
 package io.ygdrasil.wgpu.internal.jvm.panama;
 
+import java.lang.invoke.*;
 import java.lang.foreign.*;
-import java.util.function.Consumer;
+import java.nio.ByteOrder;
+import java.util.*;
+import java.util.function.*;
+import java.util.stream.*;
 
-import static java.lang.foreign.MemoryLayout.PathElement.groupElement;
-import static java.lang.foreign.ValueLayout.OfInt;
+import static java.lang.foreign.ValueLayout.*;
+import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 /**
  * {@snippet lang=c :
@@ -16,6 +20,7 @@ import static java.lang.foreign.ValueLayout.OfInt;
  *     WGPUIndexFormat stripIndexFormat;
  *     WGPUFrontFace frontFace;
  *     WGPUCullMode cullMode;
+ *     WGPUBool unclippedDepth;
  * }
  * }
  */
@@ -30,7 +35,9 @@ public class WGPUPrimitiveState {
         wgpu_h.C_INT.withName("topology"),
         wgpu_h.C_INT.withName("stripIndexFormat"),
         wgpu_h.C_INT.withName("frontFace"),
-        wgpu_h.C_INT.withName("cullMode")
+        wgpu_h.C_INT.withName("cullMode"),
+        wgpu_h.C_INT.withName("unclippedDepth"),
+        MemoryLayout.paddingLayout(4)
     ).withName("WGPUPrimitiveState");
 
     /**
@@ -258,6 +265,50 @@ public class WGPUPrimitiveState {
      */
     public static void cullMode(MemorySegment struct, int fieldValue) {
         struct.set(cullMode$LAYOUT, cullMode$OFFSET, fieldValue);
+    }
+
+    private static final OfInt unclippedDepth$LAYOUT = (OfInt)$LAYOUT.select(groupElement("unclippedDepth"));
+
+    /**
+     * Layout for field:
+     * {@snippet lang=c :
+     * WGPUBool unclippedDepth
+     * }
+     */
+    public static final OfInt unclippedDepth$layout() {
+        return unclippedDepth$LAYOUT;
+    }
+
+    private static final long unclippedDepth$OFFSET = 24;
+
+    /**
+     * Offset for field:
+     * {@snippet lang=c :
+     * WGPUBool unclippedDepth
+     * }
+     */
+    public static final long unclippedDepth$offset() {
+        return unclippedDepth$OFFSET;
+    }
+
+    /**
+     * Getter for field:
+     * {@snippet lang=c :
+     * WGPUBool unclippedDepth
+     * }
+     */
+    public static int unclippedDepth(MemorySegment struct) {
+        return struct.get(unclippedDepth$LAYOUT, unclippedDepth$OFFSET);
+    }
+
+    /**
+     * Setter for field:
+     * {@snippet lang=c :
+     * WGPUBool unclippedDepth
+     * }
+     */
+    public static void unclippedDepth(MemorySegment struct, int fieldValue) {
+        struct.set(unclippedDepth$LAYOUT, unclippedDepth$OFFSET, fieldValue);
     }
 
     /**

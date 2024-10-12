@@ -2,17 +2,21 @@
 
 package io.ygdrasil.wgpu.internal.jvm.panama;
 
+import java.lang.invoke.*;
 import java.lang.foreign.*;
-import java.util.function.Consumer;
+import java.nio.ByteOrder;
+import java.util.*;
+import java.util.function.*;
+import java.util.stream.*;
 
-import static java.lang.foreign.MemoryLayout.PathElement.groupElement;
 import static java.lang.foreign.ValueLayout.*;
+import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 /**
  * {@snippet lang=c :
  * struct WGPUSamplerDescriptor {
  *     const WGPUChainedStruct *nextInChain;
- *     const char *label;
+ *     WGPUStringView label;
  *     WGPUAddressMode addressModeU;
  *     WGPUAddressMode addressModeV;
  *     WGPUAddressMode addressModeW;
@@ -34,7 +38,7 @@ public class WGPUSamplerDescriptor {
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
         wgpu_h.C_POINTER.withName("nextInChain"),
-        wgpu_h.C_POINTER.withName("label"),
+        WGPUStringView.layout().withName("label"),
         wgpu_h.C_INT.withName("addressModeU"),
         wgpu_h.C_INT.withName("addressModeV"),
         wgpu_h.C_INT.withName("addressModeW"),
@@ -99,15 +103,15 @@ public class WGPUSamplerDescriptor {
         struct.set(nextInChain$LAYOUT, nextInChain$OFFSET, fieldValue);
     }
 
-    private static final AddressLayout label$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("label"));
+    private static final GroupLayout label$LAYOUT = (GroupLayout)$LAYOUT.select(groupElement("label"));
 
     /**
      * Layout for field:
      * {@snippet lang=c :
-     * const char *label
+     * WGPUStringView label
      * }
      */
-    public static final AddressLayout label$layout() {
+    public static final GroupLayout label$layout() {
         return label$LAYOUT;
     }
 
@@ -116,7 +120,7 @@ public class WGPUSamplerDescriptor {
     /**
      * Offset for field:
      * {@snippet lang=c :
-     * const char *label
+     * WGPUStringView label
      * }
      */
     public static final long label$offset() {
@@ -126,21 +130,21 @@ public class WGPUSamplerDescriptor {
     /**
      * Getter for field:
      * {@snippet lang=c :
-     * const char *label
+     * WGPUStringView label
      * }
      */
     public static MemorySegment label(MemorySegment struct) {
-        return struct.get(label$LAYOUT, label$OFFSET);
+        return struct.asSlice(label$OFFSET, label$LAYOUT.byteSize());
     }
 
     /**
      * Setter for field:
      * {@snippet lang=c :
-     * const char *label
+     * WGPUStringView label
      * }
      */
     public static void label(MemorySegment struct, MemorySegment fieldValue) {
-        struct.set(label$LAYOUT, label$OFFSET, fieldValue);
+        MemorySegment.copy(fieldValue, 0L, struct, label$OFFSET, label$LAYOUT.byteSize());
     }
 
     private static final OfInt addressModeU$LAYOUT = (OfInt)$LAYOUT.select(groupElement("addressModeU"));
@@ -155,7 +159,7 @@ public class WGPUSamplerDescriptor {
         return addressModeU$LAYOUT;
     }
 
-    private static final long addressModeU$OFFSET = 16;
+    private static final long addressModeU$OFFSET = 24;
 
     /**
      * Offset for field:
@@ -199,7 +203,7 @@ public class WGPUSamplerDescriptor {
         return addressModeV$LAYOUT;
     }
 
-    private static final long addressModeV$OFFSET = 20;
+    private static final long addressModeV$OFFSET = 28;
 
     /**
      * Offset for field:
@@ -243,7 +247,7 @@ public class WGPUSamplerDescriptor {
         return addressModeW$LAYOUT;
     }
 
-    private static final long addressModeW$OFFSET = 24;
+    private static final long addressModeW$OFFSET = 32;
 
     /**
      * Offset for field:
@@ -287,7 +291,7 @@ public class WGPUSamplerDescriptor {
         return magFilter$LAYOUT;
     }
 
-    private static final long magFilter$OFFSET = 28;
+    private static final long magFilter$OFFSET = 36;
 
     /**
      * Offset for field:
@@ -331,7 +335,7 @@ public class WGPUSamplerDescriptor {
         return minFilter$LAYOUT;
     }
 
-    private static final long minFilter$OFFSET = 32;
+    private static final long minFilter$OFFSET = 40;
 
     /**
      * Offset for field:
@@ -375,7 +379,7 @@ public class WGPUSamplerDescriptor {
         return mipmapFilter$LAYOUT;
     }
 
-    private static final long mipmapFilter$OFFSET = 36;
+    private static final long mipmapFilter$OFFSET = 44;
 
     /**
      * Offset for field:
@@ -419,7 +423,7 @@ public class WGPUSamplerDescriptor {
         return lodMinClamp$LAYOUT;
     }
 
-    private static final long lodMinClamp$OFFSET = 40;
+    private static final long lodMinClamp$OFFSET = 48;
 
     /**
      * Offset for field:
@@ -463,7 +467,7 @@ public class WGPUSamplerDescriptor {
         return lodMaxClamp$LAYOUT;
     }
 
-    private static final long lodMaxClamp$OFFSET = 44;
+    private static final long lodMaxClamp$OFFSET = 52;
 
     /**
      * Offset for field:
@@ -507,7 +511,7 @@ public class WGPUSamplerDescriptor {
         return compare$LAYOUT;
     }
 
-    private static final long compare$OFFSET = 48;
+    private static final long compare$OFFSET = 56;
 
     /**
      * Offset for field:
@@ -551,7 +555,7 @@ public class WGPUSamplerDescriptor {
         return maxAnisotropy$LAYOUT;
     }
 
-    private static final long maxAnisotropy$OFFSET = 52;
+    private static final long maxAnisotropy$OFFSET = 60;
 
     /**
      * Offset for field:

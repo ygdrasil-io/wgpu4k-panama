@@ -2,19 +2,22 @@
 
 package io.ygdrasil.wgpu.internal.jvm.panama;
 
+import java.lang.invoke.*;
 import java.lang.foreign.*;
-import java.util.function.Consumer;
+import java.nio.ByteOrder;
+import java.util.*;
+import java.util.function.*;
+import java.util.stream.*;
 
-import static java.lang.foreign.MemoryLayout.PathElement.groupElement;
-import static java.lang.foreign.ValueLayout.OfInt;
-import static java.lang.foreign.ValueLayout.OfLong;
+import static java.lang.foreign.ValueLayout.*;
+import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 /**
  * {@snippet lang=c :
  * struct WGPUBufferDescriptor {
  *     const WGPUChainedStruct *nextInChain;
- *     const char *label;
- *     WGPUBufferUsageFlags usage;
+ *     WGPUStringView label;
+ *     WGPUBufferUsage usage;
  *     uint64_t size;
  *     WGPUBool mappedAtCreation;
  * }
@@ -28,9 +31,8 @@ public class WGPUBufferDescriptor {
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
         wgpu_h.C_POINTER.withName("nextInChain"),
-        wgpu_h.C_POINTER.withName("label"),
-        wgpu_h.C_INT.withName("usage"),
-        MemoryLayout.paddingLayout(4),
+        WGPUStringView.layout().withName("label"),
+        wgpu_h.C_LONG_LONG.withName("usage"),
         wgpu_h.C_LONG_LONG.withName("size"),
         wgpu_h.C_INT.withName("mappedAtCreation"),
         MemoryLayout.paddingLayout(4)
@@ -87,15 +89,15 @@ public class WGPUBufferDescriptor {
         struct.set(nextInChain$LAYOUT, nextInChain$OFFSET, fieldValue);
     }
 
-    private static final AddressLayout label$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("label"));
+    private static final GroupLayout label$LAYOUT = (GroupLayout)$LAYOUT.select(groupElement("label"));
 
     /**
      * Layout for field:
      * {@snippet lang=c :
-     * const char *label
+     * WGPUStringView label
      * }
      */
-    public static final AddressLayout label$layout() {
+    public static final GroupLayout label$layout() {
         return label$LAYOUT;
     }
 
@@ -104,7 +106,7 @@ public class WGPUBufferDescriptor {
     /**
      * Offset for field:
      * {@snippet lang=c :
-     * const char *label
+     * WGPUStringView label
      * }
      */
     public static final long label$offset() {
@@ -114,41 +116,41 @@ public class WGPUBufferDescriptor {
     /**
      * Getter for field:
      * {@snippet lang=c :
-     * const char *label
+     * WGPUStringView label
      * }
      */
     public static MemorySegment label(MemorySegment struct) {
-        return struct.get(label$LAYOUT, label$OFFSET);
+        return struct.asSlice(label$OFFSET, label$LAYOUT.byteSize());
     }
 
     /**
      * Setter for field:
      * {@snippet lang=c :
-     * const char *label
+     * WGPUStringView label
      * }
      */
     public static void label(MemorySegment struct, MemorySegment fieldValue) {
-        struct.set(label$LAYOUT, label$OFFSET, fieldValue);
+        MemorySegment.copy(fieldValue, 0L, struct, label$OFFSET, label$LAYOUT.byteSize());
     }
 
-    private static final OfInt usage$LAYOUT = (OfInt)$LAYOUT.select(groupElement("usage"));
+    private static final OfLong usage$LAYOUT = (OfLong)$LAYOUT.select(groupElement("usage"));
 
     /**
      * Layout for field:
      * {@snippet lang=c :
-     * WGPUBufferUsageFlags usage
+     * WGPUBufferUsage usage
      * }
      */
-    public static final OfInt usage$layout() {
+    public static final OfLong usage$layout() {
         return usage$LAYOUT;
     }
 
-    private static final long usage$OFFSET = 16;
+    private static final long usage$OFFSET = 24;
 
     /**
      * Offset for field:
      * {@snippet lang=c :
-     * WGPUBufferUsageFlags usage
+     * WGPUBufferUsage usage
      * }
      */
     public static final long usage$offset() {
@@ -158,20 +160,20 @@ public class WGPUBufferDescriptor {
     /**
      * Getter for field:
      * {@snippet lang=c :
-     * WGPUBufferUsageFlags usage
+     * WGPUBufferUsage usage
      * }
      */
-    public static int usage(MemorySegment struct) {
+    public static long usage(MemorySegment struct) {
         return struct.get(usage$LAYOUT, usage$OFFSET);
     }
 
     /**
      * Setter for field:
      * {@snippet lang=c :
-     * WGPUBufferUsageFlags usage
+     * WGPUBufferUsage usage
      * }
      */
-    public static void usage(MemorySegment struct, int fieldValue) {
+    public static void usage(MemorySegment struct, long fieldValue) {
         struct.set(usage$LAYOUT, usage$OFFSET, fieldValue);
     }
 
@@ -187,7 +189,7 @@ public class WGPUBufferDescriptor {
         return size$LAYOUT;
     }
 
-    private static final long size$OFFSET = 24;
+    private static final long size$OFFSET = 32;
 
     /**
      * Offset for field:
@@ -231,7 +233,7 @@ public class WGPUBufferDescriptor {
         return mappedAtCreation$LAYOUT;
     }
 
-    private static final long mappedAtCreation$OFFSET = 32;
+    private static final long mappedAtCreation$OFFSET = 40;
 
     /**
      * Offset for field:

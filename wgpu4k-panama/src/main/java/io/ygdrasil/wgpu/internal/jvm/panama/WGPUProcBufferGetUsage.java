@@ -2,15 +2,19 @@
 
 package io.ygdrasil.wgpu.internal.jvm.panama;
 
-import java.lang.foreign.Arena;
-import java.lang.foreign.FunctionDescriptor;
-import java.lang.foreign.Linker;
-import java.lang.foreign.MemorySegment;
-import java.lang.invoke.MethodHandle;
+import java.lang.invoke.*;
+import java.lang.foreign.*;
+import java.nio.ByteOrder;
+import java.util.*;
+import java.util.function.*;
+import java.util.stream.*;
+
+import static java.lang.foreign.ValueLayout.*;
+import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 /**
  * {@snippet lang=c :
- * typedef WGPUBufferUsageFlags (*WGPUProcBufferGetUsage)(WGPUBuffer)
+ * typedef WGPUBufferUsage (*WGPUProcBufferGetUsage)(WGPUBuffer)
  * }
  */
 public class WGPUProcBufferGetUsage {
@@ -23,11 +27,11 @@ public class WGPUProcBufferGetUsage {
      * The function pointer signature, expressed as a functional interface
      */
     public interface Function {
-        int apply(MemorySegment buffer);
+        long apply(MemorySegment buffer);
     }
 
     private static final FunctionDescriptor $DESC = FunctionDescriptor.of(
-        wgpu_h.C_INT,
+        wgpu_h.C_LONG_LONG,
         wgpu_h.C_POINTER
     );
 
@@ -53,9 +57,9 @@ public class WGPUProcBufferGetUsage {
     /**
      * Invoke the upcall stub {@code funcPtr}, with given parameters
      */
-    public static int invoke(MemorySegment funcPtr,MemorySegment buffer) {
+    public static long invoke(MemorySegment funcPtr,MemorySegment buffer) {
         try {
-            return (int) DOWN$MH.invokeExact(funcPtr, buffer);
+            return (long) DOWN$MH.invokeExact(funcPtr, buffer);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }

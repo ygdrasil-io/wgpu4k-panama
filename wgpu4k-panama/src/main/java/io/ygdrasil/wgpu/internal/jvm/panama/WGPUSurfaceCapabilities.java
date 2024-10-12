@@ -2,18 +2,21 @@
 
 package io.ygdrasil.wgpu.internal.jvm.panama;
 
+import java.lang.invoke.*;
 import java.lang.foreign.*;
-import java.util.function.Consumer;
+import java.nio.ByteOrder;
+import java.util.*;
+import java.util.function.*;
+import java.util.stream.*;
 
-import static java.lang.foreign.MemoryLayout.PathElement.groupElement;
-import static java.lang.foreign.ValueLayout.OfInt;
-import static java.lang.foreign.ValueLayout.OfLong;
+import static java.lang.foreign.ValueLayout.*;
+import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 /**
  * {@snippet lang=c :
  * struct WGPUSurfaceCapabilities {
  *     WGPUChainedStructOut *nextInChain;
- *     WGPUTextureUsageFlags usages;
+ *     WGPUTextureUsage usages;
  *     size_t formatCount;
  *     const WGPUTextureFormat *formats;
  *     size_t presentModeCount;
@@ -31,8 +34,7 @@ public class WGPUSurfaceCapabilities {
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
         wgpu_h.C_POINTER.withName("nextInChain"),
-        wgpu_h.C_INT.withName("usages"),
-        MemoryLayout.paddingLayout(4),
+        wgpu_h.C_LONG_LONG.withName("usages"),
         wgpu_h.C_LONG.withName("formatCount"),
         wgpu_h.C_POINTER.withName("formats"),
         wgpu_h.C_LONG.withName("presentModeCount"),
@@ -92,15 +94,15 @@ public class WGPUSurfaceCapabilities {
         struct.set(nextInChain$LAYOUT, nextInChain$OFFSET, fieldValue);
     }
 
-    private static final OfInt usages$LAYOUT = (OfInt)$LAYOUT.select(groupElement("usages"));
+    private static final OfLong usages$LAYOUT = (OfLong)$LAYOUT.select(groupElement("usages"));
 
     /**
      * Layout for field:
      * {@snippet lang=c :
-     * WGPUTextureUsageFlags usages
+     * WGPUTextureUsage usages
      * }
      */
-    public static final OfInt usages$layout() {
+    public static final OfLong usages$layout() {
         return usages$LAYOUT;
     }
 
@@ -109,7 +111,7 @@ public class WGPUSurfaceCapabilities {
     /**
      * Offset for field:
      * {@snippet lang=c :
-     * WGPUTextureUsageFlags usages
+     * WGPUTextureUsage usages
      * }
      */
     public static final long usages$offset() {
@@ -119,20 +121,20 @@ public class WGPUSurfaceCapabilities {
     /**
      * Getter for field:
      * {@snippet lang=c :
-     * WGPUTextureUsageFlags usages
+     * WGPUTextureUsage usages
      * }
      */
-    public static int usages(MemorySegment struct) {
+    public static long usages(MemorySegment struct) {
         return struct.get(usages$LAYOUT, usages$OFFSET);
     }
 
     /**
      * Setter for field:
      * {@snippet lang=c :
-     * WGPUTextureUsageFlags usages
+     * WGPUTextureUsage usages
      * }
      */
-    public static void usages(MemorySegment struct, int fieldValue) {
+    public static void usages(MemorySegment struct, long fieldValue) {
         struct.set(usages$LAYOUT, usages$OFFSET, fieldValue);
     }
 

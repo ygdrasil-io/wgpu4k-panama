@@ -2,18 +2,22 @@
 
 package io.ygdrasil.wgpu.internal.jvm.panama;
 
+import java.lang.invoke.*;
 import java.lang.foreign.*;
-import java.util.function.Consumer;
+import java.nio.ByteOrder;
+import java.util.*;
+import java.util.function.*;
+import java.util.stream.*;
 
-import static java.lang.foreign.MemoryLayout.PathElement.groupElement;
-import static java.lang.foreign.ValueLayout.OfInt;
+import static java.lang.foreign.ValueLayout.*;
+import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 /**
  * {@snippet lang=c :
  * struct WGPUShaderModuleGLSLDescriptor {
  *     WGPUChainedStruct chain;
  *     WGPUShaderStage stage;
- *     const char *code;
+ *     WGPUStringView code;
  *     uint32_t defineCount;
  *     WGPUShaderDefine *defines;
  * }
@@ -27,9 +31,8 @@ public class WGPUShaderModuleGLSLDescriptor {
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
         WGPUChainedStruct.layout().withName("chain"),
-        wgpu_h.C_INT.withName("stage"),
-        MemoryLayout.paddingLayout(4),
-        wgpu_h.C_POINTER.withName("code"),
+        wgpu_h.C_LONG_LONG.withName("stage"),
+        WGPUStringView.layout().withName("code"),
         wgpu_h.C_INT.withName("defineCount"),
         MemoryLayout.paddingLayout(4),
         wgpu_h.C_POINTER.withName("defines")
@@ -86,7 +89,7 @@ public class WGPUShaderModuleGLSLDescriptor {
         MemorySegment.copy(fieldValue, 0L, struct, chain$OFFSET, chain$LAYOUT.byteSize());
     }
 
-    private static final OfInt stage$LAYOUT = (OfInt)$LAYOUT.select(groupElement("stage"));
+    private static final OfLong stage$LAYOUT = (OfLong)$LAYOUT.select(groupElement("stage"));
 
     /**
      * Layout for field:
@@ -94,7 +97,7 @@ public class WGPUShaderModuleGLSLDescriptor {
      * WGPUShaderStage stage
      * }
      */
-    public static final OfInt stage$layout() {
+    public static final OfLong stage$layout() {
         return stage$LAYOUT;
     }
 
@@ -116,7 +119,7 @@ public class WGPUShaderModuleGLSLDescriptor {
      * WGPUShaderStage stage
      * }
      */
-    public static int stage(MemorySegment struct) {
+    public static long stage(MemorySegment struct) {
         return struct.get(stage$LAYOUT, stage$OFFSET);
     }
 
@@ -126,19 +129,19 @@ public class WGPUShaderModuleGLSLDescriptor {
      * WGPUShaderStage stage
      * }
      */
-    public static void stage(MemorySegment struct, int fieldValue) {
+    public static void stage(MemorySegment struct, long fieldValue) {
         struct.set(stage$LAYOUT, stage$OFFSET, fieldValue);
     }
 
-    private static final AddressLayout code$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("code"));
+    private static final GroupLayout code$LAYOUT = (GroupLayout)$LAYOUT.select(groupElement("code"));
 
     /**
      * Layout for field:
      * {@snippet lang=c :
-     * const char *code
+     * WGPUStringView code
      * }
      */
-    public static final AddressLayout code$layout() {
+    public static final GroupLayout code$layout() {
         return code$LAYOUT;
     }
 
@@ -147,7 +150,7 @@ public class WGPUShaderModuleGLSLDescriptor {
     /**
      * Offset for field:
      * {@snippet lang=c :
-     * const char *code
+     * WGPUStringView code
      * }
      */
     public static final long code$offset() {
@@ -157,21 +160,21 @@ public class WGPUShaderModuleGLSLDescriptor {
     /**
      * Getter for field:
      * {@snippet lang=c :
-     * const char *code
+     * WGPUStringView code
      * }
      */
     public static MemorySegment code(MemorySegment struct) {
-        return struct.get(code$LAYOUT, code$OFFSET);
+        return struct.asSlice(code$OFFSET, code$LAYOUT.byteSize());
     }
 
     /**
      * Setter for field:
      * {@snippet lang=c :
-     * const char *code
+     * WGPUStringView code
      * }
      */
     public static void code(MemorySegment struct, MemorySegment fieldValue) {
-        struct.set(code$LAYOUT, code$OFFSET, fieldValue);
+        MemorySegment.copy(fieldValue, 0L, struct, code$OFFSET, code$LAYOUT.byteSize());
     }
 
     private static final OfInt defineCount$LAYOUT = (OfInt)$LAYOUT.select(groupElement("defineCount"));
@@ -186,7 +189,7 @@ public class WGPUShaderModuleGLSLDescriptor {
         return defineCount$LAYOUT;
     }
 
-    private static final long defineCount$OFFSET = 32;
+    private static final long defineCount$OFFSET = 40;
 
     /**
      * Offset for field:
@@ -230,7 +233,7 @@ public class WGPUShaderModuleGLSLDescriptor {
         return defines$LAYOUT;
     }
 
-    private static final long defines$OFFSET = 40;
+    private static final long defines$OFFSET = 48;
 
     /**
      * Offset for field:

@@ -2,16 +2,21 @@
 
 package io.ygdrasil.wgpu.internal.jvm.panama;
 
+import java.lang.invoke.*;
 import java.lang.foreign.*;
-import java.util.function.Consumer;
+import java.nio.ByteOrder;
+import java.util.*;
+import java.util.function.*;
+import java.util.stream.*;
 
-import static java.lang.foreign.MemoryLayout.PathElement.groupElement;
+import static java.lang.foreign.ValueLayout.*;
+import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 /**
  * {@snippet lang=c :
  * struct WGPURenderPipelineDescriptor {
  *     const WGPUChainedStruct *nextInChain;
- *     const char *label;
+ *     WGPUStringView label;
  *     WGPUPipelineLayout layout;
  *     WGPUVertexState vertex;
  *     WGPUPrimitiveState primitive;
@@ -29,7 +34,7 @@ public class WGPURenderPipelineDescriptor {
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
         wgpu_h.C_POINTER.withName("nextInChain"),
-        wgpu_h.C_POINTER.withName("label"),
+        WGPUStringView.layout().withName("label"),
         wgpu_h.C_POINTER.withName("layout"),
         WGPUVertexState.layout().withName("vertex"),
         WGPUPrimitiveState.layout().withName("primitive"),
@@ -89,15 +94,15 @@ public class WGPURenderPipelineDescriptor {
         struct.set(nextInChain$LAYOUT, nextInChain$OFFSET, fieldValue);
     }
 
-    private static final AddressLayout label$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("label"));
+    private static final GroupLayout label$LAYOUT = (GroupLayout)$LAYOUT.select(groupElement("label"));
 
     /**
      * Layout for field:
      * {@snippet lang=c :
-     * const char *label
+     * WGPUStringView label
      * }
      */
-    public static final AddressLayout label$layout() {
+    public static final GroupLayout label$layout() {
         return label$LAYOUT;
     }
 
@@ -106,7 +111,7 @@ public class WGPURenderPipelineDescriptor {
     /**
      * Offset for field:
      * {@snippet lang=c :
-     * const char *label
+     * WGPUStringView label
      * }
      */
     public static final long label$offset() {
@@ -116,21 +121,21 @@ public class WGPURenderPipelineDescriptor {
     /**
      * Getter for field:
      * {@snippet lang=c :
-     * const char *label
+     * WGPUStringView label
      * }
      */
     public static MemorySegment label(MemorySegment struct) {
-        return struct.get(label$LAYOUT, label$OFFSET);
+        return struct.asSlice(label$OFFSET, label$LAYOUT.byteSize());
     }
 
     /**
      * Setter for field:
      * {@snippet lang=c :
-     * const char *label
+     * WGPUStringView label
      * }
      */
     public static void label(MemorySegment struct, MemorySegment fieldValue) {
-        struct.set(label$LAYOUT, label$OFFSET, fieldValue);
+        MemorySegment.copy(fieldValue, 0L, struct, label$OFFSET, label$LAYOUT.byteSize());
     }
 
     private static final AddressLayout layout$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("layout"));
@@ -145,7 +150,7 @@ public class WGPURenderPipelineDescriptor {
         return layout$LAYOUT;
     }
 
-    private static final long layout$OFFSET = 16;
+    private static final long layout$OFFSET = 24;
 
     /**
      * Offset for field:
@@ -189,7 +194,7 @@ public class WGPURenderPipelineDescriptor {
         return vertex$LAYOUT;
     }
 
-    private static final long vertex$OFFSET = 24;
+    private static final long vertex$OFFSET = 32;
 
     /**
      * Offset for field:
@@ -233,7 +238,7 @@ public class WGPURenderPipelineDescriptor {
         return primitive$LAYOUT;
     }
 
-    private static final long primitive$OFFSET = 80;
+    private static final long primitive$OFFSET = 96;
 
     /**
      * Offset for field:
@@ -277,7 +282,7 @@ public class WGPURenderPipelineDescriptor {
         return depthStencil$LAYOUT;
     }
 
-    private static final long depthStencil$OFFSET = 104;
+    private static final long depthStencil$OFFSET = 128;
 
     /**
      * Offset for field:
@@ -321,7 +326,7 @@ public class WGPURenderPipelineDescriptor {
         return multisample$LAYOUT;
     }
 
-    private static final long multisample$OFFSET = 112;
+    private static final long multisample$OFFSET = 136;
 
     /**
      * Offset for field:
@@ -365,7 +370,7 @@ public class WGPURenderPipelineDescriptor {
         return fragment$LAYOUT;
     }
 
-    private static final long fragment$OFFSET = 136;
+    private static final long fragment$OFFSET = 160;
 
     /**
      * Offset for field:

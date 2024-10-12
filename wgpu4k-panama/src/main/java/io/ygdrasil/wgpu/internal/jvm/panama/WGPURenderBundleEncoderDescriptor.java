@@ -2,18 +2,21 @@
 
 package io.ygdrasil.wgpu.internal.jvm.panama;
 
+import java.lang.invoke.*;
 import java.lang.foreign.*;
-import java.util.function.Consumer;
+import java.nio.ByteOrder;
+import java.util.*;
+import java.util.function.*;
+import java.util.stream.*;
 
-import static java.lang.foreign.MemoryLayout.PathElement.groupElement;
-import static java.lang.foreign.ValueLayout.OfInt;
-import static java.lang.foreign.ValueLayout.OfLong;
+import static java.lang.foreign.ValueLayout.*;
+import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 /**
  * {@snippet lang=c :
  * struct WGPURenderBundleEncoderDescriptor {
  *     const WGPUChainedStruct *nextInChain;
- *     const char *label;
+ *     WGPUStringView label;
  *     size_t colorFormatCount;
  *     const WGPUTextureFormat *colorFormats;
  *     WGPUTextureFormat depthStencilFormat;
@@ -31,7 +34,7 @@ public class WGPURenderBundleEncoderDescriptor {
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
         wgpu_h.C_POINTER.withName("nextInChain"),
-        wgpu_h.C_POINTER.withName("label"),
+        WGPUStringView.layout().withName("label"),
         wgpu_h.C_LONG.withName("colorFormatCount"),
         wgpu_h.C_POINTER.withName("colorFormats"),
         wgpu_h.C_INT.withName("depthStencilFormat"),
@@ -91,15 +94,15 @@ public class WGPURenderBundleEncoderDescriptor {
         struct.set(nextInChain$LAYOUT, nextInChain$OFFSET, fieldValue);
     }
 
-    private static final AddressLayout label$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("label"));
+    private static final GroupLayout label$LAYOUT = (GroupLayout)$LAYOUT.select(groupElement("label"));
 
     /**
      * Layout for field:
      * {@snippet lang=c :
-     * const char *label
+     * WGPUStringView label
      * }
      */
-    public static final AddressLayout label$layout() {
+    public static final GroupLayout label$layout() {
         return label$LAYOUT;
     }
 
@@ -108,7 +111,7 @@ public class WGPURenderBundleEncoderDescriptor {
     /**
      * Offset for field:
      * {@snippet lang=c :
-     * const char *label
+     * WGPUStringView label
      * }
      */
     public static final long label$offset() {
@@ -118,21 +121,21 @@ public class WGPURenderBundleEncoderDescriptor {
     /**
      * Getter for field:
      * {@snippet lang=c :
-     * const char *label
+     * WGPUStringView label
      * }
      */
     public static MemorySegment label(MemorySegment struct) {
-        return struct.get(label$LAYOUT, label$OFFSET);
+        return struct.asSlice(label$OFFSET, label$LAYOUT.byteSize());
     }
 
     /**
      * Setter for field:
      * {@snippet lang=c :
-     * const char *label
+     * WGPUStringView label
      * }
      */
     public static void label(MemorySegment struct, MemorySegment fieldValue) {
-        struct.set(label$LAYOUT, label$OFFSET, fieldValue);
+        MemorySegment.copy(fieldValue, 0L, struct, label$OFFSET, label$LAYOUT.byteSize());
     }
 
     private static final OfLong colorFormatCount$LAYOUT = (OfLong)$LAYOUT.select(groupElement("colorFormatCount"));
@@ -147,7 +150,7 @@ public class WGPURenderBundleEncoderDescriptor {
         return colorFormatCount$LAYOUT;
     }
 
-    private static final long colorFormatCount$OFFSET = 16;
+    private static final long colorFormatCount$OFFSET = 24;
 
     /**
      * Offset for field:
@@ -191,7 +194,7 @@ public class WGPURenderBundleEncoderDescriptor {
         return colorFormats$LAYOUT;
     }
 
-    private static final long colorFormats$OFFSET = 24;
+    private static final long colorFormats$OFFSET = 32;
 
     /**
      * Offset for field:
@@ -235,7 +238,7 @@ public class WGPURenderBundleEncoderDescriptor {
         return depthStencilFormat$LAYOUT;
     }
 
-    private static final long depthStencilFormat$OFFSET = 32;
+    private static final long depthStencilFormat$OFFSET = 40;
 
     /**
      * Offset for field:
@@ -279,7 +282,7 @@ public class WGPURenderBundleEncoderDescriptor {
         return sampleCount$LAYOUT;
     }
 
-    private static final long sampleCount$OFFSET = 36;
+    private static final long sampleCount$OFFSET = 44;
 
     /**
      * Offset for field:
@@ -323,7 +326,7 @@ public class WGPURenderBundleEncoderDescriptor {
         return depthReadOnly$LAYOUT;
     }
 
-    private static final long depthReadOnly$OFFSET = 40;
+    private static final long depthReadOnly$OFFSET = 48;
 
     /**
      * Offset for field:
@@ -367,7 +370,7 @@ public class WGPURenderBundleEncoderDescriptor {
         return stencilReadOnly$LAYOUT;
     }
 
-    private static final long stencilReadOnly$OFFSET = 44;
+    private static final long stencilReadOnly$OFFSET = 52;
 
     /**
      * Offset for field:

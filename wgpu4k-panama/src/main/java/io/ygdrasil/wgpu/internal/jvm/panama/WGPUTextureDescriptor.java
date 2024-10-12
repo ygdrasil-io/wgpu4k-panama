@@ -2,19 +2,22 @@
 
 package io.ygdrasil.wgpu.internal.jvm.panama;
 
+import java.lang.invoke.*;
 import java.lang.foreign.*;
-import java.util.function.Consumer;
+import java.nio.ByteOrder;
+import java.util.*;
+import java.util.function.*;
+import java.util.stream.*;
 
-import static java.lang.foreign.MemoryLayout.PathElement.groupElement;
-import static java.lang.foreign.ValueLayout.OfInt;
-import static java.lang.foreign.ValueLayout.OfLong;
+import static java.lang.foreign.ValueLayout.*;
+import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 /**
  * {@snippet lang=c :
  * struct WGPUTextureDescriptor {
  *     const WGPUChainedStruct *nextInChain;
- *     const char *label;
- *     WGPUTextureUsageFlags usage;
+ *     WGPUStringView label;
+ *     WGPUTextureUsage usage;
  *     WGPUTextureDimension dimension;
  *     WGPUExtent3D size;
  *     WGPUTextureFormat format;
@@ -33,13 +36,14 @@ public class WGPUTextureDescriptor {
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
         wgpu_h.C_POINTER.withName("nextInChain"),
-        wgpu_h.C_POINTER.withName("label"),
-        wgpu_h.C_INT.withName("usage"),
+        WGPUStringView.layout().withName("label"),
+        wgpu_h.C_LONG_LONG.withName("usage"),
         wgpu_h.C_INT.withName("dimension"),
         WGPUExtent3D.layout().withName("size"),
         wgpu_h.C_INT.withName("format"),
         wgpu_h.C_INT.withName("mipLevelCount"),
         wgpu_h.C_INT.withName("sampleCount"),
+        MemoryLayout.paddingLayout(4),
         wgpu_h.C_LONG.withName("viewFormatCount"),
         wgpu_h.C_POINTER.withName("viewFormats")
     ).withName("WGPUTextureDescriptor");
@@ -95,15 +99,15 @@ public class WGPUTextureDescriptor {
         struct.set(nextInChain$LAYOUT, nextInChain$OFFSET, fieldValue);
     }
 
-    private static final AddressLayout label$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("label"));
+    private static final GroupLayout label$LAYOUT = (GroupLayout)$LAYOUT.select(groupElement("label"));
 
     /**
      * Layout for field:
      * {@snippet lang=c :
-     * const char *label
+     * WGPUStringView label
      * }
      */
-    public static final AddressLayout label$layout() {
+    public static final GroupLayout label$layout() {
         return label$LAYOUT;
     }
 
@@ -112,7 +116,7 @@ public class WGPUTextureDescriptor {
     /**
      * Offset for field:
      * {@snippet lang=c :
-     * const char *label
+     * WGPUStringView label
      * }
      */
     public static final long label$offset() {
@@ -122,41 +126,41 @@ public class WGPUTextureDescriptor {
     /**
      * Getter for field:
      * {@snippet lang=c :
-     * const char *label
+     * WGPUStringView label
      * }
      */
     public static MemorySegment label(MemorySegment struct) {
-        return struct.get(label$LAYOUT, label$OFFSET);
+        return struct.asSlice(label$OFFSET, label$LAYOUT.byteSize());
     }
 
     /**
      * Setter for field:
      * {@snippet lang=c :
-     * const char *label
+     * WGPUStringView label
      * }
      */
     public static void label(MemorySegment struct, MemorySegment fieldValue) {
-        struct.set(label$LAYOUT, label$OFFSET, fieldValue);
+        MemorySegment.copy(fieldValue, 0L, struct, label$OFFSET, label$LAYOUT.byteSize());
     }
 
-    private static final OfInt usage$LAYOUT = (OfInt)$LAYOUT.select(groupElement("usage"));
+    private static final OfLong usage$LAYOUT = (OfLong)$LAYOUT.select(groupElement("usage"));
 
     /**
      * Layout for field:
      * {@snippet lang=c :
-     * WGPUTextureUsageFlags usage
+     * WGPUTextureUsage usage
      * }
      */
-    public static final OfInt usage$layout() {
+    public static final OfLong usage$layout() {
         return usage$LAYOUT;
     }
 
-    private static final long usage$OFFSET = 16;
+    private static final long usage$OFFSET = 24;
 
     /**
      * Offset for field:
      * {@snippet lang=c :
-     * WGPUTextureUsageFlags usage
+     * WGPUTextureUsage usage
      * }
      */
     public static final long usage$offset() {
@@ -166,20 +170,20 @@ public class WGPUTextureDescriptor {
     /**
      * Getter for field:
      * {@snippet lang=c :
-     * WGPUTextureUsageFlags usage
+     * WGPUTextureUsage usage
      * }
      */
-    public static int usage(MemorySegment struct) {
+    public static long usage(MemorySegment struct) {
         return struct.get(usage$LAYOUT, usage$OFFSET);
     }
 
     /**
      * Setter for field:
      * {@snippet lang=c :
-     * WGPUTextureUsageFlags usage
+     * WGPUTextureUsage usage
      * }
      */
-    public static void usage(MemorySegment struct, int fieldValue) {
+    public static void usage(MemorySegment struct, long fieldValue) {
         struct.set(usage$LAYOUT, usage$OFFSET, fieldValue);
     }
 
@@ -195,7 +199,7 @@ public class WGPUTextureDescriptor {
         return dimension$LAYOUT;
     }
 
-    private static final long dimension$OFFSET = 20;
+    private static final long dimension$OFFSET = 32;
 
     /**
      * Offset for field:
@@ -239,7 +243,7 @@ public class WGPUTextureDescriptor {
         return size$LAYOUT;
     }
 
-    private static final long size$OFFSET = 24;
+    private static final long size$OFFSET = 36;
 
     /**
      * Offset for field:
@@ -283,7 +287,7 @@ public class WGPUTextureDescriptor {
         return format$LAYOUT;
     }
 
-    private static final long format$OFFSET = 36;
+    private static final long format$OFFSET = 48;
 
     /**
      * Offset for field:
@@ -327,7 +331,7 @@ public class WGPUTextureDescriptor {
         return mipLevelCount$LAYOUT;
     }
 
-    private static final long mipLevelCount$OFFSET = 40;
+    private static final long mipLevelCount$OFFSET = 52;
 
     /**
      * Offset for field:
@@ -371,7 +375,7 @@ public class WGPUTextureDescriptor {
         return sampleCount$LAYOUT;
     }
 
-    private static final long sampleCount$OFFSET = 44;
+    private static final long sampleCount$OFFSET = 56;
 
     /**
      * Offset for field:
@@ -415,7 +419,7 @@ public class WGPUTextureDescriptor {
         return viewFormatCount$LAYOUT;
     }
 
-    private static final long viewFormatCount$OFFSET = 48;
+    private static final long viewFormatCount$OFFSET = 64;
 
     /**
      * Offset for field:
@@ -459,7 +463,7 @@ public class WGPUTextureDescriptor {
         return viewFormats$LAYOUT;
     }
 
-    private static final long viewFormats$OFFSET = 56;
+    private static final long viewFormats$OFFSET = 72;
 
     /**
      * Offset for field:

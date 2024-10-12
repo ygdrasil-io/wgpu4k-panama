@@ -2,12 +2,15 @@
 
 package io.ygdrasil.wgpu.internal.jvm.panama;
 
+import java.lang.invoke.*;
 import java.lang.foreign.*;
-import java.util.function.Consumer;
+import java.nio.ByteOrder;
+import java.util.*;
+import java.util.function.*;
+import java.util.stream.*;
 
-import static java.lang.foreign.MemoryLayout.PathElement.groupElement;
-import static java.lang.foreign.ValueLayout.OfInt;
-import static java.lang.foreign.ValueLayout.OfLong;
+import static java.lang.foreign.ValueLayout.*;
+import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 /**
  * {@snippet lang=c :
@@ -34,7 +37,6 @@ import static java.lang.foreign.ValueLayout.OfLong;
  *     uint64_t maxBufferSize;
  *     uint32_t maxVertexAttributes;
  *     uint32_t maxVertexBufferArrayStride;
- *     uint32_t maxInterStageShaderComponents;
  *     uint32_t maxInterStageShaderVariables;
  *     uint32_t maxColorAttachments;
  *     uint32_t maxColorAttachmentBytesPerSample;
@@ -77,7 +79,6 @@ public class WGPULimits {
         wgpu_h.C_LONG_LONG.withName("maxBufferSize"),
         wgpu_h.C_INT.withName("maxVertexAttributes"),
         wgpu_h.C_INT.withName("maxVertexBufferArrayStride"),
-        wgpu_h.C_INT.withName("maxInterStageShaderComponents"),
         wgpu_h.C_INT.withName("maxInterStageShaderVariables"),
         wgpu_h.C_INT.withName("maxColorAttachments"),
         wgpu_h.C_INT.withName("maxColorAttachmentBytesPerSample"),
@@ -86,7 +87,8 @@ public class WGPULimits {
         wgpu_h.C_INT.withName("maxComputeWorkgroupSizeX"),
         wgpu_h.C_INT.withName("maxComputeWorkgroupSizeY"),
         wgpu_h.C_INT.withName("maxComputeWorkgroupSizeZ"),
-        wgpu_h.C_INT.withName("maxComputeWorkgroupsPerDimension")
+        wgpu_h.C_INT.withName("maxComputeWorkgroupsPerDimension"),
+        MemoryLayout.paddingLayout(4)
     ).withName("WGPULimits");
 
     /**
@@ -1064,50 +1066,6 @@ public class WGPULimits {
         struct.set(maxVertexBufferArrayStride$LAYOUT, maxVertexBufferArrayStride$OFFSET, fieldValue);
     }
 
-    private static final OfInt maxInterStageShaderComponents$LAYOUT = (OfInt)$LAYOUT.select(groupElement("maxInterStageShaderComponents"));
-
-    /**
-     * Layout for field:
-     * {@snippet lang=c :
-     * uint32_t maxInterStageShaderComponents
-     * }
-     */
-    public static final OfInt maxInterStageShaderComponents$layout() {
-        return maxInterStageShaderComponents$LAYOUT;
-    }
-
-    private static final long maxInterStageShaderComponents$OFFSET = 104;
-
-    /**
-     * Offset for field:
-     * {@snippet lang=c :
-     * uint32_t maxInterStageShaderComponents
-     * }
-     */
-    public static final long maxInterStageShaderComponents$offset() {
-        return maxInterStageShaderComponents$OFFSET;
-    }
-
-    /**
-     * Getter for field:
-     * {@snippet lang=c :
-     * uint32_t maxInterStageShaderComponents
-     * }
-     */
-    public static int maxInterStageShaderComponents(MemorySegment struct) {
-        return struct.get(maxInterStageShaderComponents$LAYOUT, maxInterStageShaderComponents$OFFSET);
-    }
-
-    /**
-     * Setter for field:
-     * {@snippet lang=c :
-     * uint32_t maxInterStageShaderComponents
-     * }
-     */
-    public static void maxInterStageShaderComponents(MemorySegment struct, int fieldValue) {
-        struct.set(maxInterStageShaderComponents$LAYOUT, maxInterStageShaderComponents$OFFSET, fieldValue);
-    }
-
     private static final OfInt maxInterStageShaderVariables$LAYOUT = (OfInt)$LAYOUT.select(groupElement("maxInterStageShaderVariables"));
 
     /**
@@ -1120,7 +1078,7 @@ public class WGPULimits {
         return maxInterStageShaderVariables$LAYOUT;
     }
 
-    private static final long maxInterStageShaderVariables$OFFSET = 108;
+    private static final long maxInterStageShaderVariables$OFFSET = 104;
 
     /**
      * Offset for field:
@@ -1164,7 +1122,7 @@ public class WGPULimits {
         return maxColorAttachments$LAYOUT;
     }
 
-    private static final long maxColorAttachments$OFFSET = 112;
+    private static final long maxColorAttachments$OFFSET = 108;
 
     /**
      * Offset for field:
@@ -1208,7 +1166,7 @@ public class WGPULimits {
         return maxColorAttachmentBytesPerSample$LAYOUT;
     }
 
-    private static final long maxColorAttachmentBytesPerSample$OFFSET = 116;
+    private static final long maxColorAttachmentBytesPerSample$OFFSET = 112;
 
     /**
      * Offset for field:
@@ -1252,7 +1210,7 @@ public class WGPULimits {
         return maxComputeWorkgroupStorageSize$LAYOUT;
     }
 
-    private static final long maxComputeWorkgroupStorageSize$OFFSET = 120;
+    private static final long maxComputeWorkgroupStorageSize$OFFSET = 116;
 
     /**
      * Offset for field:
@@ -1296,7 +1254,7 @@ public class WGPULimits {
         return maxComputeInvocationsPerWorkgroup$LAYOUT;
     }
 
-    private static final long maxComputeInvocationsPerWorkgroup$OFFSET = 124;
+    private static final long maxComputeInvocationsPerWorkgroup$OFFSET = 120;
 
     /**
      * Offset for field:
@@ -1340,7 +1298,7 @@ public class WGPULimits {
         return maxComputeWorkgroupSizeX$LAYOUT;
     }
 
-    private static final long maxComputeWorkgroupSizeX$OFFSET = 128;
+    private static final long maxComputeWorkgroupSizeX$OFFSET = 124;
 
     /**
      * Offset for field:
@@ -1384,7 +1342,7 @@ public class WGPULimits {
         return maxComputeWorkgroupSizeY$LAYOUT;
     }
 
-    private static final long maxComputeWorkgroupSizeY$OFFSET = 132;
+    private static final long maxComputeWorkgroupSizeY$OFFSET = 128;
 
     /**
      * Offset for field:
@@ -1428,7 +1386,7 @@ public class WGPULimits {
         return maxComputeWorkgroupSizeZ$LAYOUT;
     }
 
-    private static final long maxComputeWorkgroupSizeZ$OFFSET = 136;
+    private static final long maxComputeWorkgroupSizeZ$OFFSET = 132;
 
     /**
      * Offset for field:
@@ -1472,7 +1430,7 @@ public class WGPULimits {
         return maxComputeWorkgroupsPerDimension$LAYOUT;
     }
 
-    private static final long maxComputeWorkgroupsPerDimension$OFFSET = 140;
+    private static final long maxComputeWorkgroupsPerDimension$OFFSET = 136;
 
     /**
      * Offset for field:

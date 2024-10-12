@@ -2,23 +2,26 @@
 
 package io.ygdrasil.wgpu.internal.jvm.panama;
 
+import java.lang.invoke.*;
 import java.lang.foreign.*;
-import java.util.function.Consumer;
+import java.nio.ByteOrder;
+import java.util.*;
+import java.util.function.*;
+import java.util.stream.*;
 
-import static java.lang.foreign.MemoryLayout.PathElement.groupElement;
-import static java.lang.foreign.ValueLayout.OfLong;
+import static java.lang.foreign.ValueLayout.*;
+import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 /**
  * {@snippet lang=c :
  * struct WGPUDeviceDescriptor {
  *     const WGPUChainedStruct *nextInChain;
- *     const char *label;
+ *     WGPUStringView label;
  *     size_t requiredFeatureCount;
  *     const WGPUFeatureName *requiredFeatures;
  *     const WGPURequiredLimits *requiredLimits;
  *     WGPUQueueDescriptor defaultQueue;
- *     WGPUDeviceLostCallback deviceLostCallback;
- *     void *deviceLostUserdata;
+ *     WGPUDeviceLostCallbackInfo deviceLostCallbackInfo;
  *     WGPUUncapturedErrorCallbackInfo uncapturedErrorCallbackInfo;
  * }
  * }
@@ -31,13 +34,12 @@ public class WGPUDeviceDescriptor {
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
         wgpu_h.C_POINTER.withName("nextInChain"),
-        wgpu_h.C_POINTER.withName("label"),
+        WGPUStringView.layout().withName("label"),
         wgpu_h.C_LONG.withName("requiredFeatureCount"),
         wgpu_h.C_POINTER.withName("requiredFeatures"),
         wgpu_h.C_POINTER.withName("requiredLimits"),
         WGPUQueueDescriptor.layout().withName("defaultQueue"),
-        wgpu_h.C_POINTER.withName("deviceLostCallback"),
-        wgpu_h.C_POINTER.withName("deviceLostUserdata"),
+        WGPUDeviceLostCallbackInfo.layout().withName("deviceLostCallbackInfo"),
         WGPUUncapturedErrorCallbackInfo.layout().withName("uncapturedErrorCallbackInfo")
     ).withName("WGPUDeviceDescriptor");
 
@@ -92,15 +94,15 @@ public class WGPUDeviceDescriptor {
         struct.set(nextInChain$LAYOUT, nextInChain$OFFSET, fieldValue);
     }
 
-    private static final AddressLayout label$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("label"));
+    private static final GroupLayout label$LAYOUT = (GroupLayout)$LAYOUT.select(groupElement("label"));
 
     /**
      * Layout for field:
      * {@snippet lang=c :
-     * const char *label
+     * WGPUStringView label
      * }
      */
-    public static final AddressLayout label$layout() {
+    public static final GroupLayout label$layout() {
         return label$LAYOUT;
     }
 
@@ -109,7 +111,7 @@ public class WGPUDeviceDescriptor {
     /**
      * Offset for field:
      * {@snippet lang=c :
-     * const char *label
+     * WGPUStringView label
      * }
      */
     public static final long label$offset() {
@@ -119,21 +121,21 @@ public class WGPUDeviceDescriptor {
     /**
      * Getter for field:
      * {@snippet lang=c :
-     * const char *label
+     * WGPUStringView label
      * }
      */
     public static MemorySegment label(MemorySegment struct) {
-        return struct.get(label$LAYOUT, label$OFFSET);
+        return struct.asSlice(label$OFFSET, label$LAYOUT.byteSize());
     }
 
     /**
      * Setter for field:
      * {@snippet lang=c :
-     * const char *label
+     * WGPUStringView label
      * }
      */
     public static void label(MemorySegment struct, MemorySegment fieldValue) {
-        struct.set(label$LAYOUT, label$OFFSET, fieldValue);
+        MemorySegment.copy(fieldValue, 0L, struct, label$OFFSET, label$LAYOUT.byteSize());
     }
 
     private static final OfLong requiredFeatureCount$LAYOUT = (OfLong)$LAYOUT.select(groupElement("requiredFeatureCount"));
@@ -148,7 +150,7 @@ public class WGPUDeviceDescriptor {
         return requiredFeatureCount$LAYOUT;
     }
 
-    private static final long requiredFeatureCount$OFFSET = 16;
+    private static final long requiredFeatureCount$OFFSET = 24;
 
     /**
      * Offset for field:
@@ -192,7 +194,7 @@ public class WGPUDeviceDescriptor {
         return requiredFeatures$LAYOUT;
     }
 
-    private static final long requiredFeatures$OFFSET = 24;
+    private static final long requiredFeatures$OFFSET = 32;
 
     /**
      * Offset for field:
@@ -236,7 +238,7 @@ public class WGPUDeviceDescriptor {
         return requiredLimits$LAYOUT;
     }
 
-    private static final long requiredLimits$OFFSET = 32;
+    private static final long requiredLimits$OFFSET = 40;
 
     /**
      * Offset for field:
@@ -280,7 +282,7 @@ public class WGPUDeviceDescriptor {
         return defaultQueue$LAYOUT;
     }
 
-    private static final long defaultQueue$OFFSET = 40;
+    private static final long defaultQueue$OFFSET = 48;
 
     /**
      * Offset for field:
@@ -312,92 +314,48 @@ public class WGPUDeviceDescriptor {
         MemorySegment.copy(fieldValue, 0L, struct, defaultQueue$OFFSET, defaultQueue$LAYOUT.byteSize());
     }
 
-    private static final AddressLayout deviceLostCallback$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("deviceLostCallback"));
+    private static final GroupLayout deviceLostCallbackInfo$LAYOUT = (GroupLayout)$LAYOUT.select(groupElement("deviceLostCallbackInfo"));
 
     /**
      * Layout for field:
      * {@snippet lang=c :
-     * WGPUDeviceLostCallback deviceLostCallback
+     * WGPUDeviceLostCallbackInfo deviceLostCallbackInfo
      * }
      */
-    public static final AddressLayout deviceLostCallback$layout() {
-        return deviceLostCallback$LAYOUT;
+    public static final GroupLayout deviceLostCallbackInfo$layout() {
+        return deviceLostCallbackInfo$LAYOUT;
     }
 
-    private static final long deviceLostCallback$OFFSET = 56;
+    private static final long deviceLostCallbackInfo$OFFSET = 72;
 
     /**
      * Offset for field:
      * {@snippet lang=c :
-     * WGPUDeviceLostCallback deviceLostCallback
+     * WGPUDeviceLostCallbackInfo deviceLostCallbackInfo
      * }
      */
-    public static final long deviceLostCallback$offset() {
-        return deviceLostCallback$OFFSET;
+    public static final long deviceLostCallbackInfo$offset() {
+        return deviceLostCallbackInfo$OFFSET;
     }
 
     /**
      * Getter for field:
      * {@snippet lang=c :
-     * WGPUDeviceLostCallback deviceLostCallback
+     * WGPUDeviceLostCallbackInfo deviceLostCallbackInfo
      * }
      */
-    public static MemorySegment deviceLostCallback(MemorySegment struct) {
-        return struct.get(deviceLostCallback$LAYOUT, deviceLostCallback$OFFSET);
+    public static MemorySegment deviceLostCallbackInfo(MemorySegment struct) {
+        return struct.asSlice(deviceLostCallbackInfo$OFFSET, deviceLostCallbackInfo$LAYOUT.byteSize());
     }
 
     /**
      * Setter for field:
      * {@snippet lang=c :
-     * WGPUDeviceLostCallback deviceLostCallback
+     * WGPUDeviceLostCallbackInfo deviceLostCallbackInfo
      * }
      */
-    public static void deviceLostCallback(MemorySegment struct, MemorySegment fieldValue) {
-        struct.set(deviceLostCallback$LAYOUT, deviceLostCallback$OFFSET, fieldValue);
-    }
-
-    private static final AddressLayout deviceLostUserdata$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("deviceLostUserdata"));
-
-    /**
-     * Layout for field:
-     * {@snippet lang=c :
-     * void *deviceLostUserdata
-     * }
-     */
-    public static final AddressLayout deviceLostUserdata$layout() {
-        return deviceLostUserdata$LAYOUT;
-    }
-
-    private static final long deviceLostUserdata$OFFSET = 64;
-
-    /**
-     * Offset for field:
-     * {@snippet lang=c :
-     * void *deviceLostUserdata
-     * }
-     */
-    public static final long deviceLostUserdata$offset() {
-        return deviceLostUserdata$OFFSET;
-    }
-
-    /**
-     * Getter for field:
-     * {@snippet lang=c :
-     * void *deviceLostUserdata
-     * }
-     */
-    public static MemorySegment deviceLostUserdata(MemorySegment struct) {
-        return struct.get(deviceLostUserdata$LAYOUT, deviceLostUserdata$OFFSET);
-    }
-
-    /**
-     * Setter for field:
-     * {@snippet lang=c :
-     * void *deviceLostUserdata
-     * }
-     */
-    public static void deviceLostUserdata(MemorySegment struct, MemorySegment fieldValue) {
-        struct.set(deviceLostUserdata$LAYOUT, deviceLostUserdata$OFFSET, fieldValue);
+    public static void deviceLostCallbackInfo(MemorySegment struct, MemorySegment fieldValue) {
+        MemorySegment.copy(fieldValue, 0L, struct, deviceLostCallbackInfo$OFFSET, deviceLostCallbackInfo$LAYOUT.byteSize());
     }
 
     private static final GroupLayout uncapturedErrorCallbackInfo$LAYOUT = (GroupLayout)$LAYOUT.select(groupElement("uncapturedErrorCallbackInfo"));
@@ -412,7 +370,7 @@ public class WGPUDeviceDescriptor {
         return uncapturedErrorCallbackInfo$LAYOUT;
     }
 
-    private static final long uncapturedErrorCallbackInfo$OFFSET = 72;
+    private static final long uncapturedErrorCallbackInfo$OFFSET = 104;
 
     /**
      * Offset for field:

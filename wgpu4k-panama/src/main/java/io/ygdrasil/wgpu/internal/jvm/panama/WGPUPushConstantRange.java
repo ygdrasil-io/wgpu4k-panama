@@ -2,16 +2,20 @@
 
 package io.ygdrasil.wgpu.internal.jvm.panama;
 
+import java.lang.invoke.*;
 import java.lang.foreign.*;
-import java.util.function.Consumer;
+import java.nio.ByteOrder;
+import java.util.*;
+import java.util.function.*;
+import java.util.stream.*;
 
-import static java.lang.foreign.MemoryLayout.PathElement.groupElement;
-import static java.lang.foreign.ValueLayout.OfInt;
+import static java.lang.foreign.ValueLayout.*;
+import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 /**
  * {@snippet lang=c :
  * struct WGPUPushConstantRange {
- *     WGPUShaderStageFlags stages;
+ *     WGPUShaderStage stages;
  *     uint32_t start;
  *     uint32_t end;
  * }
@@ -24,7 +28,7 @@ public class WGPUPushConstantRange {
     }
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
-        wgpu_h.C_INT.withName("stages"),
+        wgpu_h.C_LONG_LONG.withName("stages"),
         wgpu_h.C_INT.withName("start"),
         wgpu_h.C_INT.withName("end")
     ).withName("WGPUPushConstantRange");
@@ -36,15 +40,15 @@ public class WGPUPushConstantRange {
         return $LAYOUT;
     }
 
-    private static final OfInt stages$LAYOUT = (OfInt)$LAYOUT.select(groupElement("stages"));
+    private static final OfLong stages$LAYOUT = (OfLong)$LAYOUT.select(groupElement("stages"));
 
     /**
      * Layout for field:
      * {@snippet lang=c :
-     * WGPUShaderStageFlags stages
+     * WGPUShaderStage stages
      * }
      */
-    public static final OfInt stages$layout() {
+    public static final OfLong stages$layout() {
         return stages$LAYOUT;
     }
 
@@ -53,7 +57,7 @@ public class WGPUPushConstantRange {
     /**
      * Offset for field:
      * {@snippet lang=c :
-     * WGPUShaderStageFlags stages
+     * WGPUShaderStage stages
      * }
      */
     public static final long stages$offset() {
@@ -63,20 +67,20 @@ public class WGPUPushConstantRange {
     /**
      * Getter for field:
      * {@snippet lang=c :
-     * WGPUShaderStageFlags stages
+     * WGPUShaderStage stages
      * }
      */
-    public static int stages(MemorySegment struct) {
+    public static long stages(MemorySegment struct) {
         return struct.get(stages$LAYOUT, stages$OFFSET);
     }
 
     /**
      * Setter for field:
      * {@snippet lang=c :
-     * WGPUShaderStageFlags stages
+     * WGPUShaderStage stages
      * }
      */
-    public static void stages(MemorySegment struct, int fieldValue) {
+    public static void stages(MemorySegment struct, long fieldValue) {
         struct.set(stages$LAYOUT, stages$OFFSET, fieldValue);
     }
 
@@ -92,7 +96,7 @@ public class WGPUPushConstantRange {
         return start$LAYOUT;
     }
 
-    private static final long start$OFFSET = 4;
+    private static final long start$OFFSET = 8;
 
     /**
      * Offset for field:
@@ -136,7 +140,7 @@ public class WGPUPushConstantRange {
         return end$LAYOUT;
     }
 
-    private static final long end$OFFSET = 8;
+    private static final long end$OFFSET = 12;
 
     /**
      * Offset for field:

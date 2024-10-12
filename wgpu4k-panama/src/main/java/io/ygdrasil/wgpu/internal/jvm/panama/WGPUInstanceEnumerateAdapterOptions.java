@@ -2,17 +2,21 @@
 
 package io.ygdrasil.wgpu.internal.jvm.panama;
 
+import java.lang.invoke.*;
 import java.lang.foreign.*;
-import java.util.function.Consumer;
+import java.nio.ByteOrder;
+import java.util.*;
+import java.util.function.*;
+import java.util.stream.*;
 
-import static java.lang.foreign.MemoryLayout.PathElement.groupElement;
-import static java.lang.foreign.ValueLayout.OfInt;
+import static java.lang.foreign.ValueLayout.*;
+import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 /**
  * {@snippet lang=c :
  * struct WGPUInstanceEnumerateAdapterOptions {
  *     const WGPUChainedStruct *nextInChain;
- *     WGPUInstanceBackendFlags backends;
+ *     WGPUInstanceBackend backends;
  * }
  * }
  */
@@ -24,8 +28,7 @@ public class WGPUInstanceEnumerateAdapterOptions {
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
         wgpu_h.C_POINTER.withName("nextInChain"),
-        wgpu_h.C_INT.withName("backends"),
-        MemoryLayout.paddingLayout(4)
+        wgpu_h.C_LONG_LONG.withName("backends")
     ).withName("WGPUInstanceEnumerateAdapterOptions");
 
     /**
@@ -79,15 +82,15 @@ public class WGPUInstanceEnumerateAdapterOptions {
         struct.set(nextInChain$LAYOUT, nextInChain$OFFSET, fieldValue);
     }
 
-    private static final OfInt backends$LAYOUT = (OfInt)$LAYOUT.select(groupElement("backends"));
+    private static final OfLong backends$LAYOUT = (OfLong)$LAYOUT.select(groupElement("backends"));
 
     /**
      * Layout for field:
      * {@snippet lang=c :
-     * WGPUInstanceBackendFlags backends
+     * WGPUInstanceBackend backends
      * }
      */
-    public static final OfInt backends$layout() {
+    public static final OfLong backends$layout() {
         return backends$LAYOUT;
     }
 
@@ -96,7 +99,7 @@ public class WGPUInstanceEnumerateAdapterOptions {
     /**
      * Offset for field:
      * {@snippet lang=c :
-     * WGPUInstanceBackendFlags backends
+     * WGPUInstanceBackend backends
      * }
      */
     public static final long backends$offset() {
@@ -106,20 +109,20 @@ public class WGPUInstanceEnumerateAdapterOptions {
     /**
      * Getter for field:
      * {@snippet lang=c :
-     * WGPUInstanceBackendFlags backends
+     * WGPUInstanceBackend backends
      * }
      */
-    public static int backends(MemorySegment struct) {
+    public static long backends(MemorySegment struct) {
         return struct.get(backends$LAYOUT, backends$OFFSET);
     }
 
     /**
      * Setter for field:
      * {@snippet lang=c :
-     * WGPUInstanceBackendFlags backends
+     * WGPUInstanceBackend backends
      * }
      */
-    public static void backends(MemorySegment struct, int fieldValue) {
+    public static void backends(MemorySegment struct, long fieldValue) {
         struct.set(backends$LAYOUT, backends$OFFSET, fieldValue);
     }
 

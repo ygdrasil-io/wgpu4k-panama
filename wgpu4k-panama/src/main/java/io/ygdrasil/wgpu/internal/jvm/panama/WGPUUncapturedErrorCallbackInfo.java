@@ -2,17 +2,23 @@
 
 package io.ygdrasil.wgpu.internal.jvm.panama;
 
+import java.lang.invoke.*;
 import java.lang.foreign.*;
-import java.util.function.Consumer;
+import java.nio.ByteOrder;
+import java.util.*;
+import java.util.function.*;
+import java.util.stream.*;
 
-import static java.lang.foreign.MemoryLayout.PathElement.groupElement;
+import static java.lang.foreign.ValueLayout.*;
+import static java.lang.foreign.MemoryLayout.PathElement.*;
 
 /**
  * {@snippet lang=c :
  * struct WGPUUncapturedErrorCallbackInfo {
  *     const WGPUChainedStruct *nextInChain;
- *     WGPUErrorCallback callback;
- *     void *userdata;
+ *     WGPUUncapturedErrorCallback callback;
+ *     void *userdata1;
+ *     void *userdata2;
  * }
  * }
  */
@@ -25,7 +31,8 @@ public class WGPUUncapturedErrorCallbackInfo {
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
         wgpu_h.C_POINTER.withName("nextInChain"),
         wgpu_h.C_POINTER.withName("callback"),
-        wgpu_h.C_POINTER.withName("userdata")
+        wgpu_h.C_POINTER.withName("userdata1"),
+        wgpu_h.C_POINTER.withName("userdata2")
     ).withName("WGPUUncapturedErrorCallbackInfo");
 
     /**
@@ -84,7 +91,7 @@ public class WGPUUncapturedErrorCallbackInfo {
     /**
      * Layout for field:
      * {@snippet lang=c :
-     * WGPUErrorCallback callback
+     * WGPUUncapturedErrorCallback callback
      * }
      */
     public static final AddressLayout callback$layout() {
@@ -96,7 +103,7 @@ public class WGPUUncapturedErrorCallbackInfo {
     /**
      * Offset for field:
      * {@snippet lang=c :
-     * WGPUErrorCallback callback
+     * WGPUUncapturedErrorCallback callback
      * }
      */
     public static final long callback$offset() {
@@ -106,7 +113,7 @@ public class WGPUUncapturedErrorCallbackInfo {
     /**
      * Getter for field:
      * {@snippet lang=c :
-     * WGPUErrorCallback callback
+     * WGPUUncapturedErrorCallback callback
      * }
      */
     public static MemorySegment callback(MemorySegment struct) {
@@ -116,55 +123,99 @@ public class WGPUUncapturedErrorCallbackInfo {
     /**
      * Setter for field:
      * {@snippet lang=c :
-     * WGPUErrorCallback callback
+     * WGPUUncapturedErrorCallback callback
      * }
      */
     public static void callback(MemorySegment struct, MemorySegment fieldValue) {
         struct.set(callback$LAYOUT, callback$OFFSET, fieldValue);
     }
 
-    private static final AddressLayout userdata$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("userdata"));
+    private static final AddressLayout userdata1$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("userdata1"));
 
     /**
      * Layout for field:
      * {@snippet lang=c :
-     * void *userdata
+     * void *userdata1
      * }
      */
-    public static final AddressLayout userdata$layout() {
-        return userdata$LAYOUT;
+    public static final AddressLayout userdata1$layout() {
+        return userdata1$LAYOUT;
     }
 
-    private static final long userdata$OFFSET = 16;
+    private static final long userdata1$OFFSET = 16;
 
     /**
      * Offset for field:
      * {@snippet lang=c :
-     * void *userdata
+     * void *userdata1
      * }
      */
-    public static final long userdata$offset() {
-        return userdata$OFFSET;
+    public static final long userdata1$offset() {
+        return userdata1$OFFSET;
     }
 
     /**
      * Getter for field:
      * {@snippet lang=c :
-     * void *userdata
+     * void *userdata1
      * }
      */
-    public static MemorySegment userdata(MemorySegment struct) {
-        return struct.get(userdata$LAYOUT, userdata$OFFSET);
+    public static MemorySegment userdata1(MemorySegment struct) {
+        return struct.get(userdata1$LAYOUT, userdata1$OFFSET);
     }
 
     /**
      * Setter for field:
      * {@snippet lang=c :
-     * void *userdata
+     * void *userdata1
      * }
      */
-    public static void userdata(MemorySegment struct, MemorySegment fieldValue) {
-        struct.set(userdata$LAYOUT, userdata$OFFSET, fieldValue);
+    public static void userdata1(MemorySegment struct, MemorySegment fieldValue) {
+        struct.set(userdata1$LAYOUT, userdata1$OFFSET, fieldValue);
+    }
+
+    private static final AddressLayout userdata2$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("userdata2"));
+
+    /**
+     * Layout for field:
+     * {@snippet lang=c :
+     * void *userdata2
+     * }
+     */
+    public static final AddressLayout userdata2$layout() {
+        return userdata2$LAYOUT;
+    }
+
+    private static final long userdata2$OFFSET = 24;
+
+    /**
+     * Offset for field:
+     * {@snippet lang=c :
+     * void *userdata2
+     * }
+     */
+    public static final long userdata2$offset() {
+        return userdata2$OFFSET;
+    }
+
+    /**
+     * Getter for field:
+     * {@snippet lang=c :
+     * void *userdata2
+     * }
+     */
+    public static MemorySegment userdata2(MemorySegment struct) {
+        return struct.get(userdata2$LAYOUT, userdata2$OFFSET);
+    }
+
+    /**
+     * Setter for field:
+     * {@snippet lang=c :
+     * void *userdata2
+     * }
+     */
+    public static void userdata2(MemorySegment struct, MemorySegment fieldValue) {
+        struct.set(userdata2$LAYOUT, userdata2$OFFSET, fieldValue);
     }
 
     /**
