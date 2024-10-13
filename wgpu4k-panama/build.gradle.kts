@@ -33,7 +33,7 @@ java {
 
 tasks.jextract {
     // Set to true to regenerate binding, jextract must be on your path
-    onlyIf { true }
+    onlyIf { false }
 
     header(buildNativeResourcesDirectory.resolve("wgpu.h").absolutePath) {
 
