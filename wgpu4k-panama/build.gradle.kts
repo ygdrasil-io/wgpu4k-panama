@@ -17,7 +17,7 @@ kotlin {
 sourceSets {
     main {
         resources {
-            srcDirs(resourcesDirectory.absolutePath)
+            //srcDirs(resourcesDirectory.absolutePath)
         }
     }
 
